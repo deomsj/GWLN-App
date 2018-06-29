@@ -124,6 +124,11 @@ export const GWLN = createStackNavigator({
   DonateView: {screen: DonateWebView}
 });
 
+export const Calendar = createStackNavigator({
+  Calendar: {screen: CalendarScreen},
+  CreateEvent: {screen: CreateEventScreen}
+});
+
 export const Home = createStackNavigator({
   Home: {screen: HomeScreen},
   MessageBoard: {screen: MessageBoardScreen},
@@ -143,7 +148,7 @@ export const Profile = createStackNavigator({
 export default createBottomTabNavigator({
   Home: {screen: Home,},
   Profile: {screen: Profile},
-  Calendar: {screen: CalendarScreen},
+  Calendar: {screen: Calendar},
   GWLN: {screen: GWLN,},
 }, {
   initialRouteName: 'Home',
