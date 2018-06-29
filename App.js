@@ -14,7 +14,7 @@ import FeedbackFormScreen from './FeedbackFormScreen';
 class HomeScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
-    
+
   }
     constructor(){
       super();
@@ -30,13 +30,13 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        
+
         <Button
           title="Message Board"
           onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
         <Button
-          title="Memeber List"
+          title="Member List"
           onPress={() => this.props.navigation.navigate('MemberList')}
           />
           <Button
@@ -45,8 +45,8 @@ class HomeScreen extends React.Component {
             />
 
           <View style={{ borderWidth: 0}}>
-            
-            <Picker 
+
+            <Picker
 
               style={{ height: 50, width: 200}}
               selectedValue={this.state.PickerValue}
@@ -150,6 +150,3 @@ export default createBottomTabNavigator({
   activeTintColor: '#f0edf6',
   inactiveTintColor: '#3e2465',
 })
-
-
- 
