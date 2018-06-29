@@ -14,7 +14,7 @@ import FeedbackFormScreen from './FeedbackFormScreen';
 class HomeScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
-    
+
   }
     constructor(){
       super();
@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        
+
         <Button
           title="Message Board"
           onPress={() => this.props.navigation.navigate('MessageBoard')}
@@ -45,8 +45,8 @@ class HomeScreen extends React.Component {
             />
 
           <View style={{ borderWidth: 0}}>
-            
-            <Picker 
+
+            <Picker
 
               style={{ height: 50, width: 200}}
               selectedValue={this.state.PickerValue}
@@ -124,6 +124,11 @@ export const GWLN = createStackNavigator({
   DonateView: {screen: DonateWebView}
 });
 
+export const Calendar = createStackNavigator({
+  Calendar: {screen: CalendarScreen},
+  CreateEvent: {screen: CreateEventScreen}
+});
+
 export const Home = createStackNavigator({
   Home: {screen: HomeScreen},
   MessageBoard: {screen: MessageBoardScreen},
@@ -143,13 +148,10 @@ export const Profile = createStackNavigator({
 export default createBottomTabNavigator({
   Home: {screen: Home,},
   Profile: {screen: Profile},
-  Calendar: {screen: CalendarScreen},
+  Calendar: {screen: Calendar},
   GWLN: {screen: GWLN,},
 }, {
   initialRouteName: 'Home',
   activeTintColor: '#f0edf6',
   inactiveTintColor: '#3e2465',
 })
-
-
- 
