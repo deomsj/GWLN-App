@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import GWLNScreen from './GWLNScreen';
@@ -8,6 +8,8 @@ import MemberListScreen from './MemberListScreen';
 import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
 import MyPastEventsScreen from './MyPastEventsScreen';
 import CreateEventScreen from './CreateEventScreen';
+import CheckInScreen from './CheckInScreen';
+import FeedbackFormScreen from './FeedbackFormScreen';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -39,7 +41,7 @@ class HomeScreen extends React.Component {
           />
           <Button
             title="Press Me"
-            onPress={() => this.pickerNavigate}
+            onPress={() => this.props.navigation.navigate(this.state.PickerValue)}
             />
 
           <View style={{ borderWidth: 0}}>
@@ -48,10 +50,10 @@ class HomeScreen extends React.Component {
 
               style={{ height: 50, width: 200}}
               selectedValue={this.state.PickerValue}
-              onValueChange={(ItemValue, ItemIndex) => this.setSate({PickerValue : ItemValue})}
+              onValueChange={(ItemValue, ItemIndex) => this.setState({PickerValue:ItemValue})}
             >
-            <Picker.Item label="Check in" value="Check in" />
-            <Picker.Item label="Feedback Forms" value="Feedback Forms" />
+            <Picker.Item label="Check in" value='CheckIn' />
+            <Picker.Item label="Feedback Forms" value="FeedbackFrom" />
             <Picker.Item label="Create Event" value="CreateEvent"/>
             </Picker>
           </View>
@@ -127,6 +129,8 @@ export const Home = createStackNavigator({
   MessageBoard: {screen: MessageBoardScreen},
   MemberList: {screen: MemberListScreen},
   CreateEvent: {screen: CreateEventScreen},
+  FeedbackFrom: {screen: FeedbackFormScreen},
+  CheckIn: {screen: CheckInScreen},
 });
 
 export const Profile = createStackNavigator({
