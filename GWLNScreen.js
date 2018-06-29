@@ -5,16 +5,17 @@ import DonateWebView from './DonateWebView';
 
 class GWLNScreen extends React.Component {
   render() {
-  	
+
     return (
 
       	<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <Button
-          title="Donate!"
-          onPress={() => this.props.navigation.navigate('DonateView')}
+                color= '#002A55'
+                title="Donate!"
+                onPress={() => this.props.navigation.navigate('DonateView')}
 
           />
-        
+
      	 </View>
     );
   }

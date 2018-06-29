@@ -64,6 +64,7 @@ class CreateEventScreen extends React.Component {
 					<Button
 					title="Create Event"
 					onPress={this.handleSubmit}
+					color= "#002a55"
 					/>
 				</View>
 			</View>
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
 		backgroundColor: '#fff',
+		padding: 40,
 
 	}
 });

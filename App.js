@@ -32,14 +32,18 @@ class HomeScreen extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 
         <Button
+          color= '#002A55'
+          justifyContent= 'center'
           title="Message Board"
           onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
         <Button
+          color= '#002A55'
           title="Member List"
           onPress={() => this.props.navigation.navigate('MemberList')}
           />
           <Button
+            color= '#002A55'
             title="Press Me"
             onPress={() => this.props.navigation.navigate(this.state.PickerValue)}
             />
@@ -87,10 +91,12 @@ class ProfileScreen extends React.Component {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Text> Profile </Text>
           <Button
+            color= '#002A55'
             title="My Upcoming Events"
             onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
             />
           <Button
+            color= '#002A55'
             title="My Past Events"
             onPress={() => this.props.navigation.navigate('MyPastEvents')}
           />
