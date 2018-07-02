@@ -14,6 +14,8 @@ import CreateEventScreen from './CreateEventScreen';
 import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
+import ProfileScreen from './ProfileScreen';
+import AddPostScreen from './AddPostScreen';
 //import CalendarScreen from './CalendarScreen';
 
 class HomeScreen extends React.Component {
@@ -34,7 +36,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{ alignItems: 'center', justifyContent: 'center'}}>
 
         <Button
           color= '#002A55'
@@ -110,12 +112,17 @@ class CalendarScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Button
+      <View style={{ flex: 1}}>
+        
+        <View style={styles.AddButtonContainer}>
+          <Button
           style={styles.AddButton}
           title='Plus'
           onPress={() => this.props.navigation.navigate('CreateEvent')}
           />
+        </View>
+
+        
         <Calendar 
         style={styles.Calendar}
           theme={{
@@ -136,55 +143,39 @@ class CalendarScreen extends React.Component {
 
 
 class MessageBoardScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Message'
-
-
-  }
+  
   render(){
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{ alignItems: 'center', justifyContent: 'center'}}>
       <Text> Message Board </Text>
+      <Button
+      title="Post"
+      onPress={() => this.props.navigation.navigate('AddPost')}
+      />
       </View>
     );
   }
 }
 
-class ProfileScreen extends React.Component {
-  render() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Text> Profile </Text>
-          <Button
-            color= '#002A55'
-            title="My Upcoming Events"
-            onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
-            />
-          <Button
-            color= '#002A55'
-            title="My Past Events"
-            onPress={() => this.props.navigation.navigate('MyPastEvents')}
-          />
-        </View>
-    );
-  }
-}
+
 
 
 const styles = StyleSheet.create ({
   Calendar: {
-
+    flex: 10,
     height: "90%",
     width: "100%"
   },
-  AddButton: {
+  AddButtonContainer: {
+    flex: 1,
     flexDirection: 'row',
     height:20,
-    width: 20,
     alignItems: 'flex-end',
-    marginTop: -5,
-    marginRight: 10,
-    position: 'absolute',
+    justifyContent: 'flex-end',
+   
+  },
+  AddButton: {
+    backgroundColor: 'green',
 
   }
 });
@@ -194,9 +185,9 @@ export const RootStack = createStackNavigator(
   {
   Home: HomeScreen,
   Profile: ProfileScreen,
-  MessageBoard: MessageBoardScreen,
   CalendarView: CalendarScreen,
   GWLN: GWLNScreen,
+  AddPost: MessageBoardScreen,
   }
 );
 
@@ -211,6 +202,12 @@ export const CalendarView = createStackNavigator({
   EventDetails: {screen: CalendarDetailScreen}
 });
 
+export const MessageBoard = createStackNavigator({
+  MessageBoard: {screen: MessageBoardScreen},
+  AddPost: {screen: AddPostScreen}
+});
+
+
 export const Home = createStackNavigator({
   Home: {screen: HomeScreen},
   MessageBoard: {screen: MessageBoardScreen},
@@ -218,6 +215,7 @@ export const Home = createStackNavigator({
   CreateEvent: {screen: CreateEventScreen},
   FeedbackFrom: {screen: FeedbackFormScreen},
   CheckIn: {screen: CheckInScreen},
+  AddPost: {screen: AddPostScreen},
 });
 
 export const Profile = createStackNavigator({
