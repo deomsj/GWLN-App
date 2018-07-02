@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
 
@@ -16,17 +16,21 @@ const Options = {
 	label: 'Feedback Form',
 	fields: {
 		EventName: {
+			label: 'Event Name',
 			error: 'Please enter the event name.'
 		},
 		NumberOfAttendees: {
+			label: 'Number of Attendees',
 			error: 'Please enter the number of attendees.',
 			KeyboardType: 'numeric'
 		},
 		PositiveComments: {
+			label: 'Postive Comments',
 			error: 'Please fill out this field',
 			multiLine: true
 		},
 		NegativeComments: {
+			label: 'Negative Comments',
 			multiLine: true
 		}
 	}
@@ -44,7 +48,7 @@ class FeedbackFormScreen extends React.Component {
 		if(!value){
 			this.resetForm({})
 		}
-		
+
 	}
 
 	handleSubmit = () => {
@@ -54,32 +58,34 @@ class FeedbackFormScreen extends React.Component {
 			this.resetForm({})
 
 		}
-		
+
 	}
-	
+
 
 	render() {
 		return(
+			<ScrollView>
 			<View style={styles.container}>
-				
-				<Form ref={c=>this._form = c} 
-				type={Content} 
-				options = {Options}/>	
+
+				<Form ref={c=>this._form = c}
+				type={Content}
+				options = {Options}/>
 				<View style={styles.container}>
 					<Button
 					title="Submit"
 					onPress={this.handleSubmit}
 					/>
-					<Button	
+					<Button
 						title="Discard feedback"
 						onPress={this.DiscardForm}
 					/>
 				</View>
-				
+
 			</View>
+			</ScrollView>
 		);
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
