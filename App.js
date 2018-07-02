@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+
+import {Calendar} from 'react-native-calendars';
+import moment from 'moment';
 
 import GWLNScreen from './GWLNScreen';
 import DonateWebView from './DonateWebView';
@@ -10,6 +13,8 @@ import MyPastEventsScreen from './MyPastEventsScreen';
 import CreateEventScreen from './CreateEventScreen';
 import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
+import CalendarDetailScreen from './CalendarDetailScreen';
+//import CalendarScreen from './CalendarScreen';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -67,6 +72,66 @@ class HomeScreen extends React.Component {
   }
 }
 
+const _format = 'YYYY-MM-DD'
+const _today = moment().format(_format)
+const _maxDate = moment().add(120, 'days').format(_format)
+
+
+class CalendarScreen extends React.Component {
+
+  initialState = {
+    [_today]: {disabled: true}
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      _markedDates: this.initialState
+    }
+  }
+
+  OnDaySelect = (day) => {
+    const _selectedDay = moment(day.dateString).format(_format);
+    let marked = true;
+    let markedDates = {}
+    if (this.state._markedDates[_selectedDay]){
+      this.props.navigation.navigate('EventDetails')
+      //marked = !this.state._markedDates[_selectedDay].marked;
+      //markedDates = this.state._markedDates[_selectedDay];
+    }
+
+    markedDates = {...markedDates, ...{ marked }};
+
+    const updatedMarkedDates = {...this.state._markedDates, ...{[_selectedDay]: markedDates}}
+
+    this.setState({_markedDates: updatedMarkedDates});
+  }
+
+
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Button
+          style={styles.AddButton}
+          title='Plus'
+          onPress={() => this.props.navigation.navigate('CreateEvent')}
+          />
+        <Calendar 
+        style={styles.Calendar}
+          theme={{
+            dotColor: 'pink',
+          }}
+
+          minDate={_today}
+          maxDate={_maxDate}
+
+          onDayPress={this.OnDaySelect}
+          markedDates={this.state._markedDates}
+          />
+      </View>
+    );
+  }
+}
 
 
 
@@ -105,22 +170,32 @@ class ProfileScreen extends React.Component {
   }
 }
 
-class CalendarScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text> Calendar </Text>
-      </View>
-    );
+
+const styles = StyleSheet.create ({
+  Calendar: {
+
+    height: "90%",
+    width: "100%"
+  },
+  AddButton: {
+    flexDirection: 'row',
+    height:20,
+    width: 20,
+    alignItems: 'flex-end',
+    marginTop: -5,
+    marginRight: 10,
+    position: 'absolute',
+
   }
-}
+});
+
 
 export const RootStack = createStackNavigator(
   {
   Home: HomeScreen,
   Profile: ProfileScreen,
   MessageBoard: MessageBoardScreen,
-  Calendar: CalendarScreen,
+  CalendarView: CalendarScreen,
   GWLN: GWLNScreen,
   }
 );
@@ -130,9 +205,10 @@ export const GWLN = createStackNavigator({
   DonateView: {screen: DonateWebView}
 });
 
-export const Calendar = createStackNavigator({
-  Calendar: {screen: CalendarScreen},
-  CreateEvent: {screen: CreateEventScreen}
+export const CalendarView = createStackNavigator({
+  CalendarView: {screen: CalendarScreen},
+  CreateEvent: {screen: CreateEventScreen},
+  EventDetails: {screen: CalendarDetailScreen}
 });
 
 export const Home = createStackNavigator({
@@ -154,7 +230,7 @@ export const Profile = createStackNavigator({
 export default createBottomTabNavigator({
   Home: {screen: Home,},
   Profile: {screen: Profile},
-  Calendar: {screen: Calendar},
+  CalendarView: {screen: CalendarView},
   GWLN: {screen: GWLN,},
 }, {
   initialRouteName: 'Home',
