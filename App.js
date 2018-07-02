@@ -15,6 +15,7 @@ import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 //import CalendarScreen from './CalendarScreen';
+import OrganizerSigninScreen from './OrganizerSigninScreen';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -192,12 +193,15 @@ const styles = StyleSheet.create ({
 
 export const RootStack = createStackNavigator(
   {
+  OrganizerSignin: OrganizerSigninScreen,
   Home: HomeScreen,
   Profile: ProfileScreen,
   MessageBoard: MessageBoardScreen,
   CalendarView: CalendarScreen,
   GWLN: GWLNScreen,
-  }
+}, {
+  initialRouteName: 'OrganizerSignin',
+}
 );
 
 export const GWLN = createStackNavigator({
@@ -230,6 +234,10 @@ export const Profile = createStackNavigator({
   MyPastEvents: {screen: MyPastEventsScreen},
 });
 
+export const SignInStack = createStackNavigator({
+  OrganizerSignin: {screen: OrganizerSigninScreen},
+  Home: {screen: HomeScreen},
+})
 
 export default createBottomTabNavigator({
   Home: {screen: Home,},
