@@ -1,20 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import { CheckBox } from 'react-native-elements'
+//import { CheckBox } from 'react-native-checkbox';
+import moment from 'moment';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
-//const formatFunction = format => date => formatDate(format, date)
-//const format = 'mm/dd/yyyy'
+
 const Event = t.struct({
 	name: t.String,
 	location: t.String,
-	dateTime: t.Date,
+	date: t.Date,
 	description: t.maybe(t.String),
-	numberOfPinkTies: t.maybe(t.Number)
+	numberOfPinkTies: t.maybe(t.Number),
 });
+
+let myFormat = (date) =>{
+	return moment(date).format('LLLL');
+}
+
+//var now = moment().format('LLL');
 
 var options = {
 	label: 'Create an Event',
@@ -27,14 +34,18 @@ var options = {
 			label: 'Event Location',
 			error: 'Please enter the location'
 		},
-		dateTime: {
+		date: {
 			label: 'Date and Time',
-			error: 'Please enter a date and time',
-			mode: 'date',
+			error: 'Please enter a valid date and time',
+			mode: 'datetime',
 			config: {
 				//format: (date) => moment(date).format('mm-dd-YYYY')
 				//format: (date: Date) => string
 				//format: date => formatFunction(format)
+				//format:(date) => myFormat(date)
+				format: date => moment(date).format('dddd, MMMM Do YYYY, h:mm a'),
+				dateFormat: date => moment(date).format('dddd, MMMM Do YYYY'),
+				timeFormat: date => moment(date).format('h:mm a'),
 			},
 		},
 		description: {
@@ -67,6 +78,7 @@ class CreateEventScreen extends React.Component {
 			this.props.navigation.navigate('Calendar')
 		}
 	}
+
 	render() {
 		return(
 			<ScrollView>
@@ -84,8 +96,8 @@ class CreateEventScreen extends React.Component {
 					<Button
 						title="Discard Event"
 						onPress={this.DiscardForm}
+						color= "#002a55"
 					/>
-					<CheckBox title='check' />
 				</View>
 			</View>
 			</ScrollView>

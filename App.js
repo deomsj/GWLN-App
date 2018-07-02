@@ -131,6 +131,7 @@ export const GWLN = createStackNavigator({
 });
 
 export const Calendar = createStackNavigator({
+  Home: {screen: HomeScreen},
   Calendar: {screen: CalendarScreen},
   CreateEvent: {screen: CreateEventScreen}
 });
