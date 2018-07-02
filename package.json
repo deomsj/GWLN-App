@@ -24,17 +24,11 @@
     "react": "16.3.1",
     "react-moment": "^0.7.7",
     "react-native": "~0.55.2",
-<<<<<<< HEAD
     "react-native-checkbox": "^2.0.0",
     "react-native-elements": "^0.19.1",
     "react-native-modal-datetime-picker": "^5.1.0",
-=======
-<<<<<<< HEAD
     "react-native-calendars": "^1.19.3",
-=======
     "react-native-elements": "^0.19.1",
->>>>>>> 8137f4ac168ddbebe4a9d9404dc7b2b55d7625ba
->>>>>>> 33d059f99c8e5eaa48b29a0ff1610f8ea0f3b537
     "react-navigation": "^2.5.3",
     "tcomb-form-native": "^0.6.14"
   }

@@ -116,7 +116,7 @@ class CalendarScreen extends React.Component {
           title='Plus'
           onPress={() => this.props.navigation.navigate('CreateEvent')}
           />
-        <Calendar 
+        <Calendar
         style={styles.Calendar}
           theme={{
             dotColor: 'pink',
