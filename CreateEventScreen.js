@@ -75,7 +75,7 @@ class CreateEventScreen extends React.Component {
 		const value = this._form.getValue();
 		console.log('value', value);
 		if(value) {
-			this.props.navigation.navigate('Calendar')
+			this.props.navigation.navigate('CalendarView')
 		}
 	}
 

@@ -205,17 +205,14 @@ export const GWLN = createStackNavigator({
   DonateView: {screen: DonateWebView}
 });
 
-<<<<<<< HEAD
-export const Calendar = createStackNavigator({
-  Home: {screen: HomeScreen},
-  Calendar: {screen: CalendarScreen},
-  CreateEvent: {screen: CreateEventScreen}
-=======
+
+
 export const CalendarView = createStackNavigator({
+  //Home: {screen: HomeScreen},
   CalendarView: {screen: CalendarScreen},
   CreateEvent: {screen: CreateEventScreen},
   EventDetails: {screen: CalendarDetailScreen}
->>>>>>> 33d059f99c8e5eaa48b29a0ff1610f8ea0f3b537
+
 });
 
 export const Home = createStackNavigator({
