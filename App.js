@@ -17,6 +17,7 @@ import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 //import CalendarScreen from './CalendarScreen';
+import OrganizerSigninScreen from './OrganizerSigninScreen';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -120,10 +121,14 @@ class CalendarScreen extends React.Component {
           title='Plus'
           onPress={() => this.props.navigation.navigate('CreateEvent')}
           />
+<<<<<<< HEAD
         </View>
 
         
         <Calendar 
+=======
+        <Calendar
+>>>>>>> 7461e32f64451fb47bb67c0384ca91ba6381da79
         style={styles.Calendar}
           theme={{
             dotColor: 'pink',
@@ -183,12 +188,19 @@ const styles = StyleSheet.create ({
 
 export const RootStack = createStackNavigator(
   {
+  OrganizerSignin: OrganizerSigninScreen,
   Home: HomeScreen,
   Profile: ProfileScreen,
   CalendarView: CalendarScreen,
   GWLN: GWLNScreen,
+<<<<<<< HEAD
   AddPost: MessageBoardScreen,
   }
+=======
+}, {
+  initialRouteName: 'OrganizerSignin',
+}
+>>>>>>> 7461e32f64451fb47bb67c0384ca91ba6381da79
 );
 
 export const GWLN = createStackNavigator({
@@ -196,10 +208,14 @@ export const GWLN = createStackNavigator({
   DonateView: {screen: DonateWebView}
 });
 
+
+
 export const CalendarView = createStackNavigator({
+  //Home: {screen: HomeScreen},
   CalendarView: {screen: CalendarScreen},
   CreateEvent: {screen: CreateEventScreen},
   EventDetails: {screen: CalendarDetailScreen}
+
 });
 
 export const MessageBoard = createStackNavigator({
@@ -224,6 +240,10 @@ export const Profile = createStackNavigator({
   MyPastEvents: {screen: MyPastEventsScreen},
 });
 
+export const SignInStack = createStackNavigator({
+  OrganizerSignin: {screen: OrganizerSigninScreen},
+  Home: {screen: HomeScreen},
+})
 
 export default createBottomTabNavigator({
   Home: {screen: Home,},

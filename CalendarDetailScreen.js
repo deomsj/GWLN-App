@@ -10,7 +10,7 @@ class CalendatDetailScreen extends React.Component {
 			</View>
 		);
 	}
-	
+
 }
 
 export default CalendatDetailScreen;
