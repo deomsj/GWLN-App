@@ -14,6 +14,7 @@ const User = t.struct({
 class OrganizerSigninScreen extends React.Component {
   handleSubmit() {
     console.log(this.loginform);
+    this.props.navigation.navigate('Home')
   }
 
   render() {
@@ -23,7 +24,7 @@ class OrganizerSigninScreen extends React.Component {
         <Form ref={c => this.loginform = c} type={User} />
         <Button
           title="Login"
-          onPress={this.handleSubmit}
+          onPress={() => this.props.navigation.navigate('Home')}
           color="#002a55"
         />Ï
       </View>

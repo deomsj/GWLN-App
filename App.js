@@ -16,191 +16,92 @@ import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
-//import CalendarScreen from './CalendarScreen';
+import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
-
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Home',
-
-  }
-    constructor(){
-      super();
-      this.state={
-        PickerValue:''
-      }
-    };
-    pickerNavigate=()=>{
-      var nextPage = this.state.PickerValue
-      this.props.navigation.navigate(nextPage)
-    }
-
-  render() {
-    return (
-      <View style={{ alignItems: 'center', justifyContent: 'center'}}>
-
-        <Button
-          color= '#002A55'
-          justifyContent= 'center'
-          title="Message Board"
-          onPress={() => this.props.navigation.navigate('MessageBoard')}
-          />
-        <Button
-          color= '#002A55'
-          title="Member List"
-          onPress={() => this.props.navigation.navigate('MemberList')}
-          />
-          <Button
-            color= '#002A55'
-            title="Press Me"
-            onPress={() => this.props.navigation.navigate(this.state.PickerValue)}
-            />
-
-          <View style={{ borderWidth: 0}}>
-
-            <Picker
-
-              style={{ height: 50, width: 200}}
-              selectedValue={this.state.PickerValue}
-              onValueChange={(ItemValue, ItemIndex) => this.setState({PickerValue:ItemValue})}
-            >
-            <Picker.Item label="Check in" value='CheckIn' />
-            <Picker.Item label="Feedback Forms" value="FeedbackFrom" />
-            <Picker.Item label="Create Event" value="CreateEvent"/>
-            </Picker>
-          </View>
-
-      </View>
-    );
-  }
-}
-
-const _format = 'YYYY-MM-DD'
-const _today = moment().format(_format)
-const _maxDate = moment().add(120, 'days').format(_format)
-
-
-class CalendarScreen extends React.Component {
-
-  initialState = {
-    [_today]: {disabled: true}
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      _markedDates: this.initialState
-    }
-  }
-
-  OnDaySelect = (day) => {
-    const _selectedDay = moment(day.dateString).format(_format);
-    let marked = true;
-    let markedDates = {}
-    if (this.state._markedDates[_selectedDay]){
-      this.props.navigation.navigate('EventDetails')
-      //marked = !this.state._markedDates[_selectedDay].marked;
-      //markedDates = this.state._markedDates[_selectedDay];
-    }
-
-    markedDates = {...markedDates, ...{ marked }};
-
-    const updatedMarkedDates = {...this.state._markedDates, ...{[_selectedDay]: markedDates}}
-
-    this.setState({_markedDates: updatedMarkedDates});
-  }
-
-
-  render() {
-    return (
-      <View style={{ flex: 1}}>
-        
-        <View style={styles.AddButtonContainer}>
-          <Button
-          style={styles.AddButton}
-          title='Plus'
-          onPress={() => this.props.navigation.navigate('CreateEvent')}
-          />
-<<<<<<< HEAD
-        </View>
-
-        
-        <Calendar 
-=======
-        <Calendar
->>>>>>> 7461e32f64451fb47bb67c0384ca91ba6381da79
-        style={styles.Calendar}
-          theme={{
-            dotColor: 'pink',
-          }}
-
-          minDate={_today}
-          maxDate={_maxDate}
-
-          onDayPress={this.OnDaySelect}
-          markedDates={this.state._markedDates}
-          />
-      </View>
-    );
-  }
-}
-
-
-
-class MessageBoardScreen extends React.Component {
-  
-  render(){
-    return (
-      <View style={{ alignItems: 'center', justifyContent: 'center'}}>
-      <Text> Message Board </Text>
-      <Button
-      title="Post"
-      onPress={() => this.props.navigation.navigate('AddPost')}
-      />
-      </View>
-    );
-  }
-}
+import HomeScreen from './HomeScreen'
+import MessageBoardScreen from './MessageBoardScreen';
 
 
 
 
-const styles = StyleSheet.create ({
-  Calendar: {
-    flex: 10,
-    height: "90%",
-    width: "100%"
+
+
+
+const NavigationFlow = createStackNavigator({
+OrganizerSignin: {
+    screen: OrganizerSigninScreen,
+    navigationOptions: {
+      headerLeft: null
+    },
+    },
+
+  Home: {
+    
+    screen: createBottomTabNavigator({
+      Home: {
+        screen: HomeScreen,
+      },
+      Profile: {
+        screen: ProfileScreen,
+      },
+      CalendarView: {
+        screen: CalendarScreen,
+      },
+      GWLN: {
+        screen: GWLNScreen,
+      },
+    }), 
+    navigationOptions: {
+      headerLeft: null
+    },
   },
-  AddButtonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    height:20,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-   
+
+  MessageBoard: {
+    screen: MessageBoardScreen,
   },
-  AddButton: {
-    backgroundColor: 'green',
+  MemberList: {
+    screen: MemberListScreen,
+  },
+  CheckIn: {
+    screen: CheckInScreen,
+  },
+  FeedbackFrom: {
+    screen: FeedbackFormScreen,
+  },
+  CreateEvent: {
+    screen: CreateEventScreen,
+  },
+  AddPost: {
+    screen: AddPostScreen,
+  },
+  MyUpcomingEvents: {
+    screen: MyUpcomingEventsScreen,
+  },
+  MyPastEvents: {
+    screen: MyPastEventsScreen,
+  },
+  DonateView: {
+    screen: DonateWebView,
+  },
+  EventDetails: {
+    screen: CalendarDetailScreen,
+  },
 
-  }
-});
+})
 
+export default NavigationFlow;
 
-export const RootStack = createStackNavigator(
+/*export const RootStack = createStackNavigator(
   {
   OrganizerSignin: OrganizerSigninScreen,
   Home: HomeScreen,
   Profile: ProfileScreen,
   CalendarView: CalendarScreen,
   GWLN: GWLNScreen,
-<<<<<<< HEAD
   AddPost: MessageBoardScreen,
+  },{
+    initialRouteName: 'OrganizerSignin',
   }
-=======
-}, {
-  initialRouteName: 'OrganizerSignin',
-}
->>>>>>> 7461e32f64451fb47bb67c0384ca91ba6381da79
 );
 
 export const GWLN = createStackNavigator({
@@ -254,4 +155,4 @@ export default createBottomTabNavigator({
   initialRouteName: 'Home',
   activeTintColor: '#f0edf6',
   inactiveTintColor: '#3e2465',
-})
+})*/
