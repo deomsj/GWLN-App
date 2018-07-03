@@ -19,7 +19,7 @@ class OrganizerSigninScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text>Organizer Login</Text>
+      <Text>Organizer Sign-in</Text>
         <Form ref={c => this.loginform = c} type={User} />
         <Button
           title="Login"

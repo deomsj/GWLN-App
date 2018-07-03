@@ -16,6 +16,7 @@ import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 //import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
+import LaunchPage from './LaunchPage';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
