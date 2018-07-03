@@ -14,195 +14,98 @@ import CreateEventScreen from './CreateEventScreen';
 import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
-//import CalendarScreen from './CalendarScreen';
+import ProfileScreen from './ProfileScreen';
+import AddPostScreen from './AddPostScreen';
+import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
+<<<<<<< HEAD
 import LaunchPage from './LaunchPage';
-
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Home',
-
-  }
-    constructor(){
-      super();
-      this.state={
-        PickerValue:''
-      }
-    };
-    pickerNavigate=()=>{
-      var nextPage = this.state.PickerValue
-      this.props.navigation.navigate(nextPage)
-    }
-
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-
-        <Button
-          color= '#002A55'
-          justifyContent= 'center'
-          title="Message Board"
-          onPress={() => this.props.navigation.navigate('MessageBoard')}
-          />
-        <Button
-          color= '#002A55'
-          title="Member List"
-          onPress={() => this.props.navigation.navigate('MemberList')}
-          />
-          <Button
-            color= '#002A55'
-            title="Press Me"
-            onPress={() => this.props.navigation.navigate(this.state.PickerValue)}
-            />
-
-          <View style={{ borderWidth: 0}}>
-
-            <Picker
-
-              style={{ height: 50, width: 200}}
-              selectedValue={this.state.PickerValue}
-              onValueChange={(ItemValue, ItemIndex) => this.setState({PickerValue:ItemValue})}
-            >
-            <Picker.Item label="Check in" value='CheckIn' />
-            <Picker.Item label="Feedback Forms" value="FeedbackFrom" />
-            <Picker.Item label="Create Event" value="CreateEvent"/>
-            </Picker>
-          </View>
-
-      </View>
-    );
-  }
-}
-
-const _format = 'YYYY-MM-DD'
-const _today = moment().format(_format)
-const _maxDate = moment().add(120, 'days').format(_format)
-
-
-class CalendarScreen extends React.Component {
-
-  initialState = {
-    [_today]: {disabled: true}
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      _markedDates: this.initialState
-    }
-  }
-
-  OnDaySelect = (day) => {
-    const _selectedDay = moment(day.dateString).format(_format);
-    let marked = true;
-    let markedDates = {}
-    if (this.state._markedDates[_selectedDay]){
-      this.props.navigation.navigate('EventDetails')
-      //marked = !this.state._markedDates[_selectedDay].marked;
-      //markedDates = this.state._markedDates[_selectedDay];
-    }
-
-    markedDates = {...markedDates, ...{ marked }};
-
-    const updatedMarkedDates = {...this.state._markedDates, ...{[_selectedDay]: markedDates}}
-
-    this.setState({_markedDates: updatedMarkedDates});
-  }
-
-
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Button
-          style={styles.AddButton}
-          title='Plus'
-          onPress={() => this.props.navigation.navigate('CreateEvent')}
-          />
-        <Calendar
-        style={styles.Calendar}
-          theme={{
-            dotColor: 'pink',
-          }}
-
-          minDate={_today}
-          maxDate={_maxDate}
-
-          onDayPress={this.OnDaySelect}
-          markedDates={this.state._markedDates}
-          />
-      </View>
-    );
-  }
-}
+=======
+import HomeScreen from './HomeScreen'
+import MessageBoardScreen from './MessageBoardScreen';
 
 
 
-class MessageBoardScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Message'
 
 
-  }
-  render(){
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text> Message Board </Text>
-      </View>
-    );
-  }
-}
-
-class ProfileScreen extends React.Component {
-  render() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Text> Profile </Text>
-          <Button
-            color= '#002A55'
-            title="My Upcoming Events"
-            onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
-            />
-          <Button
-            color= '#002A55'
-            title="My Past Events"
-            onPress={() => this.props.navigation.navigate('MyPastEvents')}
-          />
-        </View>
-    );
-  }
-}
 
 
-const styles = StyleSheet.create ({
-  Calendar: {
+const NavigationFlow = createStackNavigator({
+OrganizerSignin: {
+    screen: OrganizerSigninScreen,
+    navigationOptions: {
+      headerLeft: null
+    },
+    },
 
-    height: "90%",
-    width: "100%"
+  Home: {
+    
+    screen: createBottomTabNavigator({
+      Home: {
+        screen: HomeScreen,
+      },
+      Profile: {
+        screen: ProfileScreen,
+      },
+      CalendarView: {
+        screen: CalendarScreen,
+      },
+      GWLN: {
+        screen: GWLNScreen,
+      },
+    }), 
+    navigationOptions: {
+      headerLeft: null
+    },
   },
-  AddButton: {
-    flexDirection: 'row',
-    height:20,
-    width: 20,
-    alignItems: 'flex-end',
-    marginTop: -5,
-    marginRight: 10,
-    position: 'absolute',
+>>>>>>> c9d1b340a079e6a1f01bc4d44aad3a816f65b726
 
-  }
-});
+  MessageBoard: {
+    screen: MessageBoardScreen,
+  },
+  MemberList: {
+    screen: MemberListScreen,
+  },
+  CheckIn: {
+    screen: CheckInScreen,
+  },
+  FeedbackFrom: {
+    screen: FeedbackFormScreen,
+  },
+  CreateEvent: {
+    screen: CreateEventScreen,
+  },
+  AddPost: {
+    screen: AddPostScreen,
+  },
+  MyUpcomingEvents: {
+    screen: MyUpcomingEventsScreen,
+  },
+  MyPastEvents: {
+    screen: MyPastEventsScreen,
+  },
+  DonateView: {
+    screen: DonateWebView,
+  },
+  EventDetails: {
+    screen: CalendarDetailScreen,
+  },
 
+})
 
-export const RootStack = createStackNavigator(
+export default NavigationFlow;
+
+/*export const RootStack = createStackNavigator(
   {
   OrganizerSignin: OrganizerSigninScreen,
   Home: HomeScreen,
   Profile: ProfileScreen,
-  MessageBoard: MessageBoardScreen,
   CalendarView: CalendarScreen,
   GWLN: GWLNScreen,
-}, {
-  initialRouteName: 'OrganizerSignin',
-}
+  AddPost: MessageBoardScreen,
+  },{
+    initialRouteName: 'OrganizerSignin',
+  }
 );
 
 export const GWLN = createStackNavigator({
@@ -220,6 +123,12 @@ export const CalendarView = createStackNavigator({
 
 });
 
+export const MessageBoard = createStackNavigator({
+  MessageBoard: {screen: MessageBoardScreen},
+  AddPost: {screen: AddPostScreen}
+});
+
+
 export const Home = createStackNavigator({
   Home: {screen: HomeScreen},
   MessageBoard: {screen: MessageBoardScreen},
@@ -227,6 +136,7 @@ export const Home = createStackNavigator({
   CreateEvent: {screen: CreateEventScreen},
   FeedbackFrom: {screen: FeedbackFormScreen},
   CheckIn: {screen: CheckInScreen},
+  AddPost: {screen: AddPostScreen},
 });
 
 export const Profile = createStackNavigator({
@@ -249,4 +159,4 @@ export default createBottomTabNavigator({
   initialRouteName: 'Home',
   activeTintColor: '#f0edf6',
   inactiveTintColor: '#3e2465',
-})
+})*/
