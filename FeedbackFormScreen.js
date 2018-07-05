@@ -3,14 +3,28 @@ import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView 
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
 
+import moment from 'moment';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+
 const Form = t.form.Form;
 
 const Content = t.struct({
 	EventName: t.String,
+	EventLocation: t.String,
+	Date: t.Date,
+	EventSponsor: t.maybe(t.String),
+	EventTopic: t.String,
+	Speaker: t.maybe(t.String),
 	NumberOfAttendees: t.Number,
-	PositiveComments: t.String,
-	NegativeComments: t.maybe(t.String)
+	Charity: t.maybe(t.String),
+	Donations: t.String,
+	Summary: t.String,
+	
 });
+
+let myFormat = (date) =>{
+	return moment(date).format('LLLL');
+}
 
 const Options = {
 	label: 'Feedback Form',
@@ -19,20 +33,54 @@ const Options = {
 			label: 'Event Name',
 			error: 'Please enter the event name.'
 		},
+		EventLocation: {
+			label: 'Event Location',
+			error: 'Please enter the location of the event'
+		},
+		Date: {
+			label: 'Date and Time',
+			error: 'Please enter a valid date and time',
+			mode: 'datetime',
+			config: {
+				//format: (date) => moment(date).format('mm-dd-YYYY')
+				//format: (date: Date) => string
+				//format: date => formatFunction(format)
+				//format:(date) => myFormat(date)
+				format: date => moment(date).format('dddd, MMMM Do YYYY, h:mm a'),
+				dateFormat: date => moment(date).format('dddd, MMMM Do YYYY'),
+				timeFormat: date => moment(date).format('h:mm a'),
+			},
+
+		},
+		EventSponsor: {
+			label: 'Event Sponsor'
+		},
+		EventTopic: {
+			label: 'Meeting Topic',
+			error: 'Please enter the topic of the meeting'
+		},
+		Speaker: {
+			label: 'Panelists or Keynote Speaker'
+
+		},
 		NumberOfAttendees: {
-			label: 'Number of Attendees',
+			label: 'Number of Attendees:',
 			error: 'Please enter the number of attendees.',
 			KeyboardType: 'numeric'
 		},
-		PositiveComments: {
+		Charity: {
+			label: 'Charity Supported:'
+		},
+		Donations: {
+			label: 'Dollars or resources Donated:',
+			error: 'Please fill out this field.'
+		},
+		Summary: {
 			label: 'Postive Comments',
 			error: 'Please fill out this field',
 			multiLine: true
 		},
-		NegativeComments: {
-			label: 'Negative Comments',
-			multiLine: true
-		}
+		
 	}
 
 };
