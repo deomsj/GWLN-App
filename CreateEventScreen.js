@@ -60,23 +60,24 @@ var options = {
 
 
 class CreateEventScreen extends React.Component {
-	resetForm(){
+	resetForm = (value) => {
 		this.setState({value:null});
 	}
 
-	DiscardForm(){
-		const value = this._form.getValue();
-		if(!value){
-			this.resetForm({})
-		}
+	/*DiscardForm() {
+		const value = this.refs.form.getValue();
+		console.log('value', value);
+		this.resetForm()
 
-	}
+
+	}*/
 	handleSubmit = () => {
-		const value = this._form.getValue();
+		const value = this.refs.form.getValue();
 		console.log('value', value);
 		if(value) {
 			this.props.navigation.navigate('CalendarView')
 		}
+		this.resetForm();
 	}
 
 	render() {
@@ -86,7 +87,7 @@ class CreateEventScreen extends React.Component {
 				<Text style={styles.paragraph}>
 					Create an Event
 				</Text>
-				<Form ref={c=>this._form = c}
+				<Form ref="form"
 				type={Event}
 				options={options}/>
 				<View style={styles.container}>
@@ -99,7 +100,7 @@ class CreateEventScreen extends React.Component {
 					<Button
 						style={styles.buttons}
 						title="Discard Event"
-						onPress={this.DiscardForm}
+						onPress={this.resetForm}
 						color= "#002a55"
 					/>
 				</View>
