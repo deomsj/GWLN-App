@@ -1,4 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { StyleSheet, Text, View, Button, Picker, WebView, FlatList } from 'react-native';
+import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import t from 'tcomb-form-native';
+
+//const signinForm = t.struct
+
+class OrganizerSigninScreen extends React.Component {
+	render() {
+		return(
+			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+				<Text> Sign in </Text>
+			</View>
+		);
+	}
+
+}
+
+export default OrganizerSigninScreen;
+
+/*import React, { Component } from 'react';
 import { Text, View, Button, StyleSheet } from 'react-native';
 import t from 'tcomb-form-native'; // 0.6.14
 
@@ -44,3 +64,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
 });
+*/
