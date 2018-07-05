@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+/*import React from 'react';
+>>>>>>> c2c8b67dce34c9af2bd9e2bc6a14724596115a67
 import { StyleSheet, Text, View, Button, Picker, WebView } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
@@ -41,4 +45,9 @@ const styles = StyleSheet.create({
     width: 250,
     height: 150,
   },
+<<<<<<< HEAD
 });
+=======
+});
+*/
+>>>>>>> c2c8b67dce34c9af2bd9e2bc6a14724596115a67

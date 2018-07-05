@@ -13,8 +13,7 @@ class GWLNScreen extends React.Component {
                 color= '#002A55'
                 title="Donate!"
                 onPress={() => this.props.navigation.navigate('DonateView')}
-
-          />
+                />
 
      	 </View>
     );

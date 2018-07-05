@@ -15,10 +15,13 @@ import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
-import AddPostScreen from './AddPostScreen';
+//import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
-import HomeScreen from './HomeScreen'
+import GWLNSignUp from './GWLNSignUp';
+//import LaunchPage from './LaunchPage';
+
+import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 
 
@@ -28,7 +31,7 @@ import MessageBoardScreen from './MessageBoardScreen';
 
 
 const NavigationFlow = createStackNavigator({
-OrganizerSignin: {
+  OrganizerSignin: {
     screen: OrganizerSigninScreen,
     navigationOptions: {
       headerLeft: null
@@ -36,7 +39,7 @@ OrganizerSignin: {
     },
 
   Home: {
-    
+
     screen: createBottomTabNavigator({
       Home: {
         screen: HomeScreen,
@@ -50,11 +53,12 @@ OrganizerSignin: {
       GWLN: {
         screen: GWLNScreen,
       },
-    }), 
+    }),
     navigationOptions: {
       headerLeft: null
     },
   },
+
 
   MessageBoard: {
     screen: MessageBoardScreen,
@@ -71,9 +75,9 @@ OrganizerSignin: {
   CreateEvent: {
     screen: CreateEventScreen,
   },
-  AddPost: {
-    screen: AddPostScreen,
-  },
+  //AddPost: {
+    //screen: AddPostScreen,
+  //},
   MyUpcomingEvents: {
     screen: MyUpcomingEventsScreen,
   },
@@ -85,6 +89,9 @@ OrganizerSignin: {
   },
   EventDetails: {
     screen: CalendarDetailScreen,
+  },
+  SignUp: {
+    screen: GWLNSignUp,
   },
 
 })

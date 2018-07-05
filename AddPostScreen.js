@@ -80,7 +80,7 @@ resetForm(){
 			</ScrollView>
 		);
 	}
-	
+
 }
 const styles = StyleSheet.create({
 	container: {

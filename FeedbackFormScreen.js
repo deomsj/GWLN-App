@@ -122,10 +122,12 @@ class FeedbackFormScreen extends React.Component {
 					<Button
 					title="Submit"
 					onPress={this.handleSubmit}
+					color= "#002a55"
 					/>
 					<Button
 						title="Discard feedback"
 						onPress={this.DiscardForm}
+						color= "#002a55"
 					/>
 				</View>
 
@@ -138,7 +140,7 @@ class FeedbackFormScreen extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-
+		backgroundColor: '#fff',
 		justifyContent: 'center',
 		marginTop: 50,
 		padding: 20,

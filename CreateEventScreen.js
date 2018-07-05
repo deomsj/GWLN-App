@@ -24,7 +24,7 @@ let myFormat = (date) =>{
 //var now = moment().format('LLL');
 
 var options = {
-	label: 'Create an Event',
+	//label: 'Create an Event',
 	fields: {
 		name: {
 			label: 'Event Name',
@@ -83,17 +83,21 @@ class CreateEventScreen extends React.Component {
 		return(
 			<ScrollView>
 			<View style={styles.container}>
-				<Text></Text>
+				<Text style={styles.paragraph}>
+					Create an Event
+				</Text>
 				<Form ref={c=>this._form = c}
 				type={Event}
 				options={options}/>
 				<View style={styles.container}>
 					<Button
+					style={styles.buttons}
 					title="Create Event"
 					onPress={this.handleSubmit}
 					color= "#002a55"
 					/>
 					<Button
+						style={styles.buttons}
 						title="Discard Event"
 						onPress={this.DiscardForm}
 						color= "#002a55"
@@ -110,9 +114,22 @@ export default CreateEventScreen;
 
 const styles = StyleSheet.create({
 	container: {
-		justifyContent: 'center',
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'space-between',
 		backgroundColor: '#fff',
-		padding: 40,
+		padding: 20,
 
+	},
+	paragraph: {
+		margin: 30,
+		fontSize: 20,
+		fontWeight: 'bold',
+		textAlign: 'center',
+		color: '#002a55',
+	},
+	buttons: {
+		padding: 40,
+		margin: 10,
 	}
 });
