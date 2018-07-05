@@ -18,8 +18,9 @@ import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
+import MemberSigninScreen from './MemberSigninScreen';
 import GWLNSignUp from './GWLNSignUp';
-//import LaunchPage from './LaunchPage';
+import LaunchPage from './LaunchPage';
 
 import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
@@ -31,12 +32,17 @@ import MessageBoardScreen from './MessageBoardScreen';
 
 
 const NavigationFlow = createStackNavigator({
+  Launch: {
+    screen: LaunchPage,
+  },
+
   OrganizerSignin: {
     screen: OrganizerSigninScreen,
-    navigationOptions: {
-      headerLeft: null
-    },
-    },
+  },
+
+  MemberSignin: {
+    screen: MemberSigninScreen,
+  },
 
   Home: {
 
