@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, WebView, StyleSheet } from 'react-native';
 
-const DonateWebView = () => {
+const GWLNSignUp = () => {
 	return (
 			<View style = {styles.container}>
 				<WebView
@@ -11,7 +11,7 @@ const DonateWebView = () => {
 		)
 }
 
-export default DonateWebView;
+export default GWLNSignUp;
 
 const styles = StyleSheet.create({
 	container: {
