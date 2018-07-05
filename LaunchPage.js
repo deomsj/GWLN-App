@@ -1,15 +1,34 @@
-/*import React from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
+import OrganizerSigninScreen from './OrganizerSigninScreen';
+
 class LaunchPage extends React.Component {
+
+	handleOrgSignin = () => {
+		this.props.navigation.navigate('OrganizerSignin')
+	}
+	handleMemSignin = () => {
+		this.props.navigation.navigate('MemberSignin')
+	}
+
 	render() {
 		return(
 			<View style={styles.container}>
 				<Text> Launch page </Text>
-        <View style={styles.logocontainer}>
-          <Image source={require('./img/gwln_logo.jpg')} style={styles.logo} />
-        </View>
+				<Button
+					style={styles.buttons}
+					title="Organizer Sign In"
+					onPress={this.handleOrgSignin}
+					color= "#002a55"
+				/>
+				<Button
+					style={styles.buttons}
+					title="Member Sign In"
+					onPress={this.handleMemSignin}
+					color= "#002a55"
+				/>
 			</View>
 		);
 	}
@@ -29,17 +48,4 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
-  logocontainer: {
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'center',
-  },
-
-  logo: {
-    flex: 1,
-    resizeMode: 'contain',
-    width: 250,
-    height: 150,
-  },
 });
-*/
