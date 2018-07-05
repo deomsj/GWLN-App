@@ -15,7 +15,7 @@ import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
-//import AddPostScreen from './AddPostScreen';
+import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
 import GWLNSignUp from './GWLNSignUp';
@@ -75,9 +75,9 @@ const NavigationFlow = createStackNavigator({
   CreateEvent: {
     screen: CreateEventScreen,
   },
-  //AddPost: {
-    //screen: AddPostScreen,
-  //},
+  AddPost: {
+    screen: AddPostScreen,
+  },
   MyUpcomingEvents: {
     screen: MyUpcomingEventsScreen,
   },
