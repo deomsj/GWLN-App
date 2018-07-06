@@ -9,8 +9,9 @@ import {
     View,
     Text,
     Button,
-} from 'react-native'
-import CheckBox from 'react-native-check-box'
+} from 'react-native';
+import CheckBox from 'react-native-check-box';
+import { Icon } from 'react-native-elements';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -116,10 +117,13 @@ class CheckInScreen extends Component {
                 onPress={this.onPress}
                 color= '#002a55'
               />
-              <Button
-                title="Discard"
+              </View>
+              <View style={styles.trash}>
+              <Icon
+                type='font-awesome'
+                name="trash"
+                size={32}
                 onPress={this.discardButton}
-                color= '#002a55'
               />
             </View>
           </ScrollView>
@@ -149,7 +153,12 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       alignItems: 'center',
       justifyContent: 'center'
-    }
+    },
+    trash: {
+      // flex: 1,
+      bottom: 500,
+      left: -150,
+  }
 })
 
 export default CheckInScreen;
