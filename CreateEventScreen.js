@@ -79,14 +79,11 @@ class CreateEventScreen extends React.Component {
 		if(!value){
 			this.resetForm({})
 		}
-
+}
 	resetForm = (value) => {
 		this.setState({value:null});
 	}
 
-
-
-}
 	handleSubmit = () => {
 
 		const value = this._form.getValue();
