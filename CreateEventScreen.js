@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 //import { CheckBox } from 'react-native-checkbox';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+
+import a from './Components/alert';
 
 import t from 'tcomb-form-native';
 
@@ -58,7 +60,6 @@ var options = {
 	}
 };
 
-
 class CreateEventScreen extends React.Component {
 	resetForm = (value) => {
 		this.setState({value:null});
@@ -79,6 +80,7 @@ class CreateEventScreen extends React.Component {
 		}
 		this.resetForm();
 	}
+
 
 	render() {
 		return(
@@ -103,15 +105,41 @@ class CreateEventScreen extends React.Component {
 						onPress={this.resetForm}
 						color= "#002a55"
 					/>
+
 				</View>
 			</View>
+			<TouchableOpacity
+				style={styles.to}
+				onPress={() => Alert.alert(
+					'Alert title',
+					'alert msg',
+					[
+						{text: 'Cancel', onPress: () => console.log('Cancel Pressed!')},
+						{text: 'OK', onPress: () => console.log('Ok pressed')},
+					],
+					{ cancelable: false }
+				)}>
+				<Text style={{fontSize: 32, color: 'white'}}>Show alert!</Text>
+			</TouchableOpacity>
 			</ScrollView>
 		);
 	}
 
 }
+/*_showAlert = () => {
+	Alert.alert(
+		'Alert Title',
+		'Alert Msg',
+		[
+			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+			{text: 'OK', onPress: () => console.log('OK pressed')},
+		],
+		{ cancelable: false }
+	)
+}*/
 
 export default CreateEventScreen;
+
 
 const styles = StyleSheet.create({
 	container: {
@@ -132,5 +160,16 @@ const styles = StyleSheet.create({
 	buttons: {
 		padding: 40,
 		margin: 10,
-	}
+	},
+	to: {
+		margin: 24,
+		padding: 40,
+		borderRadius: 15,
+		borderWidth: 1,
+		borderColor: "transparent",
+		//fontWeight: 'bold',
+		//textAlign: 'center',
+		//color: '#34495e',
+		backgroundColor: '#ff6666'
+	},
 });
