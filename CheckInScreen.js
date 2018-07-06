@@ -9,6 +9,7 @@ import {
     View,
     Text,
     Button,
+    Alert,
 } from 'react-native'
 import CheckBox from 'react-native-check-box'
 import t from 'tcomb-form-native';
@@ -21,6 +22,19 @@ const Attendee = t.struct({
   email: t.String, //email address for member enrollment
 
 });
+
+const Options = {
+	fields: {
+    name:{
+      label: 'First Name',
+      error: 'Please enter attendee first name',
+    },
+		surname: {
+			label: 'Last Name',
+			error: 'Please enter attendee last name',
+		},
+	}
+};
 
 class CheckInScreen extends Component {
   constructor(props) {
@@ -107,6 +121,7 @@ class CheckInScreen extends Component {
               <Form
               ref={c=>this._form = c}
               type={Attendee}
+              options={Options}
               value={this.state.value}
               onChange={this.onChange.bind(this)}
               />
@@ -118,7 +133,14 @@ class CheckInScreen extends Component {
               />
               <Button
                 title="Discard"
-                onPress={this.discardButton}
+                onPress={() => Alert.alert(
+    							'Discard Check-in',
+    							'Are you sure you want to clear this form?',
+    							[
+    								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    								{text: 'Yes', onPress: this.discardButton},
+    							],
+    						)}
                 color= '#002a55'
               />
             </View>
