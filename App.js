@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import { Icon } from 'react-native-elements'
+
 
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
@@ -49,12 +51,44 @@ const NavigationFlow = createStackNavigator({
     screen: createBottomTabNavigator({
       Home: {
         screen: HomeScreen,
+        navigationOptions: {
+          title: '',
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              name="home"
+              color={tintColor}
+              size={36}
+            />
+            )
+        },
       },
       Profile: {
         screen: ProfileScreen,
+        navigationOptions: {
+          title: 'Profile',
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              type='font-awesome'
+              name="user"
+              color={tintColor}
+              size={36}
+            />
+            )
+        },
       },
       CalendarView: {
         screen: CalendarScreen,
+        navigationOptions: {
+          title: 'Calendar',
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              type='font-awesome'
+              name="calendar"
+              color={tintColor}
+              size={36}
+            />
+            )
+        },
       },
       GWLN: {
         screen: GWLNScreen,

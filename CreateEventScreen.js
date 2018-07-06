@@ -5,6 +5,8 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
+import CalendarScreen from './CalendarScreen';
+
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -60,12 +62,20 @@ var options = {
 
 
 class CreateEventScreen extends React.Component {
+
+
+	constructor(props){
+		super(props)
+		Cal = new CalendarScreen();
+	}
+
 	resetForm(){
 		this.setState({value:null});
 	}
 
 	DiscardForm(){
 		const value = this._form.getValue();
+
 		if(!value){
 			this.resetForm({})
 		}
@@ -73,10 +83,19 @@ class CreateEventScreen extends React.Component {
 	}
 	handleSubmit = () => {
 		const value = this._form.getValue();
+		const Date = value.date
 		console.log('value', value);
+		this.updateCalendar;
+		console.log(Date);
 		if(value) {
 			this.props.navigation.navigate('CalendarView')
 		}
+	}
+
+	updateCalendar = () => {
+		console.log('in updateCalendar');
+		Cal.OnDaySelect('2018-07-07');
+		console.log('under cal.OnDaySelect');
 	}
 
 	render() {

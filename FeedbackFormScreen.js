@@ -87,16 +87,12 @@ const Options = {
 
 class FeedbackFormScreen extends React.Component {
 
-	resetForm(){
+	resetForm=(value)=> {
 		this.setState({value:null});
 	}
 
-	DiscardForm(){
-		const value = this._form.getValue();
-		if(!value){
-			this.resetForm({})
-		}
-
+	DiscardForm=(value ) => {
+		this.resetForm();
 	}
 
 	handleSubmit = () => {

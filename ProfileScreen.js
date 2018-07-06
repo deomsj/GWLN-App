@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, ListView } from 'react-native';
+import { StyleSheet, Text, View, Linking, ImageBackground, Image, ScrollView, ListView, Platform, Button } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { Card, Icon } from 'react-native-elements'
 import PropTypes from 'prop-types'
+
+import Separator from './Separator'
+
 
 class ProfileScreen extends React.Component {
   render() {
