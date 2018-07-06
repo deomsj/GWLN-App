@@ -23,6 +23,19 @@ const Attendee = t.struct({
 
 });
 
+const Options = {
+	fields: {
+    name:{
+      label: 'First Name',
+      error: 'Please enter attendee first name',
+    },
+		surname: {
+			label: 'Last Name',
+			error: 'Please enter attendee last name',
+		},
+	}
+};
+
 class CheckInScreen extends Component {
   constructor(props) {
         super(props);
@@ -108,6 +121,7 @@ class CheckInScreen extends Component {
               <Form
               ref={c=>this._form = c}
               type={Attendee}
+              options={Options}
               value={this.state.value}
               onChange={this.onChange.bind(this)}
               />
@@ -117,13 +131,17 @@ class CheckInScreen extends Component {
                 onPress={this.onPress}
                 color= '#002a55'
               />
-              </View>
-              <View style={styles.trash}>
-              <Icon
-                type='font-awesome'
-                name="trash"
-                size={32}
-                onPress={this.discardButton}
+              <Button
+                title="Discard"
+                onPress={() => Alert.alert(
+    							'Discard Check-in',
+    							'Are you sure you want to clear this form?',
+    							[
+    								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    								{text: 'Yes', onPress: this.discardButton},
+    							],
+    						)}
+                color= '#002a55'
               />
             </View>
           </ScrollView>

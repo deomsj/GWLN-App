@@ -1,18 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
 
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-
+import MessageBoardScreen from './MessageBoardScreen';
 
 const Form = t.form.Form;
+
+//overriding tcomb textbox
+var _ = require('lodash');
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+stylesheet.textbox.normal.height = 200;
 
 const Content = t.struct({
 	PostTitle: t.String,
 	Post: t.String,
-	
+
 });
 
 const Options = {
@@ -28,7 +34,8 @@ const Options = {
 			config: {
 				size: 'lg',
 			},
-			
+			stylesheet: stylesheet
+
 		},
 	}
 };
@@ -48,7 +55,7 @@ resetForm=(value)=> {
 		console.log('value', value);
 		if (value) {
 			this.resetForm({})
-
+			this.props.navigation.navigate('MessageBoard')
 		}
 
 	}
@@ -64,11 +71,25 @@ resetForm=(value)=> {
 				<View style={styles.container}>
 					<Button
 					title="Post"
-					onPress={this.handleSubmit}
+					onPress={() => Alert.alert(
+						'Submit Post',
+						'Are you ready to post to the message board?',
+						[
+							{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+							{text: 'Yes', onPress: this.handleSubmit},
+						],
+					)}
 					/>
 					<Button
 						title="Discard Post"
-						onPress={this.resetForm}
+						onPress={ () => Alert.alert(
+							'Discard Post',
+							'Are you sure you want to delete this post?',
+							[
+								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+								{text: 'Yes', onPress: this.resetForm},
+							],
+						)}
 					/>
 				</View>
 
