@@ -31,17 +31,17 @@ var options = {
 
 
 class MemberSigninScreen extends React.Component {
-	resetForm(){
+	resetForm = (value) => {
 		this.setState({value:null});
 	}
 
-	DiscardForm(){
+/*	DiscardForm(){
 		const value = this._form.getValue();
 		if(!value){
 			this.resetForm({})
 		}
 
-	}
+	}*/
 	handleSubmit = () => {
 		const value = this._form.getValue();
 		console.log('value', value);
@@ -80,7 +80,7 @@ class MemberSigninScreen extends React.Component {
 					<Button
 						style={styles.buttons}
 						title="Forgot Password"
-						onPress={this.DiscardForm}
+						onPress={this.resetForm}
 						color= "#002a55"
 					/>
 

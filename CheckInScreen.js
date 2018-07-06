@@ -1,116 +1,148 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView } from 'react-native';
-import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import CheckBox from 'react-native-check-box';
+/*
+MAKE SURE YOU CAN ONLY CHECK ONE BOX PER QUESTION
+*/
+
+import React, {Component} from 'react';
+import {
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    Button,
+} from 'react-native'
+import CheckBox from 'react-native-check-box'
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
 
-//Check In Questions
 const Attendee = t.struct({
-  name: t.String,
-  surname: t.String,
-  email: t.String,
+  name: t.String, //First name
+  surname: t.String, //Last name
+  email: t.String, //email address for member enrollment
 
 });
-class CheckInScreen extends React.Component {
-	handleSubmit= () => {
-	const value = this._form.getValue();
-}
 
+class CheckInScreen extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      checkOptions: [{"name": "Yes"}, {"name": "No"}, {"name": "Yes"}, {"name": "No"}]
+        super(props);
+        this.state = {
+            memberOptions: [{"name":"member", "tag": "Yes", "checked": false}, {"name": "member", "tag": "No", "checked": false}, {"name":"enroll", "tag": "Yes", "checked": false}, {"name":"enroll", "tag": "No", "checked": false}]
+          }
+        }
+  initialState(memberOptions) {
+    this.setState({value: null});
+     this.setState({memberOptions: [{"name":"member", "tag": "Yes", "checked": false}, {"name": "member", "tag": "No", "checked": false}, {"name":"enroll", "tag": "Yes", "checked": false}, {"name":"enroll", "tag": "No", "checked": false}] });
+
+  }
+  onChange(value) {
+    this.setState({value});
+  }
+
+  onClick(memberOptions) {
+        memberOptions.checked = !memberOptions.checked;
+        console.log(memberOptions)
+        // if (memberOptions[0].checked || memberOptions[1].checked == true){
+        //
+        // }
+        return memberOptions
     }
-  }
 
-//When checkbox clicked, check it. When clicked again, uncheck it.
-  onClick(data) {
-    data.checked = !data.checked;
-  }
 
-//Handles options associated with checkbox
-  renderView() {
-    if (!this.state.checkOptions || this.state.checkOptions.length === 0)return;
-    var len = 4;
-    var views = [];
-    for (var i = 0, l = len - 2; i < l; i += 2) {
-      views.push(
-        <View key={i}>
-        <Text style={styles.questionText}>
-          Are you already a member?
-        </Text>
-        <View style={styles.item}>
-          <Text> Yes </Text>
-          {this.renderCheckBox(this.state.checkOptions[i])}
-          <Text> No </Text>
-          {this.renderCheckBox(this.state.checkOptions[i + 1])}
-        </View>
-        <View style={styles.line}/>
-        <Text style={styles.questionText}>
-          Would you like to be?
-        </Text>
-        </View>
-      )
+  onPress= (memberOptions) => {
+    const value = this._form.getValue();
+    if (value) {
+      console.log(value); //save value in log before clearing
+      this.initialState(memberOptions);
     }
-    views.push(
-      <View key={len - 1}>
-      <View style={styles.item}>
-        <Text> Yes </Text>
-        {len % 2 === 0 ? this.renderCheckBox(this.state.checkOptions[len - 2]) : null}
-        <Text> No </Text>
-        {this.renderCheckBox(this.state.checkOptions[len - 1])}
-      </View>
-      </View>
-    )
-    return views;
+
   }
+  discardButton= (memberOptions) =>{
+    this.initialState(memberOptions);
+  }
+    renderView() {
+        if (!this.state.memberOptions || this.state.memberOptions.length === 0)return;
+        var views= [];
+        views.push(
+          <View key={0}>
+            <Text style={styles.questionText}>
+              Are you already a member?
+            </Text>
+            <View style={styles.item}>
+              {this.renderCheckBox(this.state.memberOptions[0])}
+              {this.renderCheckBox(this.state.memberOptions[1])}
+            </View>
+            <View style={styles.line}/>
+          </View>
+            )
+        views.push(
+          <View key={1}>
+              <Text style={styles.questionText}>
+                Would you like to be?
+              </Text>
+              <View style={styles.item}>
+                {this.renderCheckBox(this.state.memberOptions[2])}
+                {this.renderCheckBox(this.state.memberOptions[3])}
+              </View>
+          </View>
+        )
+          return views;
+    }
 
-  renderCheckBox(data) {
-    var optionText = data.name;
-    return (
-      <CheckBox
-        style={{flex: 1, padding: 10}}
-        onClick={()=>this.onClick(data)}
-        isChecked={data.checked}
-        optionText={optionText}
-        />);
-      }
+    renderCheckBox(memberOptions) {
+        var yesNo = memberOptions.tag;
+        var clickCount = 0;
+        return (
+            <CheckBox
+                style={{flex: 1, padding: 10}}
+                onClick={()=>this.onClick(memberOptions)}
+                isChecked={memberOptions.checked}
+                rightText={yesNo}
+            />);
+    }
 
-	render() {
-		return(
-			<View style={styles.container}>
-				<Form type={Attendee}/>
-        <ScrollView>
-                  {this.renderView()}
-              </ScrollView>
-				<Button
-					title="Check In!"
-					onPress={this.handleSubmit}
-					color= '#002a55'
-					/>
-				</View>
-		);
-	}
+    render() {
+        return (
+          <ScrollView>
+            <View style={styles.container}>
+              <Form
+              ref={c=>this._form = c}
+              type={Attendee}
+              value={this.state.value}
+              onChange={this.onChange.bind(this)}
+              />
+              {this.renderView()}
+              <Button
+                title="Check In!"
+                onPress={this.onPress}
+                color= '#002a55'
+              />
+              <Button
+                title="Discard"
+                onPress={this.discardButton}
+                color= '#002a55'
+              />
+            </View>
+          </ScrollView>
+        )
+    }
+
 }
 
 const styles = StyleSheet.create({
-	container: {
-		backgroundColor: '#f3f2f2',
-		marginTop: 30,
-		padding: 40,
-		justifyContent: 'center',
+    container: {
+        flex: 1,
+        backgroundColor: '#f3f2f2',
+        marginTop:30,
+        padding: 40,
+        justifyContent: 'center',
     },
     item: {
         flexDirection: 'row',
-
     },
     line: {
         flex: 1,
-        padding: 10,
         height: 0.3,
-        backgroundColor: '#f3f2f2',
+        backgroundColor: 'darkgray',
     },
     questionText: {
       fontSize: 18,

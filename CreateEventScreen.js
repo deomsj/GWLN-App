@@ -63,7 +63,6 @@ var options = {
 
 class CreateEventScreen extends React.Component {
 
-
 	constructor(props){
 		super(props)
 		Cal = new CalendarScreen();
@@ -80,16 +79,27 @@ class CreateEventScreen extends React.Component {
 			this.resetForm({})
 		}
 
+	resetForm = (value) => {
+		this.setState({value:null});
 	}
+
+
+
+	}*/
 	handleSubmit = () => {
+
 		const value = this._form.getValue();
-		const Date = value.date
+		
+
+		//const value = this.refs.form.getValue();
+
 		console.log('value', value);
 		this.updateCalendar;
 		console.log(Date);
 		if(value) {
 			this.props.navigation.navigate('CalendarView')
 		}
+		this.resetForm();
 	}
 
 	updateCalendar = () => {
@@ -105,7 +115,7 @@ class CreateEventScreen extends React.Component {
 				<Text style={styles.paragraph}>
 					Create an Event
 				</Text>
-				<Form ref={c=>this._form = c}
+				<Form ref="form"
 				type={Event}
 				options={options}/>
 				<View style={styles.container}>
@@ -118,7 +128,7 @@ class CreateEventScreen extends React.Component {
 					<Button
 						style={styles.buttons}
 						title="Discard Event"
-						onPress={this.DiscardForm}
+						onPress={this.resetForm}
 						color= "#002a55"
 					/>
 				</View>
