@@ -30,15 +30,15 @@ const Options = {
 	label: 'Feedback Form',
 	fields: {
 		EventName: {
-			label: 'Event Name',
+			label: 'Event Name:',
 			error: 'Please enter the event name.'
 		},
 		EventLocation: {
-			label: 'Event Location',
+			label: 'Event Location:',
 			error: 'Please enter the location of the event'
 		},
 		Date: {
-			label: 'Date and Time',
+			label: 'Date and Time:',
 			error: 'Please enter a valid date and time',
 			mode: 'datetime',
 			config: {
@@ -53,14 +53,14 @@ const Options = {
 
 		},
 		EventSponsor: {
-			label: 'Event Sponsor'
+			label: 'Event Sponsor:'
 		},
 		EventTopic: {
 			label: 'Meeting Topic',
-			error: 'Please enter the topic of the meeting'
+			error: 'Please enter the topic of the meeting:'
 		},
 		Speaker: {
-			label: 'Panelists or Keynote Speaker'
+			label: 'Panelists or Keynote Speaker:'
 
 		},
 		NumberOfAttendees: {
@@ -87,16 +87,12 @@ const Options = {
 
 class FeedbackFormScreen extends React.Component {
 
-	resetForm(){
+	resetForm=(value)=> {
 		this.setState({value:null});
 	}
 
-	DiscardForm(){
-		const value = this._form.getValue();
-		if(!value){
-			this.resetForm({})
-		}
-
+	DiscardForm=(value ) => {
+		this.resetForm();
 	}
 
 	handleSubmit = () => {

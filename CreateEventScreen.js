@@ -6,6 +6,8 @@ import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 import a from './Components/alert';
+import CalendarScreen from './CalendarScreen';
+
 
 import t from 'tcomb-form-native';
 
@@ -61,26 +63,51 @@ var options = {
 };
 
 class CreateEventScreen extends React.Component {
+
+	constructor(props){
+		super(props)
+		Cal = new CalendarScreen();
+	}
+
+	resetForm(){
+		this.setState({value:null});
+	}
+
+	DiscardForm(){
+		const value = this._form.getValue();
+
+		if(!value){
+			this.resetForm({})
+		}
+
 	resetForm = (value) => {
 		this.setState({value:null});
 	}
 
-	/*DiscardForm() {
-		const value = this.refs.form.getValue();
-		console.log('value', value);
-		this.resetForm()
 
 
-	}*/
+}
 	handleSubmit = () => {
-		const value = this.refs.form.getValue();
+
+		const value = this._form.getValue();
+
+
+		//const value = this.refs.form.getValue();
+
 		console.log('value', value);
+		this.updateCalendar;
+		console.log(Date);
 		if(value) {
 			this.props.navigation.navigate('CalendarView')
 		}
 		this.resetForm();
 	}
 
+	updateCalendar = () => {
+		console.log('in updateCalendar');
+		Cal.OnDaySelect('2018-07-07');
+		console.log('under cal.OnDaySelect');
+	}
 
 	render() {
 		return(

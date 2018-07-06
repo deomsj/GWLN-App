@@ -38,16 +38,19 @@ class CalendarScreen extends React.Component {
     this.state = {
       _markedDates: this.initialState
     }
+
+    //this.OnDaySelect = this.OnDaySelect.bind(this);
   }
 
   OnDaySelect = (day) => {
     const _selectedDay = moment(day.dateString).format(_format);
+    console.log(_selectedDay);
     let marked = true;
     let markedDates = {}
     if (this.state._markedDates[_selectedDay]){
       this.props.navigation.navigate('EventDetails')
-      //marked = !this.state._markedDates[_selectedDay].marked;
-      //markedDates = this.state._markedDates[_selectedDay];
+      marked = !this.state._markedDates[_selectedDay].marked;
+      markedDates = this.state._markedDates[_selectedDay];
     }
 
     markedDates = {...markedDates, ...{ marked }};
