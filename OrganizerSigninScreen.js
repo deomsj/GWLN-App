@@ -5,7 +5,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
-import GWLNSignUp from './GWLNSignUp';
+// import GWLNSignUp from './GWLNSignUp';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -55,12 +55,6 @@ class OrganizerSigninScreen extends React.Component {
     //need to do this
   }
 
-  handleSignUp = () => {
-    const value = this._form.getValue();
-    console.log('value', value);
-    this.props.navigation.navigate('SignUp')
-  }
-
 	render() {
 		return(
 			<ScrollView>
@@ -87,12 +81,6 @@ class OrganizerSigninScreen extends React.Component {
 
 				</View>
 			</View>
-      <Button
-        style={styles.buttons}
-        title="Become a Member"
-        onPress={this.handleSignUp}
-        color= "#002a55"
-      />
 			</ScrollView>
 		);
 	}
