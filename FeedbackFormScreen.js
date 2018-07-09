@@ -32,6 +32,8 @@ let myFormat = (date) =>{
 	return moment(date).format('LLLL');
 }
 
+stylesheet.textbox.normal.textAlignVertical = 'top';
+
 const Options = {
 	label: 'Feedback Form',
 	fields: {
