@@ -129,22 +129,9 @@ class CreateEventScreen extends React.Component {
 						onPress={this.resetForm}
 						color= "#002a55"
 					/>
-
 				</View>
 			</View>
-			<TouchableOpacity
-				style={styles.to}
-				onPress={() => Alert.alert(
-					'Alert title',
-					'alert msg',
-					[
-						{text: 'Cancel', onPress: () => console.log('Cancel Pressed!')},
-						{text: 'OK', onPress: () => console.log('Ok pressed')},
-					],
-					{ cancelable: false }
-				)}>
-				<Text style={{fontSize: 32, color: 'white'}}>Show alert!</Text>
-			</TouchableOpacity>
+
 			</ScrollView>
 		);
 	}
