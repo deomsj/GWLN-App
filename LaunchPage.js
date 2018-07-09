@@ -17,15 +17,20 @@ class LaunchPage extends React.Component {
 		return(
 			<View style={styles.container}>
 				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
-				{this.renderButtons()}
 				<Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
+				{this.renderButtons()}
+				<Text
+					style={styles.memberText}
+					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
+					Become a Member!
+				</Text>
 			</View>
 
 		);
 	}
 	renderButtons() {
 		return(
-		<View>
+		<View style={styles.container}>
 		<View style={styles.buttonContainer}>
 			<Button
 				style={styles.buttons}
@@ -41,11 +46,6 @@ class LaunchPage extends React.Component {
 				onPress={this.handleMemSignin}
 				color= "#002a55"
 			/>
-			<Text
-				style={{color: 'blue', padding:15}}
-				onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
-				Become a Member!
-			</Text>
 			</View>
 			</View>
 	)};
@@ -56,20 +56,24 @@ export default LaunchPage;
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: 'white',
+		padding: 50,
 	},
   buttonContainer: {
 		flexDirection: 'column',
-		padding: 20,
-		bottom: -50,
+		padding: 15,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    // width: null,
-    padding: 15,
   },
 	buttons: {
-		padding: 40,
+		padding: 10,
 		margin: 10,
+	},
+	memberText: {
+		color: 'blue',
+		padding: 15,
+		alignSelf: 'center',
+		bottom: 50
 	},
 	GWLNlogo: {
 		flex: 1,
@@ -77,17 +81,21 @@ const styles = StyleSheet.create({
 		resizeMode: 'contain',
 		width: undefined,
 		height: undefined,
-		padding: 100,
+		padding: 60,
+		backgroundColor: 'white',
 	},
 	WorldCouncil: {
 		flex:1,
-		alignSelf: 'center',
+		alignSelf: 'stretch',
 		resizeMode: 'contain',
 		width: undefined,
 		height: undefined,
-		padding: 110,
+		// width: '100%',
+		// height: '100%',
+		padding: 70,
 		// backgroundColor: 'white',
-		top:60,
-		left:80,
+		position: 'absolute',
+		bottom: 0,
+		right:10,
 	}
 });

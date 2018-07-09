@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-
+import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
@@ -69,6 +69,7 @@ class MemberSigninScreen extends React.Component {
 		return(
 			<ScrollView>
 			<View style={styles.container}>
+				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
 				<Text style={styles.paragraph}>
 					Member Sign in
 				</Text>
@@ -118,5 +119,14 @@ const styles = StyleSheet.create({
 	buttons: {
 		padding: 40,
 		margin: 10,
+	},
+	GWLNlogo: {
+		flex: 1,
+		alignSelf: 'stretch',
+		resizeMode: 'contain',
+		width: undefined,
+		height: undefined,
+		padding: 60,
+		backgroundColor: 'white',
 	}
 });
