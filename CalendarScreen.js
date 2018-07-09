@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
+import { StyleSheet, Text, View, Picker, WebView, Platform, ScrollView, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-
+import { Icon } from 'react-native-elements';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 
@@ -64,17 +64,17 @@ class CalendarScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1}}>
-        
         <View style={styles.AddButtonContainer}>
-          <Button
-          style={styles.AddButton}
-          title='Plus'
-          onPress={() => this.props.navigation.navigate('CreateEvent')}
+          <Icon
+            type='font-awesome'
+            name="plus"
+            size={32}
+            onPress={() => this.props.navigation.navigate('CreateEvent')}
           />
         </View>
 
-        
-        <Calendar 
+
+        <Calendar
         style={styles.Calendar}
           theme={{
             dotColor: 'pink',
@@ -103,9 +103,10 @@ const styles = StyleSheet.create ({
     flex: 1,
     flexDirection: 'row',
     height:20,
+    marginRight: 10,
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-   
+
   },
   AddButton: {
     backgroundColor: 'green',
