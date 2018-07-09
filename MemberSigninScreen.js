@@ -10,8 +10,17 @@ import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
 
+//valid email format
+/*
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+var EmailField = t.refinement(t.String, function (email) {
+  return EMAIL_REGEX.test(email);
+});
+*/
+
 const SigninForm = t.struct({
-	email: t.String,
+	email: t.String, //change to EmailField for email format validation
 	password: t.String,
 });
 
@@ -24,7 +33,9 @@ var options = {
 		},
 		password: {
 			label: 'Password',
-			error: 'Please enter a valid password'
+			error: 'Please enter a valid password',
+			password: true,
+			secureTextEntry: true,
 		},
 	}
 };
