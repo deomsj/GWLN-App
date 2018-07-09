@@ -2,7 +2,8 @@ import React from 'react';
 
 import { StyleSheet, Text, View, Button, Picker, WebView, Image, Linking} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import logo from './img/gwln_logo.jpg';
+import GWLNlogo from './img/gwln_logo.jpg';
+import WorldCouncilLogo from './img/WorldCouncil_logo.png';
 // import OrganizerSigninScreen from './OrganizerSigninScreen';
 class LaunchPage extends React.Component {
 
@@ -14,16 +15,18 @@ class LaunchPage extends React.Component {
 	}
 	render() {
 		return(
-			<View>
-			<Image source={logo} style={styles.logo}/>
-			{this.renderButtons()}
+			<View style={styles.container}>
+				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
+				{this.renderButtons()}
+				<Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
 			</View>
+
 		);
 	}
 	renderButtons() {
 		return(
-			<View>
-		<View style={styles.container}>
+		<View>
+		<View style={styles.buttonContainer}>
 			<Button
 				style={styles.buttons}
 				title="Organizer Sign In"
@@ -31,7 +34,7 @@ class LaunchPage extends React.Component {
 				color= "#002a55"
 			/>
 		</View>
-		<View style={styles.container}>
+		<View style={styles.buttonContainer}>
 			<Button
 				style={styles.buttons}
 				title="Member Sign In"
@@ -51,11 +54,13 @@ class LaunchPage extends React.Component {
 export default LaunchPage;
 
 const styles = StyleSheet.create({
-  container: {
+	container: {
+		backgroundColor: 'white',
+	},
+  buttonContainer: {
 		flexDirection: 'column',
 		padding: 20,
-		bottom: -250,
-    backgroundColor: 'white',
+		bottom: -50,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
@@ -66,13 +71,23 @@ const styles = StyleSheet.create({
 		padding: 40,
 		margin: 10,
 	},
-	logo: {
-		top: 10,
-		backgroundColor: 'white',
-		width: '97.5%',
-		height: 110,
-		justifyContent: 'center',
+	GWLNlogo: {
+		flex: 1,
+		alignSelf: 'stretch',
+		resizeMode: 'contain',
+		width: undefined,
+		height: undefined,
+		padding: 100,
+	},
+	WorldCouncil: {
+		flex:1,
 		alignSelf: 'center',
-		padding: 20,
+		resizeMode: 'contain',
+		width: undefined,
+		height: undefined,
+		padding: 110,
+		// backgroundColor: 'white',
+		top:60,
+		left:80,
 	}
 });
