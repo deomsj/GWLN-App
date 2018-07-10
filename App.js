@@ -23,7 +23,7 @@ import OrganizerSigninScreen from './OrganizerSigninScreen';
 import MemberSigninScreen from './MemberSigninScreen';
 import GWLNSignUp from './GWLNSignUp';
 import LaunchPage from './LaunchPage';
-
+import Slot from './Slot';
 import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 
