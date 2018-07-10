@@ -87,9 +87,8 @@ class CreateEventScreen extends React.Component {
 		}
 
 
+
 	}
-
-
 
 	handleSubmit = () => {
 
@@ -97,11 +96,11 @@ class CreateEventScreen extends React.Component {
 		const value = this.refs.form.getValue();
 
 		const TmpDate = value.date;
-		//this.updateCalendar.bind(this);		
+		//this.updateCalendar.bind(this);
 		//console.log(TmpDate);
 		if(value) {
 			console.log(TmpDate);
-			
+
 			this.updateCalendar(TmpDate);
 			console.log('value', value);
 		}
