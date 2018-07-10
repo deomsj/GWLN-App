@@ -63,7 +63,7 @@ var options = {
 			multiline: true,
 		},
 		numberOfPinkTies: {
-			label: 'How many pink ties would you like for this event? (optional)'
+			label: 'How many pink ties would you like for this event? (optional)',
 		}
 	}
 };
@@ -83,33 +83,18 @@ class CreateEventScreen extends React.Component {
 		const value = this._form.getValue();
 
 		if(!value){
-			this.resetForm({})
+			this.resetForm({});
 		}
-<<<<<<< HEAD
+
 
 	}
 
-=======
-}
->>>>>>> d57add6d29e1bf1545c5172b830a0513cfb2ec05
-	resetForm = (value) => {
-		this.setState({value:null});
-	}
 
-<<<<<<< HEAD
 
 	handleSubmit = () => {
 
-		//this.updateCalendar();
+		//const value = this._form.getValue();
 		const value = this.refs.form.getValue();
-=======
-	handleSubmit = () => {
-
-		const value = this._form.getValue();
-
-
-		//const value = this.refs.form.getValue();
->>>>>>> d57add6d29e1bf1545c5172b830a0513cfb2ec05
 
 		const TmpDate = value.date;
 		//this.updateCalendar.bind(this);		
@@ -139,6 +124,7 @@ class CreateEventScreen extends React.Component {
 		//console.log(this.state.EventDate);
 		//Obj.AddEvent(tmp)
 		//console.log('under cal.OnDaySelect');
+		return EventArray
 	}
 
 	render() {
@@ -173,17 +159,7 @@ class CreateEventScreen extends React.Component {
 	}
 
 }
-/*_showAlert = () => {
-	Alert.alert(
-		'Alert Title',
-		'Alert Msg',
-		[
-			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-			{text: 'OK', onPress: () => console.log('OK pressed')},
-		],
-		{ cancelable: false }
-	)
-}*/
+
 
 export default CreateEventScreen;
 

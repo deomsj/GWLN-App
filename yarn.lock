@@ -5599,7 +5599,7 @@ react-moment@^0.7.7:
   version "0.7.7"
   resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.7.7.tgz#b509bd903de1c984d54c4c5d54bd5bfd007490a6"
 
-react-native-animatable@^1.2.4:
+react-native-animatable@^1.2.4, react-native-animatable@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.0.tgz#b5c3940fc758cfd9b2fe54613a457c4b6962b46e"
   dependencies:
@@ -5722,6 +5722,12 @@ react-native-scripts@1.14.0:
     rimraf "^2.6.1"
     xdl "48.1.4"
 
+react-native-show-hide-toggle-box@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-show-hide-toggle-box/-/react-native-show-hide-toggle-box-1.0.1.tgz#93e0e89b6356cf280ce3a6c6270869a423bf1d71"
+  dependencies:
+    react-native-vector-icons "^4.0.0"
+
 react-native-svg-web@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-native-svg-web/-/react-native-svg-web-1.0.1.tgz#16e1784077b6e5b6c7ebd9c3829e6684211cba99"
@@ -5748,9 +5754,23 @@ react-native-tab-view@^1.0.0:
   dependencies:
     prop-types "^15.6.1"
 
+react-native-toggle-picker@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-toggle-picker/-/react-native-toggle-picker-1.0.2.tgz#bf3769c3bd3a3e88a29b8465a81ecccabca0a847"
+  dependencies:
+    react-native-show-hide-toggle-box "^1.0.1"
+
 react-native-vector-icons@4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.5.0.tgz#6b95619e64f62f05f579f74a01fe5640df95158b"
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.5.10"
+    yargs "^8.0.2"
+
+react-native-vector-icons@^4.0.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"
   dependencies:
     lodash "^4.0.0"
     prop-types "^15.5.10"
