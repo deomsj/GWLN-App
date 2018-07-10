@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 //import { CheckBox } from 'react-native-checkbox';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
+import a from './Components/alert';
 import CalendarScreen from './CalendarScreen';
+
 
 import t from 'tcomb-form-native';
 
@@ -66,7 +68,6 @@ var options = {
 	}
 };
 
-
 class CreateEventScreen extends React.Component {
 
 	constructor(props){
@@ -84,18 +85,31 @@ class CreateEventScreen extends React.Component {
 		if(!value){
 			this.resetForm({})
 		}
+<<<<<<< HEAD
 
 	}
 
+=======
+}
+>>>>>>> d57add6d29e1bf1545c5172b830a0513cfb2ec05
 	resetForm = (value) => {
 		this.setState({value:null});
 	}
 
+<<<<<<< HEAD
 
 	handleSubmit = () => {
 
 		//this.updateCalendar();
 		const value = this.refs.form.getValue();
+=======
+	handleSubmit = () => {
+
+		const value = this._form.getValue();
+
+
+		//const value = this.refs.form.getValue();
+>>>>>>> d57add6d29e1bf1545c5172b830a0513cfb2ec05
 
 		const TmpDate = value.date;
 		//this.updateCalendar.bind(this);		
@@ -153,13 +167,26 @@ class CreateEventScreen extends React.Component {
 
 				</View>
 			</View>
+
 			</ScrollView>
 		);
 	}
 
 }
+/*_showAlert = () => {
+	Alert.alert(
+		'Alert Title',
+		'Alert Msg',
+		[
+			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+			{text: 'OK', onPress: () => console.log('OK pressed')},
+		],
+		{ cancelable: false }
+	)
+}*/
 
 export default CreateEventScreen;
+
 
 const styles = StyleSheet.create({
 	container: {
@@ -180,5 +207,16 @@ const styles = StyleSheet.create({
 	buttons: {
 		padding: 40,
 		margin: 10,
-	}
+	},
+	to: {
+		margin: 24,
+		padding: 40,
+		borderRadius: 15,
+		borderWidth: 1,
+		borderColor: "transparent",
+		//fontWeight: 'bold',
+		//textAlign: 'center',
+		//color: '#34495e',
+		backgroundColor: '#ff6666'
+	},
 });

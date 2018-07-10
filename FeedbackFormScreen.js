@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
 
@@ -7,6 +7,12 @@ import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 const Form = t.form.Form;
+
+//overriding tcomb textbox
+var _ = require('lodash');
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+stylesheet.textbox.normal.height = 100;
 
 const Content = t.struct({
 	EventName: t.String,
@@ -19,12 +25,14 @@ const Content = t.struct({
 	Charity: t.maybe(t.String),
 	Donations: t.String,
 	Summary: t.String,
-	
+
 });
 
 let myFormat = (date) =>{
 	return moment(date).format('LLLL');
 }
+
+stylesheet.textbox.normal.textAlignVertical = 'top';
 
 const Options = {
 	label: 'Feedback Form',
@@ -78,9 +86,10 @@ const Options = {
 		Summary: {
 			label: 'Postive Comments',
 			error: 'Please fill out this field',
-			multiLine: true
+			multiLine: true,
+			stylesheet: stylesheet,
 		},
-		
+
 	}
 
 };
@@ -117,12 +126,26 @@ class FeedbackFormScreen extends React.Component {
 				<View style={styles.container}>
 					<Button
 					title="Submit"
-					onPress={this.handleSubmit}
+					onPress={() => Alert.alert(
+						'Submit Feedback',
+						'Are you sure you want to submit feedback?',
+						[
+							{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+							{text: 'Yes', onPress: this.handleSubmit},
+						],
+					)}
 					color= "#002a55"
 					/>
 					<Button
 						title="Discard feedback"
-						onPress={this.DiscardForm}
+						onPress={() => Alert.alert(
+							'Discard Feedback',
+							'Are you sure you want to clear this form?',
+							[
+								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+								{text: 'Yes', onPress: this.resetForm},
+							],
+						)}
 						color= "#002a55"
 					/>
 				</View>

@@ -9,8 +9,10 @@ import {
     View,
     Text,
     Button,
-} from 'react-native'
-import CheckBox from 'react-native-check-box'
+    Alert,
+} from 'react-native';
+import CheckBox from 'react-native-check-box';
+import { Icon, Header } from 'react-native-elements';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -21,6 +23,19 @@ const Attendee = t.struct({
   email: t.String, //email address for member enrollment
 
 });
+
+const Options = {
+	fields: {
+    name:{
+      label: 'First Name',
+      error: 'Please enter attendee first name',
+    },
+		surname: {
+			label: 'Last Name',
+			error: 'Please enter attendee last name',
+		},
+	}
+};
 
 class CheckInScreen extends Component {
   constructor(props) {
@@ -103,10 +118,26 @@ class CheckInScreen extends Component {
     render() {
         return (
           <ScrollView>
+          <Header
+            backgroundColor="white"
+            centerComponent={{text: 'Event Check In', style:{fontSize:18}}}
+            rightComponent={ <Icon
+              type='font-awesome'
+              name= "trash"
+              onPress={() => Alert.alert(
+                'Discard',
+                'Are you sure you want to clear this form?',
+                [
+                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                  {text: 'Yes', onPress: this.discardButton},
+                ],
+              )}/>}
+          />
             <View style={styles.container}>
               <Form
               ref={c=>this._form = c}
               type={Attendee}
+              options={Options}
               value={this.state.value}
               onChange={this.onChange.bind(this)}
               />
@@ -116,13 +147,23 @@ class CheckInScreen extends Component {
                 onPress={this.onPress}
                 color= '#002a55'
               />
-              <Button
-                title="Discard"
-                onPress={this.discardButton}
-                color= '#002a55'
-              />
-            </View>
-          </ScrollView>
+              </View>
+              <View style={styles.trash}>
+              </View>
+            </ScrollView>
+              // <Icon
+              //   type='font-awesome'
+              //   name="trash"
+              //   onPress={() => Alert.alert(
+    					// 		'Discard',
+    					// 		'Are you sure you want to clear this form?',
+    					// 		[
+    					// 			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    					// 			{text: 'Yes', onPress: this.discardButton},
+    					// 		],
+    					// 	)}
+              // />
+
         )
     }
 
@@ -132,7 +173,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f3f2f2',
-        marginTop:30,
+        // marginTop:30,
         padding: 40,
         justifyContent: 'center',
     },

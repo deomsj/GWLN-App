@@ -1,17 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-
+import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
-import GWLNSignUp from './GWLNSignUp';
+// import GWLNSignUp from './GWLNSignUp';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
 
+//valid email format
+/*
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+var EmailField = t.refinement(t.String, function (email) {
+  return EMAIL_REGEX.test(email);
+});
+*/
+
 const SigninForm = t.struct({
-	email: t.String,
+	email: t.String, //change to EmailField for email format validation
 	password: t.String,
 });
 
@@ -23,9 +32,10 @@ var options = {
 			error: 'Please enter a valid email'
 		},
 		password: {
-      type: 'password',
 			label: 'Password',
-			error: 'Please enter a valid password'
+			error: 'Please enter a valid password',
+			password: true,
+			secureTextEntry: true,
 		},
 	}
 };
@@ -51,22 +61,14 @@ class OrganizerSigninScreen extends React.Component {
 		}
 	}
 
-  handleForgot = () => {
-    //need to do this
-  }
-
-  handleSignUp = () => {
-    const value = this._form.getValue();
-    console.log('value', value);
-    this.props.navigation.navigate('SignUp')
-  }
 
 	render() {
 		return(
 			<ScrollView>
 			<View style={styles.container}>
+				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
 				<Text style={styles.paragraph}>
-					Organizer Sign in
+					Organizer Sign In
 				</Text>
 				<Form ref={c=>this._form = c}
 				type={SigninForm}
@@ -78,21 +80,13 @@ class OrganizerSigninScreen extends React.Component {
 					onPress={this.handleSubmit}
 					color= "#002a55"
 					/>
-					<Button
-						style={styles.buttons}
-						title="Forgot Password"
-						onPress={this.resetForm}
-						color= "#002a55"
-					/>
-
+					<Text
+						style={styles.memberText}
+						onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_forgot_password')}}>
+						Forgot Password
+					</Text>
 				</View>
 			</View>
-      <Button
-        style={styles.buttons}
-        title="Become a Member"
-        onPress={this.handleSignUp}
-        color= "#002a55"
-      />
 			</ScrollView>
 		);
 	}
@@ -120,5 +114,19 @@ const styles = StyleSheet.create({
 	buttons: {
 		padding: 40,
 		margin: 10,
+	},
+	memberText: {
+		color: 'blue',
+		padding: 15,
+		alignSelf: 'center',
+	},
+	GWLNlogo: {
+		flex: 1,
+		alignSelf: 'stretch',
+		resizeMode: 'contain',
+		width: undefined,
+		height: undefined,
+		padding: 60,
+		backgroundColor: 'white',
 	}
 });

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import { Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements';
 
 
 import {Calendar} from 'react-native-calendars';
@@ -28,11 +28,6 @@ import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 
 
-
-
-
-
-
 const NavigationFlow = createStackNavigator({
   Launch: {
     screen: LaunchPage,
@@ -52,12 +47,12 @@ const NavigationFlow = createStackNavigator({
       Home: {
         screen: HomeScreen,
         navigationOptions: {
-          title: '',
+          title: 'Home',
           tabBarIcon: ({tintColor}) => (
             <Icon
               name="home"
               color={tintColor}
-              size={36}
+              size={32}
             />
             )
         },
@@ -71,7 +66,7 @@ const NavigationFlow = createStackNavigator({
               type='font-awesome'
               name="user"
               color={tintColor}
-              size={36}
+              size={32}
             />
             )
         },
@@ -85,13 +80,24 @@ const NavigationFlow = createStackNavigator({
               type='font-awesome'
               name="calendar"
               color={tintColor}
-              size={36}
+              size={32}
             />
             )
         },
       },
       GWLN: {
         screen: GWLNScreen,
+        navigationOptions: {
+          title: 'Donate',
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              type='font-awesome'
+              name="dollar"
+              color={tintColor}
+              size={32}
+            />
+            )
+        },
       },
     }),
     navigationOptions: {
