@@ -11,6 +11,12 @@ import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
 
+
+const _format = 'YYYY-MM-DD'
+const _today = moment().format(_format)
+const _maxDate = moment().add(120, 'days').format(_format)
+
+
 const Event = t.struct({
 	name: t.String,
 	location: t.String,
@@ -65,7 +71,7 @@ class CreateEventScreen extends React.Component {
 
 	constructor(props){
 		super(props)
-		Cal = new CalendarScreen();
+		Obj = new CalendarScreen();
 	}
 
 	resetForm(){
@@ -79,33 +85,46 @@ class CreateEventScreen extends React.Component {
 			this.resetForm({})
 		}
 
+	}
+
 	resetForm = (value) => {
 		this.setState({value:null});
 	}
 
 
-
-	}*/
 	handleSubmit = () => {
 
-		const value = this._form.getValue();
-		
+		//this.updateCalendar();
+		const value = this.refs.form.getValue();
 
-		//const value = this.refs.form.getValue();
-
-		console.log('value', value);
-		this.updateCalendar;
-		console.log(Date);
+		const TmpDate = value.date;
+		//this.updateCalendar.bind(this);		
+		//console.log(TmpDate);
 		if(value) {
-			this.props.navigation.navigate('CalendarView')
+			console.log(TmpDate);
+			
+			this.updateCalendar(TmpDate);
+			console.log('value', value);
 		}
 		this.resetForm();
 	}
 
-	updateCalendar = () => {
+	updateCalendar = (Day) => {
 		console.log('in updateCalendar');
-		Cal.OnDaySelect('2018-07-07');
-		console.log('under cal.OnDaySelect');
+		//Obj.test();
+
+		const tmp = Day
+		const newEvent = moment(tmp).format(_format);
+		console.log('newEvent');
+		console.log(newEvent);
+		global.EventArray.push(newEvent);
+		console.log(EventArray)
+		//Obj.OnDaySelect(tmp);
+		this.setState({ EventDate: tmp})
+		this.props.navigation.navigate('CalendarView')
+		//console.log(this.state.EventDate);
+		//Obj.AddEvent(tmp)
+		//console.log('under cal.OnDaySelect');
 	}
 
 	render() {
@@ -128,9 +147,10 @@ class CreateEventScreen extends React.Component {
 					<Button
 						style={styles.buttons}
 						title="Discard Event"
-						onPress={this.resetForm}
+						onPress={this.DiscardForm}
 						color= "#002a55"
 					/>
+
 				</View>
 			</View>
 			</ScrollView>

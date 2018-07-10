@@ -19,6 +19,7 @@ import AddPostScreen from './AddPostScreen';
 //import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
 import HomeScreen from './HomeScreen';
+import Slot from './Slot';
 
 
 
@@ -33,35 +34,109 @@ class CalendarScreen extends React.Component {
     [_today]: {disabled: true}
   }
 
+ 
+
   constructor() {
     super();
     this.state = {
-      _markedDates: this.initialState
+      _markedDates: this.initialState,
+      //EventDate: ''
     }
-
+    //this.test = this.test.bind(this);
     //this.OnDaySelect = this.OnDaySelect.bind(this);
+     global.EventArray = ['2018-07-14','2018-07-20','2018-07-23'];
+     this.PostEvent = this.PostEvent.bind(this);
+  }
+  test = () => {
+    console.log('test in Calendar');
   }
 
-  OnDaySelect = (day) => {
-    const _selectedDay = moment(day.dateString).format(_format);
-    console.log(_selectedDay);
+  
+  AddToCal = (array) => {
+    console.log('in AddToCal');
+    console.log(array);
+    for (var i = 0; i < array.length; i++) {
+      
+      console.log(array[i]);
+      this.PostEvent(array[i]);
+    }
+  }
+
+
+  PostEvent = (day) => {
+    console.log('in post event');
     let marked = true;
     let markedDates = {}
+
+    markedDates = {...markedDates, ...{ marked }};
+
+    const updatedMarkedDates = {...this.state._markedDates, ...{[day]: markedDates}}
+    console.log(updatedMarkedDates);
+
+
+    this.setState({_markedDates: updatedMarkedDates});
+
+  }
+
+  AddEvent = (info) => {
+   
+     
+   
+    console.log('in AddEvent');
+    console.log(info)
+    const newEvent = moment(info).format(_format);   
+    console.log(newEvent);
+
+    //const EventDay = moment(newEvent.dateString).format(_format);
+    //EventArray.push(newEvent);
+    //console.log(newEvent);
+    //console.log(EventArray);
+    
+    //this.step();
+    console.log(EventArray);
+    this.AddToCal(EventArray);
+    
+   
+    
+    
+    
+  }
+
+  step = () => {
+    console.log('step');
+    console.log(EventArray);
+    //this.step();
+  }
+
+  OnDaySelect = (date) => {
+    const _selectedDay = moment(date.dateString).format(_format);
+    console.log('_selectedDay')
+    console.log(_selectedDay);
+    //let marked = true;
+    //let markedDates = {}
     if (this.state._markedDates[_selectedDay]){
       this.props.navigation.navigate('EventDetails')
       marked = !this.state._markedDates[_selectedDay].marked;
       markedDates = this.state._markedDates[_selectedDay];
     }
+    this.PostEvent(_selectedDay);
 
-    markedDates = {...markedDates, ...{ marked }};
+    //markedDates = {...markedDates, ...{ marked }};
 
-    const updatedMarkedDates = {...this.state._markedDates, ...{[_selectedDay]: markedDates}}
+    //const updatedMarkedDates = {...this.state._markedDates, ...{[_selectedDay]: markedDates}}
 
-    this.setState({_markedDates: updatedMarkedDates});
+    //this.setState({_markedDates: updatedMarkedDates});
   }
-
+  componentWillMount(){
+    console.log('in componen will mount');
+    //console.log(this.state.EventDate);
+    this._mounted = true;
+    //this.AddEvent(this.state.EventDate);
+    this.step();
+      }
 
   render() {
+    //this.AddToCal();
     return (
       <View style={{ flex: 1}}>
         
