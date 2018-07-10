@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
@@ -61,9 +61,6 @@ class OrganizerSigninScreen extends React.Component {
 		}
 	}
 
-  handleForgot = () => {
-    //need to do this
-  }
 
 	render() {
 		return(
@@ -83,13 +80,11 @@ class OrganizerSigninScreen extends React.Component {
 					onPress={this.handleSubmit}
 					color= "#002a55"
 					/>
-					<Button
-						style={styles.buttons}
-						title="Forgot Password"
-						onPress={this.resetForm}
-						color= "#002a55"
-					/>
-
+					<Text
+						style={styles.memberText}
+						onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_forgot_password')}}>
+						Forgot Password
+					</Text>
 				</View>
 			</View>
 			</ScrollView>
@@ -119,6 +114,11 @@ const styles = StyleSheet.create({
 	buttons: {
 		padding: 40,
 		margin: 10,
+	},
+	memberText: {
+		color: 'blue',
+		padding: 15,
+		alignSelf: 'center',
 	},
 	GWLNlogo: {
 		flex: 1,

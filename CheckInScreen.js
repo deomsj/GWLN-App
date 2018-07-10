@@ -12,7 +12,7 @@ import {
     Alert,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import { Icon } from 'react-native-elements';
+import { Icon, Header } from 'react-native-elements';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -118,6 +118,21 @@ class CheckInScreen extends Component {
     render() {
         return (
           <ScrollView>
+          <Header
+            backgroundColor="white"
+            centerComponent={{text: 'Event Check In', style:{fontSize:18}}}
+            rightComponent={ <Icon
+              type='font-awesome'
+              name= "trash"
+              onPress={() => Alert.alert(
+                'Discard',
+                'Are you sure you want to clear this form?',
+                [
+                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                  {text: 'Yes', onPress: this.discardButton},
+                ],
+              )}/>}
+          />
             <View style={styles.container}>
               <Form
               ref={c=>this._form = c}
@@ -134,20 +149,21 @@ class CheckInScreen extends Component {
               />
               </View>
               <View style={styles.trash}>
-              <Icon
-                type='font-awesome'
-                name="trash"
-                onPress={() => Alert.alert(
-    							'Discard',
-    							'Are you sure you want to clear this form?',
-    							[
-    								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-    								{text: 'Yes', onPress: this.discardButton},
-    							],
-    						)}
-              />
-            </View>
-          </ScrollView>
+              </View>
+            </ScrollView>
+              // <Icon
+              //   type='font-awesome'
+              //   name="trash"
+              //   onPress={() => Alert.alert(
+    					// 		'Discard',
+    					// 		'Are you sure you want to clear this form?',
+    					// 		[
+    					// 			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    					// 			{text: 'Yes', onPress: this.discardButton},
+    					// 		],
+    					// 	)}
+              // />
+
         )
     }
 
@@ -157,7 +173,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f3f2f2',
-        marginTop:30,
+        // marginTop:30,
         padding: 40,
         justifyContent: 'center',
     },
@@ -174,12 +190,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       alignItems: 'center',
       justifyContent: 'center'
-    },
-    trash: {
-      // flex: 1,
-      bottom: 500,
-      left: -150,
-  }
+    }
 })
 
 export default CheckInScreen;

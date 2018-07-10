@@ -62,8 +62,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		padding: 15,
     alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'stretch',
   },
 	buttons: {
 		padding: 10,
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
 		width: undefined,
 		height: undefined,
 		padding: 60,
-		backgroundColor: 'white',
 	},
 	WorldCouncil: {
 		flex:1,
@@ -90,10 +87,7 @@ const styles = StyleSheet.create({
 		resizeMode: 'contain',
 		width: undefined,
 		height: undefined,
-		// width: '100%',
-		// height: '100%',
 		padding: 70,
-		// backgroundColor: 'white',
 		position: 'absolute',
 		bottom: 0,
 		right:10,
