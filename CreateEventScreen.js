@@ -63,7 +63,7 @@ var options = {
 			multiline: true,
 		},
 		numberOfPinkTies: {
-			label: 'How many pink ties would you like for this event? (optional)'
+			label: 'How many pink ties would you like for this event? (optional)',
 		}
 	}
 };
@@ -142,6 +142,7 @@ class CreateEventScreen extends React.Component {
 		//console.log(this.state.EventDate);
 		//Obj.AddEvent(tmp)
 		//console.log('under cal.OnDaySelect');
+		return EventArray
 	}
 
 	render() {
@@ -166,17 +167,7 @@ class CreateEventScreen extends React.Component {
 	}
 
 }
-/*_showAlert = () => {
-	Alert.alert(
-		'Alert Title',
-		'Alert Msg',
-		[
-			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-			{text: 'OK', onPress: () => console.log('OK pressed')},
-		],
-		{ cancelable: false }
-	)
-}*/
+
 
 export default CreateEventScreen;
 

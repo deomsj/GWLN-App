@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+
 import t from 'tcomb-form-native';
 import { Icon } from 'react-native-elements';
 import moment from 'moment';
@@ -86,6 +87,7 @@ const Options = {
 			label: 'Postive Comments',
 			error: 'Please fill out this field',
 			multiLine: true,
+			numberOfLines: 4,
 			stylesheet: stylesheet,
 		},
 
@@ -146,7 +148,9 @@ class FeedbackFormScreen extends React.Component {
 
 				<Form ref={c=>this._form = c}
 				type={Content}
-				options = {Options}/>
+				options = {Options}
+				onChangeText = {(text) => this.setState({text})}
+				/>
 				<View style={styles.container}>
 					<Button
 					title="Submit"

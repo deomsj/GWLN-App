@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-
+import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 
@@ -26,9 +26,24 @@ class HomeScreen extends React.Component {
   }
     constructor(){
       super();
+      this.inputRefs = {};
       this.state={
-        PickerValue:''
-      }
+        Function: undefined,
+        items: [
+          {
+            label: 'Event Check In',
+            value: 'CheckIn', 
+          },
+          {
+            label: 'Event Feedback',
+            value: 'FeedbackFrom',
+          },
+          {
+            label: 'Create an Event',
+            value: 'CreateEvent',
+          },
+        ],
+      };
     };
     pickerNavigate=()=>{
       var nextPage = this.state.PickerValue
@@ -50,24 +65,23 @@ class HomeScreen extends React.Component {
           title="Member List"
           onPress={() => this.props.navigation.navigate('MemberList')}
           />
-          <Button
-            color= '#002A55'
-            title="Press Me"
-            onPress={() => this.props.navigation.navigate(this.state.PickerValue)}
+
+          <View style={{ paddingTop: 20}}>
+            <RNPickerSelect
+              placeholder={{
+                label: 'Event Management...',
+                value: null,
+              }}
+              items={this.state.items}
+              onValueChange={(value) => {
+                this.setState({
+                  Function: value,
+                });
+                this.props.navigation.navigate(value)
+              }}
+              style={{...pickerStyle }}
+              hideicon={true}
             />
-
-          <View style={{ borderWidth: 0}}>
-
-            <Picker
-
-              style={{ height: 50, width: 200}}
-              selectedValue={this.state.PickerValue}
-              onValueChange={(ItemValue, ItemIndex) => this.setState({PickerValue:ItemValue})}
-            >
-            <Picker.Item label="Check in" value='CheckIn' />
-            <Picker.Item label="Feedback Forms" value="FeedbackFrom" />
-            <Picker.Item label="Create Event" value="CreateEvent"/>
-            </Picker>
           </View>
 
       </View>
@@ -75,4 +89,27 @@ class HomeScreen extends React.Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 30,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+
+  },
+});
+
+const pickerStyle = StyleSheet.create({
+  inputiOs: {
+    fontSize: 16,
+    paddingTop: 13,
+    paddingHorizontal: 10,
+    paddingBottom: 12,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    backgroundColor: 'white',
+    color: 'black',
+  },
+});
 export default HomeScreen;
