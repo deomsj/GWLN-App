@@ -34,7 +34,7 @@ class CalendarScreen extends React.Component {
     [_today]: {disabled: true}
   }
 
- 
+
 
   constructor() {
     super();
@@ -51,12 +51,12 @@ class CalendarScreen extends React.Component {
     console.log('test in Calendar');
   }
 
-  
+
   AddToCal = (array) => {
     console.log('in AddToCal');
     console.log(array);
     for (var i = 0; i < array.length; i++) {
-      
+
       console.log(array[i]);
       this.PostEvent(array[i]);
     }
@@ -79,27 +79,27 @@ class CalendarScreen extends React.Component {
   }
 
   AddEvent = (info) => {
-   
-     
-   
+
+
+
     console.log('in AddEvent');
     console.log(info)
-    const newEvent = moment(info).format(_format);   
+    const newEvent = moment(info).format(_format);
     console.log(newEvent);
 
     //const EventDay = moment(newEvent.dateString).format(_format);
     //EventArray.push(newEvent);
     //console.log(newEvent);
     //console.log(EventArray);
-    
+
     //this.step();
     console.log(EventArray);
     this.AddToCal(EventArray);
-    
-   
-    
-    
-    
+
+
+
+
+
   }
 
   step = () => {

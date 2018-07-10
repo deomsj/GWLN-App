@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-//import { CheckBox } from 'react-native-checkbox';
+import { Icon } from 'react-native-elements';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
@@ -71,52 +71,55 @@ var options = {
 class CreateEventScreen extends React.Component {
 
 	constructor(props){
-		super(props)
+		super(props);
 		Obj = new CalendarScreen();
 	}
 
-	resetForm(){
+	resetForm=()=>{
 		this.setState({value:null});
 	}
 
-	DiscardForm(){
-		const value = this._form.getValue();
-
-		if(!value){
-			this.resetForm({})
-		}
-<<<<<<< HEAD
-
+	DiscardForm=()=>{
+		Alert.alert(
+			'Discard Feedback',
+			'Are you sure you want to clear this form?',
+			[
+				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+				{text: 'Yes', onPress: ()=> this.resetForm()}
+			],
+		)
 	}
 
-=======
-}
->>>>>>> d57add6d29e1bf1545c5172b830a0513cfb2ec05
-	resetForm = (value) => {
-		this.setState({value:null});
+	static navigationOptions = ({navigation})=> {
+		return {
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Create an Event </Text>),
+			headerRight: ( <Icon
+				containerStyle={{padding:15}}
+				type='font-awesome'
+				name= "trash"
+				onPress={navigation.getParam('discard')}/>
+			),
+		};
+	};
+
+	componentDidMount=(value)=> {
+		this.props.navigation.setParams({ discard: this.DiscardForm });
 	}
 
-<<<<<<< HEAD
-
-	handleSubmit = () => {
-
-		//this.updateCalendar();
-		const value = this.refs.form.getValue();
-=======
 	handleSubmit = () => {
 
 		const value = this._form.getValue();
 
 
 		//const value = this.refs.form.getValue();
->>>>>>> d57add6d29e1bf1545c5172b830a0513cfb2ec05
+
 
 		const TmpDate = value.date;
-		//this.updateCalendar.bind(this);		
+		//this.updateCalendar.bind(this);
 		//console.log(TmpDate);
 		if(value) {
 			console.log(TmpDate);
-			
+
 			this.updateCalendar(TmpDate);
 			console.log('value', value);
 		}
@@ -127,15 +130,15 @@ class CreateEventScreen extends React.Component {
 		console.log('in updateCalendar');
 		//Obj.test();
 
-		const tmp = Day
+		const tmp = Day;
 		const newEvent = moment(tmp).format(_format);
 		console.log('newEvent');
 		console.log(newEvent);
 		global.EventArray.push(newEvent);
-		console.log(EventArray)
+		console.log(EventArray);
 		//Obj.OnDaySelect(tmp);
-		this.setState({ EventDate: tmp})
-		this.props.navigation.navigate('CalendarView')
+		this.setState({ EventDate: tmp});
+		this.props.navigation.navigate('CalendarView');
 		//console.log(this.state.EventDate);
 		//Obj.AddEvent(tmp)
 		//console.log('under cal.OnDaySelect');
@@ -145,9 +148,6 @@ class CreateEventScreen extends React.Component {
 		return(
 			<ScrollView>
 			<View style={styles.container}>
-				<Text style={styles.paragraph}>
-					Create an Event
-				</Text>
 				<Form ref="form"
 				type={Event}
 				options={options}/>
@@ -158,13 +158,6 @@ class CreateEventScreen extends React.Component {
 					onPress={this.handleSubmit}
 					color= "#002a55"
 					/>
-					<Button
-						style={styles.buttons}
-						title="Discard Event"
-						onPress={this.DiscardForm}
-						color= "#002a55"
-					/>
-
 				</View>
 			</View>
 

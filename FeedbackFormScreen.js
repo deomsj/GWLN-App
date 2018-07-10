@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
-
+import { Icon } from 'react-native-elements';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
@@ -35,7 +35,6 @@ let myFormat = (date) =>{
 stylesheet.textbox.normal.textAlignVertical = 'top';
 
 const Options = {
-	label: 'Feedback Form',
 	fields: {
 		EventName: {
 			label: 'Event Name:',
@@ -95,13 +94,40 @@ const Options = {
 };
 
 class FeedbackFormScreen extends React.Component {
+	constructor(props) {
+        super(props);
+				this.state = {value: null};
+			}
 
 	resetForm=(value)=> {
 		this.setState({value:null});
 	}
 
 	DiscardForm=(value ) => {
-		this.resetForm();
+		Alert.alert(
+			'Discard Feedback',
+			'Are you sure you want to clear this form?',
+			[
+				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+				{text: 'Yes', onPress: ()=> this.resetForm()}
+			],
+		)
+	}
+
+	static navigationOptions = ({navigation})=> {
+		return {
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Feedback Form </Text>),
+			headerRight: ( <Icon
+				containerStyle={{padding:15}}
+				type='font-awesome'
+				name= "trash"
+				onPress={navigation.getParam('discard')}/>
+			),
+		};
+	};
+
+	componentDidMount=(value)=> {
+		this.props.navigation.setParams({ discard: this.DiscardForm });
 	}
 
 	handleSubmit = () => {
@@ -111,9 +137,7 @@ class FeedbackFormScreen extends React.Component {
 			this.resetForm({})
 
 		}
-
 	}
-
 
 	render() {
 		return(
@@ -136,23 +160,11 @@ class FeedbackFormScreen extends React.Component {
 					)}
 					color= "#002a55"
 					/>
-					<Button
-						title="Discard feedback"
-						onPress={() => Alert.alert(
-							'Discard Feedback',
-							'Are you sure you want to clear this form?',
-							[
-								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-								{text: 'Yes', onPress: this.resetForm},
-							],
-						)}
-						color= "#002a55"
-					/>
 				</View>
-
 			</View>
 			</ScrollView>
 		);
+
 	}
 
 }
@@ -161,17 +173,13 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff',
 		justifyContent: 'center',
-		marginTop: 50,
 		padding: 20,
-
 	},
 	title: {
-
 		justifyContent: 'center',
 		marginTop: 10,
 		alignItems: 'center',
 		fontSize: 24,
-
 	},
 	DiscardFeedback: {
 		fontSize: 10,

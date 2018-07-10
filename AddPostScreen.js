@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
-
+import { Icon } from 'react-native-elements';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import MessageBoardScreen from './MessageBoardScreen';
@@ -28,7 +28,7 @@ const Options = {
 			error: 'Please enter a title for this post',
 		},
 		Post: {
-			label: 'Post',
+			label: 'Details',
 			error: 'Please enter your post',
 			multiLine: true,
 			config: {
@@ -42,14 +42,36 @@ const Options = {
 
 class AddPostScreen extends React.Component {
 
-resetForm=(value)=> {
-		this.setState({value:null});
-	}
+resetForm=()=>{
+	this.setState({value:null});
+}
 
-	DiscardForm=(value ) => {
-		this.resetForm();
-	}
+DiscardForm=()=>{
+	Alert.alert(
+		'Discard Feedback',
+		'Are you sure you want to clear this form?',
+		[
+			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+			{text: 'Yes', onPress: ()=> this.resetForm()}
+		],
+	)
+}
 
+static navigationOptions = ({navigation})=> {
+	return {
+		headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Create Post </Text>),
+		headerRight: ( <Icon
+			containerStyle={{padding:15}}
+			type='font-awesome'
+			name= "trash"
+			onPress={navigation.getParam('discard')}/>
+		),
+	};
+};
+
+componentDidMount=(value)=> {
+	this.props.navigation.setParams({ discard: this.DiscardForm });
+}
 	handleSubmit = () => {
 		const value = this._form.getValue();
 		console.log('value', value);
@@ -70,7 +92,8 @@ resetForm=(value)=> {
 				options = {Options}/>
 				<View style={styles.container}>
 					<Button
-					title="Post"
+					title="Submit"
+					color="#002a55"
 					onPress={() => Alert.alert(
 						'Submit Post',
 						'Are you ready to post to the message board?',
@@ -79,17 +102,6 @@ resetForm=(value)=> {
 							{text: 'Yes', onPress: this.handleSubmit},
 						],
 					)}
-					/>
-					<Button
-						title="Discard Post"
-						onPress={ () => Alert.alert(
-							'Discard Post',
-							'Are you sure you want to delete this post?',
-							[
-								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-								{text: 'Yes', onPress: this.resetForm},
-							],
-						)}
 					/>
 				</View>
 
@@ -101,9 +113,9 @@ resetForm=(value)=> {
 }
 const styles = StyleSheet.create({
 	container: {
-
+		backgroundColor: 'white',
 		justifyContent: 'center',
-		marginTop: 50,
+		// marginTop: 50,
 		padding: 20,
 
 	},

@@ -12,7 +12,7 @@ import {
     Alert,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import { Icon, Header } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import t from 'tcomb-form-native';
 
 const Form = t.form.Form;
@@ -48,6 +48,22 @@ class CheckInScreen extends Component {
     this.setState({value: null});
      this.setState({memberOptions: [{"name":"member", "tag": "Yes", "checked": false}, {"name": "member", "tag": "No", "checked": false}, {"name":"enroll", "tag": "Yes", "checked": false}, {"name":"enroll", "tag": "No", "checked": false}] });
 
+  }
+  static navigationOptions =  {
+      headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Event Check In </Text>),
+      headerRight: ( <Icon
+        containerStyle={{padding:15}}
+        type='font-awesome'
+        name= "trash"
+        onPress={() => Alert.alert(
+          'Discard',
+          'Are you sure you want to clear this form?',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'Yes', onPress: this.discardButton},
+          ],
+        )}/>
+      ),
   }
   onChange(value) {
     this.setState({value});
@@ -86,7 +102,6 @@ class CheckInScreen extends Component {
               {this.renderCheckBox(this.state.memberOptions[0])}
               {this.renderCheckBox(this.state.memberOptions[1])}
             </View>
-            <View style={styles.line}/>
           </View>
             )
         views.push(
@@ -118,21 +133,6 @@ class CheckInScreen extends Component {
     render() {
         return (
           <ScrollView>
-          <Header
-            backgroundColor="white"
-            centerComponent={{text: 'Event Check In', style:{fontSize:18}}}
-            rightComponent={ <Icon
-              type='font-awesome'
-              name= "trash"
-              onPress={() => Alert.alert(
-                'Discard',
-                'Are you sure you want to clear this form?',
-                [
-                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                  {text: 'Yes', onPress: this.discardButton},
-                ],
-              )}/>}
-          />
             <View style={styles.container}>
               <Form
               ref={c=>this._form = c}
@@ -151,19 +151,6 @@ class CheckInScreen extends Component {
               <View style={styles.trash}>
               </View>
             </ScrollView>
-              // <Icon
-              //   type='font-awesome'
-              //   name="trash"
-              //   onPress={() => Alert.alert(
-    					// 		'Discard',
-    					// 		'Are you sure you want to clear this form?',
-    					// 		[
-    					// 			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-    					// 			{text: 'Yes', onPress: this.discardButton},
-    					// 		],
-    					// 	)}
-              // />
-
         )
     }
 
@@ -172,13 +159,13 @@ class CheckInScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f3f2f2',
-        // marginTop:30,
+        backgroundColor: 'white',
         padding: 40,
         justifyContent: 'center',
     },
     item: {
         flexDirection: 'row',
+        padding:10,
     },
     line: {
         flex: 1,
