@@ -108,10 +108,10 @@ class CreateEventScreen extends React.Component {
 
 	handleSubmit = () => {
 
-		const value = this._form.getValue();
+		//const value = this._form.getValue();
 
 
-		//const value = this.refs.form.getValue();
+		const value = this.refs.form.getValue();
 
 
 		const TmpDate = value.date;
