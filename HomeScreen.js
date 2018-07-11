@@ -32,7 +32,7 @@ class HomeScreen extends React.Component {
         items: [
           {
             label: 'Event Check In',
-            value: 'CheckIn', 
+            value: 'CheckIn',
           },
           {
             label: 'Event Feedback',
