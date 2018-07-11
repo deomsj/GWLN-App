@@ -20,10 +20,6 @@ import AddPostScreen from './AddPostScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Home',
-
-  }
     constructor(){
       super();
       this.inputRefs = {};
@@ -32,7 +28,7 @@ class HomeScreen extends React.Component {
         items: [
           {
             label: 'Event Check In',
-            value: 'CheckIn', 
+            value: 'CheckIn',
           },
           {
             label: 'Event Feedback',
@@ -80,7 +76,7 @@ class HomeScreen extends React.Component {
                 this.props.navigation.navigate(value)
               }}
               style={{...pickerStyle }}
-              hideicon={true}
+              hideicon={false}
             />
           </View>
 

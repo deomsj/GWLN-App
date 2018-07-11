@@ -12,18 +12,24 @@ import LaunchPage from './LaunchPage';
 class ProfileScreen extends React.Component {
   render() {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <Text> Profile </Text>
+      <View>
+        <View style={styles.profileContainer}>
+        </View>
+        <View style={styles.optionsContainer}>
           <Button
             color= '#002A55'
             title="My Upcoming Events"
             onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
             />
+        </View>
+        <View style={styles.optionsContainer}>
           <Button
             color= '#002A55'
             title="My Past Events"
             onPress={() => this.props.navigation.navigate('MyPastEvents')}
           />
+        </View>
+        <View style={styles.optionsContainer}>
           <Button
             color='#002a55'
             title="Sign Out"
@@ -36,8 +42,23 @@ class ProfileScreen extends React.Component {
 							],
 						)}
             />
+            </View>
         </View>
     );
   }
 }
 export default ProfileScreen;
+
+const styles = StyleSheet.create({
+  profileContainer: {
+    backgroundColor: '#002a55',
+    opacity: .3,
+    padding:75,
+  },
+  optionsContainer: {
+    backgroundColor: 'white',
+    padding:15,
+    flexDirection: 'column',
+    alignItems: 'center',
+  }
+})

@@ -15,7 +15,7 @@ class MessageBoardScreen extends React.Component {
 			headerRight: ( <Icon
 				containerStyle={{padding:15}}
 				type='font-awesome'
-				name= "plus"
+				name= "edit"
 				onPress={navigation.getParam('goToAdd')}/>
 			),
 		};
