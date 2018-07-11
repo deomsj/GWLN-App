@@ -40,105 +40,91 @@ const Options = {
 class CheckInScreen extends Component {
   constructor(props) {
         super(props);
+        this.state = {value: null}
         this.state = {
-            memberOptions: [{"name":"member", "tag": "Yes", "checked": false}, {"name": "member", "tag": "No", "checked": false}, {"name":"enroll", "tag": "Yes", "checked": false}, {"name":"enroll", "tag": "No", "checked": false}]
-          }
+          value: null,
+          selectedIndex1: null,
+          selectedIndex2: null,
         }
-        initialState() {
-          this.setState({value: null});
-           // this.setState({memberOptions: [{"name":"member", "tag": "Yes", "checked": false}, {"name": "member", "tag": "No", "checked": false}, {"name":"enroll", "tag": "Yes", "checked": false}, {"name":"enroll", "tag": "No", "checked": false}] });
-        }
+  }
 
-        DiscardForm=() => {
-      		Alert.alert(
-      			'Discard Feedback',
-      			'Are you sure you want to clear this form?',
-      			[
-      				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-      				{text: 'Yes', onPress: ()=> this.initialState()}
-      			],
-      		)
-      	}
-        static navigationOptions= ({ navigation }) =>  {
-          return {
-            headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Event Check In </Text>),
-            headerRight: ( <Icon
-              containerStyle={{padding:15}}
-              type='font-awesome'
-              name= "trash"
-              onPress={navigation.getParam('discard')}/>
-      			),
-      		}
-        }
+  initialState = () => {
+    this.setState({value: null})
+    this.setState({
+      value: null,
+      selectedIndex1: -1,
+      selectedIndex2: -1,
+    })
+  }
 
+  DiscardForm=(value ) => {
+		Alert.alert(
+			'Discard Feedback',
+			'Are you sure you want to clear this form?',
+			[
+				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+				{text: 'Yes', onPress: ()=> this.initialState()}
+			],
+		)
+	}
 
-      	componentDidMount=(value)=> {
-      		this.props.navigation.setParams({ discard: this.DiscardForm });
-      	}
+	static navigationOptions = ({navigation})=> {
+		return {
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Event Check In </Text>),
+			headerRight: ( <Icon
+				containerStyle={{padding:15}}
+				type='font-awesome'
+				name= "trash"
+				onPress={navigation.getParam('discard')}/>
+			),
+		};
+	};
+
+	componentDidMount=(value)=> {
+		this.props.navigation.setParams({ discard: this.DiscardForm });
+	}
   onChange(value) {
-    this.setState({value});
+    this.setState({value:value});
+  }
+  //
+  // onClick(value) {
+  //   this.setState({selectedIndex: null})
+  // }
+
+  //================radioadd=====================
+  onSelect_1(index, value){
+    console.log(value)
+    console.log(index)
+
+    this.setState({
+      selectedIndex1: index,
+    })
   }
 
-  onClick(memberOptions) {
-        memberOptions.checked = !memberOptions.checked;
-        console.log(memberOptions)
-        // if (memberOptions[0].checked || memberOptions[1].checked == true){
-        //
-        // }
-        return memberOptions
-    }
+  onSelect_2(index, value){
+    console.log(value)
+    console.log(index)
 
-
-  onPress= (memberOptions) => {
-    const value = this._form.getValue();
-    if (value) {
-      console.log(value); //save value in log before clearing
-      this.initialState(memberOptions);
-    }
-
+    this.setState({
+      selectedIndex2: index,
+    })
   }
-  discardButton= (memberOptions) =>{
-    this.initialState(memberOptions);
-  }
-    renderView() {
-        if (!this.state.memberOptions || this.state.memberOptions.length === 0)return;
-        var views= [];
-        views.push(
-          <View key={0}>
-            <Text style={styles.questionText}>
-              Are you already a member?
-            </Text>
-            <View style={styles.item}>
-              {this.renderCheckBox(this.state.memberOptions[0])}
-              {this.renderCheckBox(this.state.memberOptions[1])}
-            </View>
-          </View>
-            )
-        views.push(
-          <View key={1}>
-              <Text style={styles.questionText}>
-                Would you like to be?
-              </Text>
-              <View style={styles.item}>
-                {this.renderCheckBox(this.state.memberOptions[2])}
-                {this.renderCheckBox(this.state.memberOptions[3])}
-              </View>
-          </View>
-        )
-          return views;
-    }
 
-    renderCheckBox(memberOptions) {
-        var yesNo = memberOptions.tag;
-        var clickCount = 0;
-        return (
-            <CheckBox
-                style={{flex: 1, padding: 10}}
-                onClick={()=>this.onClick(memberOptions)}
-                isChecked={memberOptions.checked}
-                rightText={yesNo}
-            />);
-    }
+
+  onCheck () {
+    this.initialState;
+  }
+
+  handleSubmit = () => {
+    Alert.alert(
+      'Check In',
+      'The atendee has been checked in',
+      [
+        {text: 'Dismiss', onPress: this.initialState},
+      ],
+    )}
+  //================radioadd=====================
+
 
     render() {
         return (
@@ -151,10 +137,48 @@ class CheckInScreen extends Component {
               value={this.state.value}
               onChange={this.onChange.bind(this)}
               />
-              {this.renderView()}
+              <View style={styles.radiocontainer}>
+        				<Text> Are you a member of GWLN? </Text>
+        				<RadioGroup
+        					size={18}
+        					thickness={2}
+        					style={styles.rg}
+                  color={'#200a55'}
+                  selectedIndex={this.state.selectedIndex1}
+                  onSelect = {(index, value) => this.onSelect_1(index, value)}
+        				>
+        					<RadioButton value={'member_yes'} style={styles.rb} >
+        						<Text>Yes</Text>
+        					</RadioButton>
+        					<RadioButton value={'member_no'} style={styles.rb} >
+        						<Text>No</Text>
+        					</RadioButton>
+
+        				</RadioGroup>
+        				<Text>If not, would you like to be?</Text>
+        				<RadioGroup
+        					size={18}
+        					thickness={2}
+        					style={styles.rg}
+                  color={'#200a55'}
+                  selectedIndex={this.state.selectedIndex2}
+        					onSelect = {(index, value) => this.onSelect_2(index, value)}
+        				>
+        					<RadioButton value={'like_yes'} style={styles.rb} >
+        						<Text>Yes</Text>
+        					</RadioButton>
+        					<RadioButton value={'like_no'} style={styles.rb} >
+        						<Text>No</Text>
+        					</RadioButton>
+        					<RadioButton value={'na'} style={styles.rb} >
+        						<Text>N/A</Text>
+        					</RadioButton>
+
+        				</RadioGroup>
+              </View>
               <Button
                 title="Check In!"
-                onPress={this.onPress}
+                onPress={this.handleSubmit}
                 color= '#002a55'
               />
               </View>
@@ -187,7 +211,21 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       alignItems: 'center',
       justifyContent: 'center'
-    }
+    },
+    //================radioadd=====================
+    radiocontainer: {
+  		marginTop: 10,
+      marginBottom: 40,
+      backgroundColor: 'white',
+  	},
+  	rb: {
+  		alignItems: 'center',
+  		flexDirection: 'row',
+  	},
+  	rg: {
+  		flexDirection: 'row',
+  	}
+    //================radioadd=====================
 })
 
 export default CheckInScreen;
