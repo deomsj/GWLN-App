@@ -6,7 +6,7 @@ import { Icon } from 'react-native-elements';
 
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
-
+import MemberContactPage from './MemberContactPage';
 import GWLNScreen from './GWLNScreen';
 import DonateWebView from './DonateWebView';
 import MemberListScreen from './MemberListScreen';
@@ -138,6 +138,9 @@ const NavigationFlow = createStackNavigator({
   },
   SignUp: {
     screen: GWLNSignUp,
+  },
+  MemberContactPage: {
+    screen: MemberContactPage,
   },
 
 })
