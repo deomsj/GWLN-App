@@ -40,7 +40,6 @@
     "react-native-toggle-picker": "^1.0.2",
     "react-native-togglebox": "^1.0.3",
     "react-navigation": "^2.5.3",
-    "searchable-flatlist": "0.0.4",
     "tcomb-form-native": "^0.6.14"
   }
 }
