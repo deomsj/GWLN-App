@@ -52,7 +52,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.container}>
 
         <Button
           color= '#002A55'
@@ -66,7 +66,6 @@ class HomeScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('MemberList')}
           />
 
-          <View style={{ paddingTop: 20}}>
             <RNPickerSelect
               placeholder={{
                 label: 'Event Management...',
@@ -77,13 +76,11 @@ class HomeScreen extends React.Component {
                 this.setState({
                   Function: value,
                 });
-                this.props.navigation.navigate(value)
+                if (value) {this.props.navigation.navigate(value)}
               }}
               style={{...pickerStyle }}
               hideicon={true}
             />
-          </View>
-
       </View>
     );
   }
@@ -91,10 +88,12 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
+    padding: 20,
     backgroundColor: 'white',
     justifyContent: 'center',
-    paddingHorizontal: 10,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
 
   },
 });
@@ -111,5 +110,15 @@ const pickerStyle = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black',
   },
+  inputAndroid: {
+    paddingTop: 13,
+    paddingHorizontal: 10,
+    paddingBottom: 12,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    backgroundColor: 'white',
+    color: 'black',
+  }
 });
 export default HomeScreen;
