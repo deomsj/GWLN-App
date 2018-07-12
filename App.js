@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
-import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import {createStackNavigator, createBottomTabNavigator, StackNavigator, TabNavigator} from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 
@@ -28,39 +28,24 @@ import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 
 
-const NavigationFlow = createStackNavigator({
-  Launch: {
-    screen: LaunchPage,
-  },
-
-  OrganizerSignin: {
-    screen: OrganizerSigninScreen,
-  },
-
-  MemberSignin: {
-    screen: MemberSigninScreen,
-  },
-
-  Home: {
-
-    screen: createBottomTabNavigator({
+ const TabNav = createBottomTabNavigator({
       Home: {
         screen: HomeScreen,
         navigationOptions: {
-          title: 'Home',
+          tabBarLabel: 'Home',
           tabBarIcon: ({tintColor}) => (
             <Icon
               name="home"
               color={tintColor}
               size={32}
             />
-            )
+          ),
         },
       },
       Profile: {
         screen: ProfileScreen,
         navigationOptions: {
-          title: 'Profile',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({tintColor}) => (
             <Icon
               type='font-awesome'
@@ -68,7 +53,7 @@ const NavigationFlow = createStackNavigator({
               color={tintColor}
               size={32}
             />
-            )
+          ),
         },
       },
       CalendarView: {
@@ -82,7 +67,7 @@ const NavigationFlow = createStackNavigator({
               color={tintColor}
               size={32}
             />
-            )
+          ),
         },
       },
       GWLN: {
@@ -96,16 +81,68 @@ const NavigationFlow = createStackNavigator({
               color={tintColor}
               size={32}
             />
-            )
+          ),
         },
       },
-    }),
-    navigationOptions: {
-      headerLeft: null
-    },
+    });
+    // navigationOptions: {
+    //   headerLeft: null
+    // },
+
+TabNav.navigationOptions = ({navigation}) => {
+  let { routeName } = navigation.state.routes[navigation.state.index];
+  let title;
+  if (routeName==='Home') {
+    return {
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Home </Text>),
+    headerLeft: null,
+    };
+  }
+  else if (routeName==='Profile') {
+    return {
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> My Profile </Text>),
+    headerLeft: null,
+    };
+  }
+  else if (routeName==='CalendarView') {
+    return {
+    headerLeft: (<View></View>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Calendar </Text>),
+    headerRight: (<Icon
+      containerStyle={{padding:15}}
+      type='font-awesome'
+      name="plus"
+      size={32}
+      onPress={() => navigation.navigate('CreateEvent')}
+    />)
+    };
+  }
+  else if (routeName==='GWLN') {
+    return {
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Donate! </Text>),
+    headerLeft: null,
+    };
+  }
+  return {
+    title,
+  };
+};
+
+const NavigationFlow = createStackNavigator({
+  Launch: {
+    screen: LaunchPage,
   },
 
+  OrganizerSignin: {
+    screen: OrganizerSigninScreen,
+  },
 
+  MemberSignin: {
+    screen: MemberSigninScreen,
+  },
+  Home: {
+    screen: TabNav,
+  },
   MessageBoard: {
     screen: MessageBoardScreen,
   },
