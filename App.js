@@ -37,7 +37,7 @@ import MessageBoardScreen from './MessageBoardScreen';
             <Icon
               name="home"
               color={tintColor}
-              size={32}
+              size={30}
             />
           ),
         },
@@ -51,7 +51,7 @@ import MessageBoardScreen from './MessageBoardScreen';
               type='font-awesome'
               name="user"
               color={tintColor}
-              size={32}
+              size={30}
             />
           ),
         },
@@ -65,7 +65,7 @@ import MessageBoardScreen from './MessageBoardScreen';
               type='font-awesome'
               name="calendar"
               color={tintColor}
-              size={32}
+              size={27}
             />
           ),
         },
@@ -79,7 +79,7 @@ import MessageBoardScreen from './MessageBoardScreen';
               type='font-awesome'
               name="dollar"
               color={tintColor}
-              size={32}
+              size={27}
             />
           ),
         },
