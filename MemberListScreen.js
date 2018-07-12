@@ -24,6 +24,11 @@ class MyListItem extends React.Component {
 
 
 class MemberListScreen extends React.Component {
+	static navigationOptions = {
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Member List </Text>),
+			headerRight: (<View></View>),
+	}
+
 	constructor(props){
 		super(props);
 		this.state = {
@@ -65,7 +70,7 @@ class MemberListScreen extends React.Component {
 							subtitle={item.email}
 							avatar={{ uri: item.picture.thumbnail }}
 							containerStyle={{ borderBottomWidth: 0 }}
-						
+
 						/>
 					</TouchableOpacity>
 	);
@@ -125,13 +130,13 @@ class MemberListScreen extends React.Component {
 		return(
 			<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
 				<FlatList
-					
+
 						data={this.state.data}
 						renderItem={this._renderItem}
 						keyExtractor={item => item.email}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
-					
+
 				/>
 			</List>
 		);

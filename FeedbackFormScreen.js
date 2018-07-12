@@ -86,8 +86,8 @@ const Options = {
 		Summary: {
 			label: 'Postive Comments',
 			error: 'Please fill out this field',
-			multiLine: true,
-			numberOfLines: 4,
+			multiline: true,
+			//numberOfLines: 4,
 			stylesheet: stylesheet,
 		},
 
