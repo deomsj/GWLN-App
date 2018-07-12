@@ -12,10 +12,8 @@ import {
     Alert,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import { Icon } from 'react-native-elements';
+import { Icon, Header } from 'react-native-elements';
 import t from 'tcomb-form-native';
-
-import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
 
 const Form = t.form.Form;
 
@@ -186,7 +184,6 @@ class CheckInScreen extends Component {
               </View>
               <View style={styles.trash}>
               </View>
-
             </ScrollView>
         )
     }

@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		backgroundColor: '#fff',
-		padding: 20,
+		padding: 50,
 
 	},
 	paragraph: {
@@ -127,6 +127,5 @@ const styles = StyleSheet.create({
 		width: undefined,
 		height: undefined,
 		padding: 60,
-		backgroundColor: 'white',
 	}
 });

@@ -20,10 +20,6 @@ import AddPostScreen from './AddPostScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Home',
-
-  }
     constructor(){
       super();
       this.inputRefs = {};
@@ -79,7 +75,7 @@ class HomeScreen extends React.Component {
                 if (value) {this.props.navigation.navigate(value)}
               }}
               style={{...pickerStyle }}
-              hideicon={true}
+              hideicon={false}
             />
       </View>
     );
