@@ -22,7 +22,6 @@ import HomeScreen from './HomeScreen';
 import Slot from './Slot';
 
 
-
 const _format = 'YYYY-MM-DD'
 const _today = moment().format(_format)
 const _maxDate = moment().add(120, 'days').format(_format)
@@ -33,8 +32,6 @@ class CalendarScreen extends React.Component {
   initialState = {
     [_today]: {disabled: true}
   }
-
-
 
   constructor() {
     super();
@@ -80,8 +77,6 @@ class CalendarScreen extends React.Component {
 
   AddEvent = (info) => {
 
-
-
     console.log('in AddEvent');
     console.log(info)
     const newEvent = moment(info).format(_format);
@@ -95,10 +90,6 @@ class CalendarScreen extends React.Component {
     //this.step();
     console.log(EventArray);
     this.AddToCal(EventArray);
-
-
-
-
 
   }
 
@@ -138,17 +129,16 @@ class CalendarScreen extends React.Component {
   render() {
     //this.AddToCal();
     return (
-      <View style={{ flex: 1}}>
-        <View style={styles.AddButtonContainer}>
-          <Icon
-            type='font-awesome'
-            name="plus"
-            size={32}
-            onPress={() => this.props.navigation.navigate('CreateEvent')}
-          />
-        </View>
+        // <View style={styles.AddButtonContainer}>
+        //   <Icon
+        //     type='font-awesome'
+        //     name="plus"
+        //     size={32}
+        //     onPress={() => this.props.navigation.navigate('CreateEvent')}
+        //   />
+        // </View>
 
-
+        <View style={{ flex: 1}}>
         <Calendar
         style={styles.Calendar}
           theme={{
@@ -174,19 +164,19 @@ const styles = StyleSheet.create ({
     height: "90%",
     width: "100%"
   },
-  AddButtonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    height:20,
-    marginRight: 10,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-
-  },
-  AddButton: {
-    backgroundColor: 'green',
-
-  }
+  // AddButtonContainer: {
+  //   flex: 1,
+  //   flexDirection: 'row',
+  //   height:20,
+  //   marginRight: 10,
+  //   alignItems: 'flex-end',
+  //   justifyContent: 'flex-end',
+  //
+  // },
+  // AddButton: {
+  //   backgroundColor: 'green',
+  //
+  // }
 });
 
 export default CalendarScreen;
