@@ -14,6 +14,7 @@ import {
 import CheckBox from 'react-native-check-box';
 import { Icon, Header } from 'react-native-elements';
 import t from 'tcomb-form-native';
+import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
 
 const Form = t.form.Form;
 
