@@ -11,6 +11,11 @@ import CalendarScreen from './CalendarScreen';
 
 import t from 'tcomb-form-native';
 
+var _ = require('lodash');
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+stylesheet.textbox.normal.height = 80;
+
 const Form = t.form.Form;
 
 
@@ -61,6 +66,7 @@ var options = {
 		description: {
 			label: 'Describe the Event',
 			multiline: true,
+			stylesheet: stylesheet,
 		},
 		numberOfPinkTies: {
 			label: 'How many pink ties would you like for this event? (optional)',

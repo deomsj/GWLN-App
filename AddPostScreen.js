@@ -15,6 +15,7 @@ const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
 
 stylesheet.textbox.normal.height = 200;
 stylesheet.textbox.normal.textAlignVertical = 'top';
+
 const Content = t.struct({
 	PostTitle: t.String,
 	Post: t.String,
@@ -30,7 +31,8 @@ const Options = {
 		Post: {
 			label: 'Details',
 			error: 'Please enter your post',
-			multiLine: true,
+			multiline: true,
+			numberoflines: 2,
 			config: {
 				size: 'lg',
 			},

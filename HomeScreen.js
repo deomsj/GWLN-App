@@ -68,7 +68,7 @@ class HomeScreen extends React.Component {
                 value: null,
               }}
               items={this.state.items}
-              onValueChange={(value) => {
+               onValueChange={(value) => {
                 this.setState({
                   Function: value,
                 });
