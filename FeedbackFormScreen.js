@@ -14,6 +14,7 @@ var _ = require('lodash');
 const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
 
 stylesheet.textbox.normal.height = 100;
+stylesheet.textbox.normal.textAlignVertical = 'top';
 
 const Content = t.struct({
 	EventName: t.String,

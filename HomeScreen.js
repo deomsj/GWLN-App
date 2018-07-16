@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, TouchableOpacity, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
@@ -48,20 +48,21 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
+
       <View style={styles.container}>
+        <View style={styles.buttoncontainer}>
 
-        <Button
-          color= '#002A55'
-          justifyContent= 'center'
-          title="Message Board"
-          onPress={() => this.props.navigation.navigate('MessageBoard')}
+          <Button
+            color= '#002A55'
+            title="Message Board"
+            onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
-        <Button
-          color= '#002A55'
-          title="Member List"
-          onPress={() => this.props.navigation.navigate('MemberList')}
-          />
-
+          <Button
+            color= '#002A55'
+            title="Member List"
+            onPress={() => this.props.navigation.navigate('MemberList')}
+            />
+          </View>
             <RNPickerSelect
               placeholder={{
                 label: 'Event Management...',
@@ -92,6 +93,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
+  buttoncontainer: {
+    flexDirection: 'row',
+    padding: 20,
+    //justifyContent: 'space-around'
+  },
+  button: {
+   alignItems: 'center',
+   backgroundColor: '#002a55',
+   padding: 10
+ },
 });
 
 const pickerStyle = StyleSheet.create({
