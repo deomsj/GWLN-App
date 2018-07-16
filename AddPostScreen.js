@@ -63,9 +63,10 @@ static navigationOptions = ({navigation})=> {
 	return {
 		headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Create Post </Text>),
 		headerRight: ( <Icon
-			containerStyle={{padding:15}}
+			containerStyle={{padding:15, marginTop:10, marginBottom:10}}
 			type='font-awesome'
 			name= "trash"
+			size={20}
 			onPress={navigation.getParam('discard')}/>
 		),
 	};
