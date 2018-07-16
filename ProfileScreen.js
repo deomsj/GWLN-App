@@ -12,8 +12,14 @@ import LaunchPage from './LaunchPage';
 class ProfileScreen extends React.Component {
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         <View style={styles.profileContainer}>
+        </View>
+        <View style={styles.InfoContainer}>
+          <Text style={styles.InfoText}> name </Text>
+          <Text style={styles.InfoText}> phone number </Text>
+          <Text style={styles.InfoText}> email </Text>
+          <Text style={styles.InfoText}> other information </Text>
         </View>
         <View style={styles.optionsContainer}>
           <Button
@@ -21,28 +27,25 @@ class ProfileScreen extends React.Component {
             title="My Upcoming Events"
             onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
             />
-        </View>
-        <View style={styles.optionsContainer}>
-          <Button
+              <Button
             color= '#002A55'
             title="My Past Events"
             onPress={() => this.props.navigation.navigate('MyPastEvents')}
           />
-        </View>
-        <View style={styles.optionsContainer}>
-          <Button
+           <Button
             color='#002a55'
             title="Sign Out"
             onPress={() => Alert.alert(
-							'Sign Out',
-							'Are you sure you want to sign out of your account?',
-							[
-								{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-								{text: 'Yes', onPress: () => this.props.navigation.navigate('Launch')},
-							],
-						)}
+              'Sign Out',
+              'Are you sure you want to sign out of your account?',
+              [
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                {text: 'Yes', onPress: () => this.props.navigation.navigate('Launch')},
+              ],
+            )}
             />
-            </View>
+        </View>
+    
         </View>
     );
   }
@@ -52,12 +55,22 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   profileContainer: {
     backgroundColor: '#002a55',
-    opacity: .3,
-    padding:75,
+    
+  },
+  InfoContainer: {
+    flex: 2,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  InfoText: {
+    fontSize: 18,
+    paddingTop: 10,
+    paddingLeft: 5,
   },
   optionsContainer: {
+    flex: 3,
     backgroundColor: 'white',
-    padding:15,
+    
     flexDirection: 'column',
     alignItems: 'center',
   }

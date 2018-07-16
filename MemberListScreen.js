@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 
@@ -38,7 +38,9 @@ class MemberListScreen extends React.Component {
 			seed: 1,
 			error: null,
 			refreshing: false,
+			
 		};
+		this._handleResults = this._handleResults.bind(this);
 	}
 
 
@@ -74,8 +76,29 @@ class MemberListScreen extends React.Component {
 	);
 
 	renderHeading = () => {
-		return <SearchBar placeholder="Search" lightTheme round/>;
+		return <SearchBar placeholder="Search" lightTheme round 
+				ref={(ref) => this.searchBar = ref}
+				//data={data}
+				handleResults={this._handleResults}
+				/>;
 	};
+
+	_handleResults(results) {
+		this.setState({results});
+	}
+
+	SearchFilterFunction(text){
+		const people = this.data.item.name.first
+		const newData = this.data.filter(function(people){
+			const itemData = item.name.first.toLowerCase()
+			const textData = text.toLowerCase()
+			return itemData.indexOf(textData) > -1
+		})
+		this.setState({
+			data: this.state.data.newData,
+			text: text
+		})
+	}
 
 
 	componentDidMount() {
