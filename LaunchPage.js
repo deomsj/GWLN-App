@@ -19,18 +19,12 @@ class LaunchPage extends React.Component {
 				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
 				<Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
 				{this.renderButtons()}
-				<Text
-					style={styles.memberText}
-					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
-					Become a Member!
-				</Text>
 			</View>
-
 		);
 	}
 	renderButtons() {
 		return(
-		<View style={styles.container}>
+		<View>
 		<View style={styles.buttonContainer}>
 			<Button
 				style={styles.buttons}
@@ -47,6 +41,13 @@ class LaunchPage extends React.Component {
 				color= "#002a55"
 			/>
 			</View>
+			<View style={styles.buttonContainer}>
+				<Text
+					style={styles.memberText}
+					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
+					Become a Member!
+				</Text>
+			</View>
 			</View>
 	)};
 }
@@ -55,12 +56,15 @@ export default LaunchPage;
 
 const styles = StyleSheet.create({
 	container: {
+		flex:1,
 		backgroundColor: 'white',
+		justifyContent: 'center',
+		// alignSelf:'center',
 		padding: 50,
 	},
   buttonContainer: {
 		flexDirection: 'column',
-		padding: 15,
+		padding: 10,
     alignItems: 'center',
   },
 	buttons: {
@@ -71,25 +75,29 @@ const styles = StyleSheet.create({
 		color: 'blue',
 		padding: 15,
 		alignSelf: 'center',
-		bottom: 50
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'column',
 	},
 	GWLNlogo: {
-		flex: 1,
-		alignSelf: 'stretch',
+		// flex: 1,
+		alignSelf: 'center',
 		resizeMode: 'contain',
-		width: undefined,
-		height: undefined,
-		padding: 60,
+		width: '100%',
+		height: '100%',
+		padding: 100,
+		position: 'absolute',
+		bottom: '50%',
 	},
 	WorldCouncil: {
-		flex:1,
+		// flex:1,
 		alignSelf: 'stretch',
 		resizeMode: 'contain',
 		width: undefined,
 		height: undefined,
 		padding: 70,
 		position: 'absolute',
-		bottom: 0,
-		right:10,
+		bottom: '0%',
+		right: '10%',
 	}
 });

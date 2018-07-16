@@ -63,7 +63,6 @@ class MemberSigninScreen extends React.Component {
 
 	render() {
 		return(
-			<ScrollView>
 			<View style={styles.container}>
 				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
 				<Text style={styles.paragraph}>
@@ -86,7 +85,6 @@ class MemberSigninScreen extends React.Component {
 					</Text>
 				</View>
 			</View>
-			</ScrollView>
 		);
 	}
 
@@ -96,12 +94,11 @@ export default MemberSigninScreen;
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		// flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		backgroundColor: '#fff',
 		padding: 50,
-
 	},
 	paragraph: {
 		margin: 30,
@@ -120,12 +117,12 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 	},
 	GWLNlogo: {
-		flex: 1,
+		// flex: 1,
 		alignSelf: 'stretch',
 		resizeMode: 'contain',
 		width: undefined,
 		height: undefined,
-		padding: 60,
+		padding: 45,
 		backgroundColor: 'white',
 	}
 });

@@ -112,7 +112,7 @@ TabNav.navigationOptions = ({navigation}) => {
       containerStyle={{padding:15}}
       type='font-awesome'
       name="plus"
-      size={32}
+      size={20}
       onPress={() => navigation.navigate('CreateEvent')}
     />)
     };

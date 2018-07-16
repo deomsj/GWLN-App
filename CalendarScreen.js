@@ -129,15 +129,6 @@ class CalendarScreen extends React.Component {
   render() {
     //this.AddToCal();
     return (
-        // <View style={styles.AddButtonContainer}>
-        //   <Icon
-        //     type='font-awesome'
-        //     name="plus"
-        //     size={32}
-        //     onPress={() => this.props.navigation.navigate('CreateEvent')}
-        //   />
-        // </View>
-
         <View style={{ flex: 1}}>
         <Calendar
         style={styles.Calendar}
@@ -164,19 +155,6 @@ const styles = StyleSheet.create ({
     height: "90%",
     width: "100%"
   },
-  // AddButtonContainer: {
-  //   flex: 1,
-  //   flexDirection: 'row',
-  //   height:20,
-  //   marginRight: 10,
-  //   alignItems: 'flex-end',
-  //   justifyContent: 'flex-end',
-  //
-  // },
-  // AddButton: {
-  //   backgroundColor: 'green',
-  //
-  // }
 });
 
 export default CalendarScreen;
