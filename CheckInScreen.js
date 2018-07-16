@@ -1,7 +1,3 @@
-/*
-MAKE SURE YOU CAN ONLY CHECK ONE BOX PER QUESTION
-*/
-
 import React, {Component} from 'react';
 import {
     StyleSheet,
@@ -46,19 +42,25 @@ class CheckInScreen extends Component {
           value: null,
           selectedIndex1: null,
           selectedIndex2: null,
+          val1: null,
+          val2: null,
         }
   }
 
   initialState = () => {
+    // const value = this._form.getValue();
+		// console.log('value', value);
     this.setState({value: null})
     this.setState({
       value: null,
       selectedIndex1: -1,
       selectedIndex2: -1,
+      val1: null,
+      val2: null,
     })
   }
 
-  DiscardForm=(value ) => {
+  DiscardForm=( value ) => {
 		Alert.alert(
 			'Discard Feedback',
 			'Are you sure you want to clear this form?',
@@ -94,20 +96,22 @@ class CheckInScreen extends Component {
 
   //================radioadd=====================
   onSelect_1(index, value){
-    console.log(value)
-    console.log(index)
+    //console.log(value)
+    //console.log(index)
 
     this.setState({
       selectedIndex1: index,
+      val1: value,
     })
   }
 
   onSelect_2(index, value){
-    console.log(value)
-    console.log(index)
+    //console.log(value)
+    //console.log(index)
 
     this.setState({
       selectedIndex2: index,
+      val2: value,
     })
   }
 
@@ -115,15 +119,23 @@ class CheckInScreen extends Component {
   onCheck () {
     this.initialState;
   }
+  onSubmit = () => {
+    const value = this._form.getValue();
+		console.log('value', value);
+    console.log('Is member?', this.state.val1);
+    console.log('Interested?', this.state.val2);
+    this.initialState();
 
+  }
   handleSubmit = () => {
     Alert.alert(
       'Check In',
       'The atendee has been checked in',
       [
-        {text: 'Dismiss', onPress: this.initialState},
+        {text: 'Dismiss', onPress: this.onSubmit},
       ],
-    )}
+    )
+  }
   //================radioadd=====================
 
 
@@ -230,3 +242,7 @@ const styles = StyleSheet.create({
 })
 
 export default CheckInScreen;
+
+//================NOTES================
+//This might not be a problem but the radio buttons are being printed at the
+//console when checked, not when the form is submitted -- FIXED!!
