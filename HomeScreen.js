@@ -4,6 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
+//import Realm from 'realm';
 
 import GWLNScreen from './GWLNScreen';
 import DonateWebView from './DonateWebView';
