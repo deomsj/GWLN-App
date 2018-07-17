@@ -47,7 +47,7 @@ class HomeScreen extends React.Component {
       this.props.navigation.navigate(nextPage)
     }
 
-   
+
 
   render() {
     return (
