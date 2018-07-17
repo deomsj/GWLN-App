@@ -21,13 +21,17 @@ import OrganizerSigninScreen from './OrganizerSigninScreen';
 import HomeScreen from './HomeScreen';
 import Slot from './Slot';
 
-
+import EventData from './www_timeline_events.json';
 const _format = 'YYYY-MM-DD'
 const _today = moment().format(_format)
 const _maxDate = moment().add(120, 'days').format(_format)
 
+//const calendarEvents = require('./mock-database/wwww.timeline_events.json');
+
 
 class CalendarScreen extends React.Component {
+
+  
 
   initialState = {
     [_today]: {disabled: true}
@@ -37,6 +41,7 @@ class CalendarScreen extends React.Component {
     super();
     this.state = {
       _markedDates: this.initialState,
+      data: EventData,
       //EventDate: ''
     }
     //this.test = this.test.bind(this);
@@ -120,6 +125,7 @@ class CalendarScreen extends React.Component {
   }
   componentWillMount(){
     console.log('in componen will mount');
+    console.log(this.state.data)
     //console.log(this.state.EventDate);
     this._mounted = true;
     //this.AddEvent(this.state.EventDate);
