@@ -46,13 +46,11 @@ class OrganizerSigninScreen extends React.Component {
 		this.setState({value:null});
 	}
 
-	/*DiscardForm(){
-		const value = this._form.getValue();
-		if(!value){
-			this.resetForm({})
-		}
+	static navigationOptions = {
+		headerStyle: { backgroundColor: 'white', elevation: 0}
+	}
 
-	}*/
+
 	handleSubmit = () => {
 		const value = this._form.getValue();
 		console.log('value', value);
