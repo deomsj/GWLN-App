@@ -26,6 +26,7 @@ import LaunchPage from './LaunchPage';
 import Slot from './Slot';
 import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
+import PostDetailsScreen from './PostDetailsScreen';
 
 
  const TabNav = createBottomTabNavigator({
@@ -178,6 +179,9 @@ const NavigationFlow = createStackNavigator({
   },
   MemberContactPage: {
     screen: MemberContactPage,
+  },
+  PostDetailsScreen: {
+    screen: PostDetailsScreen,
   },
 
 })
