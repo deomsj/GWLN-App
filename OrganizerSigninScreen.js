@@ -69,7 +69,7 @@ class OrganizerSigninScreen extends React.Component {
 				<Text style={styles.paragraph}>
 					Organizer Sign In
 				</Text>
-				<View style={{marginTop:50}}>
+				<View style={{marginTop:100}}>
 				<Form ref={c=>this._form = c}
 				type={SigninForm}
 				options={options}/>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		alignSelf: 'center',
 		position: 'absolute',
-		bottom: '85%',
+		bottom: '80%',
 		color: '#002a55',
 		padding:30,
 	},
@@ -128,6 +128,6 @@ const styles = StyleSheet.create({
 		height: '100%',
 		padding: 50,
 		position: 'absolute',
-		bottom: '60%',
+		bottom: '55%',
 	}
 });
