@@ -66,14 +66,15 @@ class MemberSigninScreen extends React.Component {
 			<View style={styles.container}>
 				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
 				<Text style={styles.paragraph}>
-					Member Sign in
+					Member Sign In
 				</Text>
+				<View style={{marginTop:50}}>
 				<Form ref={c=>this._form = c}
 				type={SigninForm}
 				options={options}/>
-				<View style={styles.container}>
+				</View>
+				<View style={styles.buttonContainer}>
 					<Button
-					style={styles.buttons}
 					title="Submit"
 					onPress={this.handleSubmit}
 					color= "#002a55"
@@ -83,7 +84,7 @@ class MemberSigninScreen extends React.Component {
 						onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_forgot_password')}}>
 						Forgot Password
 					</Text>
-				</View>
+			</View>
 			</View>
 		);
 	}
@@ -94,22 +95,25 @@ export default MemberSigninScreen;
 
 const styles = StyleSheet.create({
 	container: {
-		// flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'space-between',
-		backgroundColor: '#fff',
+		flex: 1,
+		justifyContent: 'center',
+		backgroundColor: 'white',
 		padding: 50,
 	},
 	paragraph: {
-		margin: 30,
 		fontSize: 20,
 		fontWeight: 'bold',
 		textAlign: 'center',
+		alignSelf: 'center',
+		position: 'absolute',
+		bottom: '85%',
 		color: '#002a55',
+		padding:30,
 	},
-	buttons: {
-		padding: 40,
-		margin: 10,
+	buttonContainer: {
+		flexDirection: 'column',
+		alignSelf: 'center',
+		padding: 30,
 	},
 	memberText: {
 		color: 'blue',
@@ -117,12 +121,12 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 	},
 	GWLNlogo: {
-		// flex: 1,
-		alignSelf: 'stretch',
+		alignSelf: 'center',
 		resizeMode: 'contain',
-		width: undefined,
-		height: undefined,
-		padding: 45,
-		backgroundColor: 'white',
+		width: '100%',
+		height: '100%',
+		padding: 50,
+		position: 'absolute',
+		bottom: '60%',
 	}
 });
