@@ -6,8 +6,8 @@ import donateImage from './img/Donate.jpg';
 
 class GWLNScreen extends React.Component {
   render() {
-    const buttonColors = ['#002A55'];
-    if (Platform.OS === 'ios') buttonColors.push('white');
+    const buttonColors = ['rgba(0, 42, 85, 1)'];
+    if (Platform.OS === 'ios') buttonColors.push('rgba(255, 255, 255, 1)');
 
     return (
       <View>
@@ -62,11 +62,11 @@ const styles= StyleSheet.create({
     ...Platform.select({
       ios: {
         fontFamily: 'Helvetica',
-        fontWeight: '800',
+        fontWeight: '700',
       },
       android: {
         fontFamily: 'sans-serif-medium',
-        fontWeight: '200',
+        fontWeight: '400',
       },
     }),
     fontSize: 23,

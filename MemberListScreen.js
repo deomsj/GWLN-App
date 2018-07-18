@@ -25,7 +25,7 @@ class MyListItem extends React.Component {
 
 class MemberListScreen extends React.Component {
 	static navigationOptions = {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Member List </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Member List </Text>),
 			headerRight: (<View></View>),
 	}
 
@@ -38,7 +38,7 @@ class MemberListScreen extends React.Component {
 			seed: 1,
 			error: null,
 			refreshing: false,
-			
+
 		};
 		this._handleResults = this._handleResults.bind(this);
 	}
@@ -76,7 +76,7 @@ class MemberListScreen extends React.Component {
 	);
 
 	renderHeading = () => {
-		return <SearchBar placeholder="Search" lightTheme round 
+		return <SearchBar placeholder="Search" lightTheme round
 				ref={(ref) => this.searchBar = ref}
 				//data={data}
 				handleResults={this._handleResults}

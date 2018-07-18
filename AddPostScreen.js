@@ -61,11 +61,12 @@ DiscardForm=()=>{
 
 static navigationOptions = ({navigation})=> {
 	return {
-		headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Create Post </Text>),
+		headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Create Post </Text>),
 		headerRight: ( <Icon
 			containerStyle={{padding:15, marginTop:10, marginBottom:10}}
 			type='font-awesome'
 			name= "trash"
+			color= '#002A55'
 			size={20}
 			onPress={navigation.getParam('discard')}/>
 		),

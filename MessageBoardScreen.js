@@ -58,10 +58,11 @@ class MessageBoardScreen extends React.Component {
 
   static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Message Board </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Message Board </Text>),
 			headerRight: ( <Icon
 				containerStyle={{padding:15}}
 				type='font-awesome'
+				color= '#002A55'
 				name= "edit"
 				onPress={navigation.getParam('goToAdd')}/>
 			),
