@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Image, ImageBackground, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import DonateWebView from './DonateWebView';
 import donateImage from './img/Donate.jpg';
@@ -56,7 +56,14 @@ const styles= StyleSheet.create({
   text: {
     includeFontPadding: true,
     letterSpacing: 1,
-    fontFamily: 'sans-serif-medium',
+    ...Platform.select({
+      ios: {
+        fontFamily: 'Helvetica',
+      },
+      android: {
+        fontFamily: 'sans-serif-medium',
+      },
+    }),
     fontSize: 23,
     // backgroundColor: 'white',
     fontWeight: '200',
