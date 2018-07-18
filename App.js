@@ -95,24 +95,25 @@ TabNav.navigationOptions = ({navigation}) => {
   let title;
   if (routeName==='Home') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Home </Text>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
     headerLeft: null,
     };
   }
   else if (routeName==='Profile') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> My Profile </Text>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> My Profile </Text>),
     headerLeft: null,
     };
   }
   else if (routeName==='CalendarView') {
     return {
     headerLeft: (<View></View>),
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Calendar </Text>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
     headerRight: (<Icon
       containerStyle={{padding:15}}
       type='font-awesome'
       name="plus"
+      color= '#002A55'
       size={20}
       onPress={() => navigation.navigate('CreateEvent')}
     />)
@@ -120,7 +121,7 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='GWLN') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Help Support Our Cause! </Text>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause! </Text>),
     headerLeft: null,
     };
   }

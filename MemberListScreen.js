@@ -25,7 +25,7 @@ class MyListItem extends React.Component {
 
 class MemberListScreen extends React.Component {
 	static navigationOptions = {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Member List </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Member List </Text>),
 			headerRight: (<View></View>),
 	}
 

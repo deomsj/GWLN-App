@@ -6,6 +6,8 @@ import donateImage from './img/Donate.jpg';
 
 class GWLNScreen extends React.Component {
   render() {
+    const buttonColors = ['rgba(0, 42, 85, 1)'];
+    if (Platform.OS === 'ios') buttonColors.push('rgba(255, 255, 255, 1)');
 
     return (
       <View>
@@ -15,7 +17,8 @@ class GWLNScreen extends React.Component {
       	<View style={styles.buttonContainer}>
                 <Button
                 // style={styles.button}
-                color= '#002A55'
+                // color= '#002A55'
+                color={buttonColors}
                 title="Donate!"
                 onPress={() => this.props.navigation.navigate('DonateView')}
                 />
@@ -36,7 +39,7 @@ const styles= StyleSheet.create({
     resizeMode: 'cover',
   },
   buttonContainer: {
-    backgroundColor: 'white',
+    backgroundColor: '#002A55',
     position: 'absolute',
     // alignItems: 'center',
     // justifyContent: 'center',
@@ -59,14 +62,15 @@ const styles= StyleSheet.create({
     ...Platform.select({
       ios: {
         fontFamily: 'Helvetica',
+        fontWeight: '700',
       },
       android: {
         fontFamily: 'sans-serif-medium',
+        fontWeight: '400',
       },
     }),
     fontSize: 23,
-    // backgroundColor: 'white',
-    fontWeight: '200',
+
     alignSelf: 'center',
     textAlign: 'center',
     alignItems: 'center',
@@ -76,13 +80,12 @@ const styles= StyleSheet.create({
     padding:10,
     margin:10,
   },
-  // button: {
-  //   // flex: 1,
-  //   // alignItems: 'center',
-  //   // justifyContent: 'center',
-  //   borderWidth: 100,
-  //   borderColor: 'white',
-  // }
+  androidButton : {
+    color : '#002A55',
+  },
+  iosButton: {
+    color: 'white',
+  },
 })
 
 export default GWLNScreen;

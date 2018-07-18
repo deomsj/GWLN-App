@@ -73,10 +73,11 @@ class CheckInScreen extends Component {
 
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Event Check In </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Event Check In </Text>),
 			headerRight: ( <Icon
 				containerStyle={{padding:15}}
 				type='font-awesome'
+        color= '#002A55'
 				name= "trash"
 				onPress={navigation.getParam('discard')}/>
 			),
