@@ -67,42 +67,54 @@ class CalendarScreen extends React.Component {
 
   PostEvent = (day) => {
     console.log('in post event');
+    console.log(day)
     let marked = true;
-    let markedDates = {}
+    let markedDates = this.state._markedDates
 
     markedDates = {...markedDates, ...{ marked }};
-
-    const updatedMarkedDates = {...this.state._markedDates, ...{[day]: markedDates}}
-    console.log(updatedMarkedDates);
-
-
+    console.log(markedDates);
+    const updatedMarkedDates = {...markedDates, ...{[day]: markedDates}}
+    
     this.setState({_markedDates: updatedMarkedDates});
+    //console.log(this.state._markedDates);
 
   }
 
-  AddEvent = (info) => {
-
-    console.log('in AddEvent');
-    console.log(info)
-    const newEvent = moment(info).format(_format);
-    console.log(newEvent);
-
-    //const EventDay = moment(newEvent.dateString).format(_format);
-    //EventArray.push(newEvent);
-    //console.log(newEvent);
-    //console.log(EventArray);
-
-    //this.step();
-    console.log(EventArray);
-    this.AddToCal(EventArray);
+  _parseEventData =({ item }) => {
+    console.log("in parse data");
+    const data = this.state.data.Events
+    //const id = item.timeline_event_id
+    //console.log(data);
+    console.log(data.length);
+    for (var i = 0; i < data.length; i++) {
+      const day = data[i].event_day
+      const month = data[i].event_month
+      const year = data[i].event_year
+      const date = `${year}-${month}-${day}`
+      console.log(date);
+      this.PostEvent(date);
+    }
 
   }
 
-  step = () => {
-    console.log('step');
-    console.log(EventArray);
-    //this.step();
-  }
+  // AddEvent = (info) => {
+
+  //   console.log('in AddEvent');
+  //   console.log(info)
+  //   const newEvent = moment(info).format(_format);
+  //   console.log(newEvent);
+
+  //   //const EventDay = moment(newEvent.dateString).format(_format);
+  //   //EventArray.push(newEvent);
+  //   //console.log(newEvent);
+  //   //console.log(EventArray);
+
+  //   //this.step();
+  //   console.log(EventArray);
+  //   this.AddToCal(EventArray);
+
+  // }
+
 
   OnDaySelect = (date) => {
     const _selectedDay = moment(date.dateString).format(_format);
@@ -111,6 +123,7 @@ class CalendarScreen extends React.Component {
     //let marked = true;
     //let markedDates = {}
     if (this.state._markedDates[_selectedDay]){
+      console.log('in if statement');
       this.props.navigation.navigate('EventDetails')
       marked = !this.state._markedDates[_selectedDay].marked;
       markedDates = this.state._markedDates[_selectedDay];
@@ -125,11 +138,11 @@ class CalendarScreen extends React.Component {
   }
   componentWillMount(){
     console.log('in componen will mount');
-    console.log(this.state.data)
+    //console.log(this.state.data)
     //console.log(this.state.EventDate);
     this._mounted = true;
     //this.AddEvent(this.state.EventDate);
-    this.step();
+    this._parseEventData(this.state.data);
       }
 
   render() {
