@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import Separator from './Separator'
 
 import LaunchPage from './LaunchPage';
-
+import contactData from './mock-database/crm.contacts.json';
 
 class ProfileScreen extends React.Component {
   render() {
@@ -45,7 +45,7 @@ class ProfileScreen extends React.Component {
             )}
             />
         </View>
-    
+
         </View>
     );
   }
@@ -55,7 +55,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   profileContainer: {
     backgroundColor: '#002a55',
-    
+
   },
   InfoContainer: {
     flex: 2,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flex: 3,
     backgroundColor: 'white',
-    
+
     flexDirection: 'column',
     alignItems: 'center',
   }
