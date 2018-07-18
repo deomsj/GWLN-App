@@ -7,6 +7,10 @@ import WorldCouncilLogo from './img/WorldCouncil_logo.png';
 // import OrganizerSigninScreen from './OrganizerSigninScreen';
 class LaunchPage extends React.Component {
 
+	static navigationOptions = {
+		header: null,
+	}
+
 	handleOrgSignin = () => {
 		this.props.navigation.navigate('OrganizerSignin')
 	}
@@ -87,7 +91,7 @@ const styles = StyleSheet.create({
 		height: '100%',
 		padding: 100,
 		position: 'absolute',
-		bottom: '50%',
+		bottom: '40%',
 	},
 	WorldCouncil: {
 		// flex:1,
