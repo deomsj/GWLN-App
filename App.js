@@ -120,7 +120,7 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='GWLN') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Donate! </Text>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> Help Support Our Cause! </Text>),
     headerLeft: null,
     };
   }
