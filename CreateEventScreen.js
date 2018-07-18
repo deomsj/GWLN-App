@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		backgroundColor: '#fff',
-		padding: 20,
+		padding: 30,
 
 	},
 	paragraph: {

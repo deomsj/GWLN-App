@@ -51,7 +51,6 @@ const styles= StyleSheet.create({
   },
   text: {
     includeFontPadding: true,
-    letterSpacing: 1,
     ...Platform.select({
       ios: {
         fontFamily: 'Helvetica',
@@ -59,7 +58,7 @@ const styles= StyleSheet.create({
       },
       android: {
         fontFamily: 'sans-serif-medium',
-        fontWeight: '400',
+        fontWeight: '500',
       },
     }),
     fontSize: 23,
