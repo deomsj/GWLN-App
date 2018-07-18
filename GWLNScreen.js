@@ -58,7 +58,7 @@ const styles= StyleSheet.create({
       },
       android: {
         fontFamily: 'sans-serif-medium',
-        fontWeight: '500',
+        fontWeight: '400',
       },
     }),
     fontSize: 23,
