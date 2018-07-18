@@ -4,7 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 class MyPastEventsScreen extends React.Component {
 	static navigationOptions = {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20}}> My Past Events </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20,color: '#002A55'}}> My Past Events </Text>),
 			headerRight: (<View></View>)
 	}
 	render() {
