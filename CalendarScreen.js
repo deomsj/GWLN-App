@@ -31,12 +31,6 @@ const _maxDate = moment().add(120, 'days').format(_format)
 
 class CalendarScreen extends React.Component {
 
-  
-
-  initialState = {
-    [_today]: {disabled: true}
-  }
-
   constructor() {
     super();
     this.state = {
@@ -46,7 +40,7 @@ class CalendarScreen extends React.Component {
     }
     //this.test = this.test.bind(this);
     //this.OnDaySelect = this.OnDaySelect.bind(this);
-     global.EventArray = ['2018-07-14','2018-07-20','2018-07-23'];
+     //global.EventArray = ['2018-07-14','2018-07-20','2018-07-23'];
      this.PostEvent = this.PostEvent.bind(this);
   }
   test = () => {
@@ -159,7 +153,7 @@ class CalendarScreen extends React.Component {
           maxDate={_maxDate}
 
           onDayPress={this.OnDaySelect}
-          markedDates={this.state._markedDates}
+          markedDates={{[this.state.selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}}}
           />
       </View>
     );
