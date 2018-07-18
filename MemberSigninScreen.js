@@ -5,6 +5,8 @@ import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
+import memberData from './mock-database/gwln.members.json';
+
 // import GWLNSignUp from './GWLNSignUp';
 import t from 'tcomb-form-native';
 
@@ -40,8 +42,16 @@ var options = {
 	}
 };
 
+//var memdata = require('./mock-database/gwln.members.json');
 
 class MemberSigninScreen extends React.Component {
+	constructor (props) {
+		super(props);
+		this.state = {
+			data: memberData,
+		}
+	}
+
 	resetForm = (value) => {
 		this.setState({value:null});
 	}
@@ -54,6 +64,7 @@ class MemberSigninScreen extends React.Component {
 
 	}*/
 	handleSubmit = () => {
+		//console.log(memdata.members[0].username);
 		const value = this._form.getValue();
 		console.log('value', value);
 		if(value) {
