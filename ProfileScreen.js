@@ -9,6 +9,9 @@ import Separator from './Separator'
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 
+
+const profdata = require('./mock-database/crm.contacts.json');
+
 class ProfileScreen extends React.Component {
   render() {
     return (

@@ -38,7 +38,7 @@ class MemberListScreen extends React.Component {
 			seed: 1,
 			error: null,
 			refreshing: false,
-			
+
 		};
 		this._handleResults = this._handleResults.bind(this);
 	}
@@ -76,7 +76,7 @@ class MemberListScreen extends React.Component {
 	);
 
 	renderHeading = () => {
-		return <SearchBar placeholder="Search" lightTheme round 
+		return <SearchBar placeholder="Search" lightTheme round
 				ref={(ref) => this.searchBar = ref}
 				//data={data}
 				handleResults={this._handleResults}
