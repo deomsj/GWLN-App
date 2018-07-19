@@ -101,9 +101,10 @@ class CreateEventScreen extends React.Component {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Create an Event </Text>),
 			headerRight: ( <Icon
-				containerStyle={{padding:15}}
+				containerStyle={{marginRight:15, marginTop:15}}
+				iconStyle={styles.headerIcon}
 				type='font-awesome'
-				color= '#002A55'
+				// color= '#002A55'
 				name= "trash"
 				onPress={navigation.getParam('discard')}/>
 			),
@@ -218,5 +219,9 @@ const styles = StyleSheet.create({
 		//textAlign: 'center',
 		//color: '#34495e',
 		backgroundColor: '#ff6666'
+	},
+	headerIcon: {
+		flex:1,
+		color: '#002A55',
 	},
 });

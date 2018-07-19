@@ -110,11 +110,12 @@ TabNav.navigationOptions = ({navigation}) => {
     headerLeft: (<View></View>),
     headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
     headerRight: (<Icon
-      containerStyle={{padding:15}}
+      containerStyle={{marginRight:15, marginTop:15}}
+      iconStyle={styles.headerIcon}
       type='font-awesome'
       name="plus"
-      color= '#002A55'
-      size={20}
+      // color= '#002A55'
+      // size={20}
       onPress={() => navigation.navigate('CreateEvent')}
     />)
     };
@@ -188,6 +189,13 @@ const NavigationFlow = createStackNavigator({
 })
 
 export default NavigationFlow;
+
+const styles = StyleSheet.create({
+  headerIcon: {
+		flex:1,
+		color: '#002A55',
+	}
+})
 
 /*export const RootStack = createStackNavigator(
   {

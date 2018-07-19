@@ -56,19 +56,13 @@ class MessageBoardScreen extends React.Component {
 	);
 
   static navigationOptions = ({navigation})=> {
-		var iconSize = 20;
-		if (Platform.OS === 'ios') {
-			iconSize = 15;
-		};
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Message Board </Text>),
 			headerRight: ( <Icon
 				containerStyle={{marginRight:15, marginTop:15}}
 				iconStyle={styles.headerIcon}
 				type='font-awesome'
-				// color= '#002A55'
 				name= "edit"
-				// size={iconSize}
 				onPress={navigation.getParam('goToAdd')}/>
 			),
 
@@ -117,12 +111,7 @@ const styles = StyleSheet.create({
 		borderColor: "#CED0CE",
 	},
 	headerIcon: {
-		// size: 23,
-		// width:
-		alignItems: 'center',
-		justifyContent: 'center',
 		flex:1,
 		color: '#002A55',
-		// marginBottom: 10,
 	}
 });
