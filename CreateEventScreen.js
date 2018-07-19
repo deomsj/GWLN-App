@@ -26,10 +26,10 @@ const _maxDate = moment().add(120, 'days').format(_format)
 
 
 const Event = t.struct({
-	name: t.String,
+	event_name: t.String,
 	location: t.String,
 	date: t.Date,
-	description: t.maybe(t.String),
+	event_description: t.maybe(t.String),
 	numberOfPinkTies: t.maybe(t.Number),
 });
 
@@ -123,6 +123,14 @@ class CreateEventScreen extends React.Component {
 
 
 		const TmpDate = value.date;
+		// const DBEvent = {
+		// 	event_name: value.event_name,
+		// 	event_day: ,
+		// 	event_month: ,
+		// 	event_year: ,
+		// 	event_description: value.event_description,
+		// }
+
 		//this.updateCalendar.bind(this);
 		//console.log(TmpDate);
 		if(value) {
