@@ -8,7 +8,7 @@ import MessageBoardScreen from './MessageBoardScreen'
 class PostDetailsScreen extends React.Component {
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> {navigation.state.params.post.name}'s Post </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: '#002A55'}}> {navigation.state.params.post.name}'s Post </Text>),
 			headerRight: (<View></View>),
 		};
 	}
@@ -16,13 +16,10 @@ class PostDetailsScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-				<View style={styles.titleContainer}>
 					<Text style={styles.titleText}> {this.props.navigation.state.params.post.title} </Text>
-				</View>
-				<View style={styles.postContainer}>
+					<Text style={styles.separator}> ==========================================</Text>
 					<Text style={styles.postText}> {this.props.navigation.state.params.post.description} </Text>
-				</View>
-				</View>
+			</View>
 		);
 	}
 
@@ -31,40 +28,26 @@ const styles = StyleSheet.create ({
 		mainContainer: {
 			backgroundColor: 'white',
 			flex:1,
+			flexDirection: 'column',
+			// justifyContent: 'center',
+			padding: 20,
 		},
-		container: {
-			flex: 1,
-			backgroundColor: 'white',
-			justifyContent: 'center',
-			padding: 30,
-		},
-	titleContainer: {
-		flex: 1,
-		padding:20,
-		alignItems: 'center',
-	},
 	titleText: {
-		color:'#002A55',
+		color:'black',
 		fontSize: 23,
 		fontWeight: '400',
-		textAlign: 'center',
-	},
-	postContainer: {
-		padding: 10,
-		borderRadius: 10,
-		// backgroundColor: '#CED0CE',
-		borderWidth: 1,
-		// borderTopWidth: 0,
-		borderColor: 'black',
-		alignItems: 'center',
-		justifyContent: 'center',
-		position: 'absolute',
-		bottom: '75%',
+		marginBottom: 20,
+		// textAlign: 'center',
 	},
 	postText: {
-		color:'#002A55',
-		fontSize: 17,
-		textAlign: 'center',
+		color:'black',
+		fontSize: 16,
+		// textAlign: 'center',
 	},
+	separator: {
+		color: 'black',
+		fontSize: 15,
+		marginBottom: 20,
+	}
 })
 export default PostDetailsScreen;
