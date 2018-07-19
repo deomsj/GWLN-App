@@ -128,23 +128,26 @@ class MemberListScreen extends React.Component {
 
 	render() {
 		return(
-			<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
+			<View style={styles.mainContainer}>
+				<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
 				<FlatList
-
 						data={this.state.data}
 						renderItem={this._renderItem}
 						keyExtractor={item => item.email}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
-
 				/>
 			</List>
+			</View>
 		);
 	}
 
 }
 
 const styles = StyleSheet.create({
+	mainContainer: {
+		backgroundColor: 'white',
+	},
 	container: {
 		flex: 1,
 		marginTop: 40,

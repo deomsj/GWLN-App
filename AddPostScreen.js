@@ -63,11 +63,11 @@ static navigationOptions = ({navigation})=> {
 	return {
 		headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Create Post </Text>),
 		headerRight: ( <Icon
-			containerStyle={{padding:15, marginTop:10, marginBottom:10}}
+			containerStyle={{padding:15}}
 			type='font-awesome'
 			name= "trash"
 			color= '#002A55'
-			size={20}
+			// size={20}
 			onPress={navigation.getParam('discard')}/>
 		),
 	};
@@ -88,6 +88,7 @@ componentDidMount=(value)=> {
 
 	render() {
 		return(
+			<View style={styles.mainContainer}>
 			<ScrollView>
 			<View style={styles.container}>
 
@@ -111,30 +112,31 @@ componentDidMount=(value)=> {
 
 			</View>
 			</ScrollView>
+			</View>
 		);
 	}
 
 }
 const styles = StyleSheet.create({
+	mainContainer: {
+		backgroundColor: 'white',
+		flex:1,
+	},
 	container: {
+		flex: 1,
 		backgroundColor: 'white',
 		justifyContent: 'center',
-		// marginTop: 50,
-		padding: 20,
-
+		padding: 30,
 	},
 	title: {
-
 		justifyContent: 'center',
 		marginTop: 10,
 		alignItems: 'center',
 		fontSize: 24,
-
 	},
 	DiscardFeedback: {
 		fontSize: 10,
 	}
 });
-
 
 export default AddPostScreen;

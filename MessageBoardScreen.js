@@ -29,7 +29,7 @@ class MessageBoardScreen extends React.Component {
 					height: 1,
 					width: "86%",
 					backgroundColor: "#CED0CE",
-					marginLeft: "14%"
+					marginLeft: "5%"
 				}}
 			/>
 		);
@@ -78,19 +78,42 @@ class MessageBoardScreen extends React.Component {
 	}
   render(){
     return (
+			<View style={styles.mainContainer}>
+			<ScrollView>
+			<View style={styles.container}>
     		<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
 				<FlatList
-
 						data={this.state.data}
 						renderItem={this._renderItem}
 						keyExtractor={item => item.postID}
 						ItemSeparatorComponent={this.renderSeparator}
-						//ListHeaderComponent={this.renderHeading}
-
-				/>
+						/>
 			</List>
+			</View>
+			</ScrollView>
+			</View>
     );
   }
 }
 
 export default MessageBoardScreen;
+
+const styles = StyleSheet.create({
+	mainContainer: {
+		backgroundColor: 'white',
+		flex:1,
+		padding:30,
+	},
+	container: {
+		flex: 1,
+		// backgroundColor: 'white',
+		justifyContent: 'center',
+		padding:5,
+		// padding: 30,
+		// borderRadius: 10,
+		// borderWidth: 0.7,
+		// borderBottomWidth: 0.7,
+		// borderTopWidth: 0.7,
+		// borderColor: '#CED0CE',
+	},
+});
