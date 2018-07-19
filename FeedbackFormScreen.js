@@ -126,6 +126,7 @@ class FeedbackFormScreen extends React.Component {
 				type='font-awesome'
 				color= '#002A55'
 				name= "trash"
+				size={17}
 				onPress={navigation.getParam('discard')}/>
 			),
 		};
