@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff',
 		justifyContent: 'center',
-		padding: 20,
+		padding: 30,
 	},
 	title: {
 		justifyContent: 'center',

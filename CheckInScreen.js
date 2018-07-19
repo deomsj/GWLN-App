@@ -142,6 +142,7 @@ class CheckInScreen extends Component {
 
     render() {
         return (
+          <View style={styles.mainContainer}>
           <ScrollView>
             <View style={styles.container}>
               <Form
@@ -151,8 +152,9 @@ class CheckInScreen extends Component {
               value={this.state.value}
               onChange={this.onChange.bind(this)}
               />
-              <View style={styles.radiocontainer}>
-        				<Text> Are you a member of GWLN? </Text>
+              <View>
+                <View style={styles.radiocontainer}>
+        				   <Text style={styles.questionText}>Are you a member of GWLN? </Text>
         				<RadioGroup
         					size={18}
         					thickness={2}
@@ -167,9 +169,10 @@ class CheckInScreen extends Component {
         					<RadioButton value={'member_no'} style={styles.rb} >
         						<Text>No</Text>
         					</RadioButton>
-
         				</RadioGroup>
-        				<Text>If not, would you like to be?</Text>
+                </View>
+                <View style={styles.radiocontainer}>
+        				<Text style={styles.questionText}>If not, would you like to be?</Text>
         				<RadioGroup
         					size={18}
         					thickness={2}
@@ -187,28 +190,33 @@ class CheckInScreen extends Component {
         					<RadioButton value={'na'} style={styles.rb} >
         						<Text>N/A</Text>
         					</RadioButton>
-
         				</RadioGroup>
+                </View>
               </View>
+              <View style={styles.container}>
               <Button
                 title="Check In!"
                 onPress={this.handleSubmit}
                 color= '#002a55'
               />
               </View>
-              <View style={styles.trash}>
               </View>
             </ScrollView>
+            </View>
         )
     }
 
 }
 
 const styles = StyleSheet.create({
+    mainContainer: {
+      backgroundColor: 'white',
+      flex:1,
+    },
     container: {
         flex: 1,
         backgroundColor: 'white',
-        padding: 40,
+        padding: 30,
         justifyContent: 'center',
     },
     item: {
@@ -229,7 +237,7 @@ const styles = StyleSheet.create({
     //================radioadd=====================
     radiocontainer: {
   		marginTop: 10,
-      marginBottom: 40,
+      marginBottom: 20,
       backgroundColor: 'white',
   	},
   	rb: {

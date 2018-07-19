@@ -35,15 +35,12 @@ class CalendarScreen extends React.Component {
     super();
     this.state = {
       data: EventData,
-      marked: [],
+      MarkedEvents: {},
       //EventDate: ''
     }
     //this.test = this.test.bind(this);
     //this.OnDaySelect = this.OnDaySelect.bind(this);
      global.EventArray = [];
-     global.MarkedArray = {
-
-     };
      this.PostEvent = this.PostEvent.bind(this);
   }
   test = () => {
@@ -81,10 +78,11 @@ class CalendarScreen extends React.Component {
     this.setState({
       selected: day
     });
+    const MarkedEvents = Object.assign({}, this.state.MarkedEvents);
     var tmp = {[day]: {marked: true}}
     console.log(day);
     console.log(tmp);
-   // MarkedArray.innerObj = Object.assign(MarkedArray.innerObj,tmp)
+   //MarkedEvents.innerObj = Object.assign(MarkedEvents.innerObj,tmp)
     //global.MarkedArray = {global.MarkedArray: {day: {marked: true,}}}
   }
 
@@ -149,7 +147,11 @@ class CalendarScreen extends React.Component {
           maxDate={_maxDate}
 
           onDayPress={this.OnDaySelect}
-          markedDates={MarkedArray}
+          markedDates={{
+            '2018-7-21': {marked: true, dotColor: 'pink'},
+            '2018-7-26': {marked: true, dotColor: 'pink'},
+          }}
+
           />
       </View>
     );
