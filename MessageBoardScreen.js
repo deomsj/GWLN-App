@@ -9,7 +9,6 @@ import moment from 'moment';
 import PostDetailsScreen from './PostDetailsScreen';
 
 class MessageBoardScreen extends React.Component {
-
 	constructor(props){
 		super(props);
 		this.state = {
@@ -57,15 +56,19 @@ class MessageBoardScreen extends React.Component {
 	);
 
   static navigationOptions = ({navigation})=> {
+		var iconSize = 20;
+		if (Platform.OS === 'ios') {
+			iconSize = 15;
+		};
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Message Board </Text>),
 			headerRight: ( <Icon
-				containerStyle={{padding:15}}
+				containerStyle={{marginRight:15, marginTop:15}}
 				iconStyle={styles.headerIcon}
 				type='font-awesome'
 				// color= '#002A55'
 				name= "edit"
-				size={17}
+				// size={iconSize}
 				onPress={navigation.getParam('goToAdd')}/>
 			),
 
