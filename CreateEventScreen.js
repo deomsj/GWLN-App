@@ -26,10 +26,10 @@ const _maxDate = moment().add(120, 'days').format(_format)
 
 
 const Event = t.struct({
-	name: t.String,
+	event_name: t.String,
 	location: t.String,
 	date: t.Date,
-	description: t.maybe(t.String),
+	event_description: t.maybe(t.String),
 	numberOfPinkTies: t.maybe(t.Number),
 });
 
@@ -101,9 +101,10 @@ class CreateEventScreen extends React.Component {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Create an Event </Text>),
 			headerRight: ( <Icon
-				containerStyle={{padding:15}}
+				containerStyle={{marginRight:15, marginTop:15}}
+				iconStyle={styles.headerIcon}
 				type='font-awesome'
-				color= '#002A55'
+				// color= '#002A55'
 				name= "trash"
 				onPress={navigation.getParam('discard')}/>
 			),
@@ -123,6 +124,14 @@ class CreateEventScreen extends React.Component {
 
 
 		const TmpDate = value.date;
+		// const DBEvent = {
+		// 	event_name: value.event_name,
+		// 	event_day: ,
+		// 	event_month: ,
+		// 	event_year: ,
+		// 	event_description: value.event_description,
+		// }
+
 		//this.updateCalendar.bind(this);
 		//console.log(TmpDate);
 		if(value) {
@@ -210,5 +219,9 @@ const styles = StyleSheet.create({
 		//textAlign: 'center',
 		//color: '#34495e',
 		backgroundColor: '#ff6666'
+	},
+	headerIcon: {
+		flex:1,
+		color: '#002A55',
 	},
 });

@@ -31,59 +31,51 @@ const _maxDate = moment().add(120, 'days').format(_format)
 
 class CalendarScreen extends React.Component {
 
+  initialState = {
+    [_today]: {disabled: true}
+  }
+
   constructor() {
     super();
     this.state = {
       data: EventData,
       MarkedEvents: {},
-      //EventDate: ''
+      _markedDates: {},
+      
     }
     //this.test = this.test.bind(this);
     //this.OnDaySelect = this.OnDaySelect.bind(this);
      global.EventArray = [];
      this.PostEvent = this.PostEvent.bind(this);
   }
-  test = () => {
-    console.log('test in Calendar');
-  }
 
-
-  AddToCal = (array) => {
-    console.log('in AddToCal');
-    console.log(array);
-    for (var i = 0; i < array.length; i++) {
-
-      console.log(array[i]);
-      this.PostEvent(array[i]);
-    }
-  }
-
-
-  // PostEvent = (day) => {
-  //   console.log('in post event');
-  //   console.log(day)
-  //   let marked = true;
-  //   let markedDates = this.state._markedDates
-
-  //   markedDates = {...markedDates, ...{ marked }};
-  //   console.log(markedDates);
-  //   const updatedMarkedDates = {...markedDates, ...{[day]: markedDates}}
-    
-  //   this.setState({_markedDates: updatedMarkedDates});
-  //   //console.log(this.state._markedDates);
-
-  // }
 
   PostEvent = (day) => {
-    this.setState({
-      selected: day
-    });
-    const MarkedEvents = Object.assign({}, this.state.MarkedEvents);
-    var tmp = {[day]: {marked: true}}
-    console.log(day);
-    console.log(tmp);
-   //MarkedEvents.innerObj = Object.assign(MarkedEvents.innerObj,tmp)
-    //global.MarkedArray = {global.MarkedArray: {day: {marked: true,}}}
+    
+    //console.log(markedDates);
+    // this.setState({
+    //   selected: day
+    // });
+    // let _markedDates = this.state.markedDates;
+    // _markedDates[day] = {marked: true, selected: true}
+
+    // this.setState({
+    //   markedDates: _markedDates
+    // });
+    // console.log(this.state.markedDates);
+    
+
+
+    console.log(day)
+
+    let marked = true;
+    let newMarkedDay = this.state._markedDates;
+    newMarkedDay[day] = {marked}
+    console.log(newMarkedDay);
+    const updatedMarkedDates = {...this.state._markedDates, ...{ [day]: {marked}}}
+    this.setState({ _markedDates: updatedMarkedDates });
+    console.log(this.state._markedDates);
+
   }
 
   _parseEventData =({ item }) => {
@@ -97,8 +89,9 @@ class CalendarScreen extends React.Component {
       const month = data[i].event_month
       const year = data[i].event_year
       const date = `${year}-${month}-${day}`
-      console.log(date);
-      this.PostEvent(date);
+      const _date = moment(date).format(_format);
+     // console.log(date);
+      this.PostEvent(_date);
     }
 
   }
@@ -108,21 +101,14 @@ class CalendarScreen extends React.Component {
     const _selectedDay = moment(date.dateString).format(_format);
     console.log('_selectedDay')
     console.log(_selectedDay);
-    //let marked = true;
-    //let markedDates = {}
-    // if (this.state._markedDates[_selectedDay]){
-    //   console.log('in if statement');
-    //   this.props.navigation.navigate('EventDetails')
-    //   marked = !this.state._markedDates[_selectedDay].marked;
-    //   markedDates = this.state._markedDates[_selectedDay];
-    // }
+ 
+    if (this.state._markedDates[_selectedDay]){
+       console.log('in if statement');
+       //this.props.navigation.navigate('EventDetails')
+      // marked = !this.state._markedDates[_selectedDay].marked;
+      // markedDates = this.state._markedDates[_selectedDay];
+     }
     this.PostEvent(_selectedDay);
-
-    //markedDates = {...markedDates, ...{ marked }};
-
-    //const updatedMarkedDates = {...this.state._markedDates, ...{[_selectedDay]: markedDates}}
-
-    //this.setState({_markedDates: updatedMarkedDates});
   }
   componentWillMount(){
     console.log('in componen will mount');
@@ -134,7 +120,7 @@ class CalendarScreen extends React.Component {
       }
 
   render() {
-    //this.AddToCal();
+
     return (
         <View style={{ flex: 1}}>
         <Calendar
@@ -147,10 +133,8 @@ class CalendarScreen extends React.Component {
           maxDate={_maxDate}
 
           onDayPress={this.OnDaySelect}
-          markedDates={{
-            '2018-7-21': {marked: true, dotColor: 'pink'},
-            '2018-7-26': {marked: true, dotColor: 'pink'},
-          }}
+          markedDates={this.state._markedDates}
+          markingType={'interactive'}
 
           />
       </View>

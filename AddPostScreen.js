@@ -63,11 +63,10 @@ static navigationOptions = ({navigation})=> {
 	return {
 		headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Create Post </Text>),
 		headerRight: ( <Icon
-			containerStyle={{padding:15}}
+			containerStyle={{marginRight:15, marginTop:15}}
+			iconStyle={styles.headerIcon}
 			type='font-awesome'
 			name= "trash"
-			color= '#002A55'
-			// size={20}
 			onPress={navigation.getParam('discard')}/>
 		),
 	};
@@ -136,6 +135,10 @@ const styles = StyleSheet.create({
 	},
 	DiscardFeedback: {
 		fontSize: 10,
+	},
+	headerIcon: {
+		flex:1,
+		color: '#002A55',
 	}
 });
 

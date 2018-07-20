@@ -9,7 +9,6 @@ import moment from 'moment';
 import PostDetailsScreen from './PostDetailsScreen';
 
 class MessageBoardScreen extends React.Component {
-
 	constructor(props){
 		super(props);
 		this.state = {
@@ -27,9 +26,9 @@ class MessageBoardScreen extends React.Component {
 			<View
 				style={{
 					height: 1,
-					width: "86%",
+					// width: "100%",
 					backgroundColor: "#CED0CE",
-					marginLeft: "5%"
+					// marginLeft: "0%"
 				}}
 			/>
 		);
@@ -60,9 +59,9 @@ class MessageBoardScreen extends React.Component {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Message Board </Text>),
 			headerRight: ( <Icon
-				containerStyle={{padding:15}}
+				containerStyle={{marginRight:15, marginTop:15}}
+				iconStyle={styles.headerIcon}
 				type='font-awesome'
-				color= '#002A55'
 				name= "edit"
 				onPress={navigation.getParam('goToAdd')}/>
 			),
@@ -80,8 +79,7 @@ class MessageBoardScreen extends React.Component {
     return (
 			<View style={styles.mainContainer}>
 			<ScrollView>
-			<View style={styles.container}>
-    		<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
+    		<List containerStyle={styles.listContainer}>
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
@@ -89,7 +87,6 @@ class MessageBoardScreen extends React.Component {
 						ItemSeparatorComponent={this.renderSeparator}
 						/>
 			</List>
-			</View>
 			</ScrollView>
 			</View>
     );
@@ -102,18 +99,19 @@ const styles = StyleSheet.create({
 	mainContainer: {
 		backgroundColor: 'white',
 		flex:1,
-		padding:30,
+		// padding:30,
 	},
-	container: {
-		flex: 1,
-		// backgroundColor: 'white',
-		justifyContent: 'center',
-		padding:5,
+	listContainer: {
 		// padding: 30,
-		// borderRadius: 10,
-		// borderWidth: 0.7,
-		// borderBottomWidth: 0.7,
-		// borderTopWidth: 0.7,
-		// borderColor: '#CED0CE',
+		// marginTop: 30,
+		// borderTopWidth: 1,
+		// marginBottom: 20,
+		borderTopWidth: 0,
+		borderBottomWidth: 1,
+		borderColor: "#CED0CE",
 	},
+	headerIcon: {
+		flex:1,
+		color: '#002A55',
+	}
 });
