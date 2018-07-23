@@ -32,22 +32,25 @@ class LaunchPage extends React.Component {
 			buttonColors = ['rgba(0, 42, 85, 1)'];
 		};
 		return(
-		<View>
+		<View style= {styles.mainContainer}>
 		<View style={styles.buttonContainer}>
+			<View style={styles.buttons}>
 			<Button
-				style={styles.buttons}
 				title="Organizer Sign In"
 				onPress={this.handleOrgSignin}
 				color={buttonColors}
+				// backgroundColor= "white"
 			/>
+			</View>
 		</View>
-		<View style={styles.buttonContainer}>
+		<View style = {styles.buttonContainer}>
+		<View style={styles.buttons}>
 			<Button
-				style={styles.buttons}
 				title="Member Sign In"
 				onPress={this.handleMemSignin}
-				color= "#002a55"
+				color= {buttonColors}
 			/>
+			</View>
 			</View>
 			<View style={styles.buttonContainer}>
 				<Text
@@ -63,6 +66,9 @@ class LaunchPage extends React.Component {
 export default LaunchPage;
 
 const styles = StyleSheet.create({
+	mainContainer: {
+		backgroundColor: 'white',
+	},
 	container: {
 		flex:1,
 		backgroundColor: 'white',
@@ -71,18 +77,26 @@ const styles = StyleSheet.create({
 		padding: 50,
 	},
   buttonContainer: {
-		flexDirection: 'column',
-		padding: 10,
-    alignItems: 'center',
+		backgroundColor: 'white',
+		marginRight: '22.5%',
+		marginLeft: '22.5%',
+		paddingTop: 20,
+		paddingBottom: 10,
+		// marginBottom: '10%',
+		// marginTop: '10%',
+		// padding:10,
   },
 	buttons: {
 		backgroundColor: '#002A55',
-		padding: 10,
-		margin: 10,
+		// padding: 10,
+		// margin: 10,
+		// borderWidth: 1,
+		flexDirection: 'column',
+		// alignItems: 'center',
 	},
 	memberText: {
 		color: 'blue',
-		padding: 15,
+		// padding: 15,
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
