@@ -124,13 +124,18 @@ class CreateEventScreen extends React.Component {
 
 
 		const TmpDate = value.date;
-		// const DBEvent = {
-		// 	event_name: value.event_name,
-		// 	event_day: ,
-		// 	event_month: ,
-		// 	event_year: ,
-		// 	event_description: value.event_description,
-		// }
+
+		const parsedDay = TmpDate.getDay();
+		const ParsedMonth = TmpDate.getMonth();
+		const parsedYear = TmpDate.getFullYear();
+
+		 const DBEvent = {
+		 	event_name: value.event_name,
+		 	event_day: parsedDay,
+		 	event_month: ParsedMonth,
+		 	event_year: parsedYear,
+		 	event_description: value.event_description,
+		 }
 
 		//this.updateCalendar.bind(this);
 		//console.log(TmpDate);
