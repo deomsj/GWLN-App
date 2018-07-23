@@ -33,7 +33,7 @@ class LaunchPage extends React.Component {
 		};
 		return(
 		<View style= {styles.mainContainer}>
-		<View style={styles.buttonContainer}>
+		<View style={styles.organizerButton}>
 			<View style={styles.buttons}>
 			<Button
 				title="Organizer Sign In"
@@ -43,7 +43,7 @@ class LaunchPage extends React.Component {
 			/>
 			</View>
 		</View>
-		<View style = {styles.buttonContainer}>
+		<View style = {styles.memberButton}>
 		<View style={styles.buttons}>
 			<Button
 				title="Member Sign In"
@@ -52,13 +52,11 @@ class LaunchPage extends React.Component {
 			/>
 			</View>
 			</View>
-			<View style={styles.buttonContainer}>
 				<Text
 					style={styles.memberText}
 					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
 					Become a Member!
 				</Text>
-			</View>
 			</View>
 	)};
 }
@@ -76,27 +74,44 @@ const styles = StyleSheet.create({
 		// alignSelf:'center',
 		padding: 50,
 	},
-  buttonContainer: {
+  organizerButton: {
 		backgroundColor: 'white',
-		marginRight: '22.5%',
-		marginLeft: '22.5%',
+		marginRight: '20%',
+		marginLeft: '20%',
 		paddingTop: 20,
 		paddingBottom: 10,
 		// marginBottom: '10%',
 		// marginTop: '10%',
 		// padding:10,
   },
+	memberButton: {
+		backgroundColor: 'white',
+		marginRight: '25%',
+		marginLeft: '25%',
+		paddingTop: 20,
+		paddingBottom: 10,
+		// marginBottom: '10%',
+		// marginTop: '10%',
+		// padding:10,
+	},
 	buttons: {
 		backgroundColor: '#002A55',
-		// padding: 10,
-		// margin: 10,
-		// borderWidth: 1,
+		...Platform.select({
+      ios: {
+        borderColor: '#002A55',
+      },
+      android: {
+        borderColor: 'white',
+      },
+    }),
+		borderWidth: 1,
+		borderRadius: 10,
 		flexDirection: 'column',
 		// alignItems: 'center',
 	},
 	memberText: {
 		color: 'blue',
-		// padding: 15,
+		padding: 20,
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
