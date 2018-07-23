@@ -48,6 +48,10 @@ class HomeScreen extends React.Component {
     }
 
   render() {
+    var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
     return (
 
     <View style={styles.container}>
@@ -66,19 +70,23 @@ class HomeScreen extends React.Component {
           />
         </View>
         <View style={styles.buttonContainer}>
+        <View style={styles.menuContainer}>
         <View style={styles.button}>
           <Button
-            color= '#002A55'
+            color= {buttonColors}
             title="Message Board"
             onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
           </View>
+          </View>
+        <View style={styles.menuContainer}>
         <View style={styles.button}>
           <Button
-            color= '#002A55'
+            color= {buttonColors}
             title="Member List"
             onPress={() => this.props.navigation.navigate('MemberList')}
             />
+          </View>
           </View>
           <View style={styles.button}>
             <RNPickerSelect
@@ -115,16 +123,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
-  button: {
-    flexDirection: 'column',
-    padding: 10,
-    // flex: 3,
-    //justifyContent: 'space-around'
+  menuContainer: {
+    backgroundColor: 'white',
+    paddingBottom:20,
   },
+  button: {
+    // padding: 20,
+		backgroundColor: '#002A55',
+		...Platform.select({
+      ios: {
+        borderColor: '#002A55',
+      },
+      android: {
+        borderColor: 'white',
+      },
+    }),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
+		// alignItems: 'center',
+	},
   buttonContainer: {
    alignItems: 'center',
    backgroundColor: 'white',
-   padding: 10,
+   // padding: 10,
    position: 'absolute',
    top: '60%',
  },
@@ -168,11 +190,11 @@ const pickerStyle = StyleSheet.create({
     paddingHorizontal: 150,
     // paddingBottom: 10,
     padding:10,
-    borderWidth: 0,
-    // borderColor: 'gray',
-    // borderRadius: 4,
+    // borderWidth: 1,
+    // borderColor: '#002A55',
+    // borderRadius: 5,
     backgroundColor: '#002A55',
-    color: 'white',
+    // color: 'white',
   }
 });
 export default HomeScreen;
