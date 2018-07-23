@@ -101,10 +101,14 @@ class CalendarScreen extends React.Component {
     const _selectedDay = moment(date.dateString).format(_format);
     console.log('_selectedDay')
     console.log(_selectedDay);
+
+    // pass the date to the event details page
  
     if (this.state._markedDates[_selectedDay]){
        console.log('in if statement');
-       //this.props.navigation.navigate('EventDetails')
+       //console.log(_selectedDay);
+       // navigate to event detail and pass the event id so that the post information can be retrieved
+       this.props.navigation.navigate('EventDetails', {date, _selectedDay})
       // marked = !this.state._markedDates[_selectedDay].marked;
       // markedDates = this.state._markedDates[_selectedDay];
      }
