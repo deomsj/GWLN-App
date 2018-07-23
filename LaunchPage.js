@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, Button, Picker, WebView, Image, Linking} from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Image, Linking, Platform} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNlogo from './img/gwln_logo.jpg';
 import WorldCouncilLogo from './img/WorldCouncil_logo.png';
@@ -27,6 +27,10 @@ class LaunchPage extends React.Component {
 		);
 	}
 	renderButtons() {
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 		return(
 		<View>
 		<View style={styles.buttonContainer}>
@@ -34,7 +38,7 @@ class LaunchPage extends React.Component {
 				style={styles.buttons}
 				title="Organizer Sign In"
 				onPress={this.handleOrgSignin}
-				color= "#002a55"
+				color={buttonColors}
 			/>
 		</View>
 		<View style={styles.buttonContainer}>
@@ -72,6 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 	buttons: {
+		backgroundColor: '#002A55',
 		padding: 10,
 		margin: 10,
 	},

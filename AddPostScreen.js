@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
 	headerIcon: {
 		flex:1,
 		color: '#002A55',
+		// marginBottom: 10,
 	}
 });
 
