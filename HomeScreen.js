@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, TouchableOpacity, } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, TouchableOpacity, ListView, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
-
-
+import Gallery from 'react-native-image-gallery';
 import GWLNScreen from './GWLNScreen';
 import DonateWebView from './DonateWebView';
 import MemberListScreen from './MemberListScreen';
@@ -41,31 +40,47 @@ class HomeScreen extends React.Component {
           },
         ],
       };
-    };
+    }
+
     pickerNavigate=()=>{
       var nextPage = this.state.PickerValue
       this.props.navigation.navigate(nextPage)
     }
 
-
-
   render() {
     return (
 
-      <View style={styles.container}>
-        <View style={styles.buttoncontainer}>
+    <View style={styles.container}>
+    <View style={styles.galleryContainer}>
+      <Gallery
+        style={styles.gallery}
+        images={[
+          {source: require('./img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined},  resizeMode: 'contain'},
+          {source: require('./img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('./img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
+          // {source: require('./img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
+        ]}
+          flatListProps={{windowSize: 2}}
+          pageMargin={10}
 
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+        <View style={styles.button}>
           <Button
             color= '#002A55'
             title="Message Board"
             onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
+          </View>
+        <View style={styles.button}>
           <Button
             color= '#002A55'
             title="Member List"
             onPress={() => this.props.navigation.navigate('MemberList')}
             />
           </View>
+          <View style={styles.button}>
             <RNPickerSelect
               placeholder={{
                 label: 'Event Management...',
@@ -78,9 +93,12 @@ class HomeScreen extends React.Component {
                 });
                 if (value) {this.props.navigation.navigate(value)}
               }}
+              // style={{color:'#002A55'}}
               style={{...pickerStyle }}
               hideicon={false}
             />
+            </View>
+            </View>
       </View>
     );
   }
@@ -88,23 +106,48 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    // padding: 20,
+    // marginTop:20,
     backgroundColor: 'white',
     justifyContent: 'center',
     flex: 1,
-    flexDirection: 'column',
+    // flexDirection: 'column',
     alignItems: 'center',
 
   },
-  buttoncontainer: {
-    flexDirection: 'row',
-    padding: 20,
+  button: {
+    flexDirection: 'column',
+    padding: 10,
+    // flex: 3,
     //justifyContent: 'space-around'
   },
-  button: {
+  buttonContainer: {
    alignItems: 'center',
-   backgroundColor: '#002a55',
-   padding: 10
+   backgroundColor: 'white',
+   padding: 10,
+   position: 'absolute',
+   top: '60%',
+ },
+ galleryContainer: {
+   backgroundColor: 'white',
+   // flex: 1,
+   // position: 'absolute',
+   // bottom: '50%',
+   padding:10,
+   paddingBottom: 250,
+   alignItems: 'center',
+   justifyContent: 'center',
+ },
+ gallery: {
+   // backgroundColor: 'rgba(0,42,85,0.7)',
+   padding:20,
+   // flex: 1,
+   // flexDirection: 'row',
+   // position: 'absolute',
+   justifyContent: 'center',
+   alignItems: 'center',
+   alignSelf: 'center',
+   // bottom: '40%',
  },
 });
 
@@ -117,18 +160,19 @@ const pickerStyle = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 4,
-    backgroundColor: 'white',
-    color: 'black',
+    // backgroundColor: '#002A55',
+    color: '#002A55',
   },
   inputAndroid: {
-    paddingTop: 13,
-    paddingHorizontal: 10,
-    paddingBottom: 12,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    backgroundColor: 'white',
-    color: 'black',
+    // paddingTop: 10,
+    paddingHorizontal: 150,
+    // paddingBottom: 10,
+    padding:10,
+    borderWidth: 0,
+    // borderColor: 'gray',
+    // borderRadius: 4,
+    backgroundColor: '#002A55',
+    color: 'white',
   }
 });
 export default HomeScreen;
