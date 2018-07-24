@@ -12,10 +12,13 @@ class LaunchPage extends React.Component {
 	}
 
 	handleMember = () => {
-		this.props.navigation.navigate('OrganizerSignin')
+		this.props.navigation.navigate('MemberSignin')
 	}
 	handleGuest = () => {
 		this.props.navigation.navigate('GuestHomeScreen')
+	}
+	handleOrganizer = () => {
+		this.props.navigation.navigate('OrganizerSignin')
 	}
 	render() {
 		return(
@@ -36,6 +39,15 @@ class LaunchPage extends React.Component {
 		<View style={styles.memberButton}>
 			<View style={styles.buttons}>
 			<Button
+				title="Organizer Sign In"
+				onPress={this.handleOrganizer}
+				color={buttonColors}
+			/>
+			</View>
+		</View>
+		<View style={styles.memberButton}>
+			<View style={styles.buttons}>
+			<Button
 				title="Member Sign In"
 				onPress={this.handleMember}
 				color={buttonColors}
@@ -46,7 +58,7 @@ class LaunchPage extends React.Component {
 		<View style = {styles.guestButton}>
 		<View style={styles.buttons}>
 			<Button
-				title="Continue as Guest"
+				title="Guest"
 				onPress={this.handleGuest}
 				color= {buttonColors}
 			/>
@@ -76,15 +88,15 @@ const styles = StyleSheet.create({
 	},
   memberButton: {
 		backgroundColor: 'white',
-		marginRight: '23%',
-		marginLeft: '23%',
+		marginRight: '22%',
+		marginLeft: '22%',
 		paddingTop: 20,
 		paddingBottom: 10,
   },
 	guestButton: {
 		backgroundColor: 'white',
-		marginRight: '20%',
-		marginLeft: '20%',
+		marginRight: '25%',
+		marginLeft: '25%',
 		paddingTop: 20,
 		paddingBottom: 10,
 	},

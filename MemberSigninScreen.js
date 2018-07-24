@@ -4,7 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-
+import MemberHomeScreen from './MemberHome';
 import memberData from './mock-database/gwln.members.json';
 
 // import GWLNSignUp from './GWLNSignUp';
@@ -65,7 +65,7 @@ class MemberSigninScreen extends React.Component {
 		const value = this._form.getValue();
 		console.log('value', value);
 		if(value) {
-			this.props.navigation.navigate('Home')
+			this.props.navigation.navigate('MemberHomeScreen')
 		}
 	}
 

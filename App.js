@@ -28,6 +28,7 @@ import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
 import GuestHomeScreen from './GuestHome';
+import MemberHomeScreen from './MemberHome';
 
 
  const TabNav = createBottomTabNavigator({
@@ -105,15 +106,13 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='CalendarView') {
     return {
-    headerLeft: (<View></View>),
+    headerLeft: null,
     headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
     headerRight: (<Icon
-      containerStyle={{marginRight:15, marginTop:15}}
+      containerStyle={{paddingRight:30, paddingTop:15}}
       iconStyle={styles.headerIcon}
       type='font-awesome'
       name="plus"
-      // color= '#002A55'
-      // size={20}
       onPress={() => navigation.navigate('CreateEvent')}
     />)
     };
@@ -199,6 +198,96 @@ GuestNav.navigationOptions = ({navigation}) => {
  };
 };
 
+const MemberNav = createBottomTabNavigator({
+     Home: {
+       screen: MemberHomeScreen,
+       navigationOptions: {
+         tabBarLabel: 'Home',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             name="home"
+             color={tintColor}
+             size={30}
+           />
+         ),
+       },
+     },
+     Profile: {
+       screen: ProfileScreen,
+       navigationOptions: {
+         tabBarLabel: 'Profile',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             type='font-awesome'
+             name="user"
+             color={tintColor}
+             size={30}
+           />
+         ),
+       },
+     },
+     CalendarView: {
+       screen: CalendarScreen,
+       navigationOptions: {
+         title: 'Calendar',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             type='font-awesome'
+             name="calendar"
+             color={tintColor}
+             size={27}
+           />
+         ),
+       },
+     },
+     GWLN: {
+       screen: GWLNScreen,
+       navigationOptions: {
+         title: 'Donate',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             type='font-awesome'
+             name="dollar"
+             color={tintColor}
+             size={27}
+           />
+         ),
+       },
+     },
+   });
+
+MemberNav.navigationOptions = ({navigation}) => {
+ let { routeName } = navigation.state.routes[navigation.state.index];
+ let title;
+ if (routeName==='Home') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
+   headerLeft: null,
+   };
+ }
+ else if (routeName==='Profile') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> My Profile </Text>),
+   headerLeft: null,
+   };
+ }
+ else if (routeName==='CalendarView') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
+   headerLeft: null,
+   };
+ }
+ else if (routeName==='GWLN') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause! </Text>),
+   headerLeft: null,
+   };
+ }
+ return {
+   title,
+ };
+};
+
 const NavigationFlow = createStackNavigator({
   Launch: {
     screen: LaunchPage,
@@ -256,6 +345,9 @@ const NavigationFlow = createStackNavigator({
   GuestHomeScreen: {
     screen: GuestNav,
   },
+  MemberHomeScreen: {
+    screen: MemberNav,
+  }
 })
 
 export default NavigationFlow;
@@ -266,69 +358,3 @@ const styles = StyleSheet.create({
 		color: '#002A55',
 	}
 })
-
-/*export const RootStack = createStackNavigator(
-  {
-  OrganizerSignin: OrganizerSigninScreen,
-  Home: HomeScreen,
-  Profile: ProfileScreen,
-  CalendarView: CalendarScreen,
-  GWLN: GWLNScreen,
-  AddPost: MessageBoardScreen,
-  },{
-    initialRouteName: 'OrganizerSignin',
-  }
-);
-
-export const GWLN = createStackNavigator({
-  GWLN: {screen: GWLNScreen },
-  DonateView: {screen: DonateWebView}
-});
-
-
-
-export const CalendarView = createStackNavigator({
-  //Home: {screen: HomeScreen},
-  CalendarView: {screen: CalendarScreen},
-  CreateEvent: {screen: CreateEventScreen},
-  EventDetails: {screen: CalendarDetailScreen}
-
-});
-
-export const MessageBoard = createStackNavigator({
-  MessageBoard: {screen: MessageBoardScreen},
-  AddPost: {screen: AddPostScreen}
-});
-
-
-export const Home = createStackNavigator({
-  Home: {screen: HomeScreen},
-  MessageBoard: {screen: MessageBoardScreen},
-  MemberList: {screen: MemberListScreen},
-  CreateEvent: {screen: CreateEventScreen},
-  FeedbackFrom: {screen: FeedbackFormScreen},
-  CheckIn: {screen: CheckInScreen},
-  AddPost: {screen: AddPostScreen},
-});
-
-export const Profile = createStackNavigator({
-  Profile: {screen: ProfileScreen},
-  MyUpcomingEvents: {screen: MyUpcomingEventsScreen},
-  MyPastEvents: {screen: MyPastEventsScreen},
-});
-
-export const SignInStack = createStackNavigator({
-  OrganizerSignin: {screen: OrganizerSigninScreen},
-  Home: {screen: HomeScreen},
-})
-
-export default createBottomTabNavigator({
-  Home: {screen: Home,},
-  Profile: {screen: Profile},
-  CalendarView: {screen: CalendarView},
-  GWLN: {screen: GWLN,},
-}, {
-  initialRouteName: 'Home',
-  activeTintColor: '#f0edf6',
-  inactiveTintColor: '#3e2465',
-})*/
