@@ -43,6 +43,7 @@ class ProfileScreen extends React.Component {
           </View>
           </View>
           <View style={styles.signoutContainer}>
+          <View style={styles.buttons}>
            <Button
             color= {buttonColors}
             title="Sign Out"
@@ -55,6 +56,7 @@ class ProfileScreen extends React.Component {
               ],
             )}
             />
+            </View>
             </View>
         </View>
 
@@ -84,13 +86,13 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flex: 3,
     backgroundColor: 'white',
-    marginTop: '20%',
+    marginTop: '15%',
     flexDirection: 'column',
     alignSelf: 'center',
     // alignItems: 'center',
   },
   buttonContainer: {
-    padding: 20,
+    padding: 10,
     backgroundColor: 'white',
   },
   buttons: {
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
 		// alignItems: 'center',
 	},
   signoutContainer: {
-    padding:20,
+    // padding:20,
     paddingTop: 50,
   },
 })

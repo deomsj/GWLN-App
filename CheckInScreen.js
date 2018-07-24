@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
   	},
     //================radioadd=====================
     headerIcon: {
-  		flex:1,
+  		// flex:1,
   		color: '#002A55',
   	},
 })

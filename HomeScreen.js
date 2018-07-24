@@ -195,7 +195,7 @@ const pickerStyle = StyleSheet.create({
     // borderColor: '#002A55',
     // borderRadius: 5,
     backgroundColor: '#002A55',
-    // color: 'white',
+    color: 'white',
   }
 });
 export default HomeScreen;
