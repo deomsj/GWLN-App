@@ -9,8 +9,6 @@ import Separator from './Separator'
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 
-var member = null
-var found = false
 
 class ProfileScreen extends React.Component {
   constructor(props){
@@ -22,6 +20,8 @@ class ProfileScreen extends React.Component {
 
   test = (crm) => {
     //need to catch error and no_contact stuff
+    //will need to format phone number?
+    // parameter being passed in will be a global variable that we get at login
     let memData = this.state.memInfo
     var filteredMemData = memData.contacts.filter( e => {
       return e.contact_id == crm;
