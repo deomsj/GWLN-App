@@ -9,16 +9,32 @@ class CalendarDetailScreen extends React.Component {
 		super();
 		this.state = {
 			data: EventData,
+			detailEvent: {},
 		}
 	}
 
-	render() {
+	filterData = () => {
 		let newData = this.state.data
-		var NewEvent = newData.filter(function(item){
-			return item.event_day == this.props.navigation.state.params.date.day
-			&& item.event_month == this.props.navigation.state.params.date.month 
-			&& item.event_year == this.props.navigation.state.params.date.year;
+		var filteredData = newData.Events.filter( e => {
+			return e.event_day == this.props.navigation.state.params.date.day
+		 	&& e.event_month == this.props.navigation.state.params.date.month 
+		 	&& e.event_year == this.props.navigation.state.params.date.year;
 		});
+		console.log(filteredData);
+		//this.setState({detailEvent: filteredData});
+	}
+
+	
+	ComponentWillMount(){
+		console.log('in detail component');
+		
+	}
+
+	render() {
+		//console.log(this.state.data);
+		
+		this.filterData()
+
 		// run query of events on the day that is passed then store the information in an array of objects
 
 		return(
