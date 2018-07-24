@@ -27,6 +27,7 @@ import Slot from './Slot';
 import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
+import GuestHomeScreen from './GuestHome';
 
 
  const TabNav = createBottomTabNavigator({
@@ -86,9 +87,6 @@ import PostDetailsScreen from './PostDetailsScreen';
         },
       },
     });
-    // navigationOptions: {
-    //   headerLeft: null
-    // },
 
 TabNav.navigationOptions = ({navigation}) => {
   let { routeName } = navigation.state.routes[navigation.state.index];
@@ -129,6 +127,76 @@ TabNav.navigationOptions = ({navigation}) => {
   return {
     title,
   };
+};
+
+const GuestNav = createBottomTabNavigator({
+     Home: {
+       screen: GuestHomeScreen,
+       navigationOptions: {
+         tabBarLabel: 'Home',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             name="home"
+             color={tintColor}
+             size={30}
+           />
+         ),
+       },
+     },
+     CalendarView: {
+       screen: CalendarScreen,
+       navigationOptions: {
+         title: 'Calendar',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             type='font-awesome'
+             name="calendar"
+             color={tintColor}
+             size={27}
+           />
+         ),
+       },
+     },
+     GWLN: {
+       screen: GWLNScreen,
+       navigationOptions: {
+         title: 'Donate',
+         tabBarIcon: ({tintColor}) => (
+           <Icon
+             type='font-awesome'
+             name="dollar"
+             color={tintColor}
+             size={27}
+           />
+         ),
+       },
+     },
+   });
+
+GuestNav.navigationOptions = ({navigation}) => {
+ let { routeName } = navigation.state.routes[navigation.state.index];
+ let title;
+ if (routeName==='Home') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
+   headerLeft: null,
+   };
+ }
+ else if (routeName==='CalendarView') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
+   headerLeft: null,
+   };
+ }
+ else if (routeName==='GWLN') {
+   return {
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause! </Text>),
+   headerLeft: null,
+   };
+ }
+ return {
+   title,
+ };
 };
 
 const NavigationFlow = createStackNavigator({
@@ -185,7 +253,9 @@ const NavigationFlow = createStackNavigator({
   PostDetailsScreen: {
     screen: PostDetailsScreen,
   },
-
+  GuestHomeScreen: {
+    screen: GuestNav,
+  },
 })
 
 export default NavigationFlow;
