@@ -80,7 +80,7 @@ class OrganizerSigninScreen extends React.Component {
 					<Button
 					title="Submit"
 					onPress={this.handleSubmit}
-					color= "#002a55"
+					color= {buttonColors}
 					/>
 					</View>
 					<Text

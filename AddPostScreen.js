@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import t from 'tcomb-form-native';
 import { Icon } from 'react-native-elements';
@@ -86,6 +86,10 @@ componentDidMount=(value)=> {
 	}
 
 	render() {
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 		return(
 			<View style={styles.mainContainer}>
 			<ScrollView>
@@ -94,10 +98,10 @@ componentDidMount=(value)=> {
 				<Form ref={c=>this._form = c}
 				type={Content}
 				options = {Options}/>
-				<View style={styles.container}>
+				<View style={styles.buttonContainer}>
 					<Button
 					title="Submit"
-					color="#002a55"
+					color= {buttonColors}
 					onPress={() => Alert.alert(
 						'Submit Post',
 						'Are you ready to post to the message board?',
@@ -140,7 +144,24 @@ const styles = StyleSheet.create({
 		flex:1,
 		color: '#002A55',
 		// marginBottom: 10,
-	}
+	},
+	buttonContainer: {
+		alignSelf: 'center',
+		// padding: 30,
+		// paddingHorizontal: 30,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
+	},
 });
 
 export default AddPostScreen;
