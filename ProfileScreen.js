@@ -17,52 +17,26 @@ class ProfileScreen extends React.Component {
     super(props);
     this.state = {
       memInfo: contactData,
-      title: null,
-      first_name: null,
-      last_name: null,
-      city: null,
-      state: null,
-      country: null,
-      phone_number: null,
-      email: null,
-      website: null,
     }
   }
 
   test = (crm) => {
-    // const data = this.state.memInfo.contacts
-    // //var found = false
-    // //var member = null
-    // for(var i = 0; i < data.length; i++) {
-    //   if (data[i].contact_id === crm ){
-    //     //console.log(data[i].first_name)
-    //     member = data[i]
-    //     found = true
-    //   }
-    // }
-    // if (found) {
-    //   console.log(member.first_name)
-    //   this.setState({
-    //     title: member.title,
-    //     first_name: member.first_name,
-    //     last_name: member.last_name,
-    //   })
-    // }
-    // else { console.log('not found') }
-    // //console.log(data[0].contact_id)
-    let memData = this.state.memInfo.contacts
-    var filteredMemData = memData.filter( e => {
-      return e.crm_id == crm;
+    //need to catch error and no_contact stuff
+    let memData = this.state.memInfo
+    var filteredMemData = memData.contacts.filter( e => {
+      return e.contact_id == crm;
     });
+    //console.log('after filtered:', filteredMemData)
     this.setState({
       memInfo: filteredMemData,
     })
-    console.log(this.state.memInfo.first_name)
+    //console.log(this.state.memInfo.first_name)
   }
 
     componentWillMount() {
-      this.test(435)
+      this.test(433)
     }
+
   render() {
     // const data = this.state.memInfo.contacts
     // console.log(data[0].contact_id)
@@ -75,10 +49,11 @@ class ProfileScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
-          <Text style={styles.InfoText}>{this.state.title} {this.state.first_name} {this.state.last_name} </Text>
-          <Text style={styles.InfoText}> phone number </Text>
-          <Text style={styles.InfoText}> email </Text>
-          <Text style={styles.InfoText}> other information </Text>
+          <Text style={styles.InfoText}>{this.state.memInfo[0].title} {this.state.memInfo[0].first_name} {this.state.memInfo[0].last_name} </Text>
+          <Text style={styles.InfoText}> {this.state.memInfo[0].phone_business_main} </Text>
+          <Text style={styles.InfoText}> {this.state.memInfo[0].email1} </Text>
+          <Text style={styles.InfoText}> {this.state.memInfo[0].physical_address_city}, {this.state.memInfo[0].physical_address_state}, {this.state.memInfo[0].physical_address_country} </Text>
+          <Text style={styles.InfoText}> {this.state.memInfo[0].web_url} </Text>
         </View>
         <View style={styles.optionsContainer}>
         <View style={styles.buttonContainer}>
@@ -136,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,42,85,0.4)',
   },
   InfoText: {
-    fontSize: 18,
+    fontSize: 16,
     paddingTop: 10,
     paddingLeft: 5,
     color: 'black',
