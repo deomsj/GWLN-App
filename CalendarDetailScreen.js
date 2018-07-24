@@ -2,16 +2,20 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import EventData from './www_timeline_events.json';
+import PropTypes from 'prop-types';
 
 class CalendarDetailScreen extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			data: EventData,
-			//detailEvent: [],
+			detailEvent: null,
+			test: null,
 		}
 	}
+
+	
 
 	filterData = () => {
 		let newData = this.state.data
@@ -21,15 +25,25 @@ class CalendarDetailScreen extends React.Component {
 		 	&& e.event_year == this.props.navigation.state.params.date.year;
 		});
 		console.log(filteredData);
-		//this.setState({filteredData: filteredData});
-		//console.log(this.state.filteredData);
+		check = filteredData[0].event_name
+		console.log(check);
+		this.setState({
+			detailEvent: filteredData,
+			test: check,
+		});
+		this._test();
 		return filteredData;
+	}
+
+	_test = () => {
+		console.log(this.state.detailEvent);
 	}
 
 	componentWillMount(){
 		this.filterData()
 	}
 	render() {
+		this._test();
 		//console.log(this.state.data);
 		
 		
@@ -38,9 +52,8 @@ class CalendarDetailScreen extends React.Component {
 
 		return(
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-				// <Text> {filteredData.event_name} </Text>
-				// <Text> {filteredData.event_location} </Text>
-				// <Text> {filteredData.event_description} </Text>
+				 <Text> {this.state.test} </Text>
+				
 			</View>
 		);
 	}
