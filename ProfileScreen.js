@@ -30,26 +30,34 @@ class ProfileScreen extends React.Component {
   }
 
   test = (crm) => {
-    const data = this.state.memInfo.contacts
-    //var found = false
-    //var member = null
-    for(var i = 0; i < data.length; i++) {
-      if (data[i].contact_id === crm ){
-        //console.log(data[i].first_name)
-        member = data[i]
-        found = true
-      }
-    }
-    if (found) {
-      console.log(member.first_name)
-      this.setState({
-        title: member.title,
-        first_name: member.first_name,
-        last_name: member.last_name,
-      })
-    }
-    else { console.log('not found') }
-    //console.log(data[0].contact_id)
+    // const data = this.state.memInfo.contacts
+    // //var found = false
+    // //var member = null
+    // for(var i = 0; i < data.length; i++) {
+    //   if (data[i].contact_id === crm ){
+    //     //console.log(data[i].first_name)
+    //     member = data[i]
+    //     found = true
+    //   }
+    // }
+    // if (found) {
+    //   console.log(member.first_name)
+    //   this.setState({
+    //     title: member.title,
+    //     first_name: member.first_name,
+    //     last_name: member.last_name,
+    //   })
+    // }
+    // else { console.log('not found') }
+    // //console.log(data[0].contact_id)
+    let memData = this.state.memInfo.contacts
+    var filteredMemData = memData.filter( e => {
+      return e.crm_id == crm;
+    });
+    this.setState({
+      memInfo: filteredMemData,
+    })
+    console.log(this.state.memInfo.first_name)
   }
 
     componentWillMount() {
