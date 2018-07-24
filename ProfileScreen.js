@@ -9,16 +9,65 @@ import Separator from './Separator'
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 
+var member = null
+var found = false
+
 class ProfileScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      memInfo: contactData,
+      title: null,
+      first_name: null,
+      last_name: null,
+      city: null,
+      state: null,
+      country: null,
+      phone_number: null,
+      email: null,
+      website: null,
+    }
+  }
+
+  test = (crm) => {
+    const data = this.state.memInfo.contacts
+    //var found = false
+    //var member = null
+    for(var i = 0; i < data.length; i++) {
+      if (data[i].contact_id === crm ){
+        //console.log(data[i].first_name)
+        member = data[i]
+        found = true
+      }
+    }
+    if (found) {
+      console.log(member.first_name)
+      this.setState({
+        title: member.title,
+        first_name: member.first_name,
+        last_name: member.last_name,
+      })
+    }
+    else { console.log('not found') }
+    //console.log(data[0].contact_id)
+  }
+
+    componentWillMount() {
+      this.test(435)
+    }
   render() {
+    // const data = this.state.memInfo.contacts
+    // console.log(data[0].contact_id)
+
     var buttonColors = ['rgba(255, 255, 255, 1)'];
 		if (Platform.OS === 'android') {
 			buttonColors = ['rgba(0, 42, 85, 1)'];
 		};
+
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
-          <Text style={styles.InfoText}> name </Text>
+          <Text style={styles.InfoText}>{this.state.title} {this.state.first_name} {this.state.last_name} </Text>
           <Text style={styles.InfoText}> phone number </Text>
           <Text style={styles.InfoText}> email </Text>
           <Text style={styles.InfoText}> other information </Text>
@@ -61,6 +110,7 @@ class ProfileScreen extends React.Component {
         </View>
 
         </View>
+
     );
   }
 }
