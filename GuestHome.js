@@ -58,15 +58,6 @@ class GuestHomeScreen extends React.Component {
           />
           </View>
           </View>
-        <View style={styles.menuContainer}>
-        <View style={styles.button}>
-          <Button
-            color= {buttonColors}
-            title="Member List"
-            onPress={() => this.props.navigation.navigate('MemberList')}
-            />
-        </View>
-        </View>
         <View style={styles.signoutContainer}>
         <View style={styles.button}>
           <Button
