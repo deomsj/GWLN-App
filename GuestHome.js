@@ -53,7 +53,7 @@ class GuestHomeScreen extends React.Component {
         <View style={styles.button}>
           <Button
             color= {buttonColors}
-            title="Message Board"
+            title="Blog"
             onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
           </View>
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   },
   button: {
     // padding: 20,
+    paddingHorizontal:100,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
