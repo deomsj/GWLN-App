@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, TouchableOpacity, ListView, Alert, } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, Linking, ScrollView, TouchableOpacity, ListView, Alert, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
@@ -62,18 +62,16 @@ class GuestHomeScreen extends React.Component {
         <View style={styles.button}>
           <Button
            color={buttonColors}
-           title="Return to Launch"
-           onPress={() => Alert.alert(
-             'Sign Out',
-             'Are you sure you want to return to the launch page?',
-             [
-               {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-               {text: 'Yes', onPress: () => this.props.navigation.navigate('Launch')},
-             ],
-           )}
+           title="Member Benefits"
+           onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_about/gwln_member')}}
            />
            </View>
            </View>
+           <Text
+             style={styles.memberText}
+             onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
+             Join the Network
+           </Text>
           </View>
       </View>
     );
@@ -91,9 +89,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
+  memberText: {
+		color: 'blue',
+		fontSize: 17,
+		padding: 20,
+		alignSelf: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'column',
+	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:20,
+    paddingBottom:30,
   },
   button: {
     // padding: 20,
@@ -112,7 +119,7 @@ const styles = StyleSheet.create({
 		// alignItems: 'center',
 	},
   buttonContainer: {
-   alignItems: 'center',
+   // alignItemas: 'center',
    backgroundColor: 'white',
    // padding: 10,
    position: 'absolute',
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
  },
  signoutContainer: {
    backgroundColor: 'white',
-   paddingTop:40,
+   paddingTop:50,
  },
  galleryContainer: {
    backgroundColor: 'white',

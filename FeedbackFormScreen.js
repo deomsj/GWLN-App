@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, TextInput, ScrollView, Alert, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import t from 'tcomb-form-native';
@@ -147,6 +147,10 @@ class FeedbackFormScreen extends React.Component {
 	}
 
 	render() {
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 		return(
 			<ScrollView>
 			<View style={styles.container}>
@@ -156,7 +160,7 @@ class FeedbackFormScreen extends React.Component {
 				options = {Options}
 				onChangeText = {(text) => this.setState({text})}
 				/>
-				<View style={styles.container}>
+				<View style={styles.buttonContainer}>
 					<Button
 					title="Submit"
 					onPress={() => Alert.alert(
@@ -167,7 +171,7 @@ class FeedbackFormScreen extends React.Component {
 							{text: 'Yes', onPress: this.handleSubmit},
 						],
 					)}
-					color= "#002a55"
+					color= {buttonColors}
 					/>
 				</View>
 			</View>
@@ -196,6 +200,23 @@ const styles = StyleSheet.create({
 	headerIcon: {
 		flex:1,
 		color: '#002A55',
+	},
+	buttonContainer: {
+		alignSelf: 'center',
+		// padding: 30,
+		paddingHorizontal: 30,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
 	},
 });
 
