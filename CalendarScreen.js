@@ -115,7 +115,7 @@ class CalendarScreen extends React.Component {
     this.PostEvent(_selectedDay);
   }
   componentWillMount(){
-    console.log('in componen will mount');
+    //console.log('in componen will mount');
     //console.log(this.state.data)
     //console.log(this.state.EventDate);
     this._mounted = true;
