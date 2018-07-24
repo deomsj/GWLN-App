@@ -57,6 +57,8 @@ class MessageBoardScreen extends React.Component {
 
   static navigationOptions = ({navigation})=> {
 		return {
+			// headerTitleStyle: {color: '#002A55', alignSelf: 'center', textAlign: 'center'},
+			// title: 'Message Board',
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Message Board </Text>),
 			headerRight: ( <Icon
 				containerStyle={{marginRight:15, marginTop:15}}

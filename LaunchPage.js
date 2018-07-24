@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
 		// position: 'absolute',
 		// top: '100%',
 		// paddingHorizontal: 100,
-		paddingTop:100,
+		paddingTop:80,
 
 	},
 	buttons: {
