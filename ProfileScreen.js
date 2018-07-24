@@ -27,7 +27,7 @@ class ProfileScreen extends React.Component {
         <View style={styles.buttonContainer}>
         <View style={styles.buttons}>
           <Button
-            color= '#002A55'
+            color= {buttonColors}
             title="My Upcoming Events"
             onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
             />
@@ -36,7 +36,7 @@ class ProfileScreen extends React.Component {
             <View style={styles.buttonContainer}>
             <View style={styles.buttons}>
               <Button
-            color= '#002A55'
+            color= {buttonColors}
             title="My Past Events"
             onPress={() => this.props.navigation.navigate('MyPastEvents')}
           />
@@ -44,7 +44,7 @@ class ProfileScreen extends React.Component {
           </View>
           <View style={styles.signoutContainer}>
            <Button
-            color='#002a55'
+            color= {buttonColors}
             title="Sign Out"
             onPress={() => Alert.alert(
               'Sign Out',
