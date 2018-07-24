@@ -9,7 +9,7 @@ class CalendarDetailScreen extends React.Component {
 		super();
 		this.state = {
 			data: EventData,
-			detailEvent: {},
+			//detailEvent: [],
 		}
 	}
 
@@ -21,25 +21,26 @@ class CalendarDetailScreen extends React.Component {
 		 	&& e.event_year == this.props.navigation.state.params.date.year;
 		});
 		console.log(filteredData);
-		//this.setState({detailEvent: filteredData});
+		//this.setState({filteredData: filteredData});
+		//console.log(this.state.filteredData);
+		return filteredData;
 	}
 
-	
-	ComponentWillMount(){
-		console.log('in detail component');
-		
+	componentWillMount(){
+		this.filterData()
 	}
-
 	render() {
 		//console.log(this.state.data);
 		
-		this.filterData()
+		
 
 		// run query of events on the day that is passed then store the information in an array of objects
 
 		return(
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-				<Text> {this.state.data.event_description} </Text>
+				// <Text> {filteredData.event_name} </Text>
+				// <Text> {filteredData.event_location} </Text>
+				// <Text> {filteredData.event_description} </Text>
 			</View>
 		);
 	}
