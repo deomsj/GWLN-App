@@ -34,7 +34,7 @@ contact_type_id: 1=org, 2=ind. 3=cons..?
 ==================*/
 
 contactData = {
-  "conacts": [
+  "contacts": [
     {
       "contact_id": 432,
       "contact_type_id": 2,

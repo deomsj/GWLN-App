@@ -10,10 +10,47 @@ import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 
 
-const profdata = require('./mock-database/crm.contacts.json');
-
 class ProfileScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      memInfo: contactData,
+      title: null,
+      first_name: null,
+      last_name: null,
+      city: null,
+      state: null,
+      country: null,
+      phone_number: null,
+      email: null,
+      website: null,
+    }
+  }
+  test = (crm) => {
+    const data = this.state.memInfo.contacts
+    var found = false
+    var member = null
+    for(var i = 0; i < data.length; i++) {
+      if (data[i].contact_id === crm ){
+        //console.log(data[i].first_name)
+        member = data[i]
+        found = true
+      }
+    }
+    if (found) {
+      console.log(member.first_name)
+      // this.setState({
+      //   first_name: member.first_name,
+      // })
+    }
+    else { console.log('not found') }
+    //console.log(data[0].contact_id)
+  }
+
   render() {
+    // const data = this.state.memInfo.contacts
+    // console.log(data[0].contact_id)
+    this.test(433)
     return (
       <View style={{flex: 1}}>
         <View style={styles.InfoContainer}>
@@ -48,6 +85,7 @@ class ProfileScreen extends React.Component {
         </View>
 
         </View>
+
     );
   }
 }
