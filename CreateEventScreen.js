@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Alert, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import moment from 'moment';
@@ -168,23 +168,28 @@ class CreateEventScreen extends React.Component {
 	}
 
 	render() {
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 		return(
+			<View style={styles.mainContainer}>
 			<ScrollView>
 			<View style={styles.container}>
 				<Form ref="form"
 				type={Event}
 				options={options}/>
-				<View style={styles.container}>
+				<View style={styles.buttonContainer}>
 					<Button
-					style={styles.buttons}
+					// style={styles.buttons}
 					title="Create Event"
 					onPress={this.handleSubmit}
-					color= "#002a55"
+					color= {buttonColors}
 					/>
 				</View>
 			</View>
-
 			</ScrollView>
+			</View>
 		);
 	}
 
@@ -195,6 +200,10 @@ export default CreateEventScreen;
 
 
 const styles = StyleSheet.create({
+	mainContainer: {
+		flex: 1,
+		backgroundColor: 'white',
+	},
 	container: {
 		flex: 1,
 		flexDirection: 'column',
@@ -228,5 +237,22 @@ const styles = StyleSheet.create({
 	headerIcon: {
 		flex:1,
 		color: '#002A55',
+	},
+	buttonContainer: {
+		alignSelf: 'center',
+		// padding: 30,
+		paddingHorizontal: 30,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
 	},
 });

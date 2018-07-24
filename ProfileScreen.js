@@ -48,11 +48,18 @@ class ProfileScreen extends React.Component {
   }
 
   render() {
+
     // const data = this.state.memInfo.contacts
     // console.log(data[0].contact_id)
     this.test(433)
+
+    var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
+
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
           <Text style={styles.InfoText}> name </Text>
           <Text style={styles.InfoText}> phone number </Text>
@@ -60,18 +67,27 @@ class ProfileScreen extends React.Component {
           <Text style={styles.InfoText}> other information </Text>
         </View>
         <View style={styles.optionsContainer}>
+        <View style={styles.buttonContainer}>
+        <View style={styles.buttons}>
           <Button
-            color= '#002A55'
+            color= {buttonColors}
             title="My Upcoming Events"
             onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
             />
+            </View>
+            </View>
+            <View style={styles.buttonContainer}>
+            <View style={styles.buttons}>
               <Button
-            color= '#002A55'
+            color= {buttonColors}
             title="My Past Events"
             onPress={() => this.props.navigation.navigate('MyPastEvents')}
           />
+          </View>
+          </View>
+          <View style={styles.signoutContainer}>
            <Button
-            color='#002a55'
+            color= {buttonColors}
             title="Sign Out"
             onPress={() => Alert.alert(
               'Sign Out',
@@ -82,6 +98,7 @@ class ProfileScreen extends React.Component {
               ],
             )}
             />
+            </View>
         </View>
 
         </View>
@@ -92,9 +109,9 @@ class ProfileScreen extends React.Component {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
-  profileContainer: {
-    backgroundColor: '#002a55',
-
+  mainContainer: {
+    backgroundColor: 'white',
+    flex: 1,
   },
   InfoContainer: {
     flex: 2,
@@ -111,8 +128,33 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flex: 3,
     backgroundColor: 'white',
-    padding:10,
+    marginTop: '20%',
     flexDirection: 'column',
-    alignItems: 'center',
-  }
+    alignSelf: 'center',
+    // alignItems: 'center',
+  },
+  buttonContainer: {
+    padding: 20,
+    backgroundColor: 'white',
+  },
+  buttons: {
+    // padding: 20,
+		backgroundColor: '#002A55',
+		...Platform.select({
+      ios: {
+        borderColor: '#002A55',
+      },
+      android: {
+        borderColor: 'white',
+      },
+    }),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
+		// alignItems: 'center',
+	},
+  signoutContainer: {
+    padding:20,
+    paddingTop: 50,
+  },
 })

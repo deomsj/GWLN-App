@@ -178,7 +178,7 @@ GuestNav.navigationOptions = ({navigation}) => {
  if (routeName==='Home') {
    return {
    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
-   headerLeft: null,
+   // headerLeft: null,
    };
  }
  else if (routeName==='CalendarView') {

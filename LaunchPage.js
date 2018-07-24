@@ -24,8 +24,8 @@ class LaunchPage extends React.Component {
 		return(
 			<View style={styles.container}>
 				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
+					{this.renderButtons()}
 				<Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
-				{this.renderButtons()}
 			</View>
 		);
 	}
@@ -39,7 +39,7 @@ class LaunchPage extends React.Component {
 		<View style={styles.memberButton}>
 			<View style={styles.buttons}>
 			<Button
-				title="Organizer Sign In"
+				title="Chapter Leader Login"
 				onPress={this.handleOrganizer}
 				color={buttonColors}
 			/>
@@ -48,7 +48,7 @@ class LaunchPage extends React.Component {
 		<View style={styles.memberButton}>
 			<View style={styles.buttons}>
 			<Button
-				title="Member Sign In"
+				title="Member Login"
 				onPress={this.handleMember}
 				color={buttonColors}
 				// backgroundColor= "white"
@@ -58,17 +58,17 @@ class LaunchPage extends React.Component {
 		<View style = {styles.guestButton}>
 		<View style={styles.buttons}>
 			<Button
-				title="Guest"
+				title="Continue as Guest"
 				onPress={this.handleGuest}
 				color= {buttonColors}
 			/>
 			</View>
-			</View>
 				<Text
 					style={styles.memberText}
 					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
-					Become a Member!
+					Join the Network
 				</Text>
+			</View>
 			</View>
 	)};
 }
@@ -77,6 +77,9 @@ export default LaunchPage;
 
 const styles = StyleSheet.create({
 	mainContainer: {
+		alignSelf: 'center',
+		position: 'absolute',
+		top: '40%',
 		backgroundColor: 'white',
 	},
 	container: {
@@ -85,20 +88,25 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		// alignSelf:'center',
 		padding: 50,
+		// flexDirection: 'column'
 	},
   memberButton: {
 		backgroundColor: 'white',
-		marginRight: '22%',
-		marginLeft: '22%',
-		paddingTop: 20,
-		paddingBottom: 10,
+		marginRight: '15%',
+		marginLeft: '15%',
+		// paddingTop: 20,
+		paddingBottom: 20,
   },
 	guestButton: {
-		backgroundColor: 'white',
-		marginRight: '25%',
-		marginLeft: '25%',
-		paddingTop: 20,
-		paddingBottom: 10,
+		// backgroundColor: 'white',
+		// flexDirection: 'column',
+		marginRight: '15%',
+		marginLeft: '15%',
+		// position: 'absolute',
+		// top: '100%',
+		// paddingHorizontal: 100,
+		paddingTop:100,
+
 	},
 	buttons: {
 		backgroundColor: '#002A55',
@@ -117,6 +125,7 @@ const styles = StyleSheet.create({
 	},
 	memberText: {
 		color: 'blue',
+		fontSize: 17,
 		padding: 20,
 		alignSelf: 'center',
 		alignItems: 'center',
@@ -131,7 +140,7 @@ const styles = StyleSheet.create({
 		height: '100%',
 		padding: 100,
 		position: 'absolute',
-		bottom: '40%',
+		bottom: '45%',
 	},
 	WorldCouncil: {
 		// flex:1,

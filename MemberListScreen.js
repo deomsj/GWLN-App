@@ -65,6 +65,7 @@ class MemberListScreen extends React.Component {
 						<ListItem
 							id={item.id}
 							//onPressItem={console.log('press')}
+							// keyExtractor={(item) => item.toString()}
 							roundAvatar
 							title={item.name.first}
 							subtitle={item.email}
@@ -133,7 +134,7 @@ class MemberListScreen extends React.Component {
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
-						keyExtractor={item => item.email}
+						keyExtractor={(item) => item.email}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
 				/>

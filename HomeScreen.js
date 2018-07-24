@@ -104,6 +104,7 @@ class HomeScreen extends React.Component {
               // style={{color:'#002A55'}}
               style={{...pickerStyle }}
               hideicon={false}
+              // keyExtractor={(item) => item.toString()}
             />
             </View>
             </View>
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
 		// alignItems: 'center',
 	},
   buttonContainer: {
-   alignItems: 'center',
+   // alignItems: 'center',
    backgroundColor: 'white',
    // padding: 10,
    position: 'absolute',

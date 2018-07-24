@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Linking, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
@@ -61,6 +61,10 @@ class OrganizerSigninScreen extends React.Component {
 
 
 	render() {
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 		return(
 			<View style={styles.container}>
 				<Image source={GWLNlogo} style={styles.GWLNlogo}/>
@@ -76,14 +80,14 @@ class OrganizerSigninScreen extends React.Component {
 					<Button
 					title="Submit"
 					onPress={this.handleSubmit}
-					color= "#002a55"
+					color= {buttonColors}
 					/>
+					</View>
 					<Text
 						style={styles.memberText}
 						onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_forgot_password')}}>
 						Forgot Password
 					</Text>
-			</View>
 			</View>
 		);
 	}
@@ -110,14 +114,30 @@ const styles = StyleSheet.create({
 		padding:30,
 	},
 	buttonContainer: {
-		flexDirection: 'column',
 		alignSelf: 'center',
-		padding: 30,
+		// padding: 30,
+		paddingHorizontal: 30,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
 	},
 	memberText: {
 		color: 'blue',
-		padding: 15,
+		fontSize: 17,
+		padding: 20,
 		alignSelf: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'column',
 	},
 	GWLNlogo: {
 		alignSelf: 'center',
