@@ -6,6 +6,7 @@ import {
     Text,
     Button,
     Alert,
+    Platform,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import { Icon, Header } from 'react-native-elements';
@@ -142,6 +143,10 @@ class CheckInScreen extends Component {
 
 
     render() {
+      var buttonColors = ['rgba(255, 255, 255, 1)'];
+      if (Platform.OS === 'android') {
+        buttonColors = ['rgba(0, 42, 85, 1)'];
+      };
         return (
           <View style={styles.mainContainer}>
           <ScrollView>
@@ -194,11 +199,11 @@ class CheckInScreen extends Component {
         				</RadioGroup>
                 </View>
               </View>
-              <View style={styles.container}>
+              <View style={styles.buttonContainer}>
               <Button
                 title="Check In!"
                 onPress={this.handleSubmit}
-                color= '#002a55'
+                color={buttonColors}
               />
               </View>
               </View>
@@ -220,6 +225,23 @@ const styles = StyleSheet.create({
         padding: 30,
         justifyContent: 'center',
     },
+    buttonContainer: {
+  		alignSelf: 'center',
+  		// padding: 30,
+  		paddingHorizontal: 30,
+  		backgroundColor: '#002A55',
+  		...Platform.select({
+  			ios: {
+  				borderColor: '#002A55',
+  			},
+  			android: {
+  				borderColor: 'white',
+  			},
+  		}),
+  		borderWidth: 1,
+  		borderRadius: 5,
+  		flexDirection: 'column',
+  	},
     item: {
         flexDirection: 'row',
         padding:10,

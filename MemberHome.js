@@ -105,9 +105,11 @@ const styles = StyleSheet.create({
 		// alignItems: 'center',
 	},
   buttonContainer: {
-   alignItems: 'center',
+   // alignItems: 'center',
+   alignSelf: 'center',
    backgroundColor: 'white',
    // padding: 10,
+   marginTop: '10%',
    position: 'absolute',
    top: '60%',
  },

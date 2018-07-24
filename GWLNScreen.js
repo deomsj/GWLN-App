@@ -38,6 +38,9 @@ const styles= StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#002A55',
+    borderColor: '#002A55',
+    borderWidth: 1,
+    borderRadius: 5,
     position: 'absolute',
     right: '40%',
     bottom: '20%',
