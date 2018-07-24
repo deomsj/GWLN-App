@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
  },
  signoutContainer: {
    backgroundColor: 'white',
-   paddingTop:50,
+   paddingTop:20,
  },
  galleryContainer: {
    backgroundColor: 'white',

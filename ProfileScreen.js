@@ -9,6 +9,8 @@ import Separator from './Separator'
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 
+var member = null
+var found = false
 
 class ProfileScreen extends React.Component {
   constructor(props){
@@ -26,10 +28,11 @@ class ProfileScreen extends React.Component {
       website: null,
     }
   }
+
   test = (crm) => {
     const data = this.state.memInfo.contacts
-    var found = false
-    var member = null
+    //var found = false
+    //var member = null
     for(var i = 0; i < data.length; i++) {
       if (data[i].contact_id === crm ){
         //console.log(data[i].first_name)
@@ -39,19 +42,22 @@ class ProfileScreen extends React.Component {
     }
     if (found) {
       console.log(member.first_name)
-      // this.setState({
-      //   first_name: member.first_name,
-      // })
+      this.setState({
+        title: member.title,
+        first_name: member.first_name,
+        last_name: member.last_name,
+      })
     }
     else { console.log('not found') }
     //console.log(data[0].contact_id)
   }
 
+    componentWillMount() {
+      this.test(435)
+    }
   render() {
-
     // const data = this.state.memInfo.contacts
     // console.log(data[0].contact_id)
-    this.test(433)
 
     var buttonColors = ['rgba(255, 255, 255, 1)'];
 		if (Platform.OS === 'android') {
@@ -61,7 +67,7 @@ class ProfileScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
-          <Text style={styles.InfoText}> name </Text>
+          <Text style={styles.InfoText}>{this.state.title} {this.state.first_name} {this.state.last_name} </Text>
           <Text style={styles.InfoText}> phone number </Text>
           <Text style={styles.InfoText}> email </Text>
           <Text style={styles.InfoText}> other information </Text>
@@ -86,6 +92,7 @@ class ProfileScreen extends React.Component {
           </View>
           </View>
           <View style={styles.signoutContainer}>
+          <View style={styles.buttons}>
            <Button
             color= {buttonColors}
             title="Sign Out"
@@ -98,6 +105,7 @@ class ProfileScreen extends React.Component {
               ],
             )}
             />
+            </View>
             </View>
         </View>
 
@@ -128,13 +136,13 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flex: 3,
     backgroundColor: 'white',
-    marginTop: '20%',
+    marginTop: '15%',
     flexDirection: 'column',
     alignSelf: 'center',
     // alignItems: 'center',
   },
   buttonContainer: {
-    padding: 20,
+    padding: 10,
     backgroundColor: 'white',
   },
   buttons: {
@@ -154,7 +162,7 @@ const styles = StyleSheet.create({
 		// alignItems: 'center',
 	},
   signoutContainer: {
-    padding:20,
+    // padding:20,
     paddingTop: 50,
   },
 })
