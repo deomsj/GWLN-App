@@ -19,33 +19,12 @@ import AddPostScreen from './AddPostScreen';
 //import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
 
-class HomeScreen extends React.Component {
+class MemberHomeScreen extends React.Component {
     constructor(){
       super();
       this.inputRefs = {};
-      this.state={
-        Function: undefined,
-        items: [
-          {
-            label: 'Event Check In',
-            value: 'CheckIn',
-          },
-          {
-            label: 'Event Feedback',
-            value: 'FeedbackFrom',
-          },
-          {
-            label: 'Create an Event',
-            value: 'CreateEvent',
-          },
-        ],
-      };
     }
 
-    pickerNavigate=()=>{
-      var nextPage = this.state.PickerValue
-      this.props.navigation.navigate(nextPage)
-    }
 
   render() {
     var buttonColors = ['rgba(255, 255, 255, 1)'];
@@ -88,24 +67,6 @@ class HomeScreen extends React.Component {
             />
           </View>
           </View>
-          <View style={styles.button}>
-            <RNPickerSelect
-              placeholder={{
-                label: 'Event Management...',
-                value: null,
-              }}
-              items={this.state.items}
-               onValueChange={(value) => {
-                this.setState({
-                  Function: value,
-                });
-                if (value) {this.props.navigation.navigate(value)}
-              }}
-              // style={{color:'#002A55'}}
-              style={{...pickerStyle }}
-              hideicon={false}
-            />
-            </View>
             </View>
       </View>
     );
@@ -197,4 +158,4 @@ const pickerStyle = StyleSheet.create({
     // color: 'white',
   }
 });
-export default HomeScreen;
+export default MemberHomeScreen;

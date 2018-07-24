@@ -11,11 +11,14 @@ class LaunchPage extends React.Component {
 		header: null,
 	}
 
-	handleOrgSignin = () => {
-		this.props.navigation.navigate('OrganizerSignin')
-	}
-	handleMemSignin = () => {
+	handleMember = () => {
 		this.props.navigation.navigate('MemberSignin')
+	}
+	handleGuest = () => {
+		this.props.navigation.navigate('GuestHomeScreen')
+	}
+	handleOrganizer = () => {
+		this.props.navigation.navigate('OrganizerSignin')
 	}
 	render() {
 		return(
@@ -32,30 +35,40 @@ class LaunchPage extends React.Component {
 			buttonColors = ['rgba(0, 42, 85, 1)'];
 		};
 		return(
-		<View>
-		<View style={styles.buttonContainer}>
+		<View style= {styles.mainContainer}>
+		<View style={styles.memberButton}>
+			<View style={styles.buttons}>
 			<Button
-				style={styles.buttons}
 				title="Organizer Sign In"
-				onPress={this.handleOrgSignin}
+				onPress={this.handleOrganizer}
 				color={buttonColors}
 			/>
+			</View>
 		</View>
-		<View style={styles.buttonContainer}>
+		<View style={styles.memberButton}>
+			<View style={styles.buttons}>
 			<Button
-				style={styles.buttons}
 				title="Member Sign In"
-				onPress={this.handleMemSignin}
-				color= "#002a55"
+				onPress={this.handleMember}
+				color={buttonColors}
+				// backgroundColor= "white"
 			/>
 			</View>
-			<View style={styles.buttonContainer}>
+		</View>
+		<View style = {styles.guestButton}>
+		<View style={styles.buttons}>
+			<Button
+				title="Guest"
+				onPress={this.handleGuest}
+				color= {buttonColors}
+			/>
+			</View>
+			</View>
 				<Text
 					style={styles.memberText}
 					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
 					Become a Member!
 				</Text>
-			</View>
 			</View>
 	)};
 }
@@ -63,6 +76,9 @@ class LaunchPage extends React.Component {
 export default LaunchPage;
 
 const styles = StyleSheet.create({
+	mainContainer: {
+		backgroundColor: 'white',
+	},
 	container: {
 		flex:1,
 		backgroundColor: 'white',
@@ -70,19 +86,38 @@ const styles = StyleSheet.create({
 		// alignSelf:'center',
 		padding: 50,
 	},
-  buttonContainer: {
-		flexDirection: 'column',
-		padding: 10,
-    alignItems: 'center',
+  memberButton: {
+		backgroundColor: 'white',
+		marginRight: '22%',
+		marginLeft: '22%',
+		paddingTop: 20,
+		paddingBottom: 10,
   },
+	guestButton: {
+		backgroundColor: 'white',
+		marginRight: '25%',
+		marginLeft: '25%',
+		paddingTop: 20,
+		paddingBottom: 10,
+	},
 	buttons: {
 		backgroundColor: '#002A55',
-		padding: 10,
-		margin: 10,
+		...Platform.select({
+      ios: {
+        borderColor: '#002A55',
+      },
+      android: {
+        borderColor: 'white',
+      },
+    }),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
+		// alignItems: 'center',
 	},
 	memberText: {
 		color: 'blue',
-		padding: 15,
+		padding: 20,
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',

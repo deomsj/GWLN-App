@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, TouchableOpacity, ListView, } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, TouchableOpacity, ListView, Alert, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
@@ -16,35 +16,14 @@ import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
+import LaunchPage from './LaunchPage';
 //import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
 
-class HomeScreen extends React.Component {
+class GuestHomeScreen extends React.Component {
     constructor(){
       super();
       this.inputRefs = {};
-      this.state={
-        Function: undefined,
-        items: [
-          {
-            label: 'Event Check In',
-            value: 'CheckIn',
-          },
-          {
-            label: 'Event Feedback',
-            value: 'FeedbackFrom',
-          },
-          {
-            label: 'Create an Event',
-            value: 'CreateEvent',
-          },
-        ],
-      };
-    }
-
-    pickerNavigate=()=>{
-      var nextPage = this.state.PickerValue
-      this.props.navigation.navigate(nextPage)
     }
 
   render() {
@@ -79,34 +58,23 @@ class HomeScreen extends React.Component {
           />
           </View>
           </View>
-        <View style={styles.menuContainer}>
+        <View style={styles.signoutContainer}>
         <View style={styles.button}>
           <Button
-            color= {buttonColors}
-            title="Member List"
-            onPress={() => this.props.navigation.navigate('MemberList')}
-            />
+           color={buttonColors}
+           title="Return to Launch"
+           onPress={() => Alert.alert(
+             'Sign Out',
+             'Are you sure you want to return to the launch page?',
+             [
+               {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+               {text: 'Yes', onPress: () => this.props.navigation.navigate('Launch')},
+             ],
+           )}
+           />
+           </View>
+           </View>
           </View>
-          </View>
-          <View style={styles.button}>
-            <RNPickerSelect
-              placeholder={{
-                label: 'Event Management...',
-                value: null,
-              }}
-              items={this.state.items}
-               onValueChange={(value) => {
-                this.setState({
-                  Function: value,
-                });
-                if (value) {this.props.navigation.navigate(value)}
-              }}
-              // style={{color:'#002A55'}}
-              style={{...pickerStyle }}
-              hideicon={false}
-            />
-            </View>
-            </View>
       </View>
     );
   }
@@ -150,6 +118,10 @@ const styles = StyleSheet.create({
    position: 'absolute',
    top: '60%',
  },
+ signoutContainer: {
+   backgroundColor: 'white',
+   paddingTop:40,
+ },
  galleryContainer: {
    backgroundColor: 'white',
    // flex: 1,
@@ -163,13 +135,9 @@ const styles = StyleSheet.create({
  gallery: {
    // backgroundColor: 'rgba(0,42,85,0.7)',
    padding:20,
-   // flex: 1,
-   // flexDirection: 'row',
-   // position: 'absolute',
    justifyContent: 'center',
    alignItems: 'center',
    alignSelf: 'center',
-   // bottom: '40%',
  },
 });
 
@@ -186,15 +154,9 @@ const pickerStyle = StyleSheet.create({
     color: '#002A55',
   },
   inputAndroid: {
-    // paddingTop: 10,
     paddingHorizontal: 150,
-    // paddingBottom: 10,
     padding:10,
-    // borderWidth: 1,
-    // borderColor: '#002A55',
-    // borderRadius: 5,
     backgroundColor: '#002A55',
-    // color: 'white',
   }
 });
-export default HomeScreen;
+export default GuestHomeScreen;

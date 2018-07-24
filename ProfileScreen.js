@@ -16,8 +16,6 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <View style={styles.profileContainer}>
-        </View>
         <View style={styles.InfoContainer}>
           <Text style={styles.InfoText}> name </Text>
           <Text style={styles.InfoText}> phone number </Text>
@@ -64,16 +62,18 @@ const styles = StyleSheet.create({
     flex: 2,
     flexDirection: 'column',
     alignItems: 'flex-start',
+    backgroundColor: 'rgba(0,42,85,0.4)',
   },
   InfoText: {
     fontSize: 18,
     paddingTop: 10,
     paddingLeft: 5,
+    color: 'black',
   },
   optionsContainer: {
     flex: 3,
     backgroundColor: 'white',
-
+    padding:10,
     flexDirection: 'column',
     alignItems: 'center',
   }
