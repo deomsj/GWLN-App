@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 
@@ -19,13 +19,13 @@ class CalendarDetailScreen extends React.Component {
 		}
 	}
 
-	
+
 
 	filterData = () => {
 		let newData = this.state.data
 		var filteredData = newData.Events.filter( e => {
 			return e.event_day == this.props.navigation.state.params.date.day
-		 	&& e.event_month == this.props.navigation.state.params.date.month 
+		 	&& e.event_month == this.props.navigation.state.params.date.month
 		 	&& e.event_year == this.props.navigation.state.params.date.year;
 		});
 		console.log(filteredData);
@@ -33,7 +33,7 @@ class CalendarDetailScreen extends React.Component {
 		console.log(check);
 		this.setState({
 			detailEvent: filteredData,
-	
+
 		});
 		//this._test();
 		return filteredData;
@@ -42,11 +42,11 @@ class CalendarDetailScreen extends React.Component {
 	_test = () => {
 		let tmp = this.state.detailEvent
 		console.log('in test');
-		
+
 		if(this.state.detailEvent.length > 0){
 			console.log(tmp[0].event_name);
 		}
-		
+
 	}
 	_onPress = () => {
 		console.log('rsvp pressed');
@@ -79,11 +79,11 @@ class CalendarDetailScreen extends React.Component {
 	render() {
 		//this._test();
 		//console.log(this.state.data);
-		
-		
+
+
 
 		// run query of events on the day that is passed then store the information in an array of objects
-
+		//() => this._onPress()
 		return(
 			<View style={styles.container}>
 				<View style={styles.heading}>
@@ -95,10 +95,16 @@ class CalendarDetailScreen extends React.Component {
 					<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
 					<Button
 						title="RSVP"
-						onPress={() => this._onPress()}
+						onPress={() => Alert.alert(
+							'Success',
+							'You are now registered for '+this.state.detailEvent[0].event_name,
+							[
+								{text: 'Dismiss', onPress: () => this._onPress()},
+							],
+						)}
 					/>
-				</View>			 
-				
+				</View>
+
 			</View>
 		);
 	}

@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   InfoText: {
-    fontSize: 15,
+    fontSize: 16,
     paddingTop: 10,
     paddingLeft: 5,
     color: 'black',
