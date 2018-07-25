@@ -52,14 +52,14 @@ class ProfileScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
-          <Text style={styles.InfoText}>{this.state.memInfo[0].first_name} {this.state.memInfo[0].last_name} </Text>
-          <Text style={styles.InfoText}>{this.state.memInfo[0].title} </Text>
-          <Text style={styles.InfoText}> {this.state.memInfo[0].phone_business_main} </Text>
-          <Text style={styles.InfoText}> {this.state.memInfo[0].email1} </Text>
-          <Text style={styles.InfoText}> {this.state.memInfo[0].physical_address_city}, {this.state.memInfo[0].physical_address_state}, {this.state.memInfo[0].physical_address_country} </Text>
+          <Text style={styles.InfoText}>{global.currUser.first_name} {global.currUser.last_name} </Text>
+          <Text style={styles.InfoText}>{global.currUser.title} </Text>
+          <Text style={styles.InfoText}> {global.currUser.phone_business_main} </Text>
+          <Text style={styles.InfoText}> {global.currUser.email} </Text>
+          <Text style={styles.InfoText}> {global.currUser.mailing_address_city}, {global.currUser.mailing_address_country_name} </Text>
           <Text
 						style={styles.linkText}
-						onPress={() => {Linking.openURL('http://'+this.state.memInfo[0].web_url)}}>
+						onPress={() => {Linking.openURL('http://'+global.currUser.web_url)}}>
 						{this.state.memInfo[0].web_url}
 					</Text>
         </View>

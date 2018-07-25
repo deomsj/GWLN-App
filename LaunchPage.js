@@ -11,29 +11,6 @@ class LaunchPage extends React.Component {
 		header: null,
 	}
 
-	_fetch = () => {
-		const url = 'https://cuwomen.org/functions/app.gwln.php'
-		fetch(url, {
-			method: "POST",
-			headers: {
-				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
-			},
-			body: JSON.stringify({
-				firstParam: 'hello dan',
-				secondParam: 'hopefully you get this',
-			}),
-		})
-			
-			.then(res => res.json())
-			.then(res => {
-				console.log(res)
-			})
-			.catch(error => {
-				console.log(error);
-			})
-		console.log('fetch');
-	}
-
 	handleMember = () => {
 		this.props.navigation.navigate('MemberSignin')
 	}
