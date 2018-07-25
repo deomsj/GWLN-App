@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, Image } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator, StackNavigator, TabNavigator} from 'react-navigation';
 import { Icon } from 'react-native-elements';
-
+import GWLNlogo from './img/gwln_logo.jpg';
 
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
@@ -94,7 +94,7 @@ TabNav.navigationOptions = ({navigation}) => {
   let title;
   if (routeName==='Home') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
+    headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
     headerLeft: null,
     };
   }
@@ -177,8 +177,8 @@ GuestNav.navigationOptions = ({navigation}) => {
  let title;
  if (routeName==='Home') {
    return {
-   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
-   // headerLeft: null,
+   headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
+   headerRight: (<View></View>),
    };
  }
  else if (routeName==='CalendarView') {
@@ -261,7 +261,7 @@ MemberNav.navigationOptions = ({navigation}) => {
  let title;
  if (routeName==='Home') {
    return {
-   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Home </Text>),
+   headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
    headerLeft: null,
    };
  }
@@ -356,5 +356,12 @@ const styles = StyleSheet.create({
   headerIcon: {
 		flex:1,
 		color: '#002A55',
-	}
+	},
+  GWLNlogo: {
+    alignSelf: 'center',
+    resizeMode: 'contain',
+    width: '100%',
+    height: '100%',
+    // padding: 100,
+  },
 })

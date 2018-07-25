@@ -59,18 +59,40 @@ class HomeScreen extends React.Component {
       <Gallery
         style={styles.gallery}
         images={[
-          {source: require('./img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined},  resizeMode: 'contain'},
+          {source: require('./img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
           {source: require('./img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
           {source: require('./img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
           // {source: require('./img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
         ]}
-          flatListProps={{windowSize: 2}}
+          flatListProps={{windowSize: 1}}
           pageMargin={10}
 
           />
         </View>
+        <View style={styles.textBox}>
+          // <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
+          </View>
         <View style={styles.buttonContainer}>
         <View style={styles.menuContainer}>
+        <View style={styles.button}>
+          <RNPickerSelect
+            placeholder={{
+              label: 'Event Management...',
+              value: null,
+            }}
+            items={this.state.items}
+             onValueChange={(value) => {
+              this.setState({
+                Function: value,
+              });
+              if (value) {this.props.navigation.navigate(value)}
+            }}
+            // style={{color:'#002A55'}}
+            style={{...pickerStyle }}
+            hideicon={false}
+            // keyExtractor={(item) => item.toString()}
+          />
+          </View>
         <View style={styles.button}>
           <Button
             color= {buttonColors}
@@ -88,25 +110,6 @@ class HomeScreen extends React.Component {
             />
           </View>
           </View>
-          <View style={styles.button}>
-            <RNPickerSelect
-              placeholder={{
-                label: 'Event Management...',
-                value: null,
-              }}
-              items={this.state.items}
-               onValueChange={(value) => {
-                this.setState({
-                  Function: value,
-                });
-                if (value) {this.props.navigation.navigate(value)}
-              }}
-              // style={{color:'#002A55'}}
-              style={{...pickerStyle }}
-              hideicon={false}
-              // keyExtractor={(item) => item.toString()}
-            />
-            </View>
             </View>
       </View>
     );
@@ -127,6 +130,21 @@ const styles = StyleSheet.create({
   menuContainer: {
     backgroundColor: 'white',
     paddingBottom:20,
+  },
+  textBox: {
+    // padding: 20,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  textStyle: {
+    textAlign: 'center',
+    fontSize: 17,
+    fontWeight: '300',
+    color: '#002a55',
+    textAlign: 'center',
+    flex:1,
   },
   button: {
     // padding: 20,
@@ -153,24 +171,16 @@ const styles = StyleSheet.create({
  },
  galleryContainer: {
    backgroundColor: 'white',
-   // flex: 1,
-   // position: 'absolute',
-   // bottom: '50%',
    padding:10,
-   paddingBottom: 250,
+   // paddingBottom: 10,
    alignItems: 'center',
    justifyContent: 'center',
  },
  gallery: {
-   // backgroundColor: 'rgba(0,42,85,0.7)',
-   padding:20,
-   // flex: 1,
-   // flexDirection: 'row',
-   // position: 'absolute',
+   // padding:20,
    justifyContent: 'center',
    alignItems: 'center',
-   alignSelf: 'center',
-   // bottom: '40%',
+   // alignSelf: 'center',
  },
 });
 
@@ -188,13 +198,13 @@ const pickerStyle = StyleSheet.create({
   },
   inputAndroid: {
     // paddingTop: 10,
-    paddingHorizontal: 150,
-    // paddingBottom: 10,
+    paddingHorizontal: 125,
+    // paddingBottom: 30,
     padding:10,
-    // borderWidth: 1,
-    // borderColor: '#002A55',
-    // borderRadius: 5,
-    backgroundColor: '#002A55',
+    borderWidth: 10,
+    borderColor: '#002A55',
+    borderRadius: 10,
+    backgroundColor: 'white',
     color: 'white',
   }
 });

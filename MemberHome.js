@@ -53,7 +53,7 @@ class MemberHomeScreen extends React.Component {
         <View style={styles.button}>
           <Button
             color= {buttonColors}
-            title="          Blog          "
+            title="Blog"
             onPress={() => this.props.navigation.navigate('MessageBoard')}
           />
           </View>
