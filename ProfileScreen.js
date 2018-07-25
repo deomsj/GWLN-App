@@ -9,7 +9,11 @@ import Separator from './Separator'
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 
-
+/*====Notes======
+*created a hyperlink for url but put http:// in front of it
+  because assuming it isn't in that form in database
+*need to figure out how not to show info from no_etc
+=================*/
 class ProfileScreen extends React.Component {
   constructor(props){
     super(props);
@@ -18,7 +22,7 @@ class ProfileScreen extends React.Component {
     }
   }
 
-  test = (crm) => {
+  filterdata = (crm) => {
     //need to catch error and no_contact stuff
     //will need to format phone number?
     // parameter being passed in will be a global variable that we get at login
@@ -27,20 +31,19 @@ class ProfileScreen extends React.Component {
       return e.contact_id == crm;
     });
     //console.log('after filtered:', filteredMemData)
-    this.setState({
-      memInfo: filteredMemData,
-    })
+    if ( filteredMemData != null ){
+      this.setState({
+        memInfo: filteredMemData,
+      })
+    }
     //console.log(this.state.memInfo.first_name)
   }
 
     componentWillMount() {
-      this.test(433)
+      this.filterdata(435)
     }
 
   render() {
-    // const data = this.state.memInfo.contacts
-    // console.log(data[0].contact_id)
-
     var buttonColors = ['rgba(255, 255, 255, 1)'];
 		if (Platform.OS === 'android') {
 			buttonColors = ['rgba(0, 42, 85, 1)'];
@@ -49,11 +52,16 @@ class ProfileScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
-          <Text style={styles.InfoText}>{this.state.memInfo[0].title} {this.state.memInfo[0].first_name} {this.state.memInfo[0].last_name} </Text>
+          <Text style={styles.InfoText}>{this.state.memInfo[0].first_name} {this.state.memInfo[0].last_name} </Text>
+          <Text style={styles.InfoText}>{this.state.memInfo[0].title} </Text>
           <Text style={styles.InfoText}> {this.state.memInfo[0].phone_business_main} </Text>
           <Text style={styles.InfoText}> {this.state.memInfo[0].email1} </Text>
           <Text style={styles.InfoText}> {this.state.memInfo[0].physical_address_city}, {this.state.memInfo[0].physical_address_state}, {this.state.memInfo[0].physical_address_country} </Text>
-          <Text style={styles.InfoText}> {this.state.memInfo[0].web_url} </Text>
+          <Text
+						style={styles.linkText}
+						onPress={() => {Linking.openURL('http://'+this.state.memInfo[0].web_url)}}>
+						{this.state.memInfo[0].web_url}
+					</Text>
         </View>
         <View style={styles.optionsContainer}>
         <View style={styles.buttonContainer}>
@@ -65,15 +73,6 @@ class ProfileScreen extends React.Component {
             />
             </View>
             </View>
-            <View style={styles.buttonContainer}>
-            <View style={styles.buttons}>
-              <Button
-            color= {buttonColors}
-            title="My Past Events"
-            onPress={() => this.props.navigation.navigate('MyPastEvents')}
-          />
-          </View>
-          </View>
           <View style={styles.signoutContainer}>
           <View style={styles.buttons}>
            <Button
@@ -105,19 +104,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   InfoContainer: {
-    flex: 2,
+    flex: 3,
     flexDirection: 'column',
     alignItems: 'flex-start',
     backgroundColor: 'rgba(0,42,85,0.4)',
+    paddingBottom: 30,
   },
   InfoText: {
-    fontSize: 16,
+    fontSize: 15,
     paddingTop: 10,
     paddingLeft: 5,
     color: 'black',
   },
+  linkText: {
+    fontSize: 16,
+    paddingTop: 10,
+    paddingLeft: 5,
+    color: '#002A55',
+	},
   optionsContainer: {
-    flex: 3,
+    flex: 4,
     backgroundColor: 'white',
     marginTop: '15%',
     flexDirection: 'column',
