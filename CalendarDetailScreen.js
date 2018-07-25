@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Alert } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Button, Picker, WebView, Alert, ScrollView, FlatList, Platform, TouchableOpacity} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
+import { SearchBar, List, ListItem } from 'react-native-elements';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
@@ -37,7 +38,7 @@ class CalendarDetailScreen extends React.Component {
 		});
 		//this._test();
 		return filteredData;
-	}
+	};
 
 	_test = () => {
 		let tmp = this.state.detailEvent
@@ -47,11 +48,37 @@ class CalendarDetailScreen extends React.Component {
 			console.log(tmp[0].event_name);
 		}
 
-	}
+	};
 	_onPress = () => {
 		console.log('rsvp pressed');
 		this._Post_RSVP()
-	}
+	};
+
+	// _renderItem=({ item }) => {
+	// 	<ListItem
+ //      		<View>
+ //        		id={item.timeline_event_id}
+ //        		<View style={styles.heading}>
+ //         			<Text style={styles.headingText}> {this.state.detailEvent[0].event_name} </Text>
+ //         			<Text style={styles.infoText}> {this.state.detailEvent[0].event_month}/{this.state.detailEvent[0].event_day}/{this.state.detailEvent[0].event_year} </Text>
+ //       		</View>
+ //        	<View style={styles.info}>
+ //          		<Text style={styles.infoText}> {this.state.detailEvent[0].event_location} </Text>
+ //          		<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
+ //          		<Button
+ //            		title="RSVP"
+ //            		onPress={() => Alert.alert(
+ //              		'Success',
+ //              		'You are now registered for '+this.state.detailEvent[0].event_name,
+ //              		[
+ //               		 {text: 'Dismiss', onPress: () => this._onPress()},
+ //              		],
+ //            		)}
+ //          		/>
+ //        	</View>
+ //      	</View>
+ //    />
+	// };
 
 	_rsvp = (crm) => {
 		let memData = this.state.memInfo
@@ -72,6 +99,7 @@ class CalendarDetailScreen extends React.Component {
 		console.log(attendee);
 	}
 
+
 	componentWillMount(){
 		this.filterData()
 		this._rsvp(433)
@@ -86,24 +114,15 @@ class CalendarDetailScreen extends React.Component {
 		//() => this._onPress()
 		return(
 			<View style={styles.container}>
-				<View style={styles.heading}>
-					<Text style={styles.headingText}> {this.state.detailEvent[0].event_name} </Text>
-					<Text style={styles.infoText}> {this.state.detailEvent[0].event_month}/{this.state.detailEvent[0].event_day}/{this.state.detailEvent[0].event_year} </Text>
-				</View>
-				<View style={styles.info}>
-					<Text style={styles.infoText}> {this.state.detailEvent[0].event_location} </Text>
-					<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
-					<Button
-						title="RSVP"
-						onPress={() => Alert.alert(
-							'Success',
-							'You are now registered for '+this.state.detailEvent[0].event_name,
-							[
-								{text: 'Dismiss', onPress: () => this._onPress()},
-							],
-						)}
-					/>
-				</View>
+				<ScrollView>
+					<List>
+						<FlatList
+							data={this.state.detailEvent}
+							renderItem={this._renderItem}
+							keyExtractor={item => item.timeline_event_id}
+						/>
+					</List>
+				</ScrollView>
 
 			</View>
 		);
@@ -114,6 +133,9 @@ class CalendarDetailScreen extends React.Component {
 const styles = StyleSheet.create ({
 	container: {
 		flex: 1,
+	},
+	scrollContainer: {
+		height: 200,
 	},
 	heading: {
 		flex: 1,
