@@ -142,8 +142,9 @@ class CreateEventScreen extends React.Component {
 		if(value) {
 			console.log(TmpDate);
 
-			this.updateCalendar(TmpDate);
+			//this.updateCalendar(TmpDate);
 			console.log('value', value);
+			console.log(DBEvent);
 		}
 		this.resetForm();
 	}
