@@ -1,8 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import EventData from './www_timeline_events.json';
 import PropTypes from 'prop-types';
+
+import EventData from './www_timeline_events.json';
+import contactData from './mock-database/crm.contacts.json';
+
 
 class CalendarDetailScreen extends React.Component {
 
@@ -11,7 +14,8 @@ class CalendarDetailScreen extends React.Component {
 		this.state = {
 			data: EventData,
 			detailEvent: [],
-			test: null,
+			memInfo: contactData,
+
 		}
 	}
 
@@ -29,7 +33,7 @@ class CalendarDetailScreen extends React.Component {
 		console.log(check);
 		this.setState({
 			detailEvent: filteredData,
-			test: check,
+	
 		});
 		//this._test();
 		return filteredData;
@@ -44,12 +48,36 @@ class CalendarDetailScreen extends React.Component {
 		}
 		
 	}
+	_onPress = () => {
+		console.log('rsvp pressed');
+		this._Post_RSVP()
+	}
+
+	_rsvp = (crm) => {
+		let memData = this.state.memInfo
+		var fileteredUserInfo = memData.contacts.filter( e => {
+			return e.contact_id == crm;
+		})
+		this.setState({
+			memInfo: fileteredUserInfo,
+		})
+	}
+
+	_Post_RSVP = () => {
+		let currUser = this.state.memInfo
+		const attendee = {
+			event: this.state.detailEvent[0].timeline_event_id,
+			cmr_id: currUser[0].contact_id,
+		}
+		console.log(attendee);
+	}
 
 	componentWillMount(){
 		this.filterData()
+		this._rsvp(433)
 	}
 	render() {
-		this._test();
+		//this._test();
 		//console.log(this.state.data);
 		
 		
@@ -65,8 +93,11 @@ class CalendarDetailScreen extends React.Component {
 				<View style={styles.info}>
 					<Text style={styles.infoText}> {this.state.detailEvent[0].event_location} </Text>
 					<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
-				</View>
-				 
+					<Button
+						title="RSVP"
+						onPress={() => this._onPress()}
+					/>
+				</View>			 
 				
 			</View>
 		);
