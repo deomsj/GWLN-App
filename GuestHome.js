@@ -45,20 +45,31 @@ class GuestHomeScreen extends React.Component {
         ]}
           flatListProps={{windowSize: 2}}
           pageMargin={10}
-
           />
+        </View>
+        <View style={styles.textBox}>
+        <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
         </View>
         <View style={styles.buttonContainer}>
         <View style={styles.menuContainer}>
         <View style={styles.button}>
           <Button
             color= {buttonColors}
-            title="Blog"
-            onPress={() => this.props.navigation.navigate('MessageBoard')}
+            title="Join the Network"
+            onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}
           />
           </View>
           </View>
-        <View style={styles.signoutContainer}>
+          <View style={styles.menuContainer}>
+          <View style={styles.button}>
+            <Button
+              color= {buttonColors}
+              title="Find an Event"
+              onPress={() => this.props.navigation.navigate('CalendarView')}
+            />
+            </View>
+            </View>
+        <View style={styles.menuContainer}>
         <View style={styles.button}>
           <Button
            color={buttonColors}
@@ -69,8 +80,8 @@ class GuestHomeScreen extends React.Component {
            </View>
            <Text
              style={styles.memberText}
-             onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
-             Join the Network
+             onPress={() => this.props.navigation.navigate('MessageBoard')}>
+             Blog
            </Text>
           </View>
       </View>
@@ -83,7 +94,7 @@ const styles = StyleSheet.create({
     // padding: 20,
     // marginTop:20,
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     flex: 1,
     // flexDirection: 'column',
     alignItems: 'center',
@@ -92,7 +103,7 @@ const styles = StyleSheet.create({
   memberText: {
 		color: 'blue',
 		fontSize: 17,
-		padding: 20,
+		padding: 10,
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -100,11 +111,10 @@ const styles = StyleSheet.create({
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:30,
+    paddingBottom:10,
   },
   button: {
-    // padding: 20,
-    paddingHorizontal:100,
+    paddingHorizontal:75,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
@@ -126,26 +136,33 @@ const styles = StyleSheet.create({
    position: 'absolute',
    top: '60%',
  },
- signoutContainer: {
-   backgroundColor: 'white',
-   paddingTop:20,
- },
  galleryContainer: {
    backgroundColor: 'white',
-   // flex: 1,
-   // position: 'absolute',
-   // bottom: '50%',
    padding:10,
-   paddingBottom: 250,
+   marginTop: '10%',
+   // paddingBottom: 250,
    alignItems: 'center',
-   justifyContent: 'center',
+   // justifyContent: 'center',
  },
  gallery: {
-   // backgroundColor: 'rgba(0,42,85,0.7)',
-   padding:20,
-   justifyContent: 'center',
-   alignItems: 'center',
    alignSelf: 'center',
+ },
+ textStyle: {
+   textAlign: 'center',
+   fontSize: 17,
+   padding:10,
+   fontWeight: '300',
+   color: '#002a55',
+   flex:1,
+   // flexDirection: 'column',
+ },
+ textBox: {
+   // padding: 10,
+   // justifyContent: 'center',
+   // alignSelf: 'center',
+   // alignItems: 'center',
+   // paddingBottom: 20,
+   marginTop: '12%',
  },
 });
 
