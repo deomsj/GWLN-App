@@ -87,7 +87,7 @@ class MessageBoardScreen extends React.Component {
 						renderItem={this._renderItem}
 						keyExtractor={item => item.postID}
 						ItemSeparatorComponent={this.renderSeparator}
-						style={{height: 100}}
+						
 						/>
 			</List>
 			</ScrollView>
