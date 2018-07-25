@@ -18,7 +18,7 @@ class GWLNScreen extends React.Component {
       	<View style={styles.buttonContainer}>
                 <Button
                 color={buttonColors}
-                title="Donate!"
+                title="Donate"
                 onPress={() => this.props.navigation.navigate('DonateView')}
                 />
         </View>
@@ -38,11 +38,13 @@ const styles= StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#002A55',
+    alignSelf: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
     borderColor: '#002A55',
     borderWidth: 1,
     borderRadius: 5,
     position: 'absolute',
-    right: '40%',
     bottom: '20%',
   },
   image: {

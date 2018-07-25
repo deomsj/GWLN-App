@@ -27,11 +27,15 @@ class HomeScreen extends React.Component {
         Function: undefined,
         items: [
           {
+            label: 'Manage Events...',
+            color: 'black',
+          },
+          {
             label: 'Event Check In',
             value: 'CheckIn',
           },
           {
-            label: 'Event Feedback',
+            label: 'Provide Feedback',
             value: 'FeedbackFrom',
           },
           {
@@ -66,19 +70,21 @@ class HomeScreen extends React.Component {
         ]}
           flatListProps={{windowSize: 1}}
           pageMargin={10}
-
           />
         </View>
         <View style={styles.textBox}>
+<<<<<<< HEAD
            <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
+=======
+          <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
+>>>>>>> 1270cf8f6c77db0abf34d0c150d35bad347017ae
           </View>
         <View style={styles.buttonContainer}>
-        <View style={styles.menuContainer}>
-        <View style={styles.button}>
+        <View style={styles.pickerContainer}>
           <RNPickerSelect
             placeholder={{
-              label: 'Event Management...',
-              value: null,
+              label: 'What are you here to do?',
+              color: 'lightgray',
             }}
             items={this.state.items}
              onValueChange={(value) => {
@@ -93,12 +99,13 @@ class HomeScreen extends React.Component {
             // keyExtractor={(item) => item.toString()}
           />
           </View>
+        <View style={styles.menuContainer}>
         <View style={styles.button}>
-          <Button
-            color= {buttonColors}
-            title="     Blog     "
-            onPress={() => this.props.navigation.navigate('MessageBoard')}
-          />
+        <Button
+          color= {buttonColors}
+          title="Find an Event"
+          onPress={() => this.props.navigation.navigate('CalendarView')}
+        />
           </View>
           </View>
         <View style={styles.menuContainer}>
@@ -110,6 +117,11 @@ class HomeScreen extends React.Component {
             />
           </View>
           </View>
+          <Text
+            style={styles.memberText}
+            onPress={() => this.props.navigation.navigate('MessageBoard')}>
+            Blog
+          </Text>
             </View>
       </View>
     );
@@ -118,36 +130,29 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
-    // marginTop:20,
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     flex: 1,
-    // flexDirection: 'column',
     alignItems: 'center',
-
+  },
+  memberText: {
+		color: 'blue',
+		fontSize: 17,
+		padding: 10,
+		alignSelf: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'column',
+	},
+  pickerContainer: {
+    paddingBottom: 15,
   },
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:20,
-  },
-  textBox: {
-    // padding: 20,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-    paddingBottom: 20,
-  },
-  textStyle: {
-    textAlign: 'center',
-    fontSize: 17,
-    fontWeight: '300',
-    color: '#002a55',
-    textAlign: 'center',
-    flex:1,
+    paddingBottom:15,
   },
   button: {
-    // padding: 20,
+    // paddingHorizontal:75,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
@@ -160,27 +165,31 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 5,
 		flexDirection: 'column',
-		// alignItems: 'center',
 	},
   buttonContainer: {
-   // alignItems: 'center',
    backgroundColor: 'white',
-   // padding: 10,
    position: 'absolute',
    top: '60%',
  },
  galleryContainer: {
    backgroundColor: 'white',
    padding:10,
-   // paddingBottom: 10,
+   marginTop: '10%',
    alignItems: 'center',
-   justifyContent: 'center',
  },
  gallery: {
-   // padding:20,
-   justifyContent: 'center',
-   alignItems: 'center',
-   // alignSelf: 'center',
+   alignSelf: 'center',
+ },
+ textStyle: {
+   textAlign: 'center',
+   fontSize: 17,
+   padding:10,
+   fontWeight: '300',
+   color: '#002a55',
+   flex:1,
+ },
+ textBox: {
+   marginTop: '12%',
  },
 });
 
@@ -199,13 +208,14 @@ const pickerStyle = StyleSheet.create({
   inputAndroid: {
     // paddingTop: 10,
     paddingHorizontal: 125,
-    // paddingBottom: 30,
-    padding:10,
-    borderWidth: 10,
+    paddingBottom: 10,
+    paddingTop: 10,
+    // padding:10,
+    borderWidth: 1,
     borderColor: '#002A55',
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: 'white',
-    color: 'white',
+    color: 'black',
   }
 });
 export default HomeScreen;

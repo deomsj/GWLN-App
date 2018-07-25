@@ -29,6 +29,7 @@ import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
 import GuestHomeScreen from './GuestHome';
 import MemberHomeScreen from './MemberHome';
+import Signin from './NewLaunch';
 
 
  const TabNav = createBottomTabNavigator({
@@ -119,7 +120,7 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='GWLN') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause! </Text>),
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause </Text>),
     headerLeft: null,
     };
   }
@@ -178,7 +179,6 @@ GuestNav.navigationOptions = ({navigation}) => {
  if (routeName==='Home') {
    return {
    headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
-   headerRight: (<View></View>),
    };
  }
  else if (routeName==='CalendarView') {
@@ -189,7 +189,7 @@ GuestNav.navigationOptions = ({navigation}) => {
  }
  else if (routeName==='GWLN') {
    return {
-   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause! </Text>),
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause </Text>),
    headerLeft: null,
    };
  }
@@ -279,7 +279,7 @@ MemberNav.navigationOptions = ({navigation}) => {
  }
  else if (routeName==='GWLN') {
    return {
-   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause! </Text>),
+   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Help Support Our Cause </Text>),
    headerLeft: null,
    };
  }

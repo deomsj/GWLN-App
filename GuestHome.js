@@ -73,7 +73,7 @@ class GuestHomeScreen extends React.Component {
         <View style={styles.button}>
           <Button
            color={buttonColors}
-           title="Member Benefits"
+           title="Benefits of Membership"
            onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_about/gwln_member')}}
            />
            </View>
@@ -91,14 +91,10 @@ class GuestHomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
-    // marginTop:20,
     backgroundColor: 'white',
     justifyContent: 'space-evenly',
     flex: 1,
-    // flexDirection: 'column',
     alignItems: 'center',
-
   },
   memberText: {
 		color: 'blue',
@@ -111,10 +107,10 @@ const styles = StyleSheet.create({
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:10,
+    paddingBottom:15,
   },
   button: {
-    paddingHorizontal:75,
+    paddingHorizontal:20,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
@@ -127,12 +123,9 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 5,
 		flexDirection: 'column',
-		// alignItems: 'center',
 	},
   buttonContainer: {
-   // alignItemas: 'center',
    backgroundColor: 'white',
-   // padding: 10,
    position: 'absolute',
    top: '60%',
  },
@@ -140,9 +133,7 @@ const styles = StyleSheet.create({
    backgroundColor: 'white',
    padding:10,
    marginTop: '10%',
-   // paddingBottom: 250,
    alignItems: 'center',
-   // justifyContent: 'center',
  },
  gallery: {
    alignSelf: 'center',
@@ -154,34 +145,10 @@ const styles = StyleSheet.create({
    fontWeight: '300',
    color: '#002a55',
    flex:1,
-   // flexDirection: 'column',
  },
  textBox: {
-   // padding: 10,
-   // justifyContent: 'center',
-   // alignSelf: 'center',
-   // alignItems: 'center',
-   // paddingBottom: 20,
    marginTop: '12%',
  },
 });
 
-const pickerStyle = StyleSheet.create({
-  inputiOs: {
-    fontSize: 16,
-    paddingTop: 13,
-    paddingHorizontal: 10,
-    paddingBottom: 12,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    // backgroundColor: '#002A55',
-    color: '#002A55',
-  },
-  inputAndroid: {
-    paddingHorizontal: 150,
-    padding:10,
-    backgroundColor: '#002A55',
-  }
-});
 export default GuestHomeScreen;
