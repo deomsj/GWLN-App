@@ -135,6 +135,7 @@ class CreateEventScreen extends React.Component {
 		 	event_month: ParsedMonth,
 		 	event_year: parsedYear,
 		 	event_description: value.event_description,
+		 	event_location: value.location,
 		 }
 
 		//this.updateCalendar.bind(this);
@@ -145,6 +146,7 @@ class CreateEventScreen extends React.Component {
 			//this.updateCalendar(TmpDate);
 			console.log('value', value);
 			console.log(DBEvent);
+			// post to database!!
 		}
 		this.resetForm();
 	}
