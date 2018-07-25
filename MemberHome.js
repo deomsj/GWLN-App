@@ -45,17 +45,19 @@ class MemberHomeScreen extends React.Component {
         ]}
           flatListProps={{windowSize: 2}}
           pageMargin={10}
-
           />
+        </View>
+        <View style={styles.textBox}>
+        <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
         </View>
         <View style={styles.buttonContainer}>
         <View style={styles.menuContainer}>
         <View style={styles.button}>
-          <Button
-            color= {buttonColors}
-            title="Blog"
-            onPress={() => this.props.navigation.navigate('MessageBoard')}
-          />
+        <Button
+          color= {buttonColors}
+          title="Find an Event"
+          onPress={() => this.props.navigation.navigate('CalendarView')}
+        />
           </View>
           </View>
         <View style={styles.menuContainer}>
@@ -67,6 +69,11 @@ class MemberHomeScreen extends React.Component {
             />
           </View>
           </View>
+          <Text
+            style={styles.memberText}
+            onPress={() => this.props.navigation.navigate('MessageBoard')}>
+            Blog
+          </Text>
             </View>
       </View>
     );
@@ -75,23 +82,27 @@ class MemberHomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
-    // marginTop:20,
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     flex: 1,
-    // flexDirection: 'column',
     alignItems: 'center',
-
   },
+  memberText: {
+		color: 'blue',
+		fontSize: 17,
+		padding: 10,
+		alignSelf: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'column',
+	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:20,
+    paddingBottom:15,
   },
   button: {
-    // padding: 20,
+    paddingHorizontal:75,
 		backgroundColor: '#002A55',
-    paddingHorizontal: 100,
 		...Platform.select({
       ios: {
         borderColor: '#002A55',
@@ -103,62 +114,33 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 5,
 		flexDirection: 'column',
-		// alignItems: 'center',
 	},
   buttonContainer: {
-   // alignItems: 'center',
-   alignSelf: 'center',
    backgroundColor: 'white',
-   // padding: 10,
-   marginTop: '10%',
    position: 'absolute',
-   top: '60%',
+   top: '65%',
  },
  galleryContainer: {
    backgroundColor: 'white',
-   // flex: 1,
-   // position: 'absolute',
-   // bottom: '50%',
    padding:10,
-   paddingBottom: 250,
+   marginTop: '10%',
    alignItems: 'center',
-   justifyContent: 'center',
  },
  gallery: {
-   // backgroundColor: 'rgba(0,42,85,0.7)',
-   padding:20,
-   // flex: 1,
-   // flexDirection: 'row',
-   // position: 'absolute',
-   justifyContent: 'center',
-   alignItems: 'center',
    alignSelf: 'center',
-   // bottom: '40%',
  },
-});
-
-const pickerStyle = StyleSheet.create({
-  inputiOs: {
-    fontSize: 16,
-    paddingTop: 13,
-    paddingHorizontal: 10,
-    paddingBottom: 12,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    // backgroundColor: '#002A55',
-    color: '#002A55',
-  },
-  inputAndroid: {
-    // paddingTop: 10,
-    paddingHorizontal: 150,
-    // paddingBottom: 10,
-    padding:10,
-    // borderWidth: 1,
-    // borderColor: '#002A55',
-    // borderRadius: 5,
-    backgroundColor: '#002A55',
-    // color: 'white',
-  }
+ textStyle: {
+   textAlign: 'center',
+   fontSize: 17,
+   padding:10,
+   fontWeight: '300',
+   color: '#002a55',
+   flex:1,
+ },
+ textBox: {
+   marginTop: '12%',
+   marginBottom: '12%',
+   // padding: 10,
+ },
 });
 export default MemberHomeScreen;
