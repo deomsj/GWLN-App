@@ -84,18 +84,26 @@ sortEvents = () => {
   let tmpDates = this.state.data;
   //console.log(tmpDates);
   for (var i = 0; i < tmpDates.length; i++) {
-    //console.log(tmpDates[i]);
-    //this._parseEventData(tmpDates[i])
+  
     tmp = tmpDates[i]
     //console.log(tmp);
-    const day = tmp.event_day
-    const month = tmp.event_month
+    var day = tmp.event_day
+    var month = tmp.event_month
+    var zero = "0";
+    if (month.length == 1) {
+      month = `${zero}${month}`
+    }
+    if (day.length == 1) {
+      day = `${zero}${day}`
+    }
     const year = tmp.event_year
     const date = `${year}-${month}-${day}`
-    //const _date = moment(date).format(_format);
+    const _date = moment(date).format(_format);
     console.log(date);
-    this.OnDaySelect(date);
+    console.log(_date);
+    this.PostEvent(date);
   }
+  //this.PostEvent("2018-07-27");
 }
 
   PostEvent = (day) => {
@@ -135,7 +143,7 @@ sortEvents = () => {
     //console.log('in componen will mount');
     //console.log(this.state.data)
     //console.log(this.state.EventDate);
-    this._mounted = true;
+    //this._mounted = true;
     //this.AddEvent(this.state.EventDate);
     //this._parseEventData(this.state.data);
     this.retrieveEvents();
