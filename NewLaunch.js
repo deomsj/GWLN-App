@@ -84,7 +84,6 @@ class Signin extends React.Component {
             Forgot Password?
           </Text>
           </View>
-          <Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
           <View style={styles.separatorContainer}>
           </View>
             <Text style={styles.separatorText}>OR</Text>
@@ -95,6 +94,7 @@ class Signin extends React.Component {
             Continue as Guest
           </Text>
           </View>
+          <Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
       </View>
     );
   }
@@ -105,8 +105,9 @@ export default Signin;
 const styles = StyleSheet.create({
   mainContainer: {
 		backgroundColor: 'white',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     flex: 1,
+    flexDirection: 'column',
 	},
   formContainer: {
     flex: 1,
@@ -117,8 +118,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     // alignItems: 'center',
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: '35%',
+    // justifyContent: 'center',
+    // position: 'absolute',
+    // bottom: '35%',
   },
 	buttons: {
     paddingVertical: 5,
@@ -164,9 +166,9 @@ const styles = StyleSheet.create({
     height:2,
   },
   guestContainer: {
-    position: 'absolute',
+    // position: 'absolute',
     alignSelf: 'center',
-    bottom: '15%',
+    // bottom: '15%',
   },
   guestButton: {
     paddingHorizontal: 20,
@@ -186,15 +188,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignSelf: 'center',
     padding: 10,
-    position: 'absolute',
-    bottom: '26%',
+    // position: 'absolute',
+    // bottom: '26%',
   },
   separatorContainer: {
     alignSelf: 'center',
     paddingHorizontal: '100%',
     borderBottomColor: 'lightgray',
     borderBottomWidth: 1,
-    position: 'absolute',
-    bottom: '30%',
+    // position: 'absolute',
+    // bottom: '30%',
   },
 });
