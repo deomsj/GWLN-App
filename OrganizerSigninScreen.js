@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Linking, Platform } from 'react-native';
+import { StyleSheet, Image, Text, View, Button, Picker, WebView, ScrollView, TouchableOpacity, Linking, Platform, Alert } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNlogo from './img/gwln_logo.jpg';
 import moment from 'moment';
@@ -51,7 +51,15 @@ class OrganizerSigninScreen extends React.Component {
 		headerStyle: { backgroundColor: 'white', elevation: 0}
 	}
 
-
+	DiscardForm=(value ) => {
+		Alert.alert(
+			'Invalid Username or Password',
+			'Please try again or forgot password',
+			[
+				{text: 'Dismiss', onPress: () => this.resetForm()},
+			],
+		)
+	}
 
 	handleSubmit = () => {
 		const value = this._form.getValue();
@@ -71,7 +79,7 @@ class OrganizerSigninScreen extends React.Component {
 					}
 				}),
 			})
-			
+
 			.then(res => res.json())
 			.then(res => {
 				//console.log(res)
@@ -79,6 +87,10 @@ class OrganizerSigninScreen extends React.Component {
 					this.props.navigation.navigate('Home')
 					global.currUser = res
 					console.log(global.currUser);
+				}
+				else {
+					console.log('wrong creds');
+					this.DiscardForm();
 				}
 			})
 			.catch(error => {

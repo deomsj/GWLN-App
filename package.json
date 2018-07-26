@@ -39,6 +39,7 @@
     "react-native-image-gallery": "^2.1.5",
     "react-native-local-mongodb": "^2.2.2",
     "react-native-modal-datetime-picker": "^5.1.0",
+    "react-native-phone-call": "^1.0.7",
     "react-native-picker-select": "^4.0.0",
     "react-native-show-hide-toggle-box": "^1.0.1",
     "react-native-simple-radio-button": "^2.7.2",
