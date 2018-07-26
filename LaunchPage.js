@@ -68,7 +68,6 @@ class LaunchPage extends React.Component {
 					onPress={() => {Linking.openURL('https://www.cuwomen.org/gwln_connect/gwln_new_member')}}>
 					Join the Network
 				</Text>
-				
 			</View>
 			</View>
 	)};
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
 		// position: 'absolute',
 		// top: '100%',
 		// paddingHorizontal: 100,
-		paddingTop:80,
+		paddingTop:100,
 
 	},
 	buttons: {
