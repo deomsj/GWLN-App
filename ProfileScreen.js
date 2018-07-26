@@ -39,6 +39,10 @@ class ProfileScreen extends React.Component {
     //console.log(this.state.memInfo.first_name)
   }
 
+  _signOut = () => {
+    
+  }
+
     componentWillMount() {
       this.filterdata(435)
     }
@@ -55,12 +59,12 @@ class ProfileScreen extends React.Component {
           <Text style={styles.InfoText}>{global.currUser.first_name} {global.currUser.last_name} </Text>
           <Text style={styles.InfoText}>{global.currUser.title} </Text>
           <Text style={styles.InfoText}> {global.currUser.phone_business_main} </Text>
-          <Text style={styles.InfoText}> {global.currUser.email} </Text>
+          <Text style={styles.InfoText}> {global.currUser.email1} </Text>
           <Text style={styles.InfoText}> {global.currUser.mailing_address_city}, {global.currUser.mailing_address_country_name} </Text>
           <Text
 						style={styles.linkText}
 						onPress={() => {Linking.openURL('http://'+global.currUser.web_url)}}>
-						{this.state.memInfo[0].web_url}
+						{global.currUser.web_url}
 					</Text>
         </View>
         <View style={styles.optionsContainer}>

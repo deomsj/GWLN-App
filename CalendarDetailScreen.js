@@ -80,29 +80,39 @@ class CalendarDetailScreen extends React.Component {
  //    />
 	// };
 
-	_rsvp = (crm) => {
-		let memData = this.state.memInfo
-		var fileteredUserInfo = memData.contacts.filter( e => {
-			return e.contact_id == crm;
-		})
-		this.setState({
-			memInfo: fileteredUserInfo,
-		})
-	}
+	// _rsvp = (crm) => {
+	// 	let memData = this.state.memInfo
+	// 	var fileteredUserInfo = memData.contacts.filter( e => {
+	// 		return e.contact_id == crm;
+	// 	})
+	// 	this.setState({
+	// 		memInfo: fileteredUserInfo,
+	// 	})
+	// }
 
 	_Post_RSVP = () => {
 		let currUser = this.state.memInfo
-		const attendee = {
-			event: this.state.detailEvent[0].timeline_event_id,
-			cmr_id: currUser[0].contact_id,
+		if (global.currUser != null) {
+				const attendee = {
+				event: this.state.detailEvent[0].timeline_event_id,
+				cmr_id: global.currUser.contact_id,
+				}
+				console.log(attendee);
 		}
-		console.log(attendee);
+		else {
+			const guestAttendee = {
+				event: this.state.detailEvent[0].timeline_event_id,
+				cmr_id: Math.floor(Math.random()*10000)+1
+			}
+			console.log(guestAttendee);
+		}
+
 	}
 
 
 	componentWillMount(){
 		this.filterData()
-		this._rsvp(433)
+		
 	}
 	render() {
 		//this._test();
@@ -115,13 +125,28 @@ class CalendarDetailScreen extends React.Component {
 		return(
 			<View style={styles.container}>
 				<ScrollView>
-					<List>
-						<FlatList
-							data={this.state.detailEvent}
-							renderItem={this._renderItem}
-							keyExtractor={item => item.timeline_event_id}
-						/>
-					</List>
+					<View>
+        				
+         				<View style={styles.heading}>
+          				<Text style={styles.headingText}> {this.state.detailEvent[0].event_name} </Text>
+          				<Text style={styles.infoText}> {this.state.detailEvent[0].event_month}/{this.state.detailEvent[0].event_day}/{this.state.detailEvent[0].event_year} </Text>
+        			</View>
+         			<View style={styles.info}>
+           				<Text style={styles.infoText}> {this.state.detailEvent[0].event_location} </Text>
+           				<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
+          				<Button
+            				title="RSVP"
+            				onPress={() => Alert.alert(
+              				'Success',
+              				'You are now registered for '+this.state.detailEvent[0].event_name,
+              				[
+              				 {text: 'Dismiss', onPress: () => this._onPress()},
+               				],
+             				)}
+           				/>
+         			</View>
+       			</View>
+					
 				</ScrollView>
 
 			</View>

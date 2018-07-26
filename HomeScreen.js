@@ -73,11 +73,9 @@ class HomeScreen extends React.Component {
           />
         </View>
         <View style={styles.textBox}>
-<<<<<<< HEAD
+
            <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
-=======
-          <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
->>>>>>> 1270cf8f6c77db0abf34d0c150d35bad347017ae
+
           </View>
         <View style={styles.buttonContainer}>
         <View style={styles.pickerContainer}>

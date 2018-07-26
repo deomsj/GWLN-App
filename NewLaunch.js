@@ -48,8 +48,51 @@ class Signin extends React.Component {
 		headerStyle: { backgroundColor: 'white', elevation: 0}
 	}
 
-  handleSubmit = () => {
 //STILL NEED TO ADD DIFFERENCIATION FLAG TO SIGN IN BUTTON
+  handleSubmit = () => {
+    const value = this._form.getValue();
+    console.log('value', value);
+    if(value) {
+      const url = 'https://cuwomen.org/functions/app.gwln.php'
+      fetch(url, {
+        method: "POST",
+        headers: {
+          'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+        },
+        body: JSON.stringify({
+          "code": "login",
+          "arguments": {
+            "username": value.email,
+            "password": value.password,
+          }
+        }),
+      })
+      
+      .then(res => res.json())
+      .then(res => {
+        //console.log(res)
+        if (res != false) {
+          this.props.navigation.navigate('Home')
+          global.currUser = res
+          this.resetForm()
+          console.log(global.currUser);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    console.log('fetch');
+    }
+  }
+
+  _guestLogIn = () => {
+    global.currUser = null;
+    this.props.navigation.navigate('GuestHomeScreen')
+  }
+
+  componentWillMount(){
+    global.currUser = null;
+
 
   }
 
@@ -91,7 +134,7 @@ class Signin extends React.Component {
           <View style={styles.guestContainer}>
           <Text
             style={styles.guestButton}
-            onPress={() => this.props.navigation.navigate('GuestHomeScreen')}>
+            onPress={this._guestLogIn}>
             Continue as Guest
           </Text>
           </View>
