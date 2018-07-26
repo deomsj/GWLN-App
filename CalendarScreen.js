@@ -45,7 +45,7 @@ class CalendarScreen extends React.Component {
       data: {},
       MarkedEvents: {},
       _markedDates: {},
-      
+
     }
     //this.test = this.test.bind(this);
     //this.OnDaySelect = this.OnDaySelect.bind(this);
@@ -57,7 +57,7 @@ class CalendarScreen extends React.Component {
   retrieveEvents = () => {
   const url = 'https://cuwomen.org/functions/app.gwln.php'
   fetch(url, {
-    method: "RETRIEVE",
+    method: "POST",
     headers: {
       'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
     },
@@ -120,7 +120,7 @@ sortEvents = () => {
     console.log(_selectedDay);
 
     // pass the date to the event details page
- 
+
     if (this.state._markedDates[_selectedDay]){
        console.log('in if statement');
        //console.log(_selectedDay);
