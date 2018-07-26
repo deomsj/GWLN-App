@@ -184,10 +184,8 @@ console.log('fetch');
             Forgot Password?
           </Text>
           </View>
-          <Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
-          <View style={styles.separatorContainer}>
-          </View>
-            <Text style={styles.separatorText}>OR</Text>
+          <View style={styles.separatorContainer}/>
+                <Text style={styles.separatorText}>OR</Text>
           <View style={styles.guestContainer}>
           <Text
             style={styles.guestButton}
@@ -195,6 +193,7 @@ console.log('fetch');
             Continue as Guest
           </Text>
           </View>
+          <Image source={WorldCouncilLogo} style={styles.WorldCouncil}/>
       </View>
     );
   }
@@ -205,24 +204,27 @@ export default Signin;
 const styles = StyleSheet.create({
   mainContainer: {
 		backgroundColor: 'white',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     flex: 1,
+    flexDirection: 'column',
 	},
   formContainer: {
-    flex: 1,
+    // flex: 1,
+    paddingHorizontal:50,
     backgroundColor: 'white',
-    paddingHorizontal: 50,
-    padding: 10,
+    // paddingHorizontal: 50,
+    // padding: 10,
   },
   buttonContainer: {
     // alignItems: 'center',
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: '35%',
+    // justifyContent: 'center',
+    // position: 'absolute',
+    // bottom: '35%',
   },
 	buttons: {
     paddingVertical: 5,
-    paddingHorizontal: 60,
+    paddingHorizontal: 50,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
@@ -239,6 +241,7 @@ const styles = StyleSheet.create({
 		color: 'blue',
 		fontSize: 17,
 		padding: 15,
+    paddingBottom: 30,
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -249,27 +252,25 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     paddingBottom: 90,
-    marginBottom: '5%',
+    marginBottom: '10%',
 	},
 	WorldCouncil: {
     resizeMode: 'contain',
     width: undefined,
     height: undefined,
     paddingTop: 50,
-    marginBottom: '2%',
-    marginLeft: '50%',
+    // marginBottom: '2%',
+    marginLeft: '55%',
+    marginTop: '10%',
 	},
-  dividerStyle: {
-    backgroundColor: 'lightgray',
-    height:2,
-  },
   guestContainer: {
-    position: 'absolute',
+    // position: 'absolute',
     alignSelf: 'center',
-    bottom: '15%',
+    padding: 10,
+    // bottom: '15%',
   },
   guestButton: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     padding: 10,
     backgroundColor: 'white',
     borderColor: '#002A55',
@@ -285,16 +286,15 @@ const styles = StyleSheet.create({
     color: 'gray',
     backgroundColor: 'white',
     alignSelf: 'center',
-    padding: 10,
-    position: 'absolute',
-    bottom: '26%',
+    // textDecorationLine: 'line-through',
+    paddingHorizontal:10,
+    bottom: '2%',
   },
   separatorContainer: {
+    width:'90%',
     alignSelf: 'center',
-    paddingHorizontal: '100%',
-    borderBottomColor: 'lightgray',
-    borderBottomWidth: 1,
-    position: 'absolute',
-    bottom: '30%',
+    backgroundColor: 'lightgray',
+    height: StyleSheet.hairlineWidth,
+    padding: 1,
   },
 });
