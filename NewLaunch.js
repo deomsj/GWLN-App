@@ -44,8 +44,8 @@ class Signin extends React.Component {
 		this.setState({value:null});
 	}
 
-	static navigationOptions = {
-		headerStyle: { backgroundColor: 'white', elevation: 0}
+  static navigationOptions = {
+		header: null,
 	}
 
 
@@ -68,7 +68,7 @@ class Signin extends React.Component {
   //         }
   //       }),
   //     })
-      
+
   //     .then(res => res.json())
   //     .then(res => {
   //       //console.log(res)
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     paddingBottom: 90,
-    marginBottom: '10%',
+    margin: '10%',
 	},
 	WorldCouncil: {
     resizeMode: 'contain',
