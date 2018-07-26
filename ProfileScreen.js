@@ -51,6 +51,10 @@ class ProfileScreen extends React.Component {
     //console.log(this.state.memInfo.first_name)
   }
 
+  _signOut = () => {
+    
+  }
+
     componentWillMount() {
       this.filterdata(435)
     }
@@ -69,14 +73,14 @@ class ProfileScreen extends React.Component {
         <View style={styles.InfoContainer}>
           <Text style={styles.InfoText}>{global.currUser.first_name} {global.currUser.last_name} </Text>
           <Text style={styles.InfoText}>{global.currUser.title} </Text>
+          <Text style={styles.InfoText}> {global.currUser.phone_business_main} </Text>
+          <Text style={styles.InfoText}> {global.currUser.email1} </Text>
+          <Text style={styles.InfoText}> {global.currUser.mailing_address_city}, {global.currUser.mailing_address_country_name} </Text>
           <Text
             style={styles.linkText}
             onPress={() => {call(phoneArgs).catch(console.error)}}>
             {global.currUser.phone_business_main}
           </Text>
-          <Text style={styles.InfoText}> {global.currUser.email1} </Text>
-          <Text style={styles.InfoText}> {global.currUser.mailing_address_city}, {global.currUser.mailing_address_country_name} </Text>
-
         </View>
         <View style={styles.optionsContainer}>
         <View style={styles.buttonContainer}>
