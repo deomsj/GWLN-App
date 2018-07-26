@@ -112,44 +112,44 @@ class Signin extends React.Component {
 
   handleSubmit = () => {
 //STILL NEED TO ADD DIFFERENCIATION FLAG TO SIGN IN BUTTON
-const value = this._form.getValue();
-console.log('value', value);
-if(value) {
-	const url = 'https://cuwomen.org/functions/app.gwln.php'
-	fetch(url, {
-		method: "POST",
-		headers: {
-			'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
-		},
-		body: JSON.stringify({
-			"code": "login",
-			"arguments": {
-				"username": value.email,
-				"password": value.password,
-			}
-		}),
-	})
+// const value = this._form.getValue();
+// console.log('value', value);
+// if(value) {
+// 	const url = 'https://cuwomen.org/functions/app.gwln.php'
+// 	fetch(url, {
+// 		method: "POST",
+// 		headers: {
+// 			'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+// 		},
+// 		body: JSON.stringify({
+// 			"code": "login",
+// 			"arguments": {
+// 				"username": value.email,
+// 				"password": value.password,
+// 			}
+// 		}),
+// 	})
 
-	.then(res => res.json())
-	.then(res => {
-		//console.log(res)
-		if (res != false) {
-			this.props.navigation.navigate('Home')
-			global.currUser = res
-      this.resetForm
-			console.log(global.currUser);
-		}
-		else {
-			console.log('wrong creds');
-			this.DiscardForm();
-		}
-	})
-	.catch(error => {
-		console.log(error);
-	})
-console.log('fetch');
-}
-
+// 	.then(res => res.json())
+// 	.then(res => {
+// 		//console.log(res)
+// 		if (res != false) {
+// 			this.props.navigation.navigate('Home')
+// 			global.currUser = res
+//       this.resetForm
+// 			console.log(global.currUser);
+// 		}
+// 		else {
+// 			console.log('wrong creds');
+// 			this.DiscardForm();
+// 		}
+// 	})
+// 	.catch(error => {
+// 		console.log(error);
+// 	})
+// console.log('fetch');
+// }
+  this.props.navigation.navigate('Home')
 
   }
 
