@@ -8,12 +8,24 @@ import Separator from './Separator'
 
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
+import './Global.js';
+
+import call from 'react-native-phone-call'
 
 /*====Notes======
 *created a hyperlink for url but put http:// in front of it
   because assuming it isn't in that form in database
 *need to figure out how not to show info from no_etc
 =================*/
+// <Text
+//   style={styles.linkText}
+//   onPress={() => {Linking.openURL('http://'+global.currUser.web_url)}}>
+//   {global.currUser.web_url}
+// </Text>
+// <Text style={styles.InfoText}> {global.currUser.phone_business_main} </Text>
+
+
+
 class ProfileScreen extends React.Component {
   constructor(props){
     super(props);
@@ -48,20 +60,23 @@ class ProfileScreen extends React.Component {
 		if (Platform.OS === 'android') {
 			buttonColors = ['rgba(0, 42, 85, 1)'];
 		};
-
+    const phoneArgs = {
+      number: global.currUser.phone_business_main,
+      prompt: true,
+    };
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
           <Text style={styles.InfoText}>{global.currUser.first_name} {global.currUser.last_name} </Text>
           <Text style={styles.InfoText}>{global.currUser.title} </Text>
-          <Text style={styles.InfoText}> {global.currUser.phone_business_main} </Text>
-          <Text style={styles.InfoText}> {global.currUser.email} </Text>
-          <Text style={styles.InfoText}> {global.currUser.mailing_address_city}, {global.currUser.mailing_address_country_name} </Text>
           <Text
-						style={styles.linkText}
-						onPress={() => {Linking.openURL('http://'+global.currUser.web_url)}}>
-						{this.state.memInfo[0].web_url}
-					</Text>
+            style={styles.linkText}
+            onPress={() => {call(phoneArgs).catch(console.error)}}>
+            {global.currUser.phone_business_main}
+          </Text>
+          <Text style={styles.InfoText}> {global.currUser.email1} </Text>
+          <Text style={styles.InfoText}> {global.currUser.mailing_address_city}, {global.currUser.mailing_address_country_name} </Text>
+
         </View>
         <View style={styles.optionsContainer}>
         <View style={styles.buttonContainer}>
