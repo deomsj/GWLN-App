@@ -112,7 +112,7 @@ class CalendarDetailScreen extends React.Component {
 
 	componentWillMount(){
 		this.filterData()
-		
+
 	}
 	render() {
 		//this._test();
@@ -126,7 +126,7 @@ class CalendarDetailScreen extends React.Component {
 			<View style={styles.container}>
 				<ScrollView>
 					<View>
-        				
+
          				<View style={styles.heading}>
           				<Text style={styles.headingText}> {this.state.detailEvent[0].event_name} </Text>
           				<Text style={styles.infoText}> {this.state.detailEvent[0].event_month}/{this.state.detailEvent[0].event_day}/{this.state.detailEvent[0].event_year} </Text>
@@ -138,7 +138,7 @@ class CalendarDetailScreen extends React.Component {
             				title="RSVP"
             				onPress={() => Alert.alert(
               				'Success',
-              				'You are now registered for '+this.state.detailEvent[0].event_name,
+              				'You are now registered for '+this.state.detailEvent[0].event_name+' event',
               				[
               				 {text: 'Dismiss', onPress: () => this._onPress()},
                				],
@@ -146,7 +146,7 @@ class CalendarDetailScreen extends React.Component {
            				/>
          			</View>
        			</View>
-					
+
 				</ScrollView>
 
 			</View>

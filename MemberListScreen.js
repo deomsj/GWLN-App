@@ -5,6 +5,8 @@ import { SearchBar, List, ListItem } from 'react-native-elements';
 
 import MemberContactPage from './MemberContactPage';
 
+const contacts = null
+
 class MyListItem extends React.Component {
 	_onPress = () => {
 		this.props.onPressItem(this.props.id);
@@ -66,10 +68,8 @@ class MemberListScreen extends React.Component {
 							id={item.id}
 							//onPressItem={console.log('press')}
 							// keyExtractor={(item) => item.toString()}
-							roundAvatar
-							title={item.name.first}
-							subtitle={item.email}
-							avatar={{ uri: item.picture.thumbnail }}
+							title={item.first_name}
+							subtitle={item.email1}
 							containerStyle={{ borderBottomWidth: 0 }}
 
 						/>
@@ -107,22 +107,26 @@ class MemberListScreen extends React.Component {
 	}
 	makeRemoteRequest = () => {
 		const { page, seed } = this.state;
-		const url = 'https://randomuser.me/api/?seed=${seed}&{page}&results=20';
+		const url = 'https://cuwomen.org/functions/app.gwln.php';
 		this.setState({ loading: true });
-		fetch(url)
+		fetch(url, {
+			method: "RETR",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "getMembersShares"
+			}),
+		})
 			.then(res => res.json())
 			.then(res => {
-				this.setState({
-					data: page === 1 ? res.results : [...this.state.data, ...res.results],
-					error: res.error || null,
-					loading: false,
-					refreshing: false,
-				});
-				//console.log(this.state.data);
+				//console.log(res);
+				contacts = res
+				console.log(contacts[1]);
 
 			})
 			.catch(error => {
-				this.setState({ error, loading: false });
+				console.log(error);
 			});
 
 	};
@@ -132,9 +136,9 @@ class MemberListScreen extends React.Component {
 			<View style={styles.mainContainer}>
 				<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
 				<FlatList
-						data={this.state.data}
+						data={contacts}
 						renderItem={this._renderItem}
-						keyExtractor={(item) => item.email}
+						keyExtractor={(item) => item.email1}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
 				/>
