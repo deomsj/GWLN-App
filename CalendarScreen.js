@@ -26,10 +26,14 @@ const _format = 'YYYY-MM-DD'
 const _today = moment().format(_format)
 const _maxDate = moment().add(120, 'days').format(_format)
 
+const tmp = {}
+
 //const calendarEvents = require('./mock-database/wwww.timeline_events.json');
 
 
 class CalendarScreen extends React.Component {
+
+
 
   initialState = {
     [_today]: {disabled: true}
@@ -38,7 +42,7 @@ class CalendarScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: EventData,
+      data: {},
       MarkedEvents: {},
       _markedDates: {},
       
@@ -50,51 +54,80 @@ class CalendarScreen extends React.Component {
   }
 
 
+  retrieveEvents = () => {
+  const url = 'https://cuwomen.org/functions/app.gwln.php'
+  fetch(url, {
+    method: "RETRIEVE",
+    headers: {
+      'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+    },
+    body: JSON.stringify({
+      "code": "getAllEvents"
+    }),
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res) {
+      //console.log(res);
+      console.log(res.length);
+      this.state.data = res
+      this.sortEvents();
+    }
+  })
+  .catch(error => {
+    console.log(error);
+  })
+  console.log('fetching events');
+}
+
+sortEvents = () => {
+  let tmpDates = this.state.data;
+  //console.log(tmpDates);
+  for (var i = 0; i < tmpDates.length; i++) {
+    //console.log(tmpDates[i]);
+    //this._parseEventData(tmpDates[i])
+    tmp = tmpDates[i]
+    //console.log(tmp);
+    const day = tmp.event_day
+    const month = tmp.event_month
+    const year = tmp.event_year
+    const date = `${year}-${month}-${day}`
+    //const _date = moment(date).format(_format);
+    console.log(date);
+    this.PostEvent(date);
+  }
+}
+
   PostEvent = (day) => {
-    
-    //console.log(markedDates);
-    // this.setState({
-    //   selected: day
-    // });
-    // let _markedDates = this.state.markedDates;
-    // _markedDates[day] = {marked: true, selected: true}
-
-    // this.setState({
-    //   markedDates: _markedDates
-    // });
-    // console.log(this.state.markedDates);
-    
-
-
-    console.log(day)
+    console.log('in post');
+    //console.log(day);
 
     let marked = true;
     let newMarkedDay = this.state._markedDates;
     newMarkedDay[day] = {marked}
-    console.log(newMarkedDay);
+    //console.log(newMarkedDay);
     const updatedMarkedDates = {...this.state._markedDates, ...{ [day]: {marked}}}
     this.setState({ _markedDates: updatedMarkedDates });
-    console.log(this.state._markedDates);
+    //console.log(this.state._markedDates);
 
   }
 
   _parseEventData =({ item }) => {
     console.log("in parse data");
-    const data = this.state.data.Events
-    //const id = item.timeline_event_id
-    //console.log(data);
-    console.log(data.length);
-    for (var i = 0; i < data.length; i++) {
-      const day = data[i].event_day
-      const month = data[i].event_month
-      const year = data[i].event_year
-      const date = `${year}-${month}-${day}`
-      const _date = moment(date).format(_format);
-     // console.log(date);
-      this.PostEvent(_date);
-    }
+    // const data = this.state.data.Events
+    // //const id = item.timeline_event_id
+    console.log(item);
+    // const day = item.event_day
+    // const month = item.event_month
+    // const year = item.event_year
+    // const date = `${year}-${month}-${day}`
+    // const _date = moment(date).format(_format);
+    //console.log(_date);
+    //this.PostEvent(_date);
+    
 
   }
+
 
 
   OnDaySelect = (date) => {
@@ -112,7 +145,7 @@ class CalendarScreen extends React.Component {
       // marked = !this.state._markedDates[_selectedDay].marked;
       // markedDates = this.state._markedDates[_selectedDay];
      }
-    this.PostEvent(_selectedDay);
+    //this.PostEvent(_selectedDay);
   }
   componentWillMount(){
     //console.log('in componen will mount');
@@ -120,10 +153,12 @@ class CalendarScreen extends React.Component {
     //console.log(this.state.EventDate);
     this._mounted = true;
     //this.AddEvent(this.state.EventDate);
-    this._parseEventData(this.state.data);
+    //this._parseEventData(this.state.data);
+    this.retrieveEvents();
       }
 
   render() {
+    console.log(this.state._markedDates)
 
     return (
         <View style={{ flex: 1}}>
