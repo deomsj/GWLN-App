@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     paddingBottom: 90,
-    marginTop: '10%',
+    // marginTop: '10%',
 	},
 	WorldCouncil: {
     resizeMode: 'contain',
@@ -263,8 +263,8 @@ const styles = StyleSheet.create({
     // marginTop: '10%',
     // marginBottom: '2%',
     marginLeft: '50%',
-    // marginTop: '10%',
-    // marginBottom: '5%',
+    marginTop: '10%',
+    marginBottom: '5%',
 	},
   guestContainer: {
     // position: 'absolute',
