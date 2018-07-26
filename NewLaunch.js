@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     paddingTop: 50,
-    marginTop: '10%',
+    // marginTop: '10%',
     // marginBottom: '2%',
     marginLeft: '50%',
     // marginTop: '10%',
