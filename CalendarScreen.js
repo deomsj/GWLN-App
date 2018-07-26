@@ -94,7 +94,7 @@ sortEvents = () => {
     const date = `${year}-${month}-${day}`
     //const _date = moment(date).format(_format);
     console.log(date);
-    this.PostEvent(date);
+    this.OnDaySelect(date);
   }
 }
 
@@ -112,22 +112,6 @@ sortEvents = () => {
 
   }
 
-  _parseEventData =({ item }) => {
-    console.log("in parse data");
-    // const data = this.state.data.Events
-    // //const id = item.timeline_event_id
-    console.log(item);
-    // const day = item.event_day
-    // const month = item.event_month
-    // const year = item.event_year
-    // const date = `${year}-${month}-${day}`
-    // const _date = moment(date).format(_format);
-    //console.log(_date);
-    //this.PostEvent(_date);
-    
-
-  }
-
 
 
   OnDaySelect = (date) => {
@@ -141,11 +125,11 @@ sortEvents = () => {
        console.log('in if statement');
        //console.log(_selectedDay);
        // navigate to event detail and pass the event id so that the post information can be retrieved
-       this.props.navigation.navigate('EventDetails', {date, _selectedDay})
+       //this.props.navigation.navigate('EventDetails', {date, _selectedDay})
       // marked = !this.state._markedDates[_selectedDay].marked;
       // markedDates = this.state._markedDates[_selectedDay];
      }
-    //this.PostEvent(_selectedDay);
+    this.PostEvent(_selectedDay);
   }
   componentWillMount(){
     //console.log('in componen will mount');
