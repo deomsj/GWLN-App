@@ -5,12 +5,12 @@ import { Card, Icon } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
 import Separator from './Separator'
-
+import GWLNicon from './img/Gwln_Icon.jpg';
 import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 import './Global.js';
 
-import call from 'react-native-phone-call'
+import call from 'react-native-phone-call';
 
 /*====Notes======
 *created a hyperlink for url but put http:// in front of it
@@ -71,10 +71,10 @@ class ProfileScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <View style={styles.InfoContainer}>
-          <Text style={styles.InfoText}>{global.currUser.first_name} {global.currUser.last_name} </Text>
+        <Image source={GWLNicon} style={styles.profilePic}/>
           <Text style={styles.InfoText}>{global.currUser.title} </Text>
           <Text
-            style={styles.linkText}
+            style={styles.InfoText}
             onPress={() => {call(phoneArgs).catch(console.error)}}>
             {global.currUser.phone_business_main}
           </Text>
@@ -92,7 +92,7 @@ class ProfileScreen extends React.Component {
             />
             </View>
             </View>
-          <View style={styles.signoutContainer}>
+          <View style={styles.buttContainer}>
           <View style={styles.buttons}>
            <Button
             color= {buttonColors}
@@ -123,35 +123,36 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   InfoContainer: {
-    flex: 3,
     flexDirection: 'column',
-    alignItems: 'flex-start',
-    backgroundColor: 'rgba(0,42,85,0.4)',
-    paddingBottom: 30,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#002a55',
+    paddingBottom: 50,
   },
   InfoText: {
-    fontSize: 16,
-    paddingTop: 10,
-    paddingLeft: 5,
-    color: 'black',
+    fontSize: 17,
+    color: 'white',
+    paddingBottom: 20,
+    paddingTop:10,
   },
-  linkText: {
-    fontSize: 16,
-    paddingTop: 10,
-    paddingLeft: 5,
-    color: '#002A55',
-	},
+  profilePic: {
+    // marginTop: '10%',
+    padding: 35,
+    height: undefined,
+    width: undefined,
+    resizeMode: 'contain',
+    borderRadius: 50,
+
+  },
   optionsContainer: {
-    flex: 4,
-    backgroundColor: 'white',
-    marginTop: '15%',
-    flexDirection: 'column',
+    padding: 30,
+    marginTop: '10%',
     alignSelf: 'center',
-    // alignItems: 'center',
   },
   buttonContainer: {
-    padding: 10,
     backgroundColor: 'white',
+    paddingBottom:15,
+    justifyContent: 'center',
   },
   buttons: {
     // padding: 20,
@@ -166,11 +167,6 @@ const styles = StyleSheet.create({
     }),
 		borderWidth: 1,
 		borderRadius: 5,
-		flexDirection: 'column',
-		// alignItems: 'center',
+    flexDirection: 'column',
 	},
-  signoutContainer: {
-    // padding:20,
-    paddingTop: 50,
-  },
 })
