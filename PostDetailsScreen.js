@@ -17,7 +17,7 @@ class PostDetailsScreen extends React.Component {
 		return (
 			<View style={styles.mainContainer}>
 					<Text style={styles.titleText}> {this.props.navigation.state.params.post.title} </Text>
-					<Text style={styles.separator}> ==========================================</Text>
+					<Text style={styles.separator}> ================================</Text>
 					<Text style={styles.postText}> {this.props.navigation.state.params.post.description} </Text>
 			</View>
 		);

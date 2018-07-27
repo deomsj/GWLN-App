@@ -18,14 +18,15 @@ class MemberContactPage extends React.Component {
 		return(
 			<View style={{ flex: 1}}>
 				<View style={styles.NameContainer}>
-					<Text style={styles.NameText}> {this.props.navigation.state.params.user.name.first} {this.props.navigation.state.params.user.name.last}</Text>
-					<Text style={styles.PhoneText}> {this.props.navigation.state.params.user.location.city}, {this.props.navigation.state.params.user.location.state} </Text>
-					<Text style={styles.PhoneText}> Member for {this.props.navigation.state.params.user.registered.age} years. </Text>
+					<Text style={styles.NameText}> {this.props.navigation.state.params.user.first_name} {this.props.navigation.state.params.user.last_name}</Text>
+					<Text style={styles.PhoneText}> {this.props.navigation.state.params.user.mailing_address_city}, {this.props.navigation.state.params.user.mailing_address_country_name} </Text>
+					
 				</View>
 				<View style={styles.ContactContainer}>
 					<Text style={styles.PhoneText}> Contact Info: </Text>
-					<Text style={styles.PhoneText}> Phone: {this.props.navigation.state.params.user.cell} </Text>
-					<Text style={styles.PhoneText}> Email: {this.props.navigation.state.params.user.email} </Text>
+					<Text style={styles.PhoneText}> Phone: {this.props.navigation.state.params.user.phone_business_main} </Text>
+					<Text style={styles.PhoneText}> Email: {this.props.navigation.state.params.user.email1} </Text>
+					<Text style={styles.PhoneText}> About: {this.props.navigation.state.params.user.additional_info} </Text>
 				</View>
 			</View>
 		);
