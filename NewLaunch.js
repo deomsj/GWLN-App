@@ -48,7 +48,7 @@ class Signin extends React.Component {
 		header: null,
 	}
 
-// dbeck@wuccu admin 
+// dbeck@wuccu admin
 //STILL NEED TO ADD DIFFERENCIATION FLAG TO SIGN IN BUTTON
 
   // componentWillMount(){
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 75,
     position: 'absolute',
     bottom: '0%',
-    left: '60%',
+    left: '55%',
 	},
   guestContainer: {
     // position: 'absolute',
