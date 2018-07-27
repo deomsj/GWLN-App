@@ -165,6 +165,9 @@ sortEvents = () => {
       && event.event_year == _year;
     });
     console.log(filteredDate);
+    let filteredID = filteredDate[0].timeline_event_id
+    console.log(filteredID);
+    this.props.navigation.navigate('EventDetails', {date, filteredID})
   }
 
 
