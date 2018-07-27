@@ -99,15 +99,15 @@ sortEvents = () => {
     const year = tmp.event_year
     const date = `${year}-${month}-${day}`
     const _date = moment(date).format(_format);
-    console.log(date);
-    console.log(_date);
+    //console.log(date);
+    //console.log(_date);
     this.PostEvent(date);
   }
   //this.PostEvent("2018-07-27");
 }
 
   PostEvent = (day) => {
-    console.log('in post');
+    //console.log('in post');
     //console.log(day);
 
     let marked = true;
@@ -124,13 +124,14 @@ sortEvents = () => {
 
   OnDaySelect = (date) => {
     const _selectedDay = moment(date.dateString).format(_format);
-    console.log('_selectedDay')
+   // console.log('_selectedDay')
     console.log(_selectedDay);
 
     // pass the date to the event details page
 
     if (this.state._markedDates[_selectedDay]){
        console.log('in if statement');
+       this.parseSelectedDate(_selectedDay)
        //console.log(_selectedDay);
        // navigate to event detail and pass the event id so that the post information can be retrieved
        //this.props.navigation.navigate('EventDetails', {date, _selectedDay})
@@ -139,6 +140,37 @@ sortEvents = () => {
      }
     this.PostEvent(_selectedDay);
   }
+
+  parseSelectedDate = date => {
+    date = String(date).split('-');
+    var _year  = date[0];
+    var _month = date[1];
+    var _day = date[2];
+    console.log(_day[1]);
+    if (_day[0] == 0) {
+      _day = _day[1]
+    }
+    if (_month[0] == 0) {
+      _month = _month[1]
+    }
+    console.log(_year);
+    console.log(_month);
+    console.log(_day);
+    let TmpSelected = this.state.data
+    //console.log(TmpSelected)
+    var filteredDate = TmpSelected.filter( event => {
+      //console.log(_day);
+      return event.event_day == _day
+      && event.event_month == _month
+      && event.event_year == _year;
+    });
+    console.log(filteredDate);
+  }
+
+
+
+
+
   componentWillMount(){
     //console.log('in componen will mount');
     //console.log(this.state.data)
@@ -150,7 +182,7 @@ sortEvents = () => {
       }
 
   render() {
-    console.log(this.state._markedDates)
+    //console.log(this.state._markedDates)
 
     return (
         <View style={{ flex: 1}}>
