@@ -111,7 +111,7 @@ class MemberListScreen extends React.Component {
 		const url = 'https://cuwomen.org/functions/app.gwln.php';
 		this.setState({ loading: true });
 		fetch(url, {
-			method: "RETRIEVE",
+			method: "POST",
 			headers: {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
