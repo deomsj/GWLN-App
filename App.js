@@ -31,6 +31,9 @@ import GuestHomeScreen from './GuestHome';
 import MemberHomeScreen from './MemberHome';
 import Signin from './NewLaunch';
 import addEvent from './addEventTest';
+import contactData from './mock-database/crm.contacts.json';
+import './Global.js';
+
 
 
  const TabNav = createBottomTabNavigator({
@@ -102,7 +105,13 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='Profile') {
     return {
-    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> My Profile </Text>),
+   		 // headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: 'white'}}>  {navigation.state.params.user.first_name} {navigation.state.params.user.last_name}</Text>),
+   		 // headerRight: (<View></View>),
+   	 headerStyle: {
+   			 backgroundColor: '#002a55',
+   			 elevation: 0,
+       },
+    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '400', fontSize: 20, color: 'white'}}> {global.currUser.first_name} {global.currUser.last_name}</Text>),
     headerLeft: null,
     };
   }
@@ -267,11 +276,11 @@ MemberNav.navigationOptions = ({navigation}) => {
    };
  }
  else if (routeName==='Profile') {
-   return {
-   headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> My Profile </Text>),
-   headerLeft: null,
-   };
- }
+     return {
+       headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: '#002A55'}}>{global.currUser.first_name} {global.currUser.last_name}</Text>),
+       headerLeft: null,
+     };
+   }
  else if (routeName==='CalendarView') {
    return {
    headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),

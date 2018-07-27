@@ -173,6 +173,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:50,
     backgroundColor: 'white',
     paddingVertical: 10,
+    marginTop: '10%',
     // paddingHorizontal: 50,
     // padding: 10,
   },
@@ -180,9 +181,6 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     alignSelf: 'center',
     paddingVertical: 20,
-    // justifyContent: 'center',
-    // position: 'absolute',
-    // bottom: '35%',
   },
 	buttons: {
     paddingVertical: 5,
@@ -213,8 +211,12 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: undefined,
     height: undefined,
-    paddingBottom: 90,
-    // marginBottom: '5%'
+    paddingHorizontal:150,
+    paddingVertical: 40,
+    position: 'absolute',
+    top: '5%',
+    alignSelf: 'center',
+    marginBottom: '5%'
     // marginTop: '10%',
 	},
 	WorldCouncil: {

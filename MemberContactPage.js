@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image } from
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNicon from './img/Gwln_Icon.jpg';
 import MemberListScreen from './MemberListScreen';
+import call from 'react-native-phone-call';
 
 class MemberContactPage extends React.Component {
 
@@ -25,6 +26,10 @@ class MemberContactPage extends React.Component {
 	render() {
 		console.log('MemberContactPage');
 		console.log(this.props.navigation.state.params.user);
+		const phoneArgs = {
+      number: this.props.navigation.state.params.user.phone_business_main,
+      prompt: true,
+    };
 		return(
 			<View style={styles.mainContainer}>
 				<View style={styles.profileContainer}>
@@ -34,10 +39,17 @@ class MemberContactPage extends React.Component {
 
 				</View>
 				<View style={styles.ContactContainer}>
-					<Text style={styles.contactText}>Contact Info {"\n"}</Text>
-					<Text style={styles.contactText}>Phone:{"\n"}{this.props.navigation.state.params.user.phone_business_main}</Text>
-					<Text style={styles.contactText}>Email: {"\n"}{this.props.navigation.state.params.user.email1} </Text>
-					<Text style={styles.contactText}>About: {"\n"}{this.props.navigation.state.params.user.additional_info} </Text>
+					<Text style={styles.titleText}>Contact Info {"\n"}{"\n"}</Text>
+					<Text style={styles.titleText}>Phone:</Text>
+					<Text
+            style={styles.contactText}
+            onPress={() => {call(phoneArgs).catch(console.error)}}>
+          	{this.props.navigation.state.params.user.phone_business_main}
+          </Text>
+					<Text style={styles.titleText}>Email:</Text>
+					<Text style={styles.contactText}>{this.props.navigation.state.params.user.email1} </Text>
+					<Text style={styles.titleText}>About:</Text>
+					<Text style={styles.contactText}>{this.props.navigation.state.params.user.additional_info} </Text>
 				</View>
 			</View>
 		);
@@ -51,7 +63,7 @@ const styles = StyleSheet.create ({
 		backgroundColor: '#002a55'
 	},
 	profileContainer: {
-		padding: 20,
+		padding: 30,
 	},
 	profilePic: {
 		padding: 35,
@@ -59,16 +71,11 @@ const styles = StyleSheet.create ({
 		width: undefined,
 		resizeMode: 'contain',
 		borderRadius: 50,
-	},
-	NameContainer: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center'
+		marginBottom: '5%'
 	},
 	ContactContainer: {
-		// flex: 2,
-		alignItems: 'flex-start',
-		justifyContent: 'flex-start',
+		flexDirection: 'column',
+		padding:10,
 	},
 	NameText: {
 		fontSize: 24,
@@ -86,9 +93,14 @@ const styles = StyleSheet.create ({
 	contactText: {
 		color: 'white',
 		fontSize: 17,
-		padding: 15,
+		paddingBottom: 30,
 		paddingHorizontal: 30,
-		flexDirection: 'column',
+	},
+	titleText: {
+		color: 'white',
+		fontSize: 18,
+		fontWeight: '400',
+		paddingHorizontal: 30,
 	},
 })
 

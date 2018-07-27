@@ -6,39 +6,49 @@ import { SearchBar, List, ListItem } from 'react-native-elements';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
+import './Global.js';
 
+const tmp = {}
 
 class CalendarDetailScreen extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: EventData,
-			detailEvent: [],
+			data: {},
 			memInfo: contactData,
 
 		}
 	}
 
-
-
-	filterData = () => {
-		let newData = this.state.data
-		var filteredData = newData.Events.filter( e => {
-			return e.event_day == this.props.navigation.state.params.date.day
-		 	&& e.event_month == this.props.navigation.state.params.date.month
-		 	&& e.event_year == this.props.navigation.state.params.date.year;
-		});
-		console.log(filteredData);
-		check = filteredData[0].event_name
-		console.log(check);
-		this.setState({
-			detailEvent: filteredData,
-
-		});
-		//this._test();
-		return filteredData;
-	};
+	retrieveEvent = () => {
+		const url = 'https://cuwomen.org/functions/app.gwln.php'
+		fetch(url, {
+			method: "POST",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "getEventByID", 
+				"arguments":{
+					"timeline_event_id": this.props.navigation.state.params.filteredID,
+				}
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
+			if (res){
+				//console.log(res);
+				this.setState({
+					data: res
+				}) 
+			}
+		})
+		.catch(error => {
+			console.log(error);
+		})
+		console.log(tmp)
+	}
 
 	_test = () => {
 		let tmp = this.state.detailEvent
@@ -94,14 +104,14 @@ class CalendarDetailScreen extends React.Component {
 		let currUser = this.state.memInfo
 		if (global.currUser != null) {
 				const attendee = {
-				event: this.state.detailEvent[0].timeline_event_id,
+				event: this.state.data.timeline_event_id,
 				cmr_id: global.currUser.contact_id,
 				}
 				console.log(attendee);
 		}
 		else {
 			const guestAttendee = {
-				event: this.state.detailEvent[0].timeline_event_id,
+				event: this.state.data.timeline_event_id,
 				cmr_id: Math.floor(Math.random()*10000)+1
 			}
 			console.log(guestAttendee);
@@ -111,12 +121,12 @@ class CalendarDetailScreen extends React.Component {
 
 
 	componentWillMount(){
-		this.filterData()
+		this.retrieveEvent()
 
 	}
 	render() {
 		//this._test();
-		//console.log(this.state.data);
+		console.log(this.state.data);
 
 
 
@@ -128,17 +138,17 @@ class CalendarDetailScreen extends React.Component {
 					<View>
 
          				<View style={styles.heading}>
-          				<Text style={styles.headingText}> {this.state.detailEvent[0].event_name} </Text>
-          				<Text style={styles.infoText}> {this.state.detailEvent[0].event_month}/{this.state.detailEvent[0].event_day}/{this.state.detailEvent[0].event_year} </Text>
+          				<Text style={styles.headingText}> {this.state.data.event_name} </Text>
+          				<Text style={styles.infoText}> {this.state.data.event_month}/{this.state.data.event_day}/{this.state.data.event_year} </Text>
         			</View>
          			<View style={styles.info}>
-           				<Text style={styles.infoText}> {this.state.detailEvent[0].event_location} </Text>
-           				<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
+           				<Text style={styles.infoText}> {this.state.data.event_location} </Text>
+           				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
           				<Button
             				title="RSVP"
             				onPress={() => Alert.alert(
               				'Success',
-              				'You are now registered for '+this.state.detailEvent[0].event_name+' event',
+              				'You are now registered for '+this.state.data.event_name+' event',
               				[
               				 {text: 'Dismiss', onPress: () => this._onPress()},
                				],
