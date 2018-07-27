@@ -34,10 +34,10 @@ class MemberContactPage extends React.Component {
 
 				</View>
 				<View style={styles.ContactContainer}>
-					<Text style={styles.contactText}> Contact Info {"\n"}</Text>
-					<Text style={styles.contactText}> Phone:{"\n"} {this.props.navigation.state.params.user.phone_business_main}</Text>
-					<Text style={styles.contactText}> Email: {"\n"}{this.props.navigation.state.params.user.email1} </Text>
-					<Text style={styles.contactText}> About: {"\n"}{this.props.navigation.state.params.user.additional_info} </Text>
+					<Text style={styles.contactText}>Contact Info {"\n"}</Text>
+					<Text style={styles.contactText}>Phone:{"\n"}{this.props.navigation.state.params.user.phone_business_main}</Text>
+					<Text style={styles.contactText}>Email: {"\n"}{this.props.navigation.state.params.user.email1} </Text>
+					<Text style={styles.contactText}>About: {"\n"}{this.props.navigation.state.params.user.additional_info} </Text>
 				</View>
 			</View>
 		);
