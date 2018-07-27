@@ -1,11 +1,10 @@
+
 import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 
 import MemberContactPage from './MemberContactPage';
-
-const contacts = null
 
 class MyListItem extends React.Component {
 	_onPress = () => {
@@ -68,8 +67,10 @@ class MemberListScreen extends React.Component {
 							id={item.id}
 							//onPressItem={console.log('press')}
 							// keyExtractor={(item) => item.toString()}
-							title={item.first_name}
-							subtitle={item.email1}
+							roundAvatar
+							title={`${item.first_name} ${item.last_name}`}
+							//subtitle={item.email}
+							//avatar={{ uri: item.picture.thumbnail }}
 							containerStyle={{ borderBottomWidth: 0 }}
 
 						/>
@@ -110,23 +111,28 @@ class MemberListScreen extends React.Component {
 		const url = 'https://cuwomen.org/functions/app.gwln.php';
 		this.setState({ loading: true });
 		fetch(url, {
-			method: "RETR",
+			method: "RETRIEVE",
 			headers: {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getMembersShares"
-			}),
+ 				"code": "getMembersShares"
+ 			}),
+
 		})
 			.then(res => res.json())
 			.then(res => {
-				//console.log(res);
-				contacts = res
-				console.log(contacts[1]);
+				this.setState({
+					data: page === 1 ? res : [...this.state.data, ...res],
+					error: res.error || null,
+					loading: false,
+					refreshing: false,
+				});
+				console.log(this.state.data);
 
 			})
 			.catch(error => {
-				console.log(error);
+				this.setState({ error, loading: false });
 			});
 
 	};
@@ -136,9 +142,9 @@ class MemberListScreen extends React.Component {
 			<View style={styles.mainContainer}>
 				<List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0}}>
 				<FlatList
-						data={contacts}
+						data={this.state.data}
 						renderItem={this._renderItem}
-						keyExtractor={(item) => item.email1}
+						keyExtractor={(item) => item.email}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
 				/>
