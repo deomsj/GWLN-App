@@ -300,7 +300,7 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-    screen: Signin,
+    screen: CheckInScreen,
   },
 
   OrganizerSignin: {
