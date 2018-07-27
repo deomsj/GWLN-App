@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     // alignItems: 'center',
     alignSelf: 'center',
+    paddingVertical: 20,
     // justifyContent: 'center',
     // position: 'absolute',
     // bottom: '35%',
@@ -213,6 +214,7 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     paddingBottom: 90,
+    // marginBottom: '5%'
     // marginTop: '10%',
 	},
 	WorldCouncil: {
@@ -223,13 +225,14 @@ const styles = StyleSheet.create({
     // marginTop: '10%',
     // marginBottom: '2%',
     marginLeft: '50%',
-    marginTop: '10%',
-    marginBottom: '5%',
+    // marginTop: '10%',
+    marginBottom: '2%',
 	},
   guestContainer: {
     // position: 'absolute',
     alignSelf: 'center',
     padding: 10,
+    paddingVertical:20,
     // bottom: '15%',
   },
   guestButton: {

@@ -30,6 +30,7 @@ import PostDetailsScreen from './PostDetailsScreen';
 import GuestHomeScreen from './GuestHome';
 import MemberHomeScreen from './MemberHome';
 import Signin from './NewLaunch';
+import addEvent from './addEventTest';
 
 
  const TabNav = createBottomTabNavigator({
@@ -290,7 +291,7 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-    screen: Signin,
+    screen: TabNav,
   },
 
   OrganizerSignin: {
