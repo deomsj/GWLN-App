@@ -33,9 +33,11 @@ import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
+
 import guestRSVP from './guestRSVP';
 import guestCalendarScreen from './guestCalendarScreen';
 import guestCalendarDetailScreen from './guestCalendarDetailScreen';
+
 
 import './Global.js';
 
@@ -327,7 +329,7 @@ const NavigationFlow = createStackNavigator({
   },
   CheckIn: {
     //changed
-    screen: CheckInScreen,
+    screen: checkinTest,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,

@@ -145,9 +145,10 @@ const styles = StyleSheet.create({
 
   },
   optionsContainer: {
-    padding: 30,
-    marginTop: '5%',
+    // padding: 30,
+    marginTop: '10%',
     alignSelf: 'center',
+    marginBottom: '10%',
   },
   buttonContainer: {
     backgroundColor: 'white',
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     // padding: 20,
+    paddingVertical: 5,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {

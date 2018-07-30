@@ -18,6 +18,7 @@ const Form = t.form.Form;
 let form;
 let button;
 
+
 const LikeRadio = t.enums.of( 'Yes No');
 
 const AttendeeGuest = t.struct({
@@ -41,8 +42,8 @@ const OptionsGuest = {
     like_radio: {
       label: 'Would you like to hear from GWLN?',
       options: [
-        {value: 'like_yes', text: 'Yes'},
-        {value: 'like_no', text: 'No'},
+        {value: "t", text: 'Yes'},
+        {value: "f", text: 'No'},
       ]
     }
 	}
@@ -85,6 +86,19 @@ class checkinTest extends Component {
     }
   }
 
+  initialState = () => {
+    // const value = this._form.getValue();
+    // console.log('value', value);
+    this.setState({value: null})
+    this.setState({
+      value: null,
+      selectedIndex1: -1,
+      selectedIndex2: -1,
+      val1: null,
+      val2: null,
+    })
+  }
+
   onChange(value) {
     this.setState({value:value});
   }
@@ -109,23 +123,7 @@ class checkinTest extends Component {
     })
   }
 
-  determineForm(selected) {
-    // const likeRadioGroup =
-    //   <RadioGroup
-    //     size={18}
-    //     thickness={2}
-    //     style={styles.rg}
-    //     color={'#200a55'}
-    //     selectedIndex={this.state.selectedIndex2}
-    //     onSelect = {(index, value) => this.onSelect_2(index, value)}
-    //   >
-    //     <RadioButton value={'like_yes'} style={styles.rb} >
-    //       <Text>Yes</Text>
-    //     </RadioButton>
-    //     <RadioButton value={'like_no'} style={styles.rb} >
-    //       <Text>No</Text>
-    //     </RadioButton>
-    //   </RadioGroup>
+  determineForm = (selected) => {
 
     const guestform =  <Form
       ref={c=>this._form = c}
@@ -159,33 +157,32 @@ class checkinTest extends Component {
     if (selected == 0){
       form = memform;
       button = membutton;
-      // return form;
-      // return button;
 
     }
     else if (selected == 1) {
       form = guestform;
       button = guestbutton;
-      // return form;
-      // return likeRadioGroup;
-      // return button;
     }
     else{
       return <Text>select radio button</Text>
     }
+    //const value = this._form.getValue();
+    //console.log('in determine form', value);
     return form;
     return button;
   }
 
   onSubmitGuest = () => {
-    const value = this._form.getValue();
-    console.log('value', value);
-    console.log(value.name);
+    //const value = this._form.getValue();
+    //const value = this.refs.form.getValue();
+    //const value = this._form.getValue();
+    console.log('on submit value', this.state.value);
+    //console.log(value.name);
     //console.log('Is member?', this.state.val1);
     //console.log('Interested?', this.state.val2);
     //const value = this._form.getValue();
     //console.log('value', value);
-    if(value) {
+    if(this.state.value) {
       const url = 'https://cuwomen.org/functions/app.gwln.php'
       fetch(url, {
         method: "POST",
@@ -197,11 +194,11 @@ class checkinTest extends Component {
           "arguments": {
             "timeline_event_id": 143,
             //Not Needed "member_id": global.currUser.contact_id,
-            "first_name": value.name,
-            "last_name": value.surname,
-            "email": value.email,
+            "first_name": this.state.value.name,
+            "last_name": this.state.value.surname,
+            "email": this.state.value.email,
             "guests": 1,
-            "like_to_be": false,
+            "like_to_be": this.state.value.like_radio,
           }
         }),
       })
@@ -210,19 +207,35 @@ class checkinTest extends Component {
       .then(res => {
         //console.log(res)
         if (res) {
-          //this.props.navigation.navigate('Home')
-          //global.currUser = res
-          //this.initialState();
-          //console.log(global.currUser);
           console.log(res);
+          Alert.alert(
+						'Thank you!',
+						'Attendee has been checked in',
+						[
+							{text: 'Dismiss', onPress: () => this.initialState()},
+						],
+					);
         }
         else {
           console.log('wrong info');
-          //this.DiscardForm();
+          Alert.alert(
+						'Error Occured',
+						'Please try again',
+						[
+							{text: 'Dismiss', onPress: () => this.initialState()},
+						],
+					);
         }
       })
       .catch(error => {
         console.log(error);
+        // Alert.alert(
+        //   'Error Occured',
+        //   'Please try again',
+        //   [
+        //     {text: 'Dismiss', onPress: () => this.initialState()},
+        //   ],
+        // );
       })
     console.log('fetch');
 
@@ -232,7 +245,7 @@ class checkinTest extends Component {
 
 //change this
 onSubmitMember = () => {
-  const value = this._form.getValue();
+  //const value = this._form.getValue();
   console.log('value', value);
   console.log(value.name);
   //console.log('Is member?', this.state.val1);
@@ -290,7 +303,6 @@ onSubmitMember = () => {
     if (Platform.OS === 'android') {
       buttonColors = ['rgba(0, 42, 85, 1)'];
     };
-
     return(
       <View style={styles.mainContainer}>
         <View style={styles.radiocontainer}>
@@ -312,6 +324,7 @@ onSubmitMember = () => {
         </RadioGroup>
           {this.determineForm(this.state.selectedIndex1)}
         </View>
+
         <View style={styles.buttonContainer}>
           {button}
         </View>
