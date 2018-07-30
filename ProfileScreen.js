@@ -141,8 +141,14 @@ const styles = StyleSheet.create({
     height: undefined,
     width: undefined,
     resizeMode: 'contain',
-    borderRadius: 50,
-
+    ...Platform.select({
+      ios: {
+        borderRadius: 20,
+      },
+      android: {
+        borderRadius: 50,
+      },
+    }),
   },
   optionsContainer: {
     // padding: 30,

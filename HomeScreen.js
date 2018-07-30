@@ -172,9 +172,18 @@ const styles = StyleSheet.create({
    textAlign: 'center',
    fontSize: 16,
    paddingHorizontal:10,
-   fontWeight: '300',
    color: '#002a55',
    flex:1,
+   ...Platform.select({
+     ios: {
+       fontFamily: 'Helvetica',
+       fontWeight: '500',
+     },
+     android: {
+       fontFamily: 'sans-serif-medium',
+       fontWeight: '300',
+     },
+   }),
  },
   pickerContainer: {
     // paddingBottom: 5,
@@ -182,6 +191,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     elevation: 0,
+    ...Platform.select({
+      ios: {
+        paddingVertical: 10,
+        paddingHorizontal:20,
+      },
+    }),
   },
 });
 
