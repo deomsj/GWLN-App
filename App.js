@@ -302,10 +302,6 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-<<<<<<< HEAD
-=======
-    //changed
->>>>>>> 152ce3e918ec8d0396d834d85896bd39f917d27e
     screen: Signin,
   },
 
@@ -327,7 +323,7 @@ const NavigationFlow = createStackNavigator({
   },
   CheckIn: {
     //changed
-    screen: checkinTest,
+    screen: CheckInScreen,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,
