@@ -122,8 +122,7 @@ const styles = StyleSheet.create({
 	},
   buttonContainer: {
     position: 'absolute',
-    bottom: '0%',
-    paddingVertical: 5,
+    bottom: '2%',
    alignSelf: 'center',
  },
  galleryContainer: {
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
    padding:10,
    position: 'absolute',
    top: '0%',
-   height: '100%',
+   height: '90%',
    // width: '100%',
    // marginTop: '10%',
    // flex:1,
