@@ -141,11 +141,15 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 	},
   pickerContainer: {
-    paddingBottom: 15,
+    // paddingBottom: 15,
+    borderColor: '#002a55',
+    borderWidth: 2,
+    borderRadius: 5,
+    elevation: 0,
   },
   menuContainer: {
+    paddingTop: 15,
     backgroundColor: 'white',
-    paddingBottom:15,
   },
   button: {
     // paddingHorizontal:75,
@@ -159,13 +163,14 @@ const styles = StyleSheet.create({
       },
     }),
 		borderWidth: 1,
-		borderRadius: 5,
+		borderRadius: 10,
 		flexDirection: 'column',
 	},
   buttonContainer: {
    backgroundColor: 'white',
    position: 'absolute',
    top: '60%',
+   elevation: 0,
  },
  galleryContainer: {
    backgroundColor: 'white',
@@ -187,6 +192,7 @@ const styles = StyleSheet.create({
  textBox: {
    marginTop: '12%',
  },
+
 });
 
 const pickerStyle = StyleSheet.create({
@@ -207,9 +213,6 @@ const pickerStyle = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
     // padding:10,
-    borderWidth: 1,
-    borderColor: '#002A55',
-    borderRadius: 5,
     backgroundColor: 'white',
     color: 'black',
   }

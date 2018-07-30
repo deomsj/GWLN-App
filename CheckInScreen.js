@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
   		alignSelf: 'center',
+      elevation: 0,
   		// padding: 30,
   		paddingHorizontal: 30,
   		backgroundColor: '#002A55',
