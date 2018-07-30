@@ -20,7 +20,7 @@ class PostDetailsScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-					<Text style={styles.titleText}> {this.props.navigation.state.params.post_date} </Text>
+					<Text style={styles.postText}> {this.props.navigation.state.params.post_date} </Text>
 					<Text style={styles.postText}> {this.props.navigation.state.params.post.story} </Text>
 			</View>
 		);
@@ -31,15 +31,14 @@ const styles = StyleSheet.create ({
 		mainContainer: {
 			backgroundColor: 'white',
 			flex:1,
-			flexDirection: 'column',
-			// justifyContent: 'center',
 			padding: 20,
+			alignItems: 'center',
 		},
 	titleText: {
 		color:'grey',
-		fontSize: 14,
+		fontSize: 15,
 		fontWeight: '200',
-		// marginBottom: 20,
+		marginBottom: 20,
 		textAlign: 'center',
 	},
 	postText: {

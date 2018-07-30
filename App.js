@@ -33,7 +33,7 @@ import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
-
+import checkinTest from './checkTest';
 import guestRSVP from './guestRSVP';
 import guestCalendarScreen from './guestCalendarScreen';
 import guestCalendarDetailScreen from './guestCalendarDetailScreen';
