@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     // padding: 20,
-    paddingVertical: 5,
+    paddingVertical: 1,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
