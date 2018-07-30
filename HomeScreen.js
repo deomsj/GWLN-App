@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   button: {
+    paddingVertical: 5,
     // paddingHorizontal:75,
 		backgroundColor: '#002A55',
 		...Platform.select({

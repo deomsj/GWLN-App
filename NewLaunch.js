@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingHorizontal:50,
     backgroundColor: 'white',
-    marginTop: '30%',
+    marginTop: '20%',
   },
   buttonContainer: {
     // alignItems: 'center',
