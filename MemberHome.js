@@ -48,7 +48,7 @@ class MemberHomeScreen extends React.Component {
           />
         </View>
         <View style={styles.textBox}>
-        <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
+        <Text style={styles.textStyle}>The Vision for Global Women's Leadership Network is to provide women with the opportunity and resources to make a measurable difference... in the lives of each other, in the lives of credit inion members and in their communities.</Text>
         </View>
         <View style={styles.buttonContainer}>
         <View style={styles.menuContainer}>

@@ -71,13 +71,14 @@ const styles = StyleSheet.create ({
 		width: undefined,
 		resizeMode: 'contain',
 		borderRadius: 50,
-		marginBottom: '5%'
+		// marginBottom: '5%'
 	},
 	ContactContainer: {
 		flexDirection: 'column',
 		padding:10,
 	},
 	NameText: {
+		paddingTop: 10,
 		fontSize: 24,
 		fontWeight: 'bold',
 		alignSelf: 'center',

@@ -9,6 +9,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import MemberHomeScreen from './MemberHome';
 import memberData from './mock-database/gwln.members.json';
 import t from 'tcomb-form-native';
+import GuestHomeScreen from './GuestHome';
 
 const Form = t.form.Form;
 
@@ -124,7 +125,9 @@ console.log('fetch');
     };
     return(
       <View style={styles.mainContainer}>
+      <View style={styles.logoContainer}>
         <Image source={GWLNlogo} style={styles.GWLNlogo}/>
+        </View>
         <View style={styles.formContainer}>
           <Form ref={c=>this._form = c}
           type={SigninForm}
@@ -149,7 +152,7 @@ console.log('fetch');
           <View style={styles.guestContainer}>
           <Text
             style={styles.guestButton}
-            onPress={this._guestLogIn}>
+            onPress={() => this.props.navigation.navigate('GuestHomeScreen')}>
             Continue as Guest
           </Text>
           </View>
@@ -172,10 +175,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingHorizontal:50,
     backgroundColor: 'white',
-    paddingVertical: 10,
-    marginTop: '10%',
-    // paddingHorizontal: 50,
-    // padding: 10,
+    marginTop: '20%',
   },
   buttonContainer: {
     // alignItems: 'center',
@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     }),
 		borderWidth: 1,
 		borderRadius: 10,
+    elevation: 0,
 	},
 	memberText: {
 		color: 'blue',
@@ -207,17 +208,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		flexDirection: 'column',
 	},
+  logoContainer: {
+    position: 'absolute',
+    top: '10%',
+    alignSelf: 'center',
+  },
 	GWLNlogo: {
     resizeMode: 'contain',
     width: undefined,
     height: undefined,
     paddingHorizontal:150,
     paddingVertical: 40,
-    position: 'absolute',
-    top: '5%',
-    alignSelf: 'center',
-    marginBottom: '5%'
-    // marginTop: '10%',
 	},
 	WorldCouncil: {
     resizeMode: 'contain',

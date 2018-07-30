@@ -119,7 +119,7 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='CalendarView') {
     return {
-    headerLeft: null,
+    headerLeft: (<View></View>),
     headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
     headerRight: (<Icon
       containerStyle={{paddingRight:30, paddingTop:15}}
@@ -191,6 +191,7 @@ GuestNav.navigationOptions = ({navigation}) => {
  if (routeName==='Home') {
    return {
    headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
+   headerRight: (<View></View>),
    };
  }
  else if (routeName==='CalendarView') {

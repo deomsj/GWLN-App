@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   optionsContainer: {
     padding: 30,
-    marginTop: '10%',
+    marginTop: '5%',
     alignSelf: 'center',
   },
   buttonContainer: {
@@ -168,5 +168,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 5,
     flexDirection: 'column',
+    paddingHorizontal: 40,
+    elevation: 0,
 	},
 })

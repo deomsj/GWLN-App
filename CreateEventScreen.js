@@ -233,6 +233,7 @@ const styles = StyleSheet.create({
 		color: '#002A55',
 	},
 	buttonContainer: {
+		elevation: 0,
 		alignSelf: 'center',
 		// padding: 30,
 		paddingHorizontal: 30,
