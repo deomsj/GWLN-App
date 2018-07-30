@@ -324,7 +324,7 @@ const NavigationFlow = createStackNavigator({
   },
   CheckIn: {
     //changed
-    screen: CheckInScreen,
+    screen: checkinTest,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,
