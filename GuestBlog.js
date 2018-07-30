@@ -23,7 +23,7 @@ class GuestBlog extends React.Component {
 					height: 1,
 					// width: "100%",
 					backgroundColor: "#CED0CE",
-					// marginLeft: "0%"
+					marginLeft: "5%",
 				}}
 			/>
 		);
@@ -85,26 +85,20 @@ class GuestBlog extends React.Component {
 	};
 
   componentDidMount=()=> {
-    this.props.navigation.setParams({ goToAdd: this.goToAddPost });
     this.makeRemoteRequest();
   }
-  goToAddPost=()=> {
-		this.props.navigation.navigate('AddPost')
-	}
   render(){
   	console.log(this.state.data);
     return (
 			<View style={styles.mainContainer}>
 			<ScrollView>
-    		<List containerStyle={styles.listContainer}>
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
 						keyExtractor={item => item.postID}
 						ItemSeparatorComponent={this.renderSeparator}
-
 						/>
-			</List>
+						<View style={styles.BottomBorder}/>
 			</ScrollView>
 			</View>
     );
@@ -119,17 +113,13 @@ const styles = StyleSheet.create({
 		flex:1,
 		// padding:30,
 	},
-	listContainer: {
-		// padding: 30,
-		// marginTop: 30,
-		// borderTopWidth: 1,
-		// marginBottom: 20,
-		borderTopWidth: 0,
-		borderBottomWidth: 1,
-		borderColor: "#CED0CE",
+	BottomBorder: {
+		width:'95%',
+		marginLeft: '5%',
+    // alignSelf: 'center',
+    backgroundColor: 'black',
+    height: StyleSheet.hairlineWidth,
+    // padding: 1,
 	},
-	headerIcon: {
-		flex:1,
-		color: '#002A55',
-	}
+
 });

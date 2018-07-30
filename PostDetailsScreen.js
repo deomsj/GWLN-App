@@ -8,7 +8,7 @@ import MessageBoardScreen from './MessageBoardScreen'
 class PostDetailsScreen extends React.Component {
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: '#002A55'}}> {navigation.state.params.post.title}</Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', fontWeight: '300', fontSize: 17, color: '#002A55'}}>{navigation.state.params.post.title}</Text>),
 			headerRight: (<View></View>),
 		};
 	}

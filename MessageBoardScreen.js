@@ -23,7 +23,7 @@ class MessageBoardScreen extends React.Component {
 					height: 1,
 					// width: "100%",
 					backgroundColor: "#CED0CE",
-					// marginLeft: "0%"
+					marginLeft: "5%",
 				}}
 			/>
 		);
@@ -59,7 +59,7 @@ class MessageBoardScreen extends React.Component {
 
 
 	_renderItem=({ item }) => (
-		
+
 					<TouchableOpacity onPress={()=> this._onPressItem(item)}>
 						<ListItem
 							id={item.id}
@@ -102,15 +102,13 @@ class MessageBoardScreen extends React.Component {
     return (
 			<View style={styles.mainContainer}>
 			<ScrollView>
-    		<List containerStyle={styles.listContainer}>
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
 						keyExtractor={item => item.postID}
 						ItemSeparatorComponent={this.renderSeparator}
-						
 						/>
-			</List>
+				<View style={styles.BottomBorder}/>
 			</ScrollView>
 			</View>
     );
@@ -125,14 +123,13 @@ const styles = StyleSheet.create({
 		flex:1,
 		// padding:30,
 	},
-	listContainer: {
-		// padding: 30,
-		// marginTop: 30,
-		// borderTopWidth: 1,
-		// marginBottom: 20,
-		borderTopWidth: 0,
-		borderBottomWidth: 1,
-		borderColor: "#CED0CE",
+	BottomBorder: {
+		width:'95%',
+		marginLeft: '5%',
+    // alignSelf: 'center',
+    backgroundColor: 'black',
+    height: StyleSheet.hairlineWidth,
+    // padding: 1,
 	},
 	headerIcon: {
 		flex:1,
