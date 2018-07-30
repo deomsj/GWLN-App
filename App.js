@@ -33,6 +33,7 @@ import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
+
 import './Global.js';
 
 
@@ -301,6 +302,10 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
+<<<<<<< HEAD
+=======
+    //changed
+>>>>>>> 152ce3e918ec8d0396d834d85896bd39f917d27e
     screen: Signin,
   },
 
@@ -321,7 +326,8 @@ const NavigationFlow = createStackNavigator({
     screen: MemberListScreen,
   },
   CheckIn: {
-    screen: CheckInScreen,
+    //changed
+    screen: checkinTest,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,
