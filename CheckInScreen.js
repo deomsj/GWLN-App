@@ -12,7 +12,7 @@ import CheckBox from 'react-native-check-box';
 import { Icon, Header } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
-
+import './Global.js';
 const Form = t.form.Form;
 
 const Attendee = t.struct({
@@ -141,15 +141,12 @@ class CheckInScreen extends Component {
     			"code": "eventCheckin",
     			"arguments": {
     				"timeline_event_id": 143,
-    				"member_id": 90211,
-            "first_name": "aklfj",
-            "last_name": "flksa",
-            "email": "lkfds",
-            //"checkin_id": 1,
-            "guests": 4,
+    				//Not Needed "member_id": global.currUser.contact_id,
+            "first_name": value.name,
+            "last_name": value.surname,
+            "email": value.email,
+            "guests": 1,
             "like_to_be": false,
-            //"timeline_event_id": 143,
-            //"email": "brooke.thomas@elevationscu.com",
     			}
     		}),
     	})
