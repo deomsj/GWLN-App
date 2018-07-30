@@ -12,7 +12,7 @@ import CheckBox from 'react-native-check-box';
 import { Icon, Header } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
-
+import './Global.js';
 const Form = t.form.Form;
 
 const Attendee = t.struct({
@@ -125,9 +125,52 @@ class CheckInScreen extends Component {
   onSubmit = () => {
     const value = this._form.getValue();
 		console.log('value', value);
-    console.log('Is member?', this.state.val1);
-    console.log('Interested?', this.state.val2);
-    this.initialState();
+    console.log(value.name);
+    //console.log('Is member?', this.state.val1);
+    //console.log('Interested?', this.state.val2);
+    //const value = this._form.getValue();
+    //console.log('value', value);
+    if(value) {
+    	const url = 'https://cuwomen.org/functions/app.gwln.php'
+    	fetch(url, {
+    		method: "POST",
+    		headers: {
+    			'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+    		},
+    		body: JSON.stringify({
+    			"code": "eventCheckin",
+    			"arguments": {
+    				"timeline_event_id": 143,
+    				//Not Needed "member_id": global.currUser.contact_id,
+            "first_name": value.name,
+            "last_name": value.surname,
+            "email": value.email,
+            "guests": 1,
+            "like_to_be": false,
+    			}
+    		}),
+    	})
+
+    	.then(res => res.json())
+    	.then(res => {
+    		//console.log(res)
+    		if (res) {
+    			//this.props.navigation.navigate('Home')
+    			//global.currUser = res
+          //this.initialState();
+    			//console.log(global.currUser);
+          console.log(res);
+    		}
+    		else {
+    			console.log('wrong info');
+    			//this.DiscardForm();
+    		}
+    	})
+    	.catch(error => {
+    		console.log(error);
+    	})
+    console.log('fetch');
+
 
   }
   handleSubmit = () => {
@@ -139,6 +182,7 @@ class CheckInScreen extends Component {
       ],
     )
   }
+}
   //================radioadd=====================
 
 
@@ -202,7 +246,7 @@ class CheckInScreen extends Component {
               <View style={styles.buttonContainer}>
               <Button
                 title="Check In!"
-                onPress={this.handleSubmit}
+                onPress={this.onSubmit}
                 color={buttonColors}
               />
               </View>

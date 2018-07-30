@@ -32,6 +32,8 @@ import MemberHomeScreen from './MemberHome';
 import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
+
+import checkinTest from './checkTest';
 import './Global.js';
 
 
@@ -300,7 +302,8 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-    screen: TabNav,
+    //changed
+    screen: Signin,
   },
 
   OrganizerSignin: {
@@ -320,7 +323,8 @@ const NavigationFlow = createStackNavigator({
     screen: MemberListScreen,
   },
   CheckIn: {
-    screen: CheckInScreen,
+    //changed
+    screen: checkinTest,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,

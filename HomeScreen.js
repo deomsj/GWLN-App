@@ -26,10 +26,11 @@ class HomeScreen extends React.Component {
       this.state={
         Function: undefined,
         items: [
-          {
-            label: 'Manage Events...',
-            color: 'black',
-          },
+          // {
+          //   label: 'Manage Events...',
+          //   color: 'black',
+          //   value: 'HomeScreen'
+          // },
           {
             label: 'Event Check In',
             value: 'CheckIn',
@@ -79,7 +80,7 @@ class HomeScreen extends React.Component {
         <View style={styles.pickerContainer}>
           <RNPickerSelect
             placeholder={{
-              label: 'What are you here to do?',
+              label: 'Manage Events...',
               color: 'lightgray',
             }}
             items={this.state.items}
