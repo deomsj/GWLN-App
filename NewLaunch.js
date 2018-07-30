@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     // alignItems: 'center',
     alignSelf: 'center',
-    paddingVertical: 20,
+    paddingVertical: 15,
   },
 	buttons: {
     paddingVertical: 5,

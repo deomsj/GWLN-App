@@ -127,14 +127,10 @@ const styles = StyleSheet.create({
  },
  galleryContainer: {
    backgroundColor: 'white',
-   padding:10,
+   padding:5,
    position: 'absolute',
    top: '0%',
    height: '90%',
-   // width: '100%',
-   // marginTop: '10%',
-   // flex:1,
-   // alignItems: 'center',
  },
  gallery: {
    // alignSelf: 'center',
@@ -143,7 +139,7 @@ const styles = StyleSheet.create({
  textStyle: {
    textAlign: 'center',
    fontSize: 16,
-   padding:10,
+   paddingHorizontal:10,
    fontWeight: '300',
    color: '#002a55',
    flex:1,
