@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, Picker, WebView, Alert, ScrollView, Fla
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
-import memberRSVP from './memberRSVP';
+import guestRSVP from './guestRSVP';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
@@ -11,7 +11,7 @@ import './Global.js';
 
 const tmp = {}
 
-class CalendarDetailScreen extends React.Component {
+class guestCalendarDetailScreen extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -86,7 +86,7 @@ class CalendarDetailScreen extends React.Component {
 	}
 	_GoToRSVP = () => {
 		let ID = this.state.data.timeline_event_id
-		this.props.navigation.navigate('memberRSVP', {ID})
+		this.props.navigation.navigate('guestRSVP', {ID})
 	}
 
 
@@ -159,4 +159,4 @@ const styles = StyleSheet.create ({
 	}
 });
 
-export default CalendarDetailScreen;
+export default guestCalendarDetailScreen;

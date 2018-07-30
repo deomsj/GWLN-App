@@ -33,8 +33,14 @@ import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
-import checkinTest from './checkTest.js';
+import checkinTest from './checkTest';
+import guestRSVP from './guestRSVP';
+import guestCalendarScreen from './guestCalendarScreen';
+import guestCalendarDetailScreen from './guestCalendarDetailScreen';
+
+
 import './Global.js';
+import GuestBlog from './GuestBlog';
 
 
 
@@ -156,7 +162,7 @@ const GuestNav = createBottomTabNavigator({
        },
      },
      CalendarView: {
-       screen: CalendarScreen,
+       screen: guestCalendarScreen,
        navigationOptions: {
          title: 'Calendar',
          tabBarIcon: ({tintColor}) => (
@@ -364,6 +370,18 @@ const NavigationFlow = createStackNavigator({
   },
   memberRSVP: {
     screen: memberRSVP,
+  },
+  guestRSVP: {
+    screen: guestRSVP,
+  },
+  guestCalendarScreen: {
+    screen: guestCalendarScreen,
+  },
+  guestCalendarDetailScreen: {
+    screen: guestCalendarDetailScreen,
+  },
+  GuestBlog: {
+    screen: GuestBlog,
   },
 
 })
