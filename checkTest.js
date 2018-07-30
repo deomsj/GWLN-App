@@ -86,6 +86,19 @@ class checkinTest extends Component {
     }
   }
 
+  initialState = () => {
+    // const value = this._form.getValue();
+    // console.log('value', value);
+    this.setState({value: null})
+    this.setState({
+      value: null,
+      selectedIndex1: -1,
+      selectedIndex2: -1,
+      val1: null,
+      val2: null,
+    })
+  }
+
   onChange(value) {
     this.setState({value:value});
   }
@@ -194,19 +207,35 @@ class checkinTest extends Component {
       .then(res => {
         //console.log(res)
         if (res) {
-          //this.props.navigation.navigate('Home')
-          //global.currUser = res
-          //this.initialState();
-          //console.log(global.currUser);
           console.log(res);
+          Alert.alert(
+						'Thank you!',
+						'Attendee has been checked in',
+						[
+							{text: 'Dismiss', onPress: () => this.initialState()},
+						],
+					);
         }
         else {
           console.log('wrong info');
-          //this.DiscardForm();
+          Alert.alert(
+						'Error Occured',
+						'Please try again',
+						[
+							{text: 'Dismiss', onPress: () => this.initialState()},
+						],
+					);
         }
       })
       .catch(error => {
         console.log(error);
+        // Alert.alert(
+        //   'Error Occured',
+        //   'Please try again',
+        //   [
+        //     {text: 'Dismiss', onPress: () => this.initialState()},
+        //   ],
+        // );
       })
     console.log('fetch');
 
