@@ -3,11 +3,58 @@ import { StyleSheet, Text, View, Button, Picker, WebView, Alert, ScrollView, Fla
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
+import RNPickerSelect from 'react-native-picker-select';
 import './Global.js';
 
 class memberRSVP extends React.Component {
 	constructor(props) {
 		super(props);
+		this.inputRefs = {};
+		this.state = {
+			Function: undefined,
+			attendees: [
+				{label: '1',
+				 value: 1
+				},
+				{
+					label: '2',
+					value: 2
+				},
+				{
+					label: '3',
+					value: 3
+				},
+				{
+					label: '4',
+					value: 4
+				},
+				{
+					label: '5',
+					value: 5
+				},
+				{
+					label: '6',
+					value: 6
+				},
+				{
+					label: '7',
+					value: 7
+				},
+				{
+					label: '8',
+					value: 8
+				},
+				{
+					label: '9',
+					value: 9
+				},
+				{
+					label: '10',
+					value: 10
+				},
+
+			],
+		};
 	}
 
 	handleSubmit = () => {
@@ -33,6 +80,20 @@ class memberRSVP extends React.Component {
 
 	render(){
 		return(
+			<View style={{flex: 1}}>
+				<RNPickerSelect
+					placeholder={{
+						label: 'Number of attendees',
+						color: 'lightgray',
+					}}
+					items={this.state.attendees}
+					onValueChange={(value) => {
+						this.setState({
+							Function: value,
+						});
+					}}
+				/>
+			</View>
 
 		);
 	}
