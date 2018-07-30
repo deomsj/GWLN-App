@@ -38,7 +38,7 @@ const Options = {
 class CheckInScreen extends Component {
   constructor(props) {
         super(props);
-        this.state = {value: null}
+        //this.state = {value: null}
         this.state = {
           value: null,
           selectedIndex1: null,
@@ -124,7 +124,7 @@ class CheckInScreen extends Component {
   }
   onSubmit = () => {
     const value = this._form.getValue();
-		console.log('value', value);
+		//console.log('value', value);
     console.log(value.name);
     //console.log('Is member?', this.state.val1);
     //console.log('Interested?', this.state.val2);
