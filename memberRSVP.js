@@ -5,64 +5,33 @@ import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 import RNPickerSelect from 'react-native-picker-select';
 
+import t from 'tcomb-form-native';
+
 import './Global.js';
+
+const Form = t.form.Form;
+
+const NumAttendees = t.struct({
+	numGuests: t.Number,
+});
+
+var options = {
+	fields: {
+		numGuests: {
+			label: 'Number of attendees',
+			error: 'Please enter the number of attendees',
+		}
+	}
+}
 
 class memberRSVP extends React.Component {
 	constructor(props) {
 		super(props);
 		this.inputRefs = {};
-		this.state = {
-			Function: undefined,
-			attendees: [
-				{label: '1',
-				 value: 1
-				},
-				{
-					label: '2',
-					value: 2
-				},
-				{
-					label: '3',
-					value: 3
-				},
-				{
-					label: '4',
-					value: 4
-				},
-				{
-					label: '5',
-					value: 5
-				},
-				{
-					label: '6',
-					value: 6
-				},
-				{
-					label: '7',
-					value: 7
-				},
-				{
-					label: '8',
-					value: 8
-				},
-				{
-					label: '9',
-					value: 9
-				},
-				{
-					label: '10',
-					value: 10
-				},
-
-			],
-		};
 	}
 
 	handleSubmit = () => {
-		let numGuests = this.state.PickerValue
-		if (!numGuests) {
-			numGuests = 1
-		}
+		const value = this.refs.form.getValue();
 		const url = 'https://cuwomen.org/functions/app.gwln.php'
 		fetch(url, {
 			method: "POST",
@@ -77,7 +46,7 @@ class memberRSVP extends React.Component {
 					"first_name": global.currUser.first_name,
 					"last_name": global.currUser.last_name,
 					"email": global.currUser.email1,
-					 "guests": numGuests,
+					 "guests": value.numGuests,
 				}
 			}),
 		})
@@ -93,18 +62,9 @@ class memberRSVP extends React.Component {
 	render(){
 		return(
 			<View style={{flex: 1}}>
-				<RNPickerSelect
-					placeholder={{
-						label: 'Number of attendees',
-						color: 'lightgray',
-					}}
-					items={this.state.attendees}
-					onValueChange={(value) => {
-						this.setState({
-							Function: value,
-						});
-					}}
-				/>
+				<Form ref="form"
+					type={NumAttendees}
+					options={options}/>
 				<View style={{paddingBottom: 15}}>
 					<Button
 						title="RSVP"

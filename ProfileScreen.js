@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     height: undefined,
     width: undefined,
     resizeMode: 'contain',
-    borderRadius: 50,
+    borderRadius: 20,
 
   },
   optionsContainer: {

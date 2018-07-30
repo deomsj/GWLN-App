@@ -116,6 +116,7 @@ TabNav.navigationOptions = ({navigation}) => {
    		 // headerRight: (<View></View>),
    	 headerStyle: {
    			 backgroundColor: '#002a55',
+         borderColor: '#002A55',
    			 elevation: 0,
        },
     headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '400', fontSize: 20, color: 'white'}}> {global.currUser.first_name} {global.currUser.last_name}</Text>),
@@ -329,7 +330,7 @@ const NavigationFlow = createStackNavigator({
   },
   CheckIn: {
     //changed
-    screen: checkinTest,
+    screen: Signin,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,

@@ -63,14 +63,14 @@ const styles = StyleSheet.create ({
 		backgroundColor: '#002a55'
 	},
 	profileContainer: {
-		padding: 30,
+		// padding: 30,
 	},
 	profilePic: {
 		padding: 35,
 		height: undefined,
 		width: undefined,
 		resizeMode: 'contain',
-		borderRadius: 50,
+		borderRadius: 20,
 		// marginBottom: '5%'
 	},
 	ContactContainer: {
