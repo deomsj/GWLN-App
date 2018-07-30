@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, Picker, WebView, Alert, ScrollView, Fla
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
+import memberRSVP from './memberRSVP';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
@@ -64,41 +65,6 @@ class CalendarDetailScreen extends React.Component {
 		this._Post_RSVP()
 	};
 
-	// _renderItem=({ item }) => {
-	// 	<ListItem
- //      		<View>
- //        		id={item.timeline_event_id}
- //        		<View style={styles.heading}>
- //         			<Text style={styles.headingText}> {this.state.detailEvent[0].event_name} </Text>
- //         			<Text style={styles.infoText}> {this.state.detailEvent[0].event_month}/{this.state.detailEvent[0].event_day}/{this.state.detailEvent[0].event_year} </Text>
- //       		</View>
- //        	<View style={styles.info}>
- //          		<Text style={styles.infoText}> {this.state.detailEvent[0].event_location} </Text>
- //          		<Text style={styles.infoText}> {this.state.detailEvent[0].event_description} </Text>
- //          		<Button
- //            		title="RSVP"
- //            		onPress={() => Alert.alert(
- //              		'Success',
- //              		'You are now registered for '+this.state.detailEvent[0].event_name,
- //              		[
- //               		 {text: 'Dismiss', onPress: () => this._onPress()},
- //              		],
- //            		)}
- //          		/>
- //        	</View>
- //      	</View>
- //    />
-	// };
-
-	// _rsvp = (crm) => {
-	// 	let memData = this.state.memInfo
-	// 	var fileteredUserInfo = memData.contacts.filter( e => {
-	// 		return e.contact_id == crm;
-	// 	})
-	// 	this.setState({
-	// 		memInfo: fileteredUserInfo,
-	// 	})
-	// }
 
 	_Post_RSVP = () => {
 		let currUser = this.state.memInfo
@@ -117,6 +83,10 @@ class CalendarDetailScreen extends React.Component {
 			console.log(guestAttendee);
 		}
 
+	}
+	_GoToRSVP = () => {
+		let ID = this.state.data.timeline_event_id
+		this.props.navigation.navigate('memberRSVP', {ID})
 	}
 
 
@@ -146,13 +116,14 @@ class CalendarDetailScreen extends React.Component {
            				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
           				<Button
             				title="RSVP"
-            				onPress={() => Alert.alert(
-              				'Success',
-              				'You are now registered for '+this.state.data.event_name+' event',
-              				[
-              				 {text: 'Dismiss', onPress: () => this._onPress()},
-               				],
-             				)}
+            				onPress={() => this._GoToRSVP()}
+            				// {() => Alert.alert(
+              		// 		'Success',
+              		// 		'You are now registered for '+this.state.data.event_name+' event',
+              		// 		[
+              		// 		 {text: 'Dismiss', onPress: () => this._onPress()},
+               	// 			],
+             			// 	)}
            				/>
          			</View>
        			</View>

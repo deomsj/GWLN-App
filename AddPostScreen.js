@@ -44,6 +44,10 @@ const Options = {
 
 class AddPostScreen extends React.Component {
 
+makeRemoteRequest = () => {
+
+}
+
 resetForm=()=>{
 	this.setState({value:null});
 }
@@ -78,10 +82,33 @@ componentDidMount=(value)=> {
 	handleSubmit = () => {
 		const value = this._form.getValue();
 		console.log('value', value);
-		if (value) {
+		// if (value) {
+		// 	this.resetForm({})
+		// 	this.props.navigation.navigate('MessageBoard')
+		// }
+		const url = 'https://cuwomen.org/functions/app.gwln.php';
+		fetch(url, {
+			method: "POST",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "insertBlogPost",
+				"arguments":{
+					"title": value.PostTitle,
+					"story": value.Post,
+					"username": global.currUser.email1
+				}
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
 			this.resetForm({})
 			this.props.navigation.navigate('MessageBoard')
-		}
+		})
+		.catch(error => {
+			console.log(error);
+		})
 
 	}
 

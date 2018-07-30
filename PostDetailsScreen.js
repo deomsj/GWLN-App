@@ -8,9 +8,13 @@ import MessageBoardScreen from './MessageBoardScreen'
 class PostDetailsScreen extends React.Component {
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: '#002A55'}}> {navigation.state.params.post.name}'s Post </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: '#002A55'}}> {navigation.state.params.post.created_by}'s Post </Text>),
 			headerRight: (<View></View>),
 		};
+	}
+
+	makeRemoteRequest = () => {
+
 	}
 
 	render() {
@@ -18,7 +22,7 @@ class PostDetailsScreen extends React.Component {
 			<View style={styles.mainContainer}>
 					<Text style={styles.titleText}> {this.props.navigation.state.params.post.title} </Text>
 					<Text style={styles.separator}> ================================</Text>
-					<Text style={styles.postText}> {this.props.navigation.state.params.post.description} </Text>
+					<Text style={styles.postText}> {this.props.navigation.state.params.post.story} </Text>
 			</View>
 		);
 	}
