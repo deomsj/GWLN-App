@@ -12,12 +12,7 @@ class MessageBoardScreen extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			data: [
-				{name: 'Watson', postID: 1, title: 'Watson eats fuzz', description: 'watson rips apart his toys and then eats the fuzz inside them and now he sounds weird when he barks because hes full of fuzz'},
-				{name: 'Jefferson', postID: 2, title: 'tennis balls', description: 'tennnnnnniiiiiisssssssss balllllllssssssss'},
-				{name: 'Coco', postID: 3, title: 'post number 3', description: 'hhshbfreibrebcgiejncibcgch'},
-				{name: 'RJ', postID: 4, title: 'watson eats walls', description: 'watson ate the corner of the wall ouside my bedroom so now there is a big ole hole there'},
-			],
+			data: [],
 		};
 	}
 
@@ -39,8 +34,32 @@ class MessageBoardScreen extends React.Component {
 		//console.log('press');
 	};
 
+	makeRemoteRequest = () => {
+		const url = 'https://cuwomen.org/functions/app.gwln.php';
+		fetch(url, {
+			method: "POST",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "getBlogPosts"
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
+			this.setState({
+				data: res
+			})
+			//console.log(this.state.date);
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+
 
 	_renderItem=({ item }) => (
+		
 					<TouchableOpacity onPress={()=> this._onPressItem(item)}>
 						<ListItem
 							id={item.id}
@@ -73,11 +92,13 @@ class MessageBoardScreen extends React.Component {
 
   componentDidMount=()=> {
     this.props.navigation.setParams({ goToAdd: this.goToAddPost });
+    this.makeRemoteRequest();
   }
   goToAddPost=()=> {
 		this.props.navigation.navigate('AddPost')
 	}
   render(){
+  	console.log(this.state.data);
     return (
 			<View style={styles.mainContainer}>
 			<ScrollView>

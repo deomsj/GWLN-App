@@ -38,19 +38,17 @@ class GuestHomeScreen extends React.Component {
       <Gallery
         style={styles.gallery}
         images={[
-          {source: require('./img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined},  resizeMode: 'contain'},
+          {source: require('./img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
           {source: require('./img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
           {source: require('./img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
-          // {source: require('./img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('./img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
         ]}
           flatListProps={{windowSize: 2}}
           pageMargin={10}
           />
-        </View>
-        <View style={styles.textBox}>
-        <Text style={styles.textStyle}>A program that ensures equitable access to financial services and products and supports women's leadership in the industry.</Text>
-        </View>
-        <View style={styles.buttonContainer}>
+          <Text style={styles.textStyle}>The Vision for Global Women's Leadership Network is to provide women with the opportunity and resources to make a measurable difference... in the lives of each other, in the lives of credit inion members and in their communities.</Text>
+          </View>
+          <View style={styles.buttonContainer}>
         <View style={styles.menuContainer}>
         <View style={styles.button}>
           <Button
@@ -83,7 +81,7 @@ class GuestHomeScreen extends React.Component {
              onPress={() => this.props.navigation.navigate('MessageBoard')}>
              Blog
            </Text>
-          </View>
+           </View>
       </View>
     );
   }
@@ -92,25 +90,23 @@ class GuestHomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     flex: 1,
     alignItems: 'center',
+    flexDirection: 'column',
   },
   memberText: {
 		color: 'blue',
 		fontSize: 17,
-		padding: 10,
 		alignSelf: 'center',
-		alignItems: 'center',
-		justifyContent: 'center',
-		flexDirection: 'column',
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:15,
+    paddingBottom:10,
   },
   button: {
-    paddingHorizontal:20,
+    paddingHorizontal: 30,
+    paddingVertical: 1,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
@@ -122,32 +118,39 @@ const styles = StyleSheet.create({
     }),
 		borderWidth: 1,
 		borderRadius: 5,
-		flexDirection: 'column',
+    elevation: 0,
 	},
   buttonContainer: {
-   backgroundColor: 'white',
-   position: 'absolute',
-   top: '60%',
+    position: 'absolute',
+    bottom: '0%',
+    paddingVertical: 5,
+   alignSelf: 'center',
  },
  galleryContainer: {
    backgroundColor: 'white',
    padding:10,
-   marginTop: '10%',
-   alignItems: 'center',
+   position: 'absolute',
+   top: '0%',
+   height: '100%',
+   // width: '100%',
+   // marginTop: '10%',
+   // flex:1,
+   // alignItems: 'center',
  },
  gallery: {
-   alignSelf: 'center',
+   // alignSelf: 'center',
+   // padding:20,
  },
  textStyle: {
    textAlign: 'center',
-   fontSize: 17,
+   fontSize: 16,
    padding:10,
    fontWeight: '300',
    color: '#002a55',
    flex:1,
  },
  textBox: {
-   marginTop: '12%',
+   // padding: 10,
  },
 });
 

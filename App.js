@@ -32,8 +32,8 @@ import MemberHomeScreen from './MemberHome';
 import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
+import memberRSVP from './memberRSVP';
 
-import checkinTest from './checkTest';
 import './Global.js';
 
 
@@ -119,7 +119,7 @@ TabNav.navigationOptions = ({navigation}) => {
   }
   else if (routeName==='CalendarView') {
     return {
-    headerLeft: null,
+    headerLeft: (<View></View>),
     headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Calendar </Text>),
     headerRight: (<Icon
       containerStyle={{paddingRight:30, paddingTop:15}}
@@ -191,6 +191,7 @@ GuestNav.navigationOptions = ({navigation}) => {
  if (routeName==='Home') {
    return {
    headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
+   headerRight: (<View></View>),
    };
  }
  else if (routeName==='CalendarView') {
@@ -302,7 +303,6 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-    //changed
     screen: Signin,
   },
 
@@ -324,7 +324,7 @@ const NavigationFlow = createStackNavigator({
   },
   CheckIn: {
     //changed
-    screen: checkinTest,
+    screen: CheckInScreen,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,
@@ -361,7 +361,11 @@ const NavigationFlow = createStackNavigator({
   },
   MemberHomeScreen: {
     screen: MemberNav,
-  }
+  },
+  memberRSVP: {
+    screen: memberRSVP,
+  },
+
 })
 
 export default NavigationFlow;
