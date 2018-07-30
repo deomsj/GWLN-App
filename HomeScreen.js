@@ -149,11 +149,11 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   menuContainer: {
-    paddingTop: 15,
+    paddingTop: 5,
     backgroundColor: 'white',
   },
   button: {
-    paddingVertical: 5,
+    paddingVertical: 1,
     // paddingHorizontal:75,
 		backgroundColor: '#002A55',
 		...Platform.select({

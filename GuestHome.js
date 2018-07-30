@@ -19,6 +19,7 @@ import AddPostScreen from './AddPostScreen';
 import LaunchPage from './LaunchPage';
 //import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
+import GuestBlog from './GuestBlog';
 
 class GuestHomeScreen extends React.Component {
     constructor(){
@@ -78,7 +79,7 @@ class GuestHomeScreen extends React.Component {
            </View>
            <Text
              style={styles.memberText}
-             onPress={() => this.props.navigation.navigate('MessageBoard')}>
+             onPress={() => this.props.navigation.navigate('GuestBlog')}>
              Blog
            </Text>
            </View>

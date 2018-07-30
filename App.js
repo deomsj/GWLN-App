@@ -35,6 +35,7 @@ import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
 import checkinTest from './checkTest.js';
 import './Global.js';
+import GuestBlog from './GuestBlog';
 
 
 
@@ -364,6 +365,9 @@ const NavigationFlow = createStackNavigator({
   },
   memberRSVP: {
     screen: memberRSVP,
+  },
+  GuestBlog: {
+    screen: GuestBlog,
   },
 
 })
