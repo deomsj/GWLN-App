@@ -191,6 +191,7 @@ GuestNav.navigationOptions = ({navigation}) => {
  if (routeName==='Home') {
    return {
    headerTitle: (<Image source={GWLNlogo} style={styles.GWLNlogo}/>),
+   headerRight: (<View></View>),
    };
  }
  else if (routeName==='CalendarView') {

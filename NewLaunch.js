@@ -9,6 +9,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import MemberHomeScreen from './MemberHome';
 import memberData from './mock-database/gwln.members.json';
 import t from 'tcomb-form-native';
+import GuestHomeScreen from './GuestHome';
 
 const Form = t.form.Form;
 
@@ -151,7 +152,7 @@ console.log('fetch');
           <View style={styles.guestContainer}>
           <Text
             style={styles.guestButton}
-            onPress={this._guestLogIn}>
+            onPress={() => this.props.navigation.navigate('GuestHomeScreen')}>
             Continue as Guest
           </Text>
           </View>
