@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
  },
  textStyle: {
    textAlign: 'center',
-   fontSize: 16,
+   fontSize: 15,
    padding:10,
    fontWeight: '300',
    color: '#002a55',

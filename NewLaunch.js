@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingHorizontal:50,
     backgroundColor: 'white',
-    marginTop: '20%',
+    marginTop: '30%',
   },
   buttonContainer: {
     // alignItems: 'center',
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
 		color: 'blue',
 		fontSize: 17,
 		padding: 15,
-    paddingBottom: 30,
+    paddingBottom: 10,
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     alignSelf: 'center',
     padding: 10,
-    paddingVertical:20,
+    paddingVertical:10,
     // bottom: '15%',
   },
   guestButton: {
