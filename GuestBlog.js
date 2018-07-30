@@ -8,7 +8,7 @@ import moment from 'moment';
 
 import PostDetailsScreen from './PostDetailsScreen';
 
-class MessageBoardScreen extends React.Component {
+class GuestBlog extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -79,24 +79,14 @@ class MessageBoardScreen extends React.Component {
 			// headerTitleStyle: {color: '#002A55', alignSelf: 'center', textAlign: 'center'},
 			// title: 'Blog',
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Blog </Text>),
-			headerRight: ( <Icon
-				containerStyle={{marginRight:15, marginTop:15}}
-				iconStyle={styles.headerIcon}
-				type='font-awesome'
-				name= "edit"
-				onPress={navigation.getParam('goToAdd')}/>
-			),
+			headerRight: (<View></View>),
 
 		};
 	};
 
   componentDidMount=()=> {
-    this.props.navigation.setParams({ goToAdd: this.goToAddPost });
     this.makeRemoteRequest();
   }
-  goToAddPost=()=> {
-		this.props.navigation.navigate('AddPost')
-	}
   render(){
   	console.log(this.state.data);
     return (
@@ -108,14 +98,14 @@ class MessageBoardScreen extends React.Component {
 						keyExtractor={item => item.postID}
 						ItemSeparatorComponent={this.renderSeparator}
 						/>
-				<View style={styles.BottomBorder}/>
+						<View style={styles.BottomBorder}/>
 			</ScrollView>
 			</View>
     );
   }
 }
 
-export default MessageBoardScreen;
+export default GuestBlog;
 
 const styles = StyleSheet.create({
 	mainContainer: {
@@ -131,8 +121,5 @@ const styles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     // padding: 1,
 	},
-	headerIcon: {
-		flex:1,
-		color: '#002A55',
-	}
+
 });

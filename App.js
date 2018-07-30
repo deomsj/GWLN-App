@@ -33,13 +33,14 @@ import Signin from './NewLaunch';
 import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
-
+import checkinTest from './checkTest';
 import guestRSVP from './guestRSVP';
 import guestCalendarScreen from './guestCalendarScreen';
 import guestCalendarDetailScreen from './guestCalendarDetailScreen';
 
 
 import './Global.js';
+import GuestBlog from './GuestBlog';
 
 
 
@@ -309,7 +310,7 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-    screen: Signin,
+    screen: checkinTest,
   },
 
   OrganizerSignin: {
@@ -379,6 +380,9 @@ const NavigationFlow = createStackNavigator({
   },
   guestCalendarDetailScreen: {
     screen: guestCalendarDetailScreen,
+  },
+  GuestBlog: {
+    screen: GuestBlog,
   },
 
 })

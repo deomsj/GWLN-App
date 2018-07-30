@@ -18,6 +18,11 @@ const Form = t.form.Form;
 let form;
 let button;
 
+/*====whats left=====
+- need to get timeline_event_id: right now just using 143
+- make so that checkin button doesn't appear at checkin start
+- styling
+=====================*/
 
 const LikeRadio = t.enums.of( 'Yes No');
 
@@ -83,6 +88,7 @@ class checkinTest extends Component {
       selectedIndex2: null,
       val1: null,
       val2: null,
+      meminfo: null,
     }
   }
 
@@ -96,7 +102,36 @@ class checkinTest extends Component {
       selectedIndex2: -1,
       val1: null,
       val2: null,
+      meminfo: null,
     })
+  }
+  DiscardForm=( value ) => {
+    Alert.alert(
+      'Discard Check-in',
+      'Are you sure you want to clear attendee information?',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'Yes', onPress: ()=> this.initialState()}
+      ],
+    )
+  }
+
+  static navigationOptions = ({navigation})=> {
+    return {
+      headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Event Check In </Text>),
+      headerRight: ( <Icon
+        containerStyle={{marginRight:15, marginTop:15}}
+        iconStyle={styles.headerIcon}
+        type='font-awesome'
+        // color= '#002A55'
+        name= "trash"
+        onPress={navigation.getParam('discard')}/>
+      ),
+    };
+  };
+
+  componentDidMount=(value)=> {
+    this.props.navigation.setParams({ discard: this.DiscardForm });
   }
 
   onChange(value) {
@@ -144,13 +179,13 @@ class checkinTest extends Component {
     const guestbutton = <Button
       title="Check In!"
       onPress={this.onSubmitGuest}
-      color='blue'
+      color='#002A55'
     />
     //change to onSumbitMember
     const membutton = <Button
       title="Check In!"
-      onPress={this.onSubmit1}
-      color='red'
+      onPress={this.getMemberInfo}
+      color='#002A55'
     />
 
     console.log(selected);
@@ -164,7 +199,7 @@ class checkinTest extends Component {
       button = guestbutton;
     }
     else{
-      return <Text>select radio button</Text>
+      return;
     }
     //const value = this._form.getValue();
     //console.log('in determine form', value);
@@ -218,13 +253,13 @@ class checkinTest extends Component {
         }
         else {
           console.log('wrong info');
-          Alert.alert(
-						'Error Occured',
-						'Please try again',
-						[
-							{text: 'Dismiss', onPress: () => this.initialState()},
-						],
-					);
+          // Alert.alert(
+					// 	'Error Occured',
+					// 	'Please try again',
+					// 	[
+					// 		{text: 'Dismiss', onPress: () => this.initialState()},
+					// 	],
+					// );
         }
       })
       .catch(error => {
@@ -243,16 +278,10 @@ class checkinTest extends Component {
   }
 }
 
-//change this
-onSubmitMember = () => {
-  //const value = this._form.getValue();
-  console.log('value', value);
-  console.log(value.name);
-  //console.log('Is member?', this.state.val1);
-  //console.log('Interested?', this.state.val2);
-  //const value = this._form.getValue();
-  //console.log('value', value);
-  if(value) {
+//really messy. API call inside API call
+getMemberInfo = () => {
+  console.log('on submit value', this.state.value);
+  if(this.state.value) {
     const url = 'https://cuwomen.org/functions/app.gwln.php'
     fetch(url, {
       method: "POST",
@@ -260,15 +289,10 @@ onSubmitMember = () => {
         'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
       },
       body: JSON.stringify({
-        "code": "eventCheckin",
+        "code": "getMemberInformationByUsername",
         "arguments": {
-          "timeline_event_id": 143,
-          //Not Needed "member_id": global.currUser.contact_id,
-          "first_name": value.name,
-          "last_name": value.surname,
-          "email": value.email,
-          "guests": 1,
-          "like_to_be": false,
+          //"timeline_event_id": 143,
+          "username": this.state.value.email,
         }
       }),
     })
@@ -277,28 +301,83 @@ onSubmitMember = () => {
     .then(res => {
       //console.log(res)
       if (res) {
-        //this.props.navigation.navigate('Home')
-        //global.currUser = res
-        //this.initialState();
-        //console.log(global.currUser);
-        console.log(res);
+        //console.log(res);
+        this.setState({
+          meminfo: res,
+        })
+        //console.log('in getmeminfo function', this.state.meminfo)
+        //this.onSumbitMember();
+        //Nested API call
+        if(this.state.value) {
+          console.log('in sumit', this.state.meminfo)
+          const url = 'https://cuwomen.org/functions/app.gwln.php'
+          fetch(url, {
+            method: "POST",
+            headers: {
+              'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+            },
+            body: JSON.stringify({
+              "code": "eventCheckin",
+              "arguments": {
+                "timeline_event_id": 143,
+                //Not Needed "member_id": global.currUser.contact_id,
+                "first_name": this.state.meminfo.first_name,
+                "last_name": this.state.meminfo.last_name,
+                "email": this.state.meminfo.email1,
+                "guests": 1,
+                "like_to_be": false,
+              }
+            }),
+          })
+
+          .then(res => res.json())
+          .then(res => {
+            //console.log(res)
+            if (res) {
+              console.log(res);
+              Alert.alert(
+                'Thank you!',
+                'Attendee has been checked in',
+                [
+                  {text: 'Dismiss', onPress: () => this.initialState()},
+                ],
+              );
+            }
+            else {
+              console.log('wrong info');
+            }
+          })
+          .catch(error => {
+            console.log(error);
+            Alert.alert(
+              'Error',
+              'Email does not exist',
+              [
+                {text: 'Dismiss', onPress: () => this.initialState()},
+              ],
+            );
+          })
+        console.log('fetch');
+
+
+        }
       }
       else {
         console.log('wrong info');
-        //this.DiscardForm();
       }
     })
     .catch(error => {
       console.log(error);
     })
   console.log('fetch');
+  //console.log('memid in fetch', memid);
 
+  }
+}
 
-}
-}
 
   render() {
-
+    //console.log( 'in render', this.state.meminfo)
     var buttonColors = ['rgba(255, 255, 255, 1)'];
     if (Platform.OS === 'android') {
       buttonColors = ['rgba(0, 42, 85, 1)'];

@@ -8,7 +8,7 @@ import MessageBoardScreen from './MessageBoardScreen'
 class PostDetailsScreen extends React.Component {
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: '#002A55'}}> {navigation.state.params.post.created_by}'s Post </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', fontWeight: '300', fontSize: 17, color: '#002A55'}}>{navigation.state.params.post.title}</Text>),
 			headerRight: (<View></View>),
 		};
 	}
@@ -20,8 +20,7 @@ class PostDetailsScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-					<Text style={styles.titleText}> {this.props.navigation.state.params.post.title} </Text>
-					<Text style={styles.separator}> ================================</Text>
+					<Text style={styles.postText}> {this.props.navigation.state.params.post_date} </Text>
 					<Text style={styles.postText}> {this.props.navigation.state.params.post.story} </Text>
 			</View>
 		);
@@ -32,16 +31,15 @@ const styles = StyleSheet.create ({
 		mainContainer: {
 			backgroundColor: 'white',
 			flex:1,
-			flexDirection: 'column',
-			// justifyContent: 'center',
 			padding: 20,
+			alignItems: 'center',
 		},
 	titleText: {
-		color:'black',
-		fontSize: 23,
-		fontWeight: '400',
+		color:'grey',
+		fontSize: 15,
+		fontWeight: '200',
 		marginBottom: 20,
-		// textAlign: 'center',
+		textAlign: 'center',
 	},
 	postText: {
 		color:'black',

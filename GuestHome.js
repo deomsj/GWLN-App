@@ -19,6 +19,7 @@ import AddPostScreen from './AddPostScreen';
 import LaunchPage from './LaunchPage';
 //import CalendarScreen from './CalendarScreen';
 import OrganizerSigninScreen from './OrganizerSigninScreen';
+import GuestBlog from './GuestBlog';
 
 class GuestHomeScreen extends React.Component {
     constructor(){
@@ -46,7 +47,7 @@ class GuestHomeScreen extends React.Component {
           flatListProps={{windowSize: 2}}
           pageMargin={10}
           />
-          <Text style={styles.textStyle}>The Vision for Global Women's Leadership Network is to provide women with the opportunity and resources to make a measurable difference... in the lives of each other, in the lives of credit inion members and in their communities.</Text>
+          <Text style={styles.textStyle}>The Vision for Global Women's Leadership Network is to provide women with the opportunity and resources to make a measurable difference... in the lives of each other, in the lives of credit union members and in their communities.</Text>
           </View>
           <View style={styles.buttonContainer}>
         <View style={styles.menuContainer}>
@@ -78,7 +79,7 @@ class GuestHomeScreen extends React.Component {
            </View>
            <Text
              style={styles.memberText}
-             onPress={() => this.props.navigation.navigate('MessageBoard')}>
+             onPress={() => this.props.navigation.navigate('GuestBlog')}>
              Blog
            </Text>
            </View>
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     position: 'absolute',
     bottom: '2%',
-   alignSelf: 'center',
+    alignSelf: 'center',
  },
  galleryContainer: {
    backgroundColor: 'white',
@@ -132,10 +133,6 @@ const styles = StyleSheet.create({
    top: '0%',
    height: '90%',
  },
- gallery: {
-   // alignSelf: 'center',
-   // padding:20,
- },
  textStyle: {
    textAlign: 'center',
    fontSize: 16,
@@ -143,9 +140,6 @@ const styles = StyleSheet.create({
    fontWeight: '300',
    color: '#002a55',
    flex:1,
- },
- textBox: {
-   // padding: 10,
  },
 });
 
