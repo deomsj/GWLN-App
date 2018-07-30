@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:10,
+    paddingBottom:5,
   },
   button: {
     paddingHorizontal: 30,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
  },
  textStyle: {
    textAlign: 'center',
-   fontSize: 15,
+   fontSize: 16,
    padding:10,
    fontWeight: '300',
    color: '#002a55',

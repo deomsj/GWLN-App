@@ -233,8 +233,8 @@ const styles = StyleSheet.create({
   guestContainer: {
     // position: 'absolute',
     alignSelf: 'center',
-    padding: 10,
-    paddingVertical:10,
+    // padding: 10,
+    // paddingVertical:10,
     // bottom: '15%',
   },
   guestButton: {
