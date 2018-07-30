@@ -4,6 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 import RNPickerSelect from 'react-native-picker-select';
+
 import './Global.js';
 
 class memberRSVP extends React.Component {
@@ -58,6 +59,10 @@ class memberRSVP extends React.Component {
 	}
 
 	handleSubmit = () => {
+		let numGuests = this.state.PickerValue
+		if (!numGuests) {
+			numGuests = 1
+		}
 		const url = 'https://cuwomen.org/functions/app.gwln.php'
 		fetch(url, {
 			method: "POST",
@@ -67,14 +72,21 @@ class memberRSVP extends React.Component {
 			body: JSON.stringify({
 				"code": "eventRSVP",
 				"arguments": {
-					"timeline_event_id": ,
+					"timeline_event_id": this.props.navigation.state.params.ID,
 					"member_id": global.crm,
 					"first_name": global.currUser.first_name,
 					"last_name": global.currUser.last_name,
 					"email": global.currUser.email1,
-					// "guests": integer
+					 "guests": numGuests,
 				}
-			})
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
+			console.log(res);
+		})
+		.catch(error => {
+			console.log(error);
 		})
 	}
 
@@ -93,11 +105,23 @@ class memberRSVP extends React.Component {
 						});
 					}}
 				/>
+				<View style={{paddingBottom: 15}}>
+					<Button
+						title="RSVP"
+						onPress={() => Alert.alert(
+              		 		'Success',
+              		 		'You are now registered',
+              		 		[
+              		 		 {text: 'Dismiss', onPress: () => this.handleSubmit()},
+               	 			],
+             			 	)}
+					/>
+				</View>
 			</View>
 
 		);
 	}
 
-
-
 }
+
+export default memberRSVP;
