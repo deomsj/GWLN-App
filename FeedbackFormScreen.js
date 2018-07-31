@@ -87,12 +87,12 @@ const Options = {
 		// 	error: 'Please fill out this field.'
 		// },
 		Summary: {
-			label: 'Summary',
+			label: 'Tell us about the event',
 			error: 'Please fill out this field',
 			multiline: true,
 			//numberOfLines: 4,
 			stylesheet: stylesheet,
-			placeholder: 'Include short event description along with feedback',
+			placeholder: 'Comments...',
 		},
 
 	}
@@ -122,7 +122,7 @@ class FeedbackFormScreen extends React.Component {
 
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}> Feedback Form </Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Feedback Form</Text>),
 			headerRight: ( <Icon
 				containerStyle={{marginRight:15, marginTop:15}}
 				iconStyle={styles.headerIcon}
@@ -186,15 +186,17 @@ class FeedbackFormScreen extends React.Component {
 			buttonColors = ['rgba(0, 42, 85, 1)'];
 		};
 		return(
-			<ScrollView>
 			<View style={styles.container}>
-
+			<ScrollView>
 				<Form ref={c=>this._form = c}
 				type={Content}
+				style= {styles.formContainer}
 				options = {Options}
 				onChangeText = {(text) => this.setState({text})}
 				/>
+				<Text style={styles.text}>Please include the following in your event feedback:{"\n"}{"\u2022"}Event name and date{"\n"}{"\u2022"}Event Topic{"\n"}{"\u2022"}Number of Attendees{"\n"}{"\u2022"}Charity supported{"\n"}{"\u2022"}Dollars or resources Donated</Text>
 				<View style={styles.buttonContainer}>
+				<View style={styles.button}>
 					<Button
 					title="Submit"
 					onPress={() => Alert.alert(
@@ -208,8 +210,9 @@ class FeedbackFormScreen extends React.Component {
 					color= {buttonColors}
 					/>
 				</View>
-			</View>
+				</View>
 			</ScrollView>
+			</View>
 		);
 
 	}
@@ -218,25 +221,16 @@ class FeedbackFormScreen extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: '#fff',
-		justifyContent: 'center',
+		backgroundColor: 'white',
+		flexDirection: 'column',
+		flex:1,
 		padding: 30,
-	},
-	title: {
-		justifyContent: 'center',
-		marginTop: 10,
-		alignItems: 'center',
-		fontSize: 24,
-	},
-	DiscardFeedback: {
-		fontSize: 10,
 	},
 	headerIcon: {
 		flex:1,
 		color: '#002A55',
 	},
-	buttonContainer: {
-		alignSelf: 'center',
+	button: {
 		elevation: 0,
 		// padding: 30,
 		paddingHorizontal: 30,
@@ -251,7 +245,20 @@ const styles = StyleSheet.create({
 		}),
 		borderWidth: 1,
 		borderRadius: 5,
-		flexDirection: 'column',
+		// flexDirection: 'column',
+		paddingVertical:1,
+	},
+	formContainer: {
+		padding: 30,
+	},
+	buttonContainer: {
+		alignSelf: 'center',
+		padding: 20,
+	},
+	text: {
+		fontSize: 14,
+		fontWeight: '200',
+		color: 'gray',
 	},
 });
 
