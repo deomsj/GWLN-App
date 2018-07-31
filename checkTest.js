@@ -237,7 +237,7 @@ class checkinTest extends Component {
         body: JSON.stringify({
           "code": "eventCheckin",
           "arguments": {
-            "timeline_event_id": 143,
+            "timeline_event_id": this.props.navigation.state.params.CheckInEventID,
             //Not Needed "member_id": global.currUser.contact_id,
             "first_name": this.state.value.name,
             "last_name": this.state.value.surname,
@@ -301,7 +301,7 @@ getMemberInfo = () => {
       body: JSON.stringify({
         "code": "getMemberInformationByUsername",
         "arguments": {
-          //"timeline_event_id": 143,
+          "timeline_event_id": this.props.navigation.state.params.CheckInEventID,
           "username": this.state.value.email,
         }
       }),
@@ -329,7 +329,7 @@ getMemberInfo = () => {
             body: JSON.stringify({
               "code": "eventCheckin",
               "arguments": {
-                "timeline_event_id": 143,
+                "timeline_event_id": this.props.navigation.state.params.CheckInEventID,
                 "member_id": this.state.meminfo.member_id,
                 "first_name": this.state.meminfo.first_name,
                 "last_name": this.state.meminfo.last_name,
