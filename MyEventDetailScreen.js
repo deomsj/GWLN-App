@@ -31,7 +31,7 @@ class MyEventDetailScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getEventCheckins", 
+				"code": "getEventCheckins",
 				"arguments":{
 					"timeline_event_id": this.props.navigation.state.params.item.timeline_event_id,
 				}
@@ -43,7 +43,7 @@ class MyEventDetailScreen extends React.Component {
 				console.log(res);
 				// this.setState({
 				// 	data: res
-				// }) 
+				// })
 			}
 		})
 		.catch(error => {
@@ -72,7 +72,7 @@ class MyEventDetailScreen extends React.Component {
 		console.log('in go to check in');
 		this.props.navigation.navigate('CheckIn', {CheckInEventID})
 	}
-	
+
 
 
 	componentWillMount(){
@@ -145,4 +145,3 @@ const styles = StyleSheet.create ({
 });
 
 export default MyEventDetailScreen;
-

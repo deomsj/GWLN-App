@@ -32,7 +32,7 @@ class HomeScreen extends React.Component {
           //   value: 'HomeScreen'
           // },
           {
-            label: 'Event Check In',
+            label: 'Upcoming Events',
             value: 'MyUpcomingEvents',
           },
           {

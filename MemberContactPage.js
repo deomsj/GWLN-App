@@ -32,12 +32,9 @@ class MemberContactPage extends React.Component {
     };
 		return(
 			<View style={styles.mainContainer}>
-				<View style={styles.profileContainer}>
 					<Image source={GWLNicon} style={styles.profilePic}/>
 					<Text style={styles.NameText}> {this.props.navigation.state.params.user.first_name} {this.props.navigation.state.params.user.last_name}</Text>
 					<Text style={styles.locationText}> {this.props.navigation.state.params.user.mailing_address_city}, {this.props.navigation.state.params.user.mailing_address_country_name} </Text>
-
-				</View>
 				<View style={styles.ContactContainer}>
 					<Text style={styles.titleText}>Contact Info {"\n"}{"\n"}</Text>
 					<Text style={styles.titleText}>Phone:</Text>
@@ -61,9 +58,6 @@ const styles = StyleSheet.create ({
 	mainContainer: {
 		flex: 1,
 		backgroundColor: '#002a55'
-	},
-	profileContainer: {
-		// padding: 30,
 	},
 	profilePic: {
 		padding: 35,
