@@ -20,6 +20,7 @@ class MyEventDetailScreen extends React.Component {
 			data: {},
 			memInfo: contactData,
 			attendees: {},
+			numAttendeesLoading: true,
 
 		}
 	}
@@ -41,16 +42,18 @@ class MyEventDetailScreen extends React.Component {
 		.then(res => res.json())
 		.then(res => {
 			if (res){
-				console.log(res);
+				//console.log(res);
 				this.setState({
 					attendees: res
 				}) 
+				this.GetNumberOfAttendees();
 			}
 		})
 		.catch(error => {
 			console.log(error);
 		})
-		console.log(tmp)
+		//console.log(tmp)
+		
 	}
 
 	_renderItem=({ item }) => (
@@ -68,7 +71,34 @@ class MyEventDetailScreen extends React.Component {
 		console.log('in go to check in');
 		this.props.navigation.navigate('CheckIn', {CheckInEventID})
 	}
-	
+	renderSeparator = () => {
+		return (
+			<View
+				style={{
+					height: 1,
+					// width: "100%",
+					backgroundColor: "#CED0CE",
+					// marginLeft: "0%"
+				}}
+			/>
+		);
+	};
+	GetNumberOfAttendees = () => {
+		let tmpAttendees = this.state.attendees
+		console.log(tmpAttendees)
+		let tmpNumAttendees = 0
+		global.numAttendees = 0
+		for (var i = 0; i < tmpAttendees.length; i++) {
+			
+			tmpNumAttendees = tmpNumAttendees + parseInt(tmpAttendees[i].guests_rsvp)
+			//console.log(tmpNumAttendees);
+		}
+		global.numAttendees = tmpNumAttendees
+		console.log(global.numAttendees);
+		this.setState({
+			numAttendeesLoading: false,
+		})
+	}
 
 
 	componentWillMount(){
@@ -91,14 +121,27 @@ class MyEventDetailScreen extends React.Component {
          				<View style={styles.heading}>
           				<Text style={styles.headingText}> {this.props.navigation.state.params.item.event_name} </Text>
           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_month}/{this.props.navigation.state.params.item.event_day}/{this.props.navigation.state.params.item.event_year} </Text>
-        			</View>
-         			<View style={styles.info}>
            				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_location} </Text>
            				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_description} </Text>
+           				<Text style={styles.infoText}> there are {global.numAttendees} people planning to attend </Text>
+           				
+        			</View>
+         			<View>
+         				<ScrollView>
+         					<FlatList
+         						data={this.state.attendees}
+         						renderItem={this._renderItem}
+         						keyExtractor={item => item.eventID}
+         						ItemSeparatorComponent={this.renderSeparator}
+         					/>
+         				</ScrollView>
+         			</View>
+         			<View style={styles.info}>
           				<Button
             				title="Begin Check In"
             				onPress={() => this.goToCheckIn()}
            				/>
+
          			</View>
        			</View>
 
