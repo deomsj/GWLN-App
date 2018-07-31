@@ -19,6 +19,7 @@ class MyEventDetailScreen extends React.Component {
 		this.state = {
 			data: {},
 			memInfo: contactData,
+			attendees: {},
 
 		}
 	}
@@ -41,9 +42,9 @@ class MyEventDetailScreen extends React.Component {
 		.then(res => {
 			if (res){
 				console.log(res);
-				// this.setState({
-				// 	data: res
-				// }) 
+				this.setState({
+					attendees: res
+				}) 
 			}
 		})
 		.catch(error => {
@@ -52,19 +53,14 @@ class MyEventDetailScreen extends React.Component {
 		console.log(tmp)
 	}
 
-	_test = () => {
-		let tmp = this.state.detailEvent
-		console.log('in test');
-
-		if(this.state.detailEvent.length > 0){
-			console.log(tmp[0].event_name);
-		}
-
-	};
-	_onPress = () => {
-		console.log('rsvp pressed');
-		this._Post_RSVP()
-	};
+	_renderItem=({ item }) => (
+		<TouchableOpacity>
+			<ListItem
+				id={item.id}
+				title={item.first_name}
+			/>
+		</TouchableOpacity>
+	);
 
 
 	goToCheckIn = () => {
