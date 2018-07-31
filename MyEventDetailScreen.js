@@ -60,7 +60,8 @@ class MyEventDetailScreen extends React.Component {
 		<TouchableOpacity>
 			<ListItem
 				id={item.id}
-				title={item.first_name}
+				title={`${item.first_name} ${item.last_name}`}
+				subtitle={item.email}
 			/>
 		</TouchableOpacity>
 	);
@@ -123,7 +124,7 @@ class MyEventDetailScreen extends React.Component {
           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_month}/{this.props.navigation.state.params.item.event_day}/{this.props.navigation.state.params.item.event_year} </Text>
            				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_location} </Text>
            				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_description} </Text>
-           				<Text style={styles.infoText}> there are {global.numAttendees} people planning to attend </Text>
+           				<Text style={styles.infoText}> There are {global.numAttendees} people planning to attend </Text>
            				
         			</View>
          			<View>
@@ -131,7 +132,7 @@ class MyEventDetailScreen extends React.Component {
          					<FlatList
          						data={this.state.attendees}
          						renderItem={this._renderItem}
-         						keyExtractor={item => item.eventID}
+         						//keyExtractor={item => item.eventID}
          						ItemSeparatorComponent={this.renderSeparator}
          					/>
          				</ScrollView>
