@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNicon from './img/Gwln_Icon.jpg';
 import MemberListScreen from './MemberListScreen';
@@ -70,7 +70,14 @@ const styles = StyleSheet.create ({
 		height: undefined,
 		width: undefined,
 		resizeMode: 'contain',
-		borderRadius: 20,
+		...Platform.select({
+      ios: {
+        borderRadius: 20,
+      },
+      android: {
+        borderRadius: 50,
+      },
+    }),
 		// marginBottom: '5%'
 	},
 	ContactContainer: {

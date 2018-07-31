@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: 'white',
-    paddingBottom:15,
+    paddingBottom:10,
     justifyContent: 'center',
   },
   buttons: {

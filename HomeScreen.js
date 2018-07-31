@@ -70,7 +70,7 @@ class HomeScreen extends React.Component {
             {source: require('./img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
           ]}
             flatListProps={{windowSize: 2}}
-            pageMargin={10}
+            // pageMargin={10}
             />
             <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
             </View>
@@ -163,7 +163,8 @@ const styles = StyleSheet.create({
  },
  galleryContainer: {
    backgroundColor: 'white',
-   padding:5,
+   paddingVertical:10,
+   paddingHorizontal: 10,
    position: 'absolute',
    top: '0%',
    height: '90%',
@@ -202,22 +203,17 @@ const styles = StyleSheet.create({
 
 const pickerStyle = StyleSheet.create({
   inputiOs: {
-    fontSize: 16,
-    paddingTop: 13,
-    paddingHorizontal: 10,
-    paddingBottom: 12,
+    fontSize: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
     borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
+    borderColor: '#002a55',
+    borderRadius: 5,
     // backgroundColor: '#002A55',
     color: '#002A55',
   },
   inputAndroid: {
-    // paddingTop: 10,
     paddingHorizontal: 125,
-    paddingBottom: 10,
-    paddingTop: 10,
-    // padding:10,
     backgroundColor: 'white',
     color: 'black',
   }
