@@ -22,9 +22,9 @@ class MyUpcomingEventsScreen extends React.Component {
 			<View
 				style={{
 					height: 1,
-					// width: "100%",
+					width: "100%",
 					backgroundColor: "#CED0CE",
-					// marginLeft: "0%"
+					marginLeft: "5%",
 				}}
 			/>
 		);
@@ -35,12 +35,12 @@ class MyUpcomingEventsScreen extends React.Component {
 	}
 
 	_renderItem=({ item }) => (
-		
 					<TouchableOpacity onPress={()=> this._onPressItem(item)}>
 						<ListItem
 							id={item.id}
 							title={item.event_name}
-							subtitle={item.description}
+							subtitle={`${item.event_month}/${item.event_day}/${item.event_year}`}
+
 							//avatar={{ uri: item.picture.thumbnail }}
 							containerStyle={{ borderBottomWidth: 0 }}
 
@@ -108,7 +108,7 @@ class MyUpcomingEventsScreen extends React.Component {
 	}
 	render() {
 		return(
-			<View style={{ flex: 1}}>
+			<View style={styles.mainContainer}>
 				<FlatList
 					data={this.state.data}
 					renderItem={this._renderItem}
@@ -121,4 +121,10 @@ class MyUpcomingEventsScreen extends React.Component {
 
 }
 
+const styles = StyleSheet.create({
+	mainContainer: {
+		backgroundColor: 'white',
+		flex: 1,
+	},
+})
 export default MyUpcomingEventsScreen;

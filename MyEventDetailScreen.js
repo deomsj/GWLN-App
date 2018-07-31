@@ -33,7 +33,7 @@ class MyEventDetailScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getEventCheckins", 
+				"code": "getEventCheckins",
 				"arguments":{
 					"timeline_event_id": this.props.navigation.state.params.item.timeline_event_id,
 				}
@@ -45,7 +45,7 @@ class MyEventDetailScreen extends React.Component {
 				//console.log(res);
 				this.setState({
 					attendees: res
-				}) 
+				})
 				this.GetNumberOfAttendees();
 			}
 		})
@@ -53,7 +53,7 @@ class MyEventDetailScreen extends React.Component {
 			console.log(error);
 		})
 		//console.log(tmp)
-		
+
 	}
 
 	_renderItem=({ item }) => (
@@ -90,7 +90,7 @@ class MyEventDetailScreen extends React.Component {
 		let tmpNumAttendees = 0
 		global.numAttendees = 0
 		for (var i = 0; i < tmpAttendees.length; i++) {
-			
+
 			tmpNumAttendees = tmpNumAttendees + parseInt(tmpAttendees[i].guests_rsvp)
 			//console.log(tmpNumAttendees);
 		}
@@ -185,4 +185,3 @@ const styles = StyleSheet.create ({
 });
 
 export default MyEventDetailScreen;
-
