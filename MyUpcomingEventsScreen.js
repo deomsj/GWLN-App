@@ -30,12 +30,15 @@ class MyUpcomingEventsScreen extends React.Component {
 		);
 	};
 
+	_onPressItem = (item) => {
+		this.props.navigation.navigate('MyEventDetailScreen', {item})
+	}
+
 	_renderItem=({ item }) => (
 		
 					<TouchableOpacity onPress={()=> this._onPressItem(item)}>
 						<ListItem
 							id={item.id}
-							onPressItem={console.log('press')}
 							title={item.event_name}
 							subtitle={item.description}
 							//avatar={{ uri: item.picture.thumbnail }}
@@ -65,12 +68,41 @@ class MyUpcomingEventsScreen extends React.Component {
 			this.setState({
 				data: res
 			})
+			this.GetMyEvents();
 		})
 		.catch(error => {
 			console.log(error);
 		})
 
 	}
+
+	GetMyEvents = () => {
+		const url = 'https://cuwomen.org/functions/app.gwln.php'
+		fetch(url, {
+			method:"POST",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "getAllEvents",
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
+			//console.log(res);
+			 let tmpRes = res
+			 var filteredRes = tmpRes.filter( event => {
+			 	return event.username == global.currUser.username
+			 })
+			 console.log(filteredRes);
+			 this.setState({
+			 	data: [...this.state.data, ...filteredRes],
+			 })
+		})
+	}
+
+
+
 	componentWillMount(){
 		this.makeremoteRequest();
 	}

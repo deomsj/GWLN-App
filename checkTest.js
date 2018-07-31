@@ -199,7 +199,17 @@ class checkinTest extends Component {
       button = guestbutton;
     }
     else{
-      return;
+      button = null;
+      return <Text>Photo Disclaimer:
+      As representatives of World Council, Sister Society Leaders
+      may take photos at this event and reproduce them in World Council
+      educational, news or promotional materials, whether in print,
+      electronic, or other media, including the World Council or Global Women
+      website. By participation in the Sister Society meeting, you grant World
+      Council the right to use your photograph, name, and biography for such
+      purposes. All pictures become the property of World council and may be
+      displayed distributed or used by World Council for any purpose</Text>
+
     }
     //const value = this._form.getValue();
     //console.log('in determine form', value);
@@ -407,6 +417,7 @@ getMemberInfo = () => {
         <View style={styles.buttonContainer}>
           {button}
         </View>
+
       </View>
     )
   }

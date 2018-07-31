@@ -37,6 +37,7 @@ import checkinTest from './checkTest';
 import guestRSVP from './guestRSVP';
 import guestCalendarScreen from './guestCalendarScreen';
 import guestCalendarDetailScreen from './guestCalendarDetailScreen';
+import MyEventDetailScreen from './MyEventDetailScreen';
 
 
 import './Global.js';
@@ -383,6 +384,9 @@ const NavigationFlow = createStackNavigator({
   },
   GuestBlog: {
     screen: GuestBlog,
+  },
+  MyEventDetailScreen: {
+    screen: MyEventDetailScreen,
   },
 
 })
