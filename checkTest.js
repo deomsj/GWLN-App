@@ -320,7 +320,7 @@ getMemberInfo = () => {
               "code": "eventCheckin",
               "arguments": {
                 "timeline_event_id": 143,
-                //Not Needed "member_id": global.currUser.contact_id,
+                "member_id": this.state.meminfo.member_id,
                 "first_name": this.state.meminfo.first_name,
                 "last_name": this.state.meminfo.last_name,
                 "email": this.state.meminfo.email1,
