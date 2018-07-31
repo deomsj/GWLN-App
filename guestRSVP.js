@@ -89,7 +89,7 @@ class guestRSVP extends React.Component {
 				</View>
 		<View style={{paddingBottom: 15}}>
 					<Button
-						title="TEST"
+						title="RSVP"
 						onPress={() => Alert.alert(
               		 		'Success',
               		 		'You are now registered',

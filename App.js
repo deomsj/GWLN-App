@@ -37,6 +37,7 @@ import checkinTest from './checkTest';
 import guestRSVP from './guestRSVP';
 import guestCalendarScreen from './guestCalendarScreen';
 import guestCalendarDetailScreen from './guestCalendarDetailScreen';
+import MyEventDetailScreen from './MyEventDetailScreen';
 
 
 import './Global.js';
@@ -310,7 +311,7 @@ MemberNav.navigationOptions = ({navigation}) => {
 
 const NavigationFlow = createStackNavigator({
   Launch: {
-    screen: checkinTest,
+    screen: Signin,
   },
 
   OrganizerSignin: {
@@ -331,7 +332,7 @@ const NavigationFlow = createStackNavigator({
   },
   CheckIn: {
     //changed
-    screen: Signin,
+    screen: checkinTest,
   },
   FeedbackFrom: {
     screen: FeedbackFormScreen,
@@ -383,6 +384,9 @@ const NavigationFlow = createStackNavigator({
   },
   GuestBlog: {
     screen: GuestBlog,
+  },
+  MyEventDetailScreen: {
+    screen: MyEventDetailScreen,
   },
 
 })
