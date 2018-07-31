@@ -31,19 +31,19 @@ class MyEventDetailScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getEventByID", 
+				"code": "getEventCheckins", 
 				"arguments":{
-					"timeline_event_id": this.props.navigation.state.params.filteredID,
+					"timeline_event_id": this.props.navigation.state.params.item.timeline_event_id,
 				}
 			}),
 		})
 		.then(res => res.json())
 		.then(res => {
 			if (res){
-				//console.log(res);
-				this.setState({
-					data: res
-				}) 
+				console.log(res);
+				// this.setState({
+				// 	data: res
+				// }) 
 			}
 		})
 		.catch(error => {
@@ -76,7 +76,7 @@ class MyEventDetailScreen extends React.Component {
 
 
 	componentWillMount(){
-		
+		this.retrieveEvent();
 
 	}
 	render() {

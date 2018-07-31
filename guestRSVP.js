@@ -74,6 +74,8 @@ class guestRSVP extends React.Component {
 		.catch(error => {
 			console.log(error);
 		})
+
+		this.props.navigation.navigate('guestCalendarDetailScreen')
 	}
 
 	render(){
