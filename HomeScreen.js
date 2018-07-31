@@ -72,7 +72,7 @@ class HomeScreen extends React.Component {
             flatListProps={{windowSize: 2}}
             pageMargin={10}
             />
-            <Text style={styles.textStyle}>The Vision for Global Women's Leadership Network is to provide women with the opportunity and resources to make a measurable difference... in the lives of each other, in the lives of credit union members and in their communities.</Text>
+            <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
             </View>
         <View style={styles.buttonContainer}>
         <View style={styles.pickerContainer}>
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
  },
  textStyle: {
    textAlign: 'center',
-   fontSize: 16,
+   fontSize: 17,
    paddingHorizontal:10,
    color: '#002a55',
    flex:1,
@@ -180,8 +180,8 @@ const styles = StyleSheet.create({
        fontWeight: '500',
      },
      android: {
-       fontFamily: 'sans-serif-medium',
-       fontWeight: '300',
+       fontFamily: 'sans-serif-light',
+       fontWeight: '500',
      },
    }),
  },
