@@ -194,7 +194,7 @@ class FeedbackFormScreen extends React.Component {
 				options = {Options}
 				onChangeText = {(text) => this.setState({text})}
 				/>
-				<Text style={styles.text}>Please include the following in your event feedback:{"\n"}{"\u2022"}Event name and date{"\n"}{"\u2022"}Event Topic{"\n"}{"\u2022"}Number of Attendees{"\n"}{"\u2022"}Charity supported{"\n"}{"\u2022"}Dollars or resources Donated</Text>
+				<Text style={styles.text}>Please include the following in your event feedback:{"\n"} {"\u2022"} Event name and date{"\n"} {"\u2022"} Event Topic{"\n"} {"\u2022"} Number of Attendees{"\n"} {"\u2022"} Charity supported{"\n"} {"\u2022"} Dollars or resources donated</Text>
 				<View style={styles.buttonContainer}>
 				<View style={styles.button}>
 					<Button

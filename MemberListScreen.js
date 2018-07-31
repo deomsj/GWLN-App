@@ -80,7 +80,7 @@ class MemberListScreen extends React.Component {
 							// keyExtractor={(item) => item.toString()}
 							roundAvatar
 							title={`${item.first_name} ${item.last_name}`}
-							//subtitle={item.email}
+							subtitle={item.email1}
 							//avatar={{ uri: item.picture.thumbnail }}
 							containerStyle={{ borderBottomWidth: 0 }}
 
@@ -172,7 +172,7 @@ class MemberListScreen extends React.Component {
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
-						keyExtractor={(item) => item.email}
+						keyExtractor={(item) => item.email1}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
 				/>
@@ -187,10 +187,10 @@ const styles = StyleSheet.create({
 	mainContainer: {
 		backgroundColor: 'white',
 	},
-	container: {
-		flex: 1,
-		marginTop: 40,
-		alignItems: 'center',
-	},
+	// container: {
+	// 	flex: 1,
+	// 	marginTop: 40,
+	// 	alignItems: 'center',
+	// },
 })
 export default MemberListScreen;

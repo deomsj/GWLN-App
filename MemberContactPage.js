@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image, Platform } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNicon from './img/Gwln_Icon.jpg';
 import MemberListScreen from './MemberListScreen';
@@ -32,12 +32,9 @@ class MemberContactPage extends React.Component {
     };
 		return(
 			<View style={styles.mainContainer}>
-				<View style={styles.profileContainer}>
 					<Image source={GWLNicon} style={styles.profilePic}/>
 					<Text style={styles.NameText}> {this.props.navigation.state.params.user.first_name} {this.props.navigation.state.params.user.last_name}</Text>
 					<Text style={styles.locationText}> {this.props.navigation.state.params.user.mailing_address_city}, {this.props.navigation.state.params.user.mailing_address_country_name} </Text>
-
-				</View>
 				<View style={styles.ContactContainer}>
 					<Text style={styles.titleText}>Contact Info {"\n"}{"\n"}</Text>
 					<Text style={styles.titleText}>Phone:</Text>
@@ -62,15 +59,19 @@ const styles = StyleSheet.create ({
 		flex: 1,
 		backgroundColor: '#002a55'
 	},
-	profileContainer: {
-		// padding: 30,
-	},
 	profilePic: {
 		padding: 35,
 		height: undefined,
 		width: undefined,
 		resizeMode: 'contain',
-		borderRadius: 20,
+		...Platform.select({
+      ios: {
+        borderRadius: 20,
+      },
+      android: {
+        borderRadius: 50,
+      },
+    }),
 		// marginBottom: '5%'
 	},
 	ContactContainer: {

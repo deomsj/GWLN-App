@@ -160,47 +160,56 @@ class checkinTest extends Component {
 
   determineForm = (selected) => {
 
-    const guestform =  <Form
+    const guestform =
+    <View style={styles.formContainer}>
+     <Form
       ref={c=>this._form = c}
       type={AttendeeGuest}
       options={OptionsGuest}
       value={this.state.value}
       onChange={this.onChange.bind(this)}
       />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Check In!"
+          onPress={this.onSubmitGuest}
+          color='#002A55'
+        />
+      </View>
+      </View>
 
-    const memform =  <Form
+    const memform =
+    <View style={styles.formContainer}>
+    <Form
       ref={c=>this._form = c}
       type={AttendeeMember}
       options={OptionsMember}
       value={this.state.value}
       onChange={this.onChange.bind(this)}
       />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Check In!"
+          onPress={this.getMemberInfo}
+          color='#002A55'
+        />
+      </View>
+      </View>
 
-    const guestbutton = <Button
-      title="Check In!"
-      onPress={this.onSubmitGuest}
-      color='#002A55'
-    />
-    //change to onSumbitMember
-    const membutton = <Button
-      title="Check In!"
-      onPress={this.getMemberInfo}
-      color='#002A55'
-    />
 
     console.log(selected);
     if (selected == 0){
       form = memform;
-      button = membutton;
+      // button = membutton;
 
     }
     else if (selected == 1) {
       form = guestform;
-      button = guestbutton;
+      // button = guestbutton;
     }
     else{
-      button = null;
-      return <Text>Photo Disclaimer:
+      // button = null;
+      return <Text style={styles.textBox}>Photo Disclaimer:{"\n"}
       As representatives of World Council, Sister Society Leaders
       may take photos at this event and reproduce them in World Council
       educational, news or promotional materials, whether in print,
@@ -208,7 +217,7 @@ class checkinTest extends Component {
       website. By participation in the Sister Society meeting, you grant World
       Council the right to use your photograph, name, and biography for such
       purposes. All pictures become the property of World council and may be
-      displayed distributed or used by World Council for any purpose</Text>
+      displayed distributed or used by World Council for any purpose.</Text>
 
     }
     //const value = this._form.getValue();
@@ -411,12 +420,8 @@ getMemberInfo = () => {
             <Text>No</Text>
           </RadioButton>
         </RadioGroup>
+        </View>
           {this.determineForm(this.state.selectedIndex1)}
-        </View>
-
-        <View style={styles.buttonContainer}>
-          {button}
-        </View>
 
       </View>
     )
@@ -427,13 +432,14 @@ const styles = StyleSheet.create({
     mainContainer: {
       backgroundColor: 'white',
       flex:1,
+      flexDirection: 'column',
     },
-    container: {
-        flex: 1,
-        backgroundColor: 'white',
-        padding: 30,
-        justifyContent: 'center',
-    },
+    // container: {
+    //     flex: 1,
+    //     backgroundColor: 'white',
+    //     padding: 30,
+    //     justifyContent: 'center',
+    // },
     buttonContainer: {
   		alignSelf: 'center',
   		// padding: 30,
@@ -450,7 +456,22 @@ const styles = StyleSheet.create({
   		borderWidth: 1,
   		borderRadius: 5,
   		flexDirection: 'column',
+      paddingVertical: 1,
   	},
+    formContainer: {
+      backgroundColor: 'white',
+      paddingHorizontal: 30,
+      paddingVertical: 10,
+      // justifyContent: 'center',
+    },
+    textBox: {
+      position: 'absolute',
+      alignSelf: 'center',
+      bottom: '5%',
+      fontSize: 14,
+      color: 'gray',
+      paddingHorizontal: 30,
+    },
     item: {
         flexDirection: 'row',
         padding:10,
@@ -471,6 +492,7 @@ const styles = StyleSheet.create({
   		marginTop: 10,
       marginBottom: 20,
       backgroundColor: 'white',
+      padding:30,
   	},
   	rb: {
   		alignItems: 'center',

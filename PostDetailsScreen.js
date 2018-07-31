@@ -20,7 +20,6 @@ class PostDetailsScreen extends React.Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-					<Text style={styles.postText}> {this.props.navigation.state.params.post_date} </Text>
 					<Text style={styles.postText}> {this.props.navigation.state.params.post.story} </Text>
 			</View>
 		);
