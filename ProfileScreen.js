@@ -87,7 +87,7 @@ class ProfileScreen extends React.Component {
         <View style={styles.buttons}>
           <Button
             color= {buttonColors}
-            title="My Upcoming Events"
+            title="My Events"
             onPress={() => this.props.navigation.navigate('MyUpcomingEvents')}
             />
             </View>
