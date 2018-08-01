@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
 	},
   logoContainer: {
     position: 'absolute',
-    top: '10%',
+    top: '5%',
     alignSelf: 'center',
   },
 	GWLNlogo: {
