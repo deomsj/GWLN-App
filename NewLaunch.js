@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingHorizontal:50,
     backgroundColor: 'white',
-    marginTop: '20%',
+    // marginTop: '20%',
   },
   buttonContainer: {
     // alignItems: 'center',
@@ -183,8 +183,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
 	buttons: {
-    paddingVertical: 5,
-    paddingHorizontal: 50,
+    paddingVertical: 1,
+    paddingHorizontal: 40,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {
@@ -239,7 +239,8 @@ const styles = StyleSheet.create({
   },
   guestButton: {
     paddingHorizontal: 10,
-    padding: 10,
+    // padding: 10,
+		paddingVertical: 5,
     backgroundColor: 'white',
     borderColor: '#002A55',
     color: '#002A55',
