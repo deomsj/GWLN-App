@@ -123,9 +123,9 @@ class MyEventDetailScreen extends React.Component {
           				<Text style={styles.headingText}> {this.props.navigation.state.params.item.event_name} </Text>
           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_month}/{this.props.navigation.state.params.item.event_day}/{this.props.navigation.state.params.item.event_year} </Text>
            				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_location} </Text>
-           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_description} </Text>
+           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_description.replace(/<\/?[^>]+(>|$)/g, "")} </Text>
            				<Text style={styles.infoText}> There are {global.numAttendees} people planning to attend </Text>
-           				
+
         			</View>
          			<View>
          				<ScrollView>

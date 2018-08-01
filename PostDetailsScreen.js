@@ -16,11 +16,13 @@ class PostDetailsScreen extends React.Component {
 	makeRemoteRequest = () => {
 
 	}
-
+	//cleanText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-					<Text style={styles.postText}> {this.props.navigation.state.params.post.story} </Text>
+				<ScrollView>
+					<Text style={styles.postText}> {this.props.navigation.state.params.post.story.replace(/<\/?[^>]+(>|$)/g, "")} </Text>
+				</ScrollView>
 			</View>
 		);
 	}
