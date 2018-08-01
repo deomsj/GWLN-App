@@ -175,6 +175,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingHorizontal:50,
     backgroundColor: 'white',
+		// paddingVertical: 10,
     // marginTop: '20%',
   },
   buttonContainer: {
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
 	},
   logoContainer: {
     position: 'absolute',
-    top: '10%',
+    top: '5%',
     alignSelf: 'center',
   },
 	GWLNlogo: {
