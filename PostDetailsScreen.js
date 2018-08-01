@@ -16,11 +16,17 @@ class PostDetailsScreen extends React.Component {
 	makeRemoteRequest = () => {
 
 	}
-
+	//cleanText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-					<Text style={styles.postText}> {this.props.navigation.state.params.post.story} </Text>
+					<View style={styles.cardContainer}>
+					<View style={styles.postContainer}>
+					<ScrollView>
+					<Text style={styles.postText}> {this.props.navigation.state.params.post.story.replace(/<\/?[^>]+(>|$)/g, "")} </Text>
+					</ScrollView>
+					</View>
+					</View>
 			</View>
 		);
 	}
@@ -28,27 +34,35 @@ class PostDetailsScreen extends React.Component {
 }
 const styles = StyleSheet.create ({
 		mainContainer: {
-			backgroundColor: 'white',
+			backgroundColor: '#002a55',
 			flex:1,
 			padding: 20,
 			alignItems: 'center',
 		},
-	titleText: {
-		color:'grey',
-		fontSize: 15,
-		fontWeight: '200',
-		marginBottom: 20,
-		textAlign: 'center',
-	},
 	postText: {
-		color:'black',
+		color:'#002a55',
 		fontSize: 16,
+		fontWeight: '400',
 		// textAlign: 'center',
 	},
-	separator: {
-		color: 'black',
-		fontSize: 15,
-		marginBottom: 20,
-	}
+	postContainer: {
+		alignSelf: 'center',
+		paddingHorizontal: 20,
+		// paddingHorizontal: 50,
+		paddingVertical: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	cardContainer: {
+		backgroundColor: 'white',
+		position: 'absolute',
+		top: '5%',
+		alignSelf: 'center',
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: '95%',
+		width: '90%',
+		borderRadius: 10,
+	},
 })
 export default PostDetailsScreen;

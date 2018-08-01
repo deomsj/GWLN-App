@@ -8,6 +8,8 @@ import moment from 'moment';
 
 import PostDetailsScreen from './PostDetailsScreen';
 
+
+
 class MessageBoardScreen extends React.Component {
 	constructor(props){
 		super(props);
@@ -59,7 +61,6 @@ class MessageBoardScreen extends React.Component {
 
 
 	_renderItem=({ item }) => (
-
 					<TouchableOpacity onPress={()=> this._onPressItem(item)}>
 						<ListItem
 							id={item.id}
@@ -100,17 +101,20 @@ class MessageBoardScreen extends React.Component {
   render(){
   	console.log(this.state.data);
     return (
+
 			<View style={styles.mainContainer}>
-			<ScrollView>
+				<ScrollView>
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
 						keyExtractor={item => item.postID}
 						ItemSeparatorComponent={this.renderSeparator}
 						/>
+
 				<View style={styles.BottomBorder}/>
-			</ScrollView>
+				</ScrollView>
 			</View>
+
     );
   }
 }

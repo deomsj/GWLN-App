@@ -19,8 +19,8 @@ let form;
 let button;
 
 /*====whats left=====
-- need to get timeline_event_id: right now just using 143
-- make so that checkin button doesn't appear at checkin start
+- need to get timeline_event_id: right now just using 143 -- DONE
+- make so that checkin button doesn't appear at checkin start -- DONE
 - styling
 =====================*/
 
@@ -421,8 +421,9 @@ getMemberInfo = () => {
           </RadioButton>
         </RadioGroup>
         </View>
+        <ScrollView>
           {this.determineForm(this.state.selectedIndex1)}
-
+        </ScrollView>
       </View>
     )
   }

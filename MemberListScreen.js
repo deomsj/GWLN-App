@@ -3,8 +3,16 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { SearchBar, List, ListItem } from 'react-native-elements';
-
+import _ from 'lodash';
 import MemberContactPage from './MemberContactPage';
+
+const contains = ({first_name, last_name}, query) => {
+	//const { first_name, last_name } = name;
+	if (first_name.includes(query) || last_name.includes(query)){
+		return true;
+	}
+	return false;
+}
 
 class MyListItem extends React.Component {
 	_onPress = () => {
@@ -39,9 +47,12 @@ class MemberListScreen extends React.Component {
 			seed: 1,
 			error: null,
 			refreshing: false,
+			//added
+			query: "",
+			fullData: [],
 
 		};
-		this._handleResults = this._handleResults.bind(this);
+		//this._handleResults = this._handleResults.bind(this);
 	}
 
 
@@ -77,31 +88,46 @@ class MemberListScreen extends React.Component {
 					</TouchableOpacity>
 	);
 
+	// renderHeading = () => {
+	// 	return <SearchBar placeholder="Search" lightTheme round
+	// 			ref={(ref) => this.searchBar = ref}
+	// 			//data={data}
+	// 			handleResults={this._handleResults}
+	// 			/>;
+	// };
+
 	renderHeading = () => {
 		return <SearchBar placeholder="Search" lightTheme round
 				ref={(ref) => this.searchBar = ref}
 				//data={data}
-				handleResults={this._handleResults}
+				onChangeText={this.handleSearch}
 				/>;
 	};
 
-	_handleResults(results) {
-		this.setState({results});
-	}
+	// toTitleCase = (str) => {
+	// 	return str.replace(
+	// 		/\w\S*/g,
+	// 		function(txt) {
+	// 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	// 		}
+	// 	)
+	// }
 
-	SearchFilterFunction(text){
-		const people = this.data.item.name.first
-		const newData = this.data.filter(function(people){
-			const itemData = item.name.first.toLowerCase()
-			const textData = text.toLowerCase()
-			return itemData.indexOf(textData) > -1
-		})
-		this.setState({
-			data: this.state.data.newData,
-			text: text
-		})
-	}
+	// toTitleCase(str) {
+  //   return str.replace(/\w\S*/g, function(txt){
+  //       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  //   });
+	// };
 
+	handleSearch = (text) => {
+		//console.log("text", text);
+		// does not handle spaces!! :(
+		const formatQuery = text.replace(/(^|\s)[a-z]/g,function(f){return f.toUpperCase();});
+		const data = _.filter(this.state.fullData, res => {
+			return contains(res, formatQuery);
+		});
+		this.setState({query: formatQuery, data});
+	};
 
 	componentDidMount() {
 		this.makeRemoteRequest();
@@ -123,12 +149,14 @@ class MemberListScreen extends React.Component {
 			.then(res => res.json())
 			.then(res => {
 				this.setState({
-					data: page === 1 ? res : [...this.state.data, ...res],
+					//data: page === 1 ? res : [...this.state.data, ...res],
 					error: res.error || null,
 					loading: false,
 					refreshing: false,
+					data: res,
+					fullData: res,
 				});
-				console.log(this.state.data);
+				//console.log(this.state.data);
 
 			})
 			.catch(error => {
