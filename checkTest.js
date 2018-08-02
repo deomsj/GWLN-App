@@ -207,8 +207,7 @@ class checkinTest extends Component {
       form = guestform;
       // button = guestbutton;
     }
-    else{
-      // button = null;
+    else {
       return <Text style={styles.textBox}>Photo Disclaimer:{"\n"}
       As representatives of World Council, Sister Society Leaders
       may take photos at this event and reproduce them in World Council
