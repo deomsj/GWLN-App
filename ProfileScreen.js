@@ -56,7 +56,11 @@ class ProfileScreen extends React.Component {
   }
 
     componentWillMount() {
-      this.filterdata(435)
+      this.filterdata(global.crm)
+      this.mounted = true;
+    }
+    componentWillUnmount(){
+      this.mounted = false;
     }
 
   render() {

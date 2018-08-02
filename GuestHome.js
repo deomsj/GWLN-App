@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
      },
      android: {
        fontFamily: 'sans-serif-light',
-       fontWeight: '500',
+       fontWeight: '400',
      },
    }),
  },
