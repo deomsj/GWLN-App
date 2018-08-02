@@ -187,6 +187,13 @@ class MyEventDetailScreen extends React.Component {
 
         			</View>
          			<View>
+							<View style={styles.attendeeContainer}>
+							<Text
+								style={styles.attendeeButton}
+								onPress={() => this.props.navigation.navigate('GuestHomeScreen')}>
+								View Attendees
+							</Text>
+							</View>
          				<ScrollView>
          					<FlatList
          						data={this.state.attendees}
@@ -268,6 +275,25 @@ const styles = StyleSheet.create ({
 		color: '#002A55',
 		flex:1,
 	},
+	attendeeContainer: {
+    // position: 'absolute',
+    alignSelf: 'center',
+    // padding: 10,
+    // paddingVertical:10,
+    // bottom: '15%',
+  },
+  attendeeButton: {
+    paddingHorizontal: 10,
+    // padding: 10,
+		paddingVertical: 5,
+    backgroundColor: 'white',
+    borderColor: '#002A55',
+    color: '#002A55',
+    borderWidth: 1,
+    borderRadius: 10,
+    fontSize: 17,
+    fontWeight: '400',
+  },
 });
 
 export default MyEventDetailScreen;
