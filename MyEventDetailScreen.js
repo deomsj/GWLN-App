@@ -112,6 +112,12 @@ class MyEventDetailScreen extends React.Component {
 
 	}
 
+	GoToAttendeeList = () => {
+		let ID = this.props.navigation.state.params.item.timeline_event_id
+		this.props.navigation.navigate('attendeeList', {ID})
+
+	}
+
 	_renderItem=({ item }) => (
 		<TouchableOpacity>
 			<ListItem
@@ -190,18 +196,11 @@ class MyEventDetailScreen extends React.Component {
 							<View style={styles.attendeeContainer}>
 							<Text
 								style={styles.attendeeButton}
-								onPress={() => this.props.navigation.navigate('GuestHomeScreen')}>
+								onPress={() => this.GoToAttendeeList()}>
 								View Attendees
 							</Text>
 							</View>
-         				<ScrollView>
-         					<FlatList
-         						data={this.state.attendees}
-         						renderItem={this._renderItem}
-         						keyExtractor={item => item.username}
-         						ItemSeparatorComponent={this.renderSeparator}
-         					/>
-         				</ScrollView>
+         			
          			</View>
 							<View style={styles.buttContainer}>
          			<View style={styles.button}>

@@ -30,7 +30,7 @@ class attendeeList extends React.Component {
 			body: JSON.stringify({
 				"code": "getEventCheckins",
 				"arguments":{
-					"timeline_event_id": this.props.navigation.state.params.item.timeline_event_id,
+					"timeline_event_id": this.props.navigation.state.params.ID,
 				}
 			}),
 		})
@@ -74,6 +74,11 @@ class attendeeList extends React.Component {
 		);
 	};
 
+	componentWillMount(){
+		this.retrieveEvent();
+
+	}
+
 
 	render() {
 		//this._test();
@@ -103,4 +108,80 @@ class attendeeList extends React.Component {
 	}
 
 }
+const styles = StyleSheet.create ({
+	container: {
+		backgroundColor: 'white',
+		flex: 1,
+	},
+	buttonContainer: {
+		paddingVertical: 20,
+	},
+	button: {
+		alignSelf: 'center',
+		elevation: 0,
+		// padding: 30,
+		paddingHorizontal: 30,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		flexDirection: 'column',
+		paddingVertical: 1,
+	},
+	heading: {
+		flex: 1,
+		padding: 10,
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+
+	},
+	headingText: {
+		fontSize: 24,
+
+	},
+	info: {
+		flex: 3,
+		flexDirection: 'column',
+		justifyContent: 'center',
+	},
+	infoText: {
+		fontSize: 16,
+		paddingLeft: '5%',
+		paddingRight: '5%',
+	},
+	headerIcon: {
+		color: '#002A55',
+		flex:1,
+	},
+	attendeeContainer: {
+    // position: 'absolute',
+    alignSelf: 'center',
+    // padding: 10,
+    // paddingVertical:10,
+    // bottom: '15%',
+  },
+  attendeeButton: {
+    paddingHorizontal: 10,
+    // padding: 10,
+		paddingVertical: 5,
+    backgroundColor: 'white',
+    borderColor: '#002A55',
+    color: '#002A55',
+    borderWidth: 1,
+    borderRadius: 10,
+    fontSize: 17,
+    fontWeight: '400',
+  },
+});
+
+
+
 export default attendeeList;
