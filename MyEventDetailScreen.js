@@ -22,7 +22,7 @@ class MyEventDetailScreen extends React.Component {
 			memInfo: contactData,
 			attendees: {},
 			numAttendeesLoading: true,
-			
+
 
 		}
 	}
@@ -200,7 +200,7 @@ class MyEventDetailScreen extends React.Component {
 								View Attendees
 							</Text>
 							</View>
-         			
+
          			</View>
 							<View style={styles.buttContainer}>
          			<View style={styles.button}>

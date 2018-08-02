@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Platform, ScrollView, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { Icon } from 'react-native-elements';
-
+import HTML from 'react-native-render-html';
 import MessageBoardScreen from './MessageBoardScreen'
 
 class PostDetailsScreen extends React.Component {
@@ -17,13 +17,16 @@ class PostDetailsScreen extends React.Component {
 
 	}
 	//cleanText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+	//<WebView source={{html: '<p>Here I am</p>'}} />
+	//<Text style={styles.postText}> {this.props.navigation.state.params.post.story.replace(/<\/?[^>]+(>|$)/g, "")} </Text>
+	//<WebView source={{html: this.props.navigation.state.params.post.story}} />
 	render() {
 		return (
 			<View style={styles.mainContainer}>
 					<View style={styles.cardContainer}>
 					<View style={styles.postContainer}>
 					<ScrollView>
-					<Text style={styles.postText}> {this.props.navigation.state.params.post.story.replace(/<\/?[^>]+(>|$)/g, "")} </Text>
+						<HTML html={this.props.navigation.state.params.post.story} imagesMaxWidth={Dimensions.get('window').width}/>
 					</ScrollView>
 					</View>
 					</View>
