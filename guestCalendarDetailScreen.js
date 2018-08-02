@@ -22,6 +22,12 @@ class guestCalendarDetailScreen extends React.Component {
 		}
 	}
 
+	static navigationOptions = ({navigation})=> {
+		return {
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Event Details</Text>),
+			headerRight: (<View></View>),
+		};
+	};
 
 	retrieveEvent = () => {
 		const url = 'https://cuwomen.org/functions/app.gwln.php'
@@ -114,8 +120,12 @@ class guestCalendarDetailScreen extends React.Component {
           				<Text style={styles.headingText}> {this.state.data.event_name} </Text>
           				<Text style={styles.infoText}> {this.state.data.event_month}/{this.state.data.event_day}/{this.state.data.event_year} </Text>
         			</View>
+							<View style={styles.info}>
+							<Text style={styles.fieldText}>Location:</Text>
+							<Text style={styles.infoText}> {this.state.data.event_location} </Text>
+							</View>
          			<View style={styles.info}>
-           				<Text style={styles.infoText}> {this.state.data.event_location} </Text>
+									<Text style={styles.fieldText}>Details:</Text>
            				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
 									<View style={styles.buttonContainer}>
 									<View style={styles.button}>
@@ -144,6 +154,7 @@ const styles = StyleSheet.create ({
 	},
 	heading: {
 		flex: 1,
+		paddingHorizontal: 10,
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -151,17 +162,22 @@ const styles = StyleSheet.create ({
 	},
 	headingText: {
 		fontSize: 24,
-
+	},
+	fieldText: {
+		color: 'black',
+		fontSize: 18,
 	},
 	info: {
-		flex: 3,
 		flexDirection: 'column',
 		justifyContent: 'center',
+		borderTopWidth: 1,
+		marginLeft: '5%',
+		borderColor: 'lightgray',
 	},
 	infoText: {
 		fontSize: 16,
-		paddingLeft: '5%',
-		paddingRight: '5%',
+		color: 'gray',
+		paddingHorizontal: 10,
 	},
 	button: {
 		elevation: 0,
