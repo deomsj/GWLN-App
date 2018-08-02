@@ -38,6 +38,7 @@ import guestRSVP from './guestRSVP';
 import guestCalendarScreen from './guestCalendarScreen';
 import guestCalendarDetailScreen from './guestCalendarDetailScreen';
 import MyEventDetailScreen from './MyEventDetailScreen';
+import attendeeList from './attendeeList';
 
 
 import './Global.js';
@@ -387,6 +388,9 @@ const NavigationFlow = createStackNavigator({
   },
   MyEventDetailScreen: {
     screen: MyEventDetailScreen,
+  },
+  attendeeList: {
+    screen: attendeeList,
   },
 
 })

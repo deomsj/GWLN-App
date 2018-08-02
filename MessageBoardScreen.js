@@ -47,6 +47,7 @@ class MessageBoardScreen extends React.Component {
 				"code": "getBlogPosts",
 				"arguments":{
 					"limit": 20,
+					"offset": 0,
 				}
 			}),
 		})
@@ -97,6 +98,11 @@ class MessageBoardScreen extends React.Component {
   componentDidMount=()=> {
     this.props.navigation.setParams({ goToAdd: this.goToAddPost });
     this.makeRemoteRequest();
+    this.mounted = true;
+  }
+
+  componentWillUnmount(){
+  	this.mounted = false;
   }
   goToAddPost=()=> {
 		this.props.navigation.navigate('AddPost')
