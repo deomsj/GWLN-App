@@ -8,29 +8,21 @@ import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 import MemberContactPage from './MemberContactPage';
 import GWLNScreen from './GWLNScreen';
-import DonateWebView from './DonateWebView';
 import MemberListScreen from './MemberListScreen';
 import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import MyPastEventsScreen from './MyPastEventsScreen';
 import CreateEventScreen from './CreateEventScreen';
-import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
-import OrganizerSigninScreen from './OrganizerSigninScreen';
-import MemberSigninScreen from './MemberSigninScreen';
 import GWLNSignUp from './GWLNSignUp';
-import LaunchPage from './LaunchPage';
-import Slot from './Slot';
 import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
 import GuestHomeScreen from './GuestHome';
 import MemberHomeScreen from './MemberHome';
 import Signin from './NewLaunch';
-import addEvent from './addEventTest';
 import contactData from './mock-database/crm.contacts.json';
 import memberRSVP from './memberRSVP';
 import checkinTest from './checkTest';
@@ -314,14 +306,6 @@ const NavigationFlow = createStackNavigator({
   Launch: {
     screen: Signin,
   },
-
-  OrganizerSignin: {
-    screen: OrganizerSigninScreen,
-  },
-
-  MemberSignin: {
-    screen: MemberSigninScreen,
-  },
   Home: {
     screen: TabNav,
   },
@@ -346,12 +330,6 @@ const NavigationFlow = createStackNavigator({
   },
   MyUpcomingEvents: {
     screen: MyUpcomingEventsScreen,
-  },
-  MyPastEvents: {
-    screen: MyPastEventsScreen,
-  },
-  DonateView: {
-    screen: DonateWebView,
   },
   EventDetails: {
     screen: CalendarDetailScreen,

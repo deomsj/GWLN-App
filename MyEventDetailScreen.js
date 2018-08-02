@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Icon} from 'react-native-elements';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 import memberRSVP from './memberRSVP';
-import CheckInScreen from './CheckInScreen';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
@@ -29,8 +28,8 @@ class MyEventDetailScreen extends React.Component {
 
 	DiscardForm=( value ) => {
 		Alert.alert(
-			'Discard Feedback',
-			'Are you sure you want to clear this form?',
+			'Delete Event',
+			'Are you sure you want to delete this event?',
 			[
 				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
 				{text: 'Yes', onPress: ()=>  console.log('Pessed Yes')},
