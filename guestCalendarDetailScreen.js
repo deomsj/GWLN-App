@@ -22,6 +22,7 @@ class guestCalendarDetailScreen extends React.Component {
 		}
 	}
 
+
 	retrieveEvent = () => {
 		const url = 'https://cuwomen.org/functions/app.gwln.php'
 		fetch(url, {
@@ -30,7 +31,7 @@ class guestCalendarDetailScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getEventByID", 
+				"code": "getEventByID",
 				"arguments":{
 					"timeline_event_id": this.props.navigation.state.params.filteredID,
 				}
@@ -42,7 +43,7 @@ class guestCalendarDetailScreen extends React.Component {
 				//console.log(res);
 				this.setState({
 					data: res
-				}) 
+				})
 			}
 		})
 		.catch(error => {
@@ -97,8 +98,10 @@ class guestCalendarDetailScreen extends React.Component {
 	render() {
 		//this._test();
 		console.log(this.state.data);
-
-
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 
 		// run query of events on the day that is passed then store the information in an array of objects
 		//() => this._onPress()
@@ -114,10 +117,15 @@ class guestCalendarDetailScreen extends React.Component {
          			<View style={styles.info}>
            				<Text style={styles.infoText}> {this.state.data.event_location} </Text>
            				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
+									<View style={styles.buttonContainer}>
+									<View style={styles.button}>
           				<Button
             				title="RSVP"
             				onPress={() => this._GoToRSVP()}
+										color={buttonColors}
            				/>
+									</View>
+									</View>
          			</View>
        			</View>
 
@@ -132,9 +140,7 @@ class guestCalendarDetailScreen extends React.Component {
 const styles = StyleSheet.create ({
 	container: {
 		flex: 1,
-	},
-	scrollContainer: {
-		height: 200,
+		backgroundColor: 'white',
 	},
 	heading: {
 		flex: 1,
@@ -156,7 +162,29 @@ const styles = StyleSheet.create ({
 		fontSize: 16,
 		paddingLeft: '5%',
 		paddingRight: '5%',
-	}
+	},
+	button: {
+		elevation: 0,
+		// padding: 30,
+		paddingHorizontal: 50,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		// flexDirection: 'column',
+		paddingVertical:1,
+	},
+	buttonContainer: {
+		alignSelf: 'center',
+		padding: 20,
+	},
 });
 
 export default guestCalendarDetailScreen;
