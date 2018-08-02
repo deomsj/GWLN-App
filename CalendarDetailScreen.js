@@ -14,6 +14,21 @@ import './Global.js';
 
 const tmp = {}
 
+const DEFAULT_PROPS = {
+    tagsStyles: {
+			' ': {
+				fontSize: 16,
+				color: 'gray',
+				paddingHorizontal: 10,
+			},
+			p: {
+				fontSize: 16,
+				color: 'gray',
+				paddingHorizontal: 10,
+			}
+		},
+};
+
 class CalendarDetailScreen extends React.Component {
 
 	constructor(props) {
@@ -133,7 +148,6 @@ class CalendarDetailScreen extends React.Component {
          			<View style={styles.info}>
 									<Text style={styles.fieldText}>Details:</Text>
 									<HTML html={this.state.data.event_description} />
-
 									<View style={styles.buttonContainer}>
 									<View style={styles.button}>
           				<Button
