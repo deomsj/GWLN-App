@@ -6,19 +6,13 @@ import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 import Gallery from 'react-native-image-gallery';
 import GWLNScreen from './GWLNScreen';
-import DonateWebView from './DonateWebView';
 import MemberListScreen from './MemberListScreen';
 import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import MyPastEventsScreen from './MyPastEventsScreen';
 import CreateEventScreen from './CreateEventScreen';
-import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
-import LaunchPage from './LaunchPage';
-//import CalendarScreen from './CalendarScreen';
-import OrganizerSigninScreen from './OrganizerSigninScreen';
 import GuestBlog from './GuestBlog';
 
 class GuestHomeScreen extends React.Component {

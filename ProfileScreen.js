@@ -4,9 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { Card, Icon } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
-import Separator from './Separator'
 import GWLNicon from './img/Gwln_Icon.jpg';
-import LaunchPage from './LaunchPage';
 import contactData from './mock-database/crm.contacts.json';
 import './Global.js';
 

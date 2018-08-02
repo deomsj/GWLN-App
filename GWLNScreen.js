@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, Image, ImageBackground, Platform } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, Image, ImageBackground, Platform, Linking } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import DonateWebView from './DonateWebView';
 import donateImage from './img/Donate.jpg';
 
 class GWLNScreen extends React.Component {
@@ -19,7 +18,7 @@ class GWLNScreen extends React.Component {
                 <Button
                 color={buttonColors}
                 title="Donate"
-                onPress={() => this.props.navigation.navigate('DonateView')}
+                  onPress={() => {Linking.openURL('https://www.woccu.org/give?s=7')}}
                 />
         </View>
      	 </View>

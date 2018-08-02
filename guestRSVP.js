@@ -52,7 +52,7 @@ this.setState({value:null});
 
 	DiscardForm=(value ) => {
 		Alert.alert(
-			'Discard Feedback',
+			'Discard RSVP',
 			'Are you sure you want to clear this form?',
 			[
 				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},

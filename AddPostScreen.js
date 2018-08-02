@@ -54,7 +54,7 @@ resetForm=()=>{
 
 DiscardForm=()=>{
 	Alert.alert(
-		'Discard Feedback',
+		'Discard Post',
 		'Are you sure you want to clear this form?',
 		[
 			{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},

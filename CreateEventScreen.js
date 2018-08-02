@@ -73,7 +73,7 @@ class CreateEvent extends React.Component {
 
 	DiscardForm=()=>{
 		Alert.alert(
-			'Discard Feedback',
+			'Discard Event',
 			'Are you sure you want to clear this form?',
 			[
 				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
