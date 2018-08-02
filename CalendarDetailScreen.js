@@ -7,6 +7,9 @@ import memberRSVP from './memberRSVP';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
+
+import HTML from 'react-native-render-html';
+
 import './Global.js';
 
 const tmp = {}
@@ -30,7 +33,7 @@ class CalendarDetailScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getEventByID", 
+				"code": "getEventByID",
 				"arguments":{
 					"timeline_event_id": this.props.navigation.state.params.filteredID,
 				}
@@ -42,7 +45,7 @@ class CalendarDetailScreen extends React.Component {
 				//console.log(res);
 				this.setState({
 					data: res
-				}) 
+				})
 			}
 		})
 		.catch(error => {
@@ -102,6 +105,7 @@ class CalendarDetailScreen extends React.Component {
 
 		// run query of events on the day that is passed then store the information in an array of objects
 		//() => this._onPress()
+		//<Text style={styles.infoText}> {this.state.data.event_description} </Text>
 		return(
 			<View style={styles.container}>
 				<ScrollView>
@@ -113,7 +117,8 @@ class CalendarDetailScreen extends React.Component {
         			</View>
          			<View style={styles.info}>
            				<Text style={styles.infoText}> {this.state.data.event_location} </Text>
-           				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
+
+									<HTML html={this.state.data.event_description} />
           				<Button
             				title="RSVP"
             				onPress={() => this._GoToRSVP()}
