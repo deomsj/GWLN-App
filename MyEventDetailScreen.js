@@ -22,6 +22,7 @@ class MyEventDetailScreen extends React.Component {
 			memInfo: contactData,
 			attendees: {},
 			numAttendeesLoading: true,
+			
 
 		}
 	}
@@ -75,6 +76,10 @@ class MyEventDetailScreen extends React.Component {
 	};
 	componentDidMount=(value)=> {
 		this.props.navigation.setParams({ discard: this.DiscardForm });
+		this.mounted = true;
+	}
+	componentWillUnmount(){
+		this.mounted = false;
 	}
 	retrieveEvent = () => {
 		const url = 'https://cuwomen.org/functions/app.gwln.php'

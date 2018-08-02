@@ -101,10 +101,13 @@ class MyUpcomingEventsScreen extends React.Component {
 		})
 	}
 
-
+	componenetWillUnmount(){
+		this.mounted = false;
+	}
 
 	componentWillMount(){
 		this.makeremoteRequest();
+		this.mounted = false;
 	}
 	render() {
 		return(

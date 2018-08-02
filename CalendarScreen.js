@@ -68,11 +68,9 @@ class CalendarScreen extends React.Component {
   .then(res => res.json())
   .then(res => {
     if (res) {
-      let TmpRes = res 
-      var filteredRes = TmpRes.filter( event => {
-        //return event.is
-      })
-      console.log(res);
+       
+    
+      //console.log(res);
       console.log(res.length);
       this.state.data = res
       this.sortEvents();
@@ -176,13 +174,15 @@ sortEvents = () => {
 
 
 
-
+  // componentWillUnmount(){
+  //   this.mounted = false;
+  // }
 
   componentWillMount(){
     //console.log('in componen will mount');
     //console.log(this.state.data)
     //console.log(this.state.EventDate);
-    //this._mounted = true;
+    this.mounted = true;
     //this.AddEvent(this.state.EventDate);
     //this._parseEventData(this.state.data);
     this.retrieveEvents();
