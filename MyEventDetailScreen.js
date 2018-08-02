@@ -37,6 +37,29 @@ class MyEventDetailScreen extends React.Component {
 		)
 	}
 
+	DeleteEvent=() => {
+		const url = 'https://cuwomen.org/functions/app.gwln.php';
+		fetch(url, {
+			method: "POST",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "deleteEvent",
+				"arguments":{
+					"timeline_event_id": this.props.navigation.state.params.item.timeline_event_id,
+				}
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
+			console.log(res);
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
+
 	static navigationOptions = ({navigation})=> {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>{navigation.state.params.item.event_name}</Text>),
@@ -89,6 +112,7 @@ class MyEventDetailScreen extends React.Component {
 			<ListItem
 				id={item.id}
 				title={`${item.first_name} ${item.last_name}`}
+				keyExtractor={(item) => item.email}
 				subtitle={item.email}
 			/>
 		</TouchableOpacity>

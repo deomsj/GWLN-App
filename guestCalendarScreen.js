@@ -138,7 +138,7 @@ sortEvents = () => {
       // marked = !this.state._markedDates[_selectedDay].marked;
       // markedDates = this.state._markedDates[_selectedDay];
      }
-    this.PostEvent(_selectedDay);
+    //this.PostEvent(_selectedDay);
   }
 
   parseSelectedDate = date => {
