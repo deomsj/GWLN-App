@@ -44,7 +44,10 @@ class MessageBoardScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getBlogPosts"
+				"code": "getBlogPosts",
+				"arguments":{
+					"limit": 20,
+				}
 			}),
 		})
 		.then(res => res.json())

@@ -68,7 +68,11 @@ class CalendarScreen extends React.Component {
   .then(res => res.json())
   .then(res => {
     if (res) {
-      //console.log(res);
+      let TmpRes = res 
+      var filteredRes = TmpRes.filter( event => {
+        //return event.is
+      })
+      console.log(res);
       console.log(res.length);
       this.state.data = res
       this.sortEvents();
@@ -138,7 +142,7 @@ sortEvents = () => {
       // marked = !this.state._markedDates[_selectedDay].marked;
       // markedDates = this.state._markedDates[_selectedDay];
      }
-    this.PostEvent(_selectedDay);
+    //this.PostEvent(_selectedDay);
   }
 
   parseSelectedDate = date => {
