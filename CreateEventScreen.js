@@ -130,6 +130,7 @@ class CreateEvent extends React.Component {
             "pic_caption": null,
             "link": null,
             "username": global.currUser.username,
+						"location": value.location,
           }
         }),
       })

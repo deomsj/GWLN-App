@@ -186,7 +186,7 @@ class MyEventDetailScreen extends React.Component {
          					<FlatList
          						data={this.state.attendees}
          						renderItem={this._renderItem}
-         						keyExtractor={item => item.username}
+         						keyExtractor={item => item.email1}
          						ItemSeparatorComponent={this.renderSeparator}
          					/>
          				</ScrollView>

@@ -30,7 +30,7 @@ class guestCalendarDetailScreen extends React.Component {
 				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
 			},
 			body: JSON.stringify({
-				"code": "getEventByID", 
+				"code": "getEventByID",
 				"arguments":{
 					"timeline_event_id": this.props.navigation.state.params.filteredID,
 				}
@@ -42,7 +42,7 @@ class guestCalendarDetailScreen extends React.Component {
 				//console.log(res);
 				this.setState({
 					data: res
-				}) 
+				})
 			}
 		})
 		.catch(error => {
