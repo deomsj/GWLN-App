@@ -22,6 +22,13 @@ class guestCalendarDetailScreen extends React.Component {
 		}
 	}
 
+	static navigationOptions = ({navigation})=> {
+		return {
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Event Details</Text>),
+			headerRight: (<View></View>),
+		};
+	};
+
 	retrieveEvent = () => {
 		const url = 'https://cuwomen.org/functions/app.gwln.php'
 		fetch(url, {
@@ -97,8 +104,10 @@ class guestCalendarDetailScreen extends React.Component {
 	render() {
 		//this._test();
 		console.log(this.state.data);
-
-
+		var buttonColors = ['rgba(255, 255, 255, 1)'];
+		if (Platform.OS === 'android') {
+			buttonColors = ['rgba(0, 42, 85, 1)'];
+		};
 
 		// run query of events on the day that is passed then store the information in an array of objects
 		//() => this._onPress()
@@ -111,13 +120,22 @@ class guestCalendarDetailScreen extends React.Component {
           				<Text style={styles.headingText}> {this.state.data.event_name} </Text>
           				<Text style={styles.infoText}> {this.state.data.event_month}/{this.state.data.event_day}/{this.state.data.event_year} </Text>
         			</View>
+							<View style={styles.info}>
+							<Text style={styles.fieldText}>Location:</Text>
+							<Text style={styles.infoText}> {this.state.data.event_location} </Text>
+							</View>
          			<View style={styles.info}>
-           				<Text style={styles.infoText}> {this.state.data.event_location} </Text>
+									<Text style={styles.fieldText}>Details:</Text>
            				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
+									<View style={styles.buttonContainer}>
+									<View style={styles.button}>
           				<Button
             				title="RSVP"
             				onPress={() => this._GoToRSVP()}
+										color={buttonColors}
            				/>
+									</View>
+									</View>
          			</View>
        			</View>
 
@@ -132,12 +150,11 @@ class guestCalendarDetailScreen extends React.Component {
 const styles = StyleSheet.create ({
 	container: {
 		flex: 1,
-	},
-	scrollContainer: {
-		height: 200,
+		backgroundColor: 'white',
 	},
 	heading: {
 		flex: 1,
+		paddingHorizontal: 10,
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -145,18 +162,45 @@ const styles = StyleSheet.create ({
 	},
 	headingText: {
 		fontSize: 24,
-
+	},
+	fieldText: {
+		color: 'black',
+		fontSize: 18,
 	},
 	info: {
-		flex: 3,
 		flexDirection: 'column',
 		justifyContent: 'center',
+		borderTopWidth: 1,
+		marginLeft: '5%',
+		borderColor: 'lightgray',
 	},
 	infoText: {
 		fontSize: 16,
-		paddingLeft: '5%',
-		paddingRight: '5%',
-	}
+		color: 'gray',
+		paddingHorizontal: 10,
+	},
+	button: {
+		elevation: 0,
+		// padding: 30,
+		paddingHorizontal: 50,
+		backgroundColor: '#002A55',
+		...Platform.select({
+			ios: {
+				borderColor: '#002A55',
+			},
+			android: {
+				borderColor: 'white',
+			},
+		}),
+		borderWidth: 1,
+		borderRadius: 5,
+		// flexDirection: 'column',
+		paddingVertical:1,
+	},
+	buttonContainer: {
+		alignSelf: 'center',
+		padding: 20,
+	},
 });
 
 export default guestCalendarDetailScreen;

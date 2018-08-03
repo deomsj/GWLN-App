@@ -6,20 +6,14 @@ import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 
 import GWLNScreen from './GWLNScreen';
-import DonateWebView from './DonateWebView';
 import MemberListScreen from './MemberListScreen';
 import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import MyPastEventsScreen from './MyPastEventsScreen';
 import CreateEventScreen from './CreateEventScreen';
-import CheckInScreen from './CheckInScreen';
 import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
-//import CalendarScreen from './CalendarScreen';
-import OrganizerSigninScreen from './OrganizerSigninScreen';
 import HomeScreen from './HomeScreen';
-import Slot from './Slot';
 
 import EventData from './www_timeline_events.json';
 const _format = 'YYYY-MM-DD'
@@ -219,4 +213,3 @@ const styles = StyleSheet.create ({
 });
 
 export default guestCalendarScreen;
-

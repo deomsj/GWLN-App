@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Icon} from 'react-native-elements';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 import memberRSVP from './memberRSVP';
-import CheckInScreen from './CheckInScreen';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
@@ -29,8 +28,8 @@ class MyEventDetailScreen extends React.Component {
 
 	DiscardForm=( value ) => {
 		Alert.alert(
-			'Discard Feedback',
-			'Are you sure you want to clear this form?',
+			'Delete Event',
+			'Are you sure you want to delete this event?',
 			[
 				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
 				{text: 'Yes', onPress: ()=>  this.DeleteEvent()},
@@ -183,16 +182,12 @@ class MyEventDetailScreen extends React.Component {
 		return(
 			<View style={styles.container}>
 				<ScrollView>
-					<View>
-
          				<View style={styles.heading}>
           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_month}/{this.props.navigation.state.params.item.event_day}/{this.props.navigation.state.params.item.event_year} </Text>
            				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_location} </Text>
-           				<Text style={styles.infoText}> {this.props.navigation.state.params.item.event_description.replace(/<\/?[^>]+(>|$)/g, "")} </Text>
-           				<Text style={styles.infoText}> There are {global.numAttendees} people planning to attend </Text>
+           				<Text style={styles.infoText}> There are {global.numAttendees} people planning to attend. </Text>
 
         			</View>
-         			<View>
 							<View style={styles.attendeeContainer}>
 							<Text
 								style={styles.attendeeButton}
@@ -200,19 +195,15 @@ class MyEventDetailScreen extends React.Component {
 								View Attendees
 							</Text>
 							</View>
-
-         			</View>
-							<View style={styles.buttContainer}>
-         			<View style={styles.button}>
-          				<Button
+							<View style={styles.buttonContainer}>
+							<View style={styles.button}>
+									<Button
 										color={buttonColors}
-            				title="Begin Check In"
-            				onPress={() => this.goToCheckIn()}
-           				/>
+										title="Begin Check In"
+										onPress={() => this.goToCheckIn()}
+									/>
 							</View>
-         			</View>
-       			</View>
-
+							</View>
 				</ScrollView>
 
 			</View>
@@ -225,9 +216,17 @@ const styles = StyleSheet.create ({
 	container: {
 		backgroundColor: 'white',
 		flex: 1,
+		flexDirection: 'column',
 	},
 	buttonContainer: {
-		paddingVertical: 20,
+		// padding: 20,
+		// position: 'absolute',
+		marginTop: '30%',
+		marginBottom: '5%',
+		justifyContent: 'center',
+		alignItems: 'center',
+		alignSelf: 'center',
+		// top: '95%',
 	},
 	button: {
 		alignSelf: 'center',
@@ -246,7 +245,7 @@ const styles = StyleSheet.create ({
 		borderWidth: 1,
 		borderRadius: 5,
 		flexDirection: 'column',
-		paddingVertical: 1,
+		paddingVertical: 3,
 	},
 	heading: {
 		flex: 1,
@@ -277,14 +276,14 @@ const styles = StyleSheet.create ({
 	attendeeContainer: {
     // position: 'absolute',
     alignSelf: 'center',
-    // padding: 10,
+    padding: 10,
     // paddingVertical:10,
     // bottom: '15%',
   },
   attendeeButton: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     // padding: 10,
-		paddingVertical: 5,
+		paddingVertical: 10,
     backgroundColor: 'white',
     borderColor: '#002A55',
     color: '#002A55',

@@ -1,9 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, Image, Platform, ScrollView } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import GWLNicon from './img/Gwln_Icon.jpg';
 import MemberListScreen from './MemberListScreen';
 import call from 'react-native-phone-call';
+
+import HTML from 'react-native-render-html';
+
+const DEFAULT_PROPS = {
+    tagsStyles: {
+			p: {
+				color: 'white',
+				fontSize: 17,
+				paddingBottom: 30,
+				paddingHorizontal: 30,
+			}
+		},
+};
 
 class MemberContactPage extends React.Component {
 
@@ -35,7 +48,9 @@ class MemberContactPage extends React.Component {
 					<Image source={GWLNicon} style={styles.profilePic}/>
 					<Text style={styles.NameText}> {this.props.navigation.state.params.user.first_name} {this.props.navigation.state.params.user.last_name}</Text>
 					<Text style={styles.locationText}> {this.props.navigation.state.params.user.mailing_address_city}, {this.props.navigation.state.params.user.mailing_address_country_name} </Text>
+			<ScrollView>
 				<View style={styles.ContactContainer}>
+
 					<Text style={styles.titleText}>Contact Info {"\n"}{"\n"}</Text>
 					<Text style={styles.titleText}>Phone:</Text>
 					<Text
@@ -46,8 +61,14 @@ class MemberContactPage extends React.Component {
 					<Text style={styles.titleText}>Email:</Text>
 					<Text style={styles.contactText}>{this.props.navigation.state.params.user.email1} </Text>
 					<Text style={styles.titleText}>About:</Text>
-					<Text style={styles.contactText}>{this.props.navigation.state.params.user.additional_info} </Text>
-				</View>
+
+						<HTML
+						{...DEFAULT_PROPS}
+						html={this.props.navigation.state.params.user.additional_info}
+						/>
+
+					</View>
+				</ScrollView>
 			</View>
 		);
 	}
