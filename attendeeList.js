@@ -28,10 +28,15 @@ class attendeeList extends React.Component {
 				// type='font-awesome'
 				// color= '#002A55'
 				name= "file-upload"
-				onPress={console.log("Export")}/>
+				onPress= {() => this._test()}/>
 			),
 		};
 	};
+
+	_test = () => {
+		console.log('test');
+	}
+
 
 	retrieveEvent = () => {
 		const url = 'https://cuwomen.org/functions/app.gwln.php'
@@ -54,7 +59,7 @@ class attendeeList extends React.Component {
 				this.setState({
 					attendees: res
 				})
-				this.GetNumberOfAttendees();
+				//this.GetNumberOfAttendees();
 			}
 		})
 		.catch(error => {
@@ -86,6 +91,33 @@ class attendeeList extends React.Component {
 			/>
 		);
 	};
+
+
+
+	ExportAttendeeList = () => {
+		const url = 'https://cuwomen.org/functions/app.gwln.php';
+		fetch(url, {
+			method: "POST",
+			headers: {
+				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+			},
+			body: JSON.stringify({
+				"code": "sendRSVPList",
+				"arguments":{
+					"timeline_event_id": this.props.navigation.state.params.ID,
+				}
+			}),
+		})
+		.then(res => res.json())
+		.then(res => {
+			if (res){
+				console.log(res);
+			}
+		})
+		.catch(error => {
+			console.log(error);
+		})
+	}
 
 	componentWillMount(){
 		this.retrieveEvent();
