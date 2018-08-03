@@ -33,7 +33,7 @@ class MyEventDetailScreen extends React.Component {
 			'Are you sure you want to clear this form?',
 			[
 				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-				{text: 'Yes', onPress: ()=>  console.log('Pessed Yes')},
+				{text: 'Yes', onPress: ()=>  this.DeleteEvent()},
 			],
 		)
 	}
