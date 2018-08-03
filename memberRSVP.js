@@ -67,33 +67,54 @@ this.setState({value:null});
 
 	handleSubmit = () => {
 		const value = this.refs.form.getValue();
-		const url = 'https://cuwomen.org/functions/app.gwln.php'
-		fetch(url, {
-			method: "POST",
-			headers: {
-				'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
-			},
-			body: JSON.stringify({
-				"code": "eventRSVP",
-				"arguments": {
-					"timeline_event_id": this.props.navigation.state.params.ID,
-					"member_id": global.crm,
-					"first_name": global.currUser.first_name,
-					"last_name": global.currUser.last_name,
-					"email": global.currUser.email1,
-					 "guests": value.numGuests,
-				}
-			}),
-		})
+		if (value) {
+			const url = 'https://cuwomen.org/functions/app.gwln.php'
+			fetch(url, {
+				method: "POST",
+				headers: {
+					'X-Token': 'hub46bubg75839jfjsbs8532hs09hurdfy47sbub',
+				},
+				body: JSON.stringify({
+					"code": "eventRSVP",
+					"arguments": {
+						"timeline_event_id": this.props.navigation.state.params.ID,
+						"member_id": global.crm,
+						"first_name": global.currUser.first_name,
+						"last_name": global.currUser.last_name,
+						"email": global.currUser.email1,
+						 "guests": value.numGuests,
+					}
+				}),
+			})
+
 		.then(res => res.json())
 		.then(res => {
-			console.log(res);
+		//	console.log(res);
+			if (res) {
+				console.log(res);
+				Alert.alert(
+					'Success',
+					'You are now registered for this event',
+					[
+						{text: 'Dismiss', onPress: ()=> this.resetForm()}
+					],
+				);
+				//this.props.navigation.navigate('guestCalendarDetailScreen')
+			}
 		})
 		.catch(error => {
 			console.log(error);
+			Alert.alert(
+				'Error Occured',
+				'Please try again',
+				[
+					{text: 'Dismiss', onPress: () => this.initialState()},
+				],
+			);
 		})
-		this.props.navigation.navigate('EventDetails')
+		//this.props.navigation.navigate('EventDetails')
 	}
+}
 
 	render(){
 		var buttonColors = ['rgba(255, 255, 255, 1)'];
@@ -110,15 +131,9 @@ this.setState({value:null});
 					<View style={styles.button}>
 						<Button
 							title="RSVP"
-							onPress={() => Alert.alert(
-	              		 		'Success',
-	              		 		'You are now registered',
-	              		 		[
-	              		 		 {text: 'Dismiss', onPress: () => this.handleSubmit()},
-	               	 			],
-													)}
-												color= {buttonColors}
-												/>
+							onPress={this.handleSubmit}
+							color= {buttonColors}
+							/>
 											</View>
 											</View>
 										</ScrollView>
