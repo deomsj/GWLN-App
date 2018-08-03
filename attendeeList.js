@@ -22,7 +22,14 @@ class attendeeList extends React.Component {
 	static navigationOptions = ({navigation})=> {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Attendee List</Text>),
-			headerRight: (<View></View>),
+			headerRight: ( <Icon
+				containerStyle={{marginRight:15, marginTop:15}}
+				iconStyle={styles.headerIcon}
+				// type='font-awesome'
+				// color= '#002A55'
+				name= "file-upload"
+				onPress={console.log("Export")}/>
+			),
 		};
 	};
 
