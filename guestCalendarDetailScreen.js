@@ -4,7 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 import guestRSVP from './guestRSVP';
-
+import HTML from 'react-native-render-html';
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';
 import './Global.js';
@@ -126,7 +126,7 @@ class guestCalendarDetailScreen extends React.Component {
 							</View>
          			<View style={styles.info}>
 									<Text style={styles.fieldText}>Details:</Text>
-           				<Text style={styles.infoText}> {this.state.data.event_description} </Text>
+									<HTML html={this.state.data.event_description} />
 									<View style={styles.buttonContainer}>
 									<View style={styles.button}>
           				<Button
