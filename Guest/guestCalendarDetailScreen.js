@@ -97,7 +97,7 @@ class guestCalendarDetailScreen extends React.Component {
 	}
 
 
-	componentWillMount(){
+	componentDidMount(){
 		this.retrieveEvent()
 
 	}

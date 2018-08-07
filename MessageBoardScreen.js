@@ -46,7 +46,7 @@ class MessageBoardScreen extends React.Component {
 			body: JSON.stringify({
 				"code": "getBlogPosts",
 				"arguments":{
-					"limit": 20,
+					"limit": 25,
 					"offset": 0,
 				}
 			}),

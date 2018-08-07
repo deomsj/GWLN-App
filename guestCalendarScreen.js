@@ -163,7 +163,7 @@ sortEvents = () => {
 
 
 
-  componentWillMount(){
+  componentDidMount(){
     //console.log('in componen will mount');
     //console.log(this.state.data)
     //console.log(this.state.EventDate);

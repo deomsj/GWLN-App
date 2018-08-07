@@ -19,7 +19,7 @@ class MyUpcomingEventsScreen extends React.Component {
 
 		renderSeparator = () => {
 		return (
-			<View 
+			<View
 				style={{
 					height: 1,
 					width: "100%",
@@ -105,7 +105,7 @@ class MyUpcomingEventsScreen extends React.Component {
 		this.mounted = false;
 	}
 
-	componentWillMount(){
+	componentDidMount(){
 		this.makeremoteRequest();
 		this.mounted = false;
 	}
