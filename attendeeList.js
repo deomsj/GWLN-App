@@ -19,6 +19,8 @@ class attendeeList extends React.Component {
 		}
 	}
 
+
+
 	static navigationOptions = ({navigation})=> {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Attendee List</Text>),
@@ -28,7 +30,7 @@ class attendeeList extends React.Component {
 				// type='font-awesome'
 				// color= '#002A55'
 				name= "file-upload"
-				onPress= {() => this._test()}/>
+				onPress= {navigation.getParam('GetList')}/>
 			),
 		};
 	};
@@ -119,9 +121,20 @@ class attendeeList extends React.Component {
 		})
 	}
 
-	componentWillMount(){
-		this.retrieveEvent();
+		Export=( value ) => {
+		Alert.alert(
+			'Export attendee list',
+			'Do you want to export the attendee list to your email?',
+			[
+				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+				{text: 'Yes', onPress: ()=>  this.ExportAttendeeList()},
+			],
+		)
+	}
 
+	componentDidMount(){
+		this.retrieveEvent();
+		this.props.navigation.setParams({ GetList: this.Export });
 	}
 
 
