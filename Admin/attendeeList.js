@@ -4,11 +4,11 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { Icon} from 'react-native-elements';
 import { SearchBar, List, ListItem } from 'react-native-elements';
-import memberRSVP from './memberRSVP';
+import memberRSVP from '../Member/memberRSVP';
 
-import EventData from './www_timeline_events.json';
-import contactData from './mock-database/crm.contacts.json';
-import './Global.js';
+import EventData from '../www_timeline_events.json';
+import contactData from '../mock-database/crm.contacts.json';
+import '../Global.js';
 
 
 class attendeeList extends React.Component {
@@ -19,8 +19,6 @@ class attendeeList extends React.Component {
 		}
 	}
 
-
-
 	static navigationOptions = ({navigation})=> {
 		return {
 			headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Attendee List</Text>),
@@ -30,7 +28,7 @@ class attendeeList extends React.Component {
 				// type='font-awesome'
 				// color= '#002A55'
 				name= "file-upload"
-				onPress= {navigation.getParam('GetList')}/>
+				onPress= {() => this._test()}/>
 			),
 		};
 	};
@@ -121,20 +119,9 @@ class attendeeList extends React.Component {
 		})
 	}
 
-		Export=( value ) => {
-		Alert.alert(
-			'Export attendee list',
-			'Do you want to export the attendee list to your email?',
-			[
-				{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-				{text: 'Yes', onPress: ()=>  this.ExportAttendeeList()},
-			],
-		)
-	}
-
-	componentDidMount(){
+	componentWillMount(){
 		this.retrieveEvent();
-		this.props.navigation.setParams({ GetList: this.Export });
+
 	}
 
 

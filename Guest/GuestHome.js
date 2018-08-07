@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, Platform, Linking, ScrollView, TouchableOpacity, ListView, Alert, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
-import RNPickerSelect from 'react-native-picker-select';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 import Gallery from 'react-native-image-gallery';
-import GWLNScreen from './GWLNScreen';
-import MemberListScreen from './MemberListScreen';
-import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import CreateEventScreen from './CreateEventScreen';
-import FeedbackFormScreen from './FeedbackFormScreen';
-import CalendarDetailScreen from './CalendarDetailScreen';
-import ProfileScreen from './ProfileScreen';
-import AddPostScreen from './AddPostScreen';
+import GWLNScreen from '../GWLNScreen';
+import CalendarDetailScreen from '../CalendarDetailScreen';
+import AddPostScreen from '../AddPostScreen';
 import GuestBlog from './GuestBlog';
 
 class GuestHomeScreen extends React.Component {
@@ -33,13 +27,12 @@ class GuestHomeScreen extends React.Component {
       <Gallery
         style={styles.gallery}
         images={[
-          {source: require('./img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
-          {source: require('./img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
-          {source: require('./img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
-          {source: require('./img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
         ]}
-          flatListProps={{windowSize: 2}}
-          pageMargin={10}
+
           />
           <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
           </View>

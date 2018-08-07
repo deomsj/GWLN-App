@@ -4,10 +4,10 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import moment from 'moment';
 
-import a from './Components/alert';
-import CalendarScreen from './CalendarScreen';
+// import a from './Components/alert';
+import CalendarScreen from '../CalendarScreen';
 
-import './Global.js';
+import '../Global.js';
 
 import t from 'tcomb-form-native';
 import DatePicker from 'react-native-datepicker';

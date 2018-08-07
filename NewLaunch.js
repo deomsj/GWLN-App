@@ -8,10 +8,10 @@ import WorldCouncilLogo from './img/WorldCouncil_logo.png';
 import moment from 'moment';
 import ListItem from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import MemberHomeScreen from './MemberHome';
+import MemberHomeScreen from './Member/MemberHome';
 import memberData from './mock-database/gwln.members.json';
 import t from 'tcomb-form-native';
-import GuestHomeScreen from './GuestHome';
+import GuestHomeScreen from './Guest/GuestHome';
 
 const Form = t.form.Form;
 

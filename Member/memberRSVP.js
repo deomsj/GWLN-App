@@ -8,7 +8,7 @@ import RNPickerSelect from 'react-native-picker-select';
 
 import t from 'tcomb-form-native';
 
-import './Global.js';
+import '../Global.js';
 
 const Form = t.form.Form;
 

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
 import guestRSVP from './guestRSVP';
 import HTML from 'react-native-render-html';
-import EventData from './www_timeline_events.json';
-import contactData from './mock-database/crm.contacts.json';
-import './Global.js';
+import EventData from '../www_timeline_events.json';
+import contactData from '../mock-database/crm.contacts.json';
+import '../Global.js';
 
 const tmp = {}
 

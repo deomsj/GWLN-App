@@ -5,17 +5,13 @@ import { Icon } from 'react-native-elements';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 
-import GWLNScreen from './GWLNScreen';
-import MemberListScreen from './MemberListScreen';
-import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import CreateEventScreen from './CreateEventScreen';
-import FeedbackFormScreen from './FeedbackFormScreen';
-import CalendarDetailScreen from './CalendarDetailScreen';
-import ProfileScreen from './ProfileScreen';
-import AddPostScreen from './AddPostScreen';
-import HomeScreen from './HomeScreen';
+import GWLNScreen from '../GWLNScreen';
+import MyUpcomingEventsScreen from '../MyUpcomingEventsScreen';
+import CalendarDetailScreen from '../CalendarDetailScreen';
+import AddPostScreen from '../AddPostScreen';
+import HomeScreen from '../Admin/HomeScreen';
 
-import EventData from './www_timeline_events.json';
+import EventData from '../www_timeline_events.json';
 const _format = 'YYYY-MM-DD'
 const _today = moment().format(_format)
 const _maxDate = moment().add(120, 'days').format(_format)
@@ -168,7 +164,7 @@ sortEvents = () => {
 
 
 
-  componentDidMount(){
+  componentWillMount(){
     //console.log('in componen will mount');
     //console.log(this.state.data)
     //console.log(this.state.EventDate);

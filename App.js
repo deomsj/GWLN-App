@@ -10,31 +10,30 @@ import MemberContactPage from './MemberContactPage';
 import GWLNScreen from './GWLNScreen';
 import MemberListScreen from './MemberListScreen';
 import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import CreateEventScreen from './CreateEventScreen';
-import FeedbackFormScreen from './FeedbackFormScreen';
+import CreateEventScreen from './Admin/CreateEventScreen';
+import FeedbackFormScreen from './Admin/FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
-import GWLNSignUp from './GWLNSignUp';
-import HomeScreen from './HomeScreen';
+import HomeScreen from './Admin/HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
-import GuestHomeScreen from './GuestHome';
-import MemberHomeScreen from './MemberHome';
+import GuestHomeScreen from './Guest/GuestHome';
+import MemberHomeScreen from './Member/MemberHome';
 import Signin from './NewLaunch';
 import contactData from './mock-database/crm.contacts.json';
-import memberRSVP from './memberRSVP';
-import checkinTest from './checkTest';
-import guestRSVP from './guestRSVP';
-import guestCalendarScreen from './guestCalendarScreen';
-import guestCalendarDetailScreen from './guestCalendarDetailScreen';
-import MyEventDetailScreen from './MyEventDetailScreen';
-import attendeeList from './attendeeList';
+import memberRSVP from './Member/memberRSVP';
+import checkinTest from './Admin/checkTest';
+import guestRSVP from './Guest/guestRSVP';
+import guestCalendarScreen from './Guest/guestCalendarScreen';
+import guestCalendarDetailScreen from './Guest/guestCalendarDetailScreen';
+import MyEventDetailScreen from './Admin/MyEventDetailScreen';
+import attendeeList from './Admin/attendeeList';
 
 
 import './Global.js';
-import GuestBlog from './GuestBlog';
+import GuestBlog from './Guest/GuestBlog';
 
 
 
@@ -333,9 +332,6 @@ const NavigationFlow = createStackNavigator({
   },
   EventDetails: {
     screen: CalendarDetailScreen,
-  },
-  SignUp: {
-    screen: GWLNSignUp,
   },
   MemberContactPage: {
     screen: MemberContactPage,

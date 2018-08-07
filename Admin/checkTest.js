@@ -8,11 +8,10 @@ import {
     Alert,
     Platform,
 } from 'react-native';
-import CheckBox from 'react-native-check-box';
-import { Icon, Header } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
-import './Global.js';
+import '../Global.js';
 const Form = t.form.Form;
 
 let form;
@@ -21,7 +20,7 @@ let button;
 /*====whats left=====
 - need to get timeline_event_id: right now just using 143 -- DONE
 - make so that checkin button doesn't appear at checkin start -- DONE
-- styling
+- styling -- DONE
 =====================*/
 
 const LikeRadio = t.enums.of( 'Yes No');
