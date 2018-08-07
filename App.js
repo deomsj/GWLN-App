@@ -16,7 +16,6 @@ import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
-// import GWLNSignUp from './GWLNSignUp';
 import HomeScreen from './HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
@@ -334,9 +333,6 @@ const NavigationFlow = createStackNavigator({
   EventDetails: {
     screen: CalendarDetailScreen,
   },
-  // SignUp: {
-  //   screen: GWLNSignUp,
-  // },
   MemberContactPage: {
     screen: MemberContactPage,
   },
