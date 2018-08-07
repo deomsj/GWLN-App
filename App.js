@@ -28,7 +28,7 @@ import checkinTest from './Admin/checkTest';
 import guestRSVP from './Guest/guestRSVP';
 import guestCalendarScreen from './Guest/guestCalendarScreen';
 import guestCalendarDetailScreen from './Guest/guestCalendarDetailScreen';
-import MyEventDetailScreen from './MyEventDetailScreen';
+import MyEventDetailScreen from './Admin/MyEventDetailScreen';
 import attendeeList from './Admin/attendeeList';
 
 

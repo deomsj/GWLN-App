@@ -7,7 +7,7 @@ import Gallery from 'react-native-image-gallery';
 import GWLNScreen from '../GWLNScreen';
 import CalendarDetailScreen from '../CalendarDetailScreen';
 import AddPostScreen from '../AddPostScreen';
-import GuestBlog from '../Guest/GuestBlog';
+import GuestBlog from './GuestBlog';
 
 class GuestHomeScreen extends React.Component {
     constructor(){
