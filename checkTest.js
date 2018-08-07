@@ -63,14 +63,6 @@ const AttendeeMember = t.struct({
 
 const OptionsMember = {
 	fields: {
-    // name:{
-    //   label: 'First Name',
-    //   error: 'Please enter attendee first name',
-    // },
-		// surname: {
-		// 	label: 'Last Name',
-		// 	error: 'Please enter attendee last name',
-		// },
     email:{
       label: 'Email',
     },
@@ -95,7 +87,7 @@ class checkinTest extends Component {
   initialState = () => {
     // const value = this._form.getValue();
     // console.log('value', value);
-    this.setState({value: null})
+    //this.setState({value: null}) -- changed
     this.setState({
       value: null,
       selectedIndex1: -1,
