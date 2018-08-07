@@ -110,7 +110,7 @@ this.setState({value:null});
 						'Success',
 						'You are now registered for this event',
 						[
-							{text: 'Dismiss', onPress: ()=> this.resetForm()}
+							{text: 'Dismiss', onPress: this.resetForm}
 						],
 					);
 					//this.props.navigation.navigate('guestCalendarDetailScreen')
@@ -122,7 +122,7 @@ this.setState({value:null});
 					'Error',
 					'Invalid information, please try again',
 					[
-						{text: 'Dismiss', onPress: () => this.resetForm()},
+						{text: 'Dismiss', onPress: this.resetForm},
 					],
 				);
 			})

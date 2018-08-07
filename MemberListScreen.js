@@ -172,7 +172,8 @@ class MemberListScreen extends React.Component {
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
-						keyExtractor={(item) => item.email1}
+						//keyExtractor={(item) => item.email1}
+						keyExtractor={(item) => String(item.contact_id)}
 						ItemSeparatorComponent={this.renderSeparator}
 						ListHeaderComponent={this.renderHeading}
 				/>

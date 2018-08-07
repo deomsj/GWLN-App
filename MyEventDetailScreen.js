@@ -122,7 +122,7 @@ class MyEventDetailScreen extends React.Component {
 			<ListItem
 				id={item.id}
 				title={`${item.first_name} ${item.last_name}`}
-				keyExtractor={(item) => item.email}
+				keyExtractor={(item) => String(item.email)}
 				subtitle={item.email}
 			/>
 		</TouchableOpacity>

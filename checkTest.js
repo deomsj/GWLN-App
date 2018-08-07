@@ -81,13 +81,12 @@ class checkinTest extends Component {
       val1: null,
       val2: null,
       meminfo: null,
+      text: null,
     }
   }
 
   initialState = () => {
-    // const value = this._form.getValue();
-    // console.log('value', value);
-    //this.setState({value: null}) -- changed
+
     this.setState({
       value: null,
       selectedIndex1: -1,
@@ -95,8 +94,18 @@ class checkinTest extends Component {
       val1: null,
       val2: null,
       meminfo: null,
+      text: <Text style={styles.textBox}>Photo Disclaimer:{"\n"}
+      As representatives of World Council, Sister Society Leaders
+      may take photos at this event and reproduce them in World Council
+      educational, news or promotional materials, whether in print,
+      electronic, or other media, including the World Council or Global Women
+      website. By participation in the Sister Society meeting, you grant World
+      Council the right to use your photograph, name, and biography for such
+      purposes. All pictures become the property of World council and may be
+      displayed distributed or used by World Council for any purpose.</Text>,
     })
   }
+
   DiscardForm=( value ) => {
     Alert.alert(
       'Discard Check-in',
@@ -131,8 +140,6 @@ class checkinTest extends Component {
   }
 
   onSelect_1(index, value){
-    //console.log(value)
-    //console.log(index)
 
     this.setState({
       selectedIndex1: index,
@@ -140,15 +147,7 @@ class checkinTest extends Component {
     })
   }
 
-  onSelect_2(index, value){
-    //console.log(value)
-    //console.log(index)
 
-    this.setState({
-      selectedIndex2: index,
-      val2: value,
-    })
-  }
 
   determineForm = (selected) => {
 
@@ -189,17 +188,19 @@ class checkinTest extends Component {
       </View>
 
 
-    console.log(selected);
+    //console.log(selected);
     if (selected == 0){
+      //console.log('in 0');
       form = memform;
-      // button = membutton;
 
     }
     else if (selected == 1) {
+      //console.log('in 1');
       form = guestform;
-      // button = guestbutton;
     }
-    else {
+    else{
+      //console.log('in else');
+
       return <Text style={styles.textBox}>Photo Disclaimer:{"\n"}
       As representatives of World Council, Sister Society Leaders
       may take photos at this event and reproduce them in World Council
@@ -210,23 +211,18 @@ class checkinTest extends Component {
       purposes. All pictures become the property of World council and may be
       displayed distributed or used by World Council for any purpose.</Text>
 
+
+
     }
-    //const value = this._form.getValue();
-    //console.log('in determine form', value);
+
     return form;
     return button;
   }
 
   onSubmitGuest = () => {
-    //const value = this._form.getValue();
-    //const value = this.refs.form.getValue();
-    //const value = this._form.getValue();
+
     console.log('on submit value', this.state.value);
-    //console.log(value.name);
-    //console.log('Is member?', this.state.val1);
-    //console.log('Interested?', this.state.val2);
-    //const value = this._form.getValue();
-    //console.log('value', value);
+
     if(this.state.value) {
       const url = 'https://cuwomen.org/functions/app.gwln.php'
       fetch(url, {
@@ -257,30 +253,18 @@ class checkinTest extends Component {
 						'Thank you!',
 						'Attendee has been checked in',
 						[
-							{text: 'Dismiss', onPress: () => this.initialState()},
+							{text: 'Dismiss', onPress: this.initialState},
 						],
 					);
         }
         else {
           console.log('wrong info');
-          // Alert.alert(
-					// 	'Error Occured',
-					// 	'Please try again',
-					// 	[
-					// 		{text: 'Dismiss', onPress: () => this.initialState()},
-					// 	],
-					// );
+          //no alerts needed
         }
       })
       .catch(error => {
         console.log(error);
-        // Alert.alert(
-        //   'Error Occured',
-        //   'Please try again',
-        //   [
-        //     {text: 'Dismiss', onPress: () => this.initialState()},
-        //   ],
-        // );
+        //no alert needed
       })
     console.log('fetch');
 
@@ -309,14 +293,11 @@ getMemberInfo = () => {
 
     .then(res => res.json())
     .then(res => {
-      //console.log(res)
       if (res) {
-        //console.log(res);
         this.setState({
           meminfo: res,
         })
-        //console.log('in getmeminfo function', this.state.meminfo)
-        //this.onSumbitMember();
+
         //Nested API call
         if(this.state.value) {
           console.log('in sumit', this.state.meminfo)
@@ -457,9 +438,9 @@ const styles = StyleSheet.create({
       // justifyContent: 'center',
     },
     textBox: {
-      position: 'absolute',
+      //position: 'absolute',
       alignSelf: 'center',
-      bottom: '5%',
+      //bottom: '5%',
       fontSize: 14,
       color: 'gray',
       paddingHorizontal: 30,

@@ -115,7 +115,8 @@ class MyUpcomingEventsScreen extends React.Component {
 				<FlatList
 					data={this.state.data}
 					renderItem={this._renderItem}
-					keyExtractor={item => item.username}
+					//keyExtractor={item => String(item.username)}
+					//keyExtractor={item => String(item.checkin_id)}
 					ItemSeparatorComponent={this.renderSeparator}
 				/>
 			</View>

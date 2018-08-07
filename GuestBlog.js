@@ -95,7 +95,7 @@ class GuestBlog extends React.Component {
 				<FlatList
 						data={this.state.data}
 						renderItem={this._renderItem}
-						keyExtractor={item => item.postID}
+						keyExtractor={item => String(item.postID)}
 						ItemSeparatorComponent={this.renderSeparator}
 						/>
 						<View style={styles.BottomBorder}/>

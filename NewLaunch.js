@@ -1,3 +1,5 @@
+//keyExtractor String
+
 import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, Image, Linking, Platform, Alert} from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
@@ -60,7 +62,7 @@ class Signin extends React.Component {
 			'Invalid Username or Password',
 			'Please try again or forgot password',
 			[
-				{text: 'Dismiss', onPress: () => this.resetForm()},
+				{text: 'Dismiss', onPress: this.resetForm},
 			],
 		)
 	}
