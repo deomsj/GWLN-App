@@ -6,12 +6,7 @@ import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 
 import GWLNScreen from './GWLNScreen';
-import MemberListScreen from './MemberListScreen';
-import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import CreateEventScreen from './CreateEventScreen';
-import FeedbackFormScreen from './FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
-import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import HomeScreen from './HomeScreen';
 

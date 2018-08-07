@@ -4,7 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import moment from 'moment';
 
-// import a from '../Components/alert';
+// import a from './Components/alert';
 import CalendarScreen from '../CalendarScreen';
 
 import '../Global.js';

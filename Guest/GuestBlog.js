@@ -6,7 +6,7 @@ import { SearchBar, List, ListItem } from 'react-native-elements';
 
 import moment from 'moment';
 
-import PostDetailsScreen from './PostDetailsScreen';
+import PostDetailsScreen from '../PostDetailsScreen';
 
 class GuestBlog extends React.Component {
 	constructor(props){

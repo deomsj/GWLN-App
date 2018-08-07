@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, Picker, WebView, Alert, ScrollView, Fla
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import PropTypes from 'prop-types';
 import { SearchBar, List, ListItem } from 'react-native-elements';
-import memberRSVP from './memberRSVP';
+import memberRSVP from './Member/memberRSVP';
 
 import EventData from './www_timeline_events.json';
 import contactData from './mock-database/crm.contacts.json';

@@ -5,17 +5,17 @@ import { Icon } from 'react-native-elements';
 import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 
-import GWLNScreen from './GWLNScreen';
-import MemberListScreen from './MemberListScreen';
-import MyUpcomingEventsScreen from './MyUpcomingEventsScreen';
-import CreateEventScreen from './Admin/CreateEventScreen';
-import FeedbackFormScreen from './Admin/FeedbackFormScreen';
-import CalendarDetailScreen from './CalendarDetailScreen';
-import ProfileScreen from './ProfileScreen';
-import AddPostScreen from './AddPostScreen';
-import HomeScreen from './HomeScreen';
+import GWLNScreen from '../GWLNScreen';
+import MemberListScreen from '../MemberListScreen';
+import MyUpcomingEventsScreen from '../MyUpcomingEventsScreen';
+import CreateEventScreen from '../Admin/CreateEventScreen';
+import FeedbackFormScreen from '../FeedbackFormScreen';
+import CalendarDetailScreen from '../CalendarDetailScreen';
+import ProfileScreen from '../ProfileScreen';
+import AddPostScreen from '../AddPostScreen';
+import HomeScreen from '../HomeScreen';
 
-import EventData from './www_timeline_events.json';
+import EventData from '../www_timeline_events.json';
 const _format = 'YYYY-MM-DD'
 const _today = moment().format(_format)
 const _maxDate = moment().add(120, 'days').format(_format)
@@ -25,7 +25,7 @@ const tmp = {}
 //const calendarEvents = require('./mock-database/wwww.timeline_events.json');
 
 
-class CalendarScreen extends React.Component {
+class guestCalendarScreen extends React.Component {
 
 
 
@@ -62,8 +62,6 @@ class CalendarScreen extends React.Component {
   .then(res => res.json())
   .then(res => {
     if (res) {
-
-
       //console.log(res);
       console.log(res.length);
       this.state.data = res
@@ -163,20 +161,18 @@ sortEvents = () => {
     console.log(filteredDate);
     let filteredID = filteredDate[0].timeline_event_id
     console.log(filteredID);
-    this.props.navigation.navigate('EventDetails', {date, filteredID})
+    this.props.navigation.navigate('guestCalendarDetailScreen', {date, filteredID})
   }
 
 
 
-  // componentWillUnmount(){
-  //   this.mounted = false;
-  // }
+
 
   componentWillMount(){
     //console.log('in componen will mount');
     //console.log(this.state.data)
     //console.log(this.state.EventDate);
-    this.mounted = true;
+    //this._mounted = true;
     //this.AddEvent(this.state.EventDate);
     //this._parseEventData(this.state.data);
     this.retrieveEvents();
@@ -216,4 +212,4 @@ const styles = StyleSheet.create ({
   },
 });
 
-export default CalendarScreen;
+export default guestCalendarScreen;
