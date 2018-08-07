@@ -37,8 +37,7 @@ class MemberHomeScreen extends React.Component {
             {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
             {source: require('../img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
           ]}
-            flatListProps={{windowSize: 2}}
-            pageMargin={10}
+  
             />
             <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
             </View>

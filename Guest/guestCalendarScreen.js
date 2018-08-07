@@ -9,7 +9,7 @@ import GWLNScreen from '../GWLNScreen';
 import MyUpcomingEventsScreen from '../MyUpcomingEventsScreen';
 import CalendarDetailScreen from '../CalendarDetailScreen';
 import AddPostScreen from '../AddPostScreen';
-import HomeScreen from '../HomeScreen';
+import HomeScreen from '../Admin/HomeScreen';
 
 import EventData from '../www_timeline_events.json';
 const _format = 'YYYY-MM-DD'

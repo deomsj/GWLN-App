@@ -16,7 +16,7 @@ import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import CalendarScreen from './CalendarScreen';
-import HomeScreen from './HomeScreen';
+import HomeScreen from './Admin/HomeScreen';
 import MessageBoardScreen from './MessageBoardScreen';
 import PostDetailsScreen from './PostDetailsScreen';
 import GuestHomeScreen from './Guest/GuestHome';

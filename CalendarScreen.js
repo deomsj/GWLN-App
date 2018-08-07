@@ -13,7 +13,7 @@ import FeedbackFormScreen from './Admin/FeedbackFormScreen';
 import CalendarDetailScreen from './CalendarDetailScreen';
 import ProfileScreen from './ProfileScreen';
 import AddPostScreen from './AddPostScreen';
-import HomeScreen from './HomeScreen';
+import HomeScreen from './Admin/HomeScreen';
 
 import EventData from './www_timeline_events.json';
 const _format = 'YYYY-MM-DD'
