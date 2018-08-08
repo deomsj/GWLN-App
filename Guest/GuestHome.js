@@ -78,7 +78,7 @@ class GuestHomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     flex: 1,
     alignItems: 'center',
     flexDirection: 'column',
