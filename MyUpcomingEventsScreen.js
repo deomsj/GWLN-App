@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Picker, WebView, FlatList, TouchableOpacity, } from 'react-native';
 import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 import {List, ListItem} from 'react-native-elements';
+import './Global.js';
+import CalendarDetailScreen from './CalendarDetailScreen';
 
 class MyUpcomingEventsScreen extends React.Component {
 
@@ -30,8 +32,17 @@ class MyUpcomingEventsScreen extends React.Component {
 		);
 	};
 
+
 	_onPressItem = (item) => {
-		this.props.navigation.navigate('MyEventDetailScreen', {item})
+		//global.currUser.is_event_admin = false
+		if (global.currUser.is_event_admin){
+			//console.log('in admin')
+			this.props.navigation.navigate('MyEventDetailScreen', {item})
+		}
+		else{
+			//console.log('in memeber')
+			this.props.navigation.navigate('EventDetails', {item})
+		}
 	}
 
 	_renderItem=({ item }) => (

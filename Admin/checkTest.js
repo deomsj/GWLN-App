@@ -80,7 +80,6 @@ class checkinTest extends Component {
       val1: null,
       val2: null,
       meminfo: null,
-      text: null,
     }
   }
 
@@ -92,16 +91,6 @@ class checkinTest extends Component {
       selectedIndex2: -1,
       val1: null,
       val2: null,
-      meminfo: null,
-      text: <Text style={styles.textBox}>Photo Disclaimer:{"\n"}
-      As representatives of World Council, Sister Society Leaders
-      may take photos at this event and reproduce them in World Council
-      educational, news or promotional materials, whether in print,
-      electronic, or other media, including the World Council or Global Women
-      website. By participation in the Sister Society meeting, you grant World
-      Council the right to use your photograph, name, and biography for such
-      purposes. All pictures become the property of World council and may be
-      displayed distributed or used by World Council for any purpose.</Text>,
     })
   }
 
