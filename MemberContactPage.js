@@ -17,7 +17,11 @@ const DEFAULT_PROPS = {
 			}
 		},
 };
-
+// <Text style={styles.titleText}>Contact Info {"\n"}{"\n"}</Text>
+// <HTML
+// {...DEFAULT_PROPS}
+// html={this.props.navigation.state.params.user.additional_info}
+// />
 class MemberContactPage extends React.Component {
 
 	static navigationOptions = ({navigation})=> {
@@ -30,6 +34,24 @@ class MemberContactPage extends React.Component {
 		 },
 		 headerTintColor: 'white',
 	 };
+ }
+
+ determineAbout = (info) => {
+   if(info != null){
+     if( /<[a-z][\s\S]*>/i.test(info) ){
+       return <HTML
+                {...DEFAULT_PROPS}
+                html={info}
+                />
+    }
+    else{
+      return <Text style={styles.contactText}>{info}</Text>
+    }
+   }
+
+   else {
+     return <Text style={styles.contactText}>No additional information</Text>
+   }
  }
 
 	ComponentDidMount() {
@@ -51,7 +73,7 @@ class MemberContactPage extends React.Component {
 			<ScrollView>
 				<View style={styles.ContactContainer}>
 
-					<Text style={styles.titleText}>Contact Info {"\n"}{"\n"}</Text>
+
 					<Text style={styles.titleText}>Phone:</Text>
 					<Text
             style={styles.contactText}
@@ -61,11 +83,8 @@ class MemberContactPage extends React.Component {
 					<Text style={styles.titleText}>Email:</Text>
 					<Text style={styles.contactText}>{this.props.navigation.state.params.user.email1} </Text>
 					<Text style={styles.titleText}>About:</Text>
+          {this.determineAbout(this.props.navigation.state.params.user.additional_info)}
 
-						<HTML
-						{...DEFAULT_PROPS}
-						html={this.props.navigation.state.params.user.additional_info}
-						/>
 
 					</View>
 				</ScrollView>
