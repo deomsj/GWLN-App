@@ -33,8 +33,15 @@ class attendeeList extends React.Component {
 		};
 	};
 
-	_test = () => {
-		console.log('test');
+	exportList = () => {
+		Alert.alert(
+			'Export Attendee List',
+			'Are you sure you want to export this form?',
+			[
+				{text: 'Yes', onPress: ()=> this.ExportAttendeeList},
+				{text: 'Cancel', onPress: () => console.log('Cancel Pressed')}
+			],
+		)
 	}
 
 
@@ -110,6 +117,7 @@ class attendeeList extends React.Component {
 
 	componentWillMount(){
 		this.retrieveEvent();
+		this.props.navigation.setParams({ Export: this.exportList });
 
 	}
 
