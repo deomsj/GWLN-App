@@ -54,26 +54,26 @@ const styles= StyleSheet.create({
     padding:50,
   },
   text: {
-    includeFontPadding: true,
+    // includeFontPadding: true,
     ...Platform.select({
       ios: {
         fontFamily: 'Helvetica',
-        fontWeight: '700',
+        fontWeight: '600',
       },
       android: {
         fontFamily: 'sans-serif-medium',
         fontWeight: '400',
       },
     }),
-    fontSize: 23,
+    fontSize: 21,
     alignSelf: 'center',
     textAlign: 'center',
     alignItems: 'center',
     color: '#002A55',
     position: 'absolute',
-    bottom: '50%',
-    padding:10,
-    margin:10,
+    bottom: '40%',
+    // padding:10,
+    margin:'10%',
   },
 })
 

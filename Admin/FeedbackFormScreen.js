@@ -138,7 +138,7 @@ class FeedbackFormScreen extends React.Component {
 				options = {Options}
 				onChangeText = {(text) => this.setState({text})}
 				/>
-				<Text style={styles.text}>Suggested event feedback topics:{"\n"} {"\u2022"} Event name and date{"\n"} {"\u2022"} Event Topic{"\n"} {"\u2022"} Number of Attendees{"\n"} {"\u2022"} Charity supported{"\n"} {"\u2022"} Dollars or resources donated</Text>
+				<Text style={styles.text}>Suggested event feedback topics:{"\n"} {"\u2022"} Event name and date{"\n"} {"\u2022"} Event Topic{"\n"} {"\u2022"} Number of Attendees{"\n"} {"\u2022"} Charity supported{"\n"} {"\u2022"} Dollars or resources donated </Text>
 				<View style={styles.buttonContainer}>
 				<View style={styles.button}>
 					<Button
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		flex:1,
 		padding: 30,
+		justifyContent: 'space-evenly',
 	},
 	headerIcon: {
 		flex:1,
@@ -197,9 +198,13 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		alignSelf: 'center',
+		// margin: '10%',
 		padding: 20,
+		// marginTop: '10%'
 	},
 	text: {
+		padding: 5,
+		paddingBottom: 20,
 		fontSize: 14,
 		fontWeight: '200',
 		color: '#002a55',

@@ -232,7 +232,7 @@ const styles = StyleSheet.create ({
 		alignSelf: 'center',
 		elevation: 0,
 		// padding: 30,
-		paddingHorizontal: 30,
+		paddingHorizontal: 20,
 		backgroundColor: '#002A55',
 		...Platform.select({
 			ios: {
@@ -243,7 +243,7 @@ const styles = StyleSheet.create ({
 			},
 		}),
 		borderWidth: 1,
-		borderRadius: 5,
+		borderRadius: 10,
 		flexDirection: 'column',
 		paddingVertical: 3,
 	},

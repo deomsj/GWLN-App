@@ -28,7 +28,7 @@ class HomeScreen extends React.Component {
           //   value: null,
           // },
           {
-            label: 'Upcoming Events',
+            label: 'My Events',
             value: 'MyUpcomingEvents',
           },
           {
@@ -77,6 +77,7 @@ class HomeScreen extends React.Component {
               color: 'gray',
             }}
             items={this.state.items}
+            hideIcon={true}
              onValueChange={(value) => {
               this.setState({
                 Function: value,
@@ -183,36 +184,41 @@ const styles = StyleSheet.create({
      },
    }),
  },
-  pickerContainer: {
-    // paddingBottom: 5,
-    borderColor: '#002a55',
-    borderWidth: 2,
-    borderRadius: 5,
-    elevation: 0,
-    ...Platform.select({
-      ios: {
-        paddingVertical: 15,
-        paddingHorizontal:30,
-      },
-    }),
-  },
+  // pickerContainer: {
+  //   // paddingBottom: 5,
+  //   borderColor: '#002a55',
+  //   borderWidth: 2,
+  //   borderRadius: 5,
+  //   elevation: 0,
+  //   ...Platform.select({
+  //     ios: {
+  //       paddingVertical: 15,
+  //       paddingHorizontal:80,
+  //     },
+  //   }),
+  // },
 });
 
 const pickerStyle = StyleSheet.create({
-  inputiOs: {
-    // fontSize: 20,
+  inputIOS: {
+    fontSize: 18,
     paddingVertical: 15,
-    paddingHorizontal: 15,
+    paddingHorizontal: 80,
     borderWidth: 1,
     borderColor: '#002a55',
     borderRadius: 5,
     // backgroundColor: '#002A55',
     color: '#002A55',
+    placeholderColor: 'black',
   },
   inputAndroid: {
     paddingHorizontal: 125,
-    backgroundColor: 'white',
-    color: 'black',
+    // backgroundColor: 'white',
+    color: '#002a55',
+    borderColor: '#002a55',
+    borderWidth: 2,
+    borderRadius: 5,
+    elevation: 0,
   }
 });
 export default HomeScreen;

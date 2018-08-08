@@ -31,8 +31,10 @@ class MemberContactPage extends React.Component {
 		 headerStyle: {
 			 backgroundColor: '#002a55',
 			 elevation: 0,
+
 		 },
 		 headerTintColor: 'white',
+		 shadowColor: 'transparent',
 	 };
  }
 
@@ -67,7 +69,9 @@ class MemberContactPage extends React.Component {
     };
 		return(
 			<View style={styles.mainContainer}>
+				
 					<Image source={GWLNicon} style={styles.profilePic}/>
+			
 					<Text style={styles.NameText}> {this.props.navigation.state.params.user.first_name} {this.props.navigation.state.params.user.last_name}</Text>
 					<Text style={styles.locationText}> {this.props.navigation.state.params.user.mailing_address_city}, {this.props.navigation.state.params.user.mailing_address_country_name} </Text>
 			<ScrollView>
@@ -101,26 +105,32 @@ const styles = StyleSheet.create ({
 	},
 	profilePic: {
 		padding: 35,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    // flexDirection: 'column',
+    // justifyContent: 'space-between',
+    	alignItems: 'center',
+    	alignSelf: 'center',
 		height: undefined,
 		width: undefined,
 		resizeMode: 'contain',
 		...Platform.select({
       ios: {
+      	width: '20%',
+      	borderWidth: 5,
+      	borderHeight: 1,
+      	borderColor: 'white',
         borderRadius: 20,
+        // borderColor: 'black',
       },
       android: {
         borderRadius: 50,
       },
     }),
-		// marginBottom: '5%'
+		marginTop: '5%'
 	},
 	ContactContainer: {
 		flexDirection: 'column',
 		padding:10,
-    paddingTop:10,
+    paddingTop:20,
 	},
 	NameText: {
 		paddingTop: 10,
