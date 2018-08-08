@@ -136,8 +136,7 @@ class CalendarDetailScreen extends React.Component {
 			<View style={styles.container}>
 				<ScrollView>
 					<View>
-
-         				<View style={styles.heading}>
+         		 <View style={styles.heading}>
           				<Text style={styles.headingText}> {this.state.data.event_name} </Text>
           				<Text style={styles.infoText}> {this.state.data.event_month}/{this.state.data.event_day}/{this.state.data.event_year} </Text>
         			</View>
@@ -179,7 +178,7 @@ const styles = StyleSheet.create ({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-
+    paddingBottom: 15,
 	},
 	headingText: {
 		fontSize: 24,
@@ -194,6 +193,8 @@ const styles = StyleSheet.create ({
 		borderTopWidth: 1,
 		marginLeft: '5%',
 		borderColor: 'lightgray',
+    paddingBottom: 10,
+
 	},
 	infoText: {
 		fontSize: 16,

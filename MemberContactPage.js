@@ -82,6 +82,9 @@ const styles = StyleSheet.create ({
 	},
 	profilePic: {
 		padding: 35,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 		height: undefined,
 		width: undefined,
 		resizeMode: 'contain',
@@ -98,6 +101,7 @@ const styles = StyleSheet.create ({
 	ContactContainer: {
 		flexDirection: 'column',
 		padding:10,
+    paddingTop:10,
 	},
 	NameText: {
 		paddingTop: 10,
@@ -122,7 +126,7 @@ const styles = StyleSheet.create ({
 	titleText: {
 		color: 'white',
 		fontSize: 18,
-		fontWeight: '400',
+		fontWeight: 'bold',
 		paddingHorizontal: 30,
 	},
 })

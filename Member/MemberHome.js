@@ -32,12 +32,12 @@ class MemberHomeScreen extends React.Component {
         <Gallery
           style={styles.gallery}
           images={[
-            {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
-            {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
-            {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
             {source: require('../img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
+            {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
+            {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
+            {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
           ]}
-  
+
             />
             <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
             </View>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:5,
+    paddingBottom:10,
   },
   button: {
     paddingHorizontal: 50,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
 	},
   buttonContainer: {
     position: 'absolute',
-    bottom: '2%',
+    bottom: '3%',
     alignSelf: 'center',
  },
  galleryContainer: {

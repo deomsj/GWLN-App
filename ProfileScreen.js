@@ -129,7 +129,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#002a55',
-    paddingBottom: 50,
+    paddingBottom: 30,
+    paddingTop: 20,
   },
   InfoText: {
     fontSize: 17,
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
   },
   optionsContainer: {
     // padding: 30,
-    marginTop: '10%',
+    marginTop: '5%',
     alignSelf: 'center',
     marginBottom: '10%',
   },
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     // padding: 20,
-    paddingVertical: 1,
+    paddingVertical: 2,
 		backgroundColor: '#002A55',
 		...Platform.select({
       ios: {

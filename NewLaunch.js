@@ -231,7 +231,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 75,
     position: 'absolute',
     bottom: '0%',
-    left: '55%',
+    // left: '55%',
+		right: '5%',
 	},
   guestContainer: {
     // position: 'absolute',
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   guestButton: {
     paddingHorizontal: 10,
     // padding: 10,
-		paddingVertical: 5,
+		paddingVertical: 10,
     backgroundColor: 'white',
     borderColor: '#002A55',
     color: '#002A55',

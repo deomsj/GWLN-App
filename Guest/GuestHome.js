@@ -27,10 +27,10 @@ class GuestHomeScreen extends React.Component {
       <Gallery
         style={styles.gallery}
         images={[
-          {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
-          {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
-          {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
           {source: require('../img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
+          {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
         ]}
 
           />
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom:5,
+    paddingBottom:10,
   },
   button: {
     paddingHorizontal: 30,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
 	},
   buttonContainer: {
     position: 'absolute',
-    bottom: '2%',
+    bottom: '3%',
     alignSelf: 'center',
  },
  galleryContainer: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
    padding:5,
    position: 'absolute',
    top: '0%',
-   height: '90%',
+   height: '70%',
  },
  textStyle: {
    textAlign: 'center',
