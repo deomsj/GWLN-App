@@ -158,7 +158,7 @@ const styles = StyleSheet.create ({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-
+		paddingBottom: 15,
 	},
 	headingText: {
 		fontSize: 24,
@@ -173,6 +173,7 @@ const styles = StyleSheet.create ({
 		borderTopWidth: 1,
 		marginLeft: '5%',
 		borderColor: 'lightgray',
+		paddingBottom: 10,
 	},
 	infoText: {
 		fontSize: 16,

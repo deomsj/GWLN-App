@@ -76,21 +76,10 @@ class attendeeList extends React.Component {
 				title={`${item.first_name} ${item.last_name}`}
 				keyExtractor={(item) => String(item.email)}
 				subtitle={item.email}
+				hideChevron={true}
 			/>
 		</TouchableOpacity>
 	);
-		renderSeparator = () => {
-		return (
-			<View
-				style={{
-					height: 1,
-					width: "100%",
-					backgroundColor: "#CED0CE",
-					marginLeft: "5%"
-				}}
-			/>
-		);
-	};
 
 
 
@@ -144,7 +133,6 @@ class attendeeList extends React.Component {
          						data={this.state.attendees}
          						renderItem={this._renderItem}
          						keyExtractor={item => String(item.username)}
-         						ItemSeparatorComponent={this.renderSeparator}
          					/>
          				</ScrollView>
 

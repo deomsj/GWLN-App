@@ -138,7 +138,10 @@ class checkinTest extends Component {
 
 
   determineForm = (selected) => {
-
+    var buttonColors = ['rgba(255, 255, 255, 1)'];
+    if (Platform.OS === 'android') {
+      buttonColors = ['rgba(0, 42, 85, 1)'];
+    };
     const guestform =
     <View style={styles.formContainer}>
      <Form
@@ -152,7 +155,7 @@ class checkinTest extends Component {
         <Button
           title="Check In!"
           onPress={this.onSubmitGuest}
-          color='#002A55'
+          color={buttonColors}
         />
       </View>
       </View>
@@ -170,7 +173,7 @@ class checkinTest extends Component {
         <Button
           title="Check In!"
           onPress={this.getMemberInfo}
-          color='#002A55'
+          color={buttonColors}
         />
       </View>
       </View>

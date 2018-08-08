@@ -24,8 +24,8 @@ class HomeScreen extends React.Component {
         items: [
           // {
           //   label: 'Manage Events...',
-          //   color: 'black',
-          //   value: 'HomeScreen'
+          //   color: '#002a55',
+          //   value: null,
           // },
           {
             label: 'Upcoming Events',
@@ -60,12 +60,12 @@ class HomeScreen extends React.Component {
         <Gallery
           style={styles.gallery}
           images={[
-            {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
-            {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
-            {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
             {source: require('../img/Scroll/Scroll4.jpg'), dimensions: {width: undefined, height: undefined}},
+            {source: require('../img/Scroll/Scroll2.jpg'), dimensions: {width: undefined, height: undefined}},
+            {source: require('../img/Scroll/Scroll3.jpg'), dimensions: {width: undefined, height: undefined}},
+            {source: require('../img/Scroll/Scroll1.jpg'), dimensions: {width: undefined, height: undefined}},
           ]}
-        
+
             />
             <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
             </View>
@@ -74,7 +74,7 @@ class HomeScreen extends React.Component {
           <RNPickerSelect
             placeholder={{
               label: 'Manage Events...',
-              color: 'lightgray',
+              color: 'gray',
             }}
             items={this.state.items}
              onValueChange={(value) => {
@@ -107,11 +107,13 @@ class HomeScreen extends React.Component {
             />
           </View>
           </View>
+          <View style={styles.menuContainer}>
           <Text
             style={styles.memberText}
             onPress={() => this.props.navigation.navigate('MessageBoard')}>
             Blog
           </Text>
+          </View>
             </View>
       </View>
     );
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
 	},
   menuContainer: {
     backgroundColor: 'white',
-    paddingTop:5,
+    paddingTop:10,
   },
   button: {
     paddingHorizontal: 30,
@@ -153,7 +155,7 @@ const styles = StyleSheet.create({
 	},
   buttonContainer: {
     position: 'absolute',
-    bottom: '2%',
+    bottom: '3%',
     alignSelf: 'center',
  },
  galleryContainer: {
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
    paddingHorizontal: 10,
    position: 'absolute',
    top: '0%',
-   height: '90%',
+   height: '70%',
  },
  textStyle: {
    textAlign: 'center',
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
    ...Platform.select({
      ios: {
        fontFamily: 'Helvetica',
-       fontWeight: '500',
+       fontWeight: '300',
      },
      android: {
        fontFamily: 'sans-serif-light',
@@ -189,8 +191,8 @@ const styles = StyleSheet.create({
     elevation: 0,
     ...Platform.select({
       ios: {
-        paddingVertical: 10,
-        paddingHorizontal:20,
+        paddingVertical: 15,
+        paddingHorizontal:30,
       },
     }),
   },
@@ -198,7 +200,7 @@ const styles = StyleSheet.create({
 
 const pickerStyle = StyleSheet.create({
   inputiOs: {
-    fontSize: 20,
+    // fontSize: 20,
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderWidth: 1,
