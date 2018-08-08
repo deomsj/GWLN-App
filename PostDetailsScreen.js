@@ -8,7 +8,7 @@ import MessageBoardScreen from './MessageBoardScreen'
 class PostDetailsScreen extends React.Component {
 	static navigationOptions = ({navigation})=> {
 		return {
-			headerTitle: (<Text style={{flex: 1, textAlign: 'center', fontWeight: '300', fontSize: 17, color: '#002A55'}}>{navigation.state.params.post.title}</Text>),
+			headerTitle: (<Text style={{flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: '#002A55'}}>Post Details</Text>),
 			headerRight: (<View></View>),
 		};
 	}
@@ -26,6 +26,7 @@ class PostDetailsScreen extends React.Component {
 					<View style={styles.cardContainer}>
 					<View style={styles.postContainer}>
 					<ScrollView>
+					<Text style={{flex: 1, textAlign: 'center', fontWeight: '400', fontSize: 17, color: '#002A55', paddingVertical: 10}}>{this.props.navigation.state.params.post.title}</Text>
 						<HTML html={this.props.navigation.state.params.post.story} imagesMaxWidth={Dimensions.get('window').width}/>
 					</ScrollView>
 					</View>

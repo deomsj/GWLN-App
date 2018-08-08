@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
    ...Platform.select({
      ios: {
        fontFamily: 'Helvetica',
-       fontWeight: '500',
+       fontWeight: '300',
      },
      android: {
        fontFamily: 'sans-serif-light',
