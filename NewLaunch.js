@@ -13,6 +13,7 @@ import memberData from './mock-database/gwln.members.json';
 import t from 'tcomb-form-native';
 import GuestHomeScreen from './Guest/GuestHome';
 
+
 const Form = t.form.Form;
 
 const SigninForm = t.struct({
@@ -97,10 +98,19 @@ if(value) {
 	.then(res => {
 		//console.log(res)
 		if (res != false) {
-			this.props.navigation.navigate('Home')
 			global.currUser = res
+			console.log('currUser', global.currUser);
+			// TEST for members -- global.currUser.is_event_admin = false;
+			//nav to correct home here
+			if(global.currUser.is_event_admin) {
+				this.props.navigation.navigate('Home');
+			}
+			else {
+				this.props.navigation.navigate('MemberHomeScreen');
+			}
+
       this.resetForm
-			console.log(global.currUser);
+
 		}
 		else {
 			console.log('wrong creds');
