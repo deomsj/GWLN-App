@@ -204,4 +204,6 @@ If this causes problems for you, you may want to try changing your terminal's co
 
 ### Developer Notes
 
-After cloning this repo and having all software detailed above you will need to run npm install to build the node modules folder and the packages.json file.
+Running and updating this project requires Node.js, react-native, react-native-scripts, java JDK and expo to be installed, these must either be installed globally or in the directory containing the project. If running on android you will need android studio or genymotion. If running on ios you will need xcode and xcode commandline tools to also be installed.
+
+After cloning this repo and having all software detailed above you will need to run npm install to build the node modules folder and the packages.json file. To run this project run "npm start" from the project directory, you will then be given a prompt from expo on how you would like to run this project.
