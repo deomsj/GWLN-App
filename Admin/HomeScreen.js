@@ -209,7 +209,7 @@ const pickerStyle = StyleSheet.create({
     borderRadius: 5,
     // backgroundColor: '#002A55',
     color: '#002A55',
-    placeholderColor: 'black',
+    //placeholderColor: 'black',
   },
   inputAndroid: {
     paddingHorizontal: 125,
