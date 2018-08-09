@@ -217,12 +217,14 @@ const styles = StyleSheet.create ({
 		backgroundColor: 'white',
 		flex: 1,
 		flexDirection: 'column',
+		justifyContent: 'space-evenly'
 	},
 	buttonContainer: {
 		// padding: 20,
 		// position: 'absolute',
-		marginTop: '30%',
-		marginBottom: '5%',
+		// marginTop: '30%',
+		// marginBottom: '5%',
+		paddingTop: 10,
 		justifyContent: 'center',
 		alignItems: 'center',
 		alignSelf: 'center',
