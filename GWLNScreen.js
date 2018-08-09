@@ -72,8 +72,9 @@ const styles= StyleSheet.create({
     color: '#002A55',
     position: 'absolute',
     bottom: '40%',
+    // top: '5%',
     // padding:10,
-    margin:'10%',
+    margin:'5%',
   },
 })
 

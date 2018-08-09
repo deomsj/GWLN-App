@@ -70,7 +70,7 @@ class HomeScreen extends React.Component {
             <Text style={styles.textStyle}>Our vision is to provide women with the opportunity and resources to make a measurable difference in the lives of each other, in the lives of credit union members and in their communities.</Text>
             </View>
         <View style={styles.buttonContainer}>
-        <View style={styles.pickerContainer}>
+        <View style={styles.pickerBorder}>
           <RNPickerSelect
             placeholder={{
               label: 'Manage Events...',
@@ -86,7 +86,7 @@ class HomeScreen extends React.Component {
             }}
             // style={{color:'#002A55'}}
             style={{...pickerStyle }}
-            hideicon={false}
+            // hideicon={false}
             // keyExtractor={(item) => item.toString()}
           />
           </View>
@@ -184,19 +184,17 @@ const styles = StyleSheet.create({
      },
    }),
  },
-  // pickerContainer: {
-  //   // paddingBottom: 5,
-  //   borderColor: '#002a55',
-  //   borderWidth: 2,
-  //   borderRadius: 5,
-  //   elevation: 0,
-  //   ...Platform.select({
-  //     ios: {
-  //       paddingVertical: 15,
-  //       paddingHorizontal:80,
-  //     },
-  //   }),
-  // },
+  pickerBorder: {
+    // paddingBottom: 5,
+    ...Platform.select({
+      android: {
+        borderColor: '#002a55',
+        borderWidth: 2,
+        borderRadius: 5,
+        elevation: 0,
+      },
+    }),
+  },
 });
 
 const pickerStyle = StyleSheet.create({
@@ -204,21 +202,17 @@ const pickerStyle = StyleSheet.create({
     fontSize: 18,
     paddingVertical: 15,
     paddingHorizontal: 80,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#002a55',
     borderRadius: 5,
     // backgroundColor: '#002A55',
     color: '#002A55',
-    placeholderColor: 'black',
+    // placeholderColor: 'black',
   },
   inputAndroid: {
     paddingHorizontal: 125,
     // backgroundColor: 'white',
-    color: '#002a55',
-    borderColor: '#002a55',
-    borderWidth: 2,
-    borderRadius: 5,
-    elevation: 0,
+    // color: '#002a55',
   }
 });
 export default HomeScreen;
