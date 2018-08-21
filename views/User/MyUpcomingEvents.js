@@ -11,7 +11,7 @@ import {
   createBottomTabNavigator
 } from 'react-navigation';
 import { ListItem } from 'react-native-elements';
-import './Global.js';
+import '../../global';
 
 class MyUpcomingEvents extends React.Component {
   static navigationOptions = {
@@ -54,10 +54,9 @@ class MyUpcomingEvents extends React.Component {
   };
 
   _onPressItem = item => {
-    //global.currUser.is_event_admin = false
     if (global.currUser.is_event_admin) {
       //console.log('in admin')
-      this.props.navigation.navigate('MyEventDetail', { item });
+      this.props.navigation.navigate('AdminEventDetails', { item });
     } else {
       //console.log('in member')
       this.props.navigation.navigate('EventDetails', { item });
@@ -142,8 +141,7 @@ class MyUpcomingEvents extends React.Component {
         <FlatList
           data={this.state.data}
           renderItem={this._renderItem}
-          //keyExtractor={item => String(item.username)}
-          //keyExtractor={item => String(item.checkin_id)}
+          keyExtractor={item => String(item.timeline_event_id)}
           ItemSeparatorComponent={this.renderSeparator}
         />
       </View>

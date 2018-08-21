@@ -11,10 +11,9 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
-import GWLNicon from './img/Gwln_Icon.jpg';
 import call from 'react-native-phone-call';
-
 import HTML from 'react-native-render-html';
+import GWLNicon from '../../img/Gwln_Icon.jpg';
 
 const DEFAULT_PROPS = {
   tagsStyles: {

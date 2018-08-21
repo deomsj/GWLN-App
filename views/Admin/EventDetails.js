@@ -15,12 +15,12 @@ import {
 } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
-import contactData from '../mock-database/crm.contacts.json';
-import '../Global';
+import contactData from '../../mock-database/crm.contacts.json';
+import '../../global';
 
 //import EventData from '../www_timeline_events.json';
 
-class MyEventDetail extends React.Component {
+class AdminEventDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -300,4 +300,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MyEventDetail;
+export default AdminEventDetails;

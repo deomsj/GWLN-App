@@ -7,30 +7,13 @@ import {
   ScrollView,
   Platform
 } from 'react-native';
-import contactData from './mock-database/crm.contacts.json';
 import HTML from 'react-native-render-html';
-import './Global';
-
-//import EventData from './www_timeline_events.json';
+import contactData from '../../mock-database/crm.contacts.json';
+import '../../global';
 
 const tmp = {};
 
-const DEFAULT_PROPS = {
-  tagsStyles: {
-    ' ': {
-      fontSize: 16,
-      color: 'gray',
-      paddingHorizontal: 10
-    },
-    p: {
-      fontSize: 16,
-      color: 'gray',
-      paddingHorizontal: 10
-    }
-  }
-};
-
-class EventDetails extends React.Component {
+class GuestCalendarDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -118,23 +101,17 @@ class EventDetails extends React.Component {
   };
   _GoToRSVP = () => {
     let ID = this.state.data.timeline_event_id;
+    this.props.navigation.navigate('GuestRSVP', { ID });
   };
 
   componentDidMount() {
     this.retrieveEvent();
   }
   render() {
-    //this._test();
-    console.log(this.state.data);
-
     var buttonColors = ['rgba(255, 255, 255, 1)'];
     if (Platform.OS === 'android') {
       buttonColors = ['rgba(0, 42, 85, 1)'];
     }
-
-    // run query of events on the day that is passed then store the information in an array of objects
-    //() => this._onPress()
-    //<Text style={styles.infoText}> {this.state.data.event_description} </Text>
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -212,7 +189,6 @@ const styles = StyleSheet.create({
   },
   button: {
     elevation: 0,
-    // padding: 30,
     paddingHorizontal: 50,
     backgroundColor: '#002A55',
     ...Platform.select({
@@ -233,4 +209,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EventDetails;
+export default GuestCalendarDetail;

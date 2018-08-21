@@ -14,10 +14,10 @@ import {
 } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
-import '../Global.js';
+import '../../global';
 
 // import EventData from '../www_timeline_events.json';
-// import contactData from '../mock-database/crm.contacts.json';
+// import contactData from '../../mock-database/crm.contacts.json';
 
 class AttendeeList extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class AttendeeList extends React.Component {
           containerStyle={{ marginRight: 15, marginTop: 15 }}
           iconStyle={styles.headerIcon}
           name="file-upload"
-          onPress={() => this._test()}
+          onPress={this.exportList}
         />
       )
     };
@@ -129,7 +129,7 @@ class AttendeeList extends React.Component {
       });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.retrieveEvent();
     this.props.navigation.setParams({ Export: this.exportList });
   }

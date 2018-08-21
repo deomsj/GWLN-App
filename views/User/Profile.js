@@ -3,11 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Linking,
-  ImageBackground,
   Image,
-  ScrollView,
-  ListView,
   Platform,
   Button,
   Alert
@@ -16,12 +12,10 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
-import { Card, Icon } from 'react-native-elements';
-import PropTypes from 'prop-types';
 
-import GWLNicon from './img/Gwln_Icon.jpg';
-import contactData from './mock-database/crm.contacts.json';
-import './Global';
+import GWLNicon from '../../img/Gwln_Icon.jpg';
+import contactData from '../../mock-database/crm.contacts.json';
+import '../../global';
 
 import call from 'react-native-phone-call';
 

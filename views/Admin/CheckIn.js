@@ -11,7 +11,7 @@ import {
 import { Icon } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import { RadioGroup, RadioButton } from 'react-native-flexi-radio-button';
-import '../Global.js';
+import '../../global';
 const Form = t.form.Form;
 
 let form;

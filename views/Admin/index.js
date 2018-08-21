@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-import GWLNlogo from '../img/gwln_logo.jpg';
 
-import GWLNScreen from '../GWLNScreen';
-import Profile from '../Profile';
-import CalendarScreen from '../CalendarScreen';
+import GWLNlogo from '../../img/gwln_logo.jpg';
+import Donate from '../All/Donate';
+import Profile from '../User/Profile';
+import UserCalendar from '../User/UserCalendar';
 import AdminHome from './Home';
-import '../Global';
-//import contactData from './mock-database/crm.contacts.json';
+import '../../global';
+//import contactData from './../mock-database/crm.contacts.json';
 
 const Admin = createBottomTabNavigator({
   Home: {
@@ -30,8 +30,8 @@ const Admin = createBottomTabNavigator({
       )
     }
   },
-  CalendarView: {
-    screen: CalendarScreen,
+  UserCalendar: {
+    screen: UserCalendar,
     navigationOptions: {
       title: 'Calendar',
       tabBarIcon: ({ tintColor }) => (
@@ -40,7 +40,7 @@ const Admin = createBottomTabNavigator({
     }
   },
   GWLN: {
-    screen: GWLNScreen,
+    screen: Donate,
     navigationOptions: {
       title: 'Donate',
       tabBarIcon: ({ tintColor }) => (
@@ -60,8 +60,6 @@ Admin.navigationOptions = ({ navigation }) => {
     };
   } else if (routeName === 'Profile') {
     return {
-      // headerTitle: (<Text style={{flex: 1, textAlign: 'center', alignSelf: 'center', fontWeight: '300', fontSize: 20, color: 'white'}}>  {navigation.state.params.user.first_name} {navigation.state.params.user.last_name}</Text>),
-      // headerRight: (<View></View>),
       headerStyle: {
         backgroundColor: '#002a55',
         borderColor: '#002A55',
@@ -84,7 +82,7 @@ Admin.navigationOptions = ({ navigation }) => {
       ),
       headerLeft: null
     };
-  } else if (routeName === 'CalendarView') {
+  } else if (routeName === 'UserCalendar') {
     return {
       headerLeft: <View />,
       headerTitle: (

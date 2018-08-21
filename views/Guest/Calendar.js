@@ -6,6 +6,8 @@ import {
 } from 'react-navigation';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
+//import EventData from '../www_timeline_events.json';
+//const calendarEvents = require('./../mock-database/wwww.timeline_events.json');
 
 const _format = 'YYYY-MM-DD';
 const _today = moment().format(_format);
@@ -15,9 +17,7 @@ const _maxDate = moment()
 
 const tmp = {};
 
-//const calendarEvents = require('./mock-database/wwww.timeline_events.json');
-
-class CalendarScreen extends React.Component {
+class GuestCalendar extends React.Component {
   initialState = {
     [_today]: { disabled: true }
   };
@@ -47,7 +47,6 @@ class CalendarScreen extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res) {
-          //console.log(res);
           console.log(res.length);
           this.state.data = res;
           this.sortEvents();
@@ -61,10 +60,8 @@ class CalendarScreen extends React.Component {
 
   sortEvents = () => {
     let tmpDates = this.state.data;
-    //console.log(tmpDates);
     for (var i = 0; i < tmpDates.length; i++) {
       tmp = tmpDates[i];
-      //console.log(tmp);
       var day = tmp.event_day;
       var month = tmp.event_month;
       var zero = '0';
@@ -94,9 +91,10 @@ class CalendarScreen extends React.Component {
 
   OnDaySelect = date => {
     const _selectedDay = moment(date.dateString).format(_format);
-    // pass the date to the event details page
+    console.log(_selectedDay);
 
     if (this.state._markedDates[_selectedDay]) {
+      console.log('in if statement');
       this.parseSelectedDate(_selectedDay);
       // navigate to event detail and pass the event id so that the post information can be retrieved
       //this.props.navigation.navigate('EventDetails', {date, _selectedDay})
@@ -132,11 +130,13 @@ class CalendarScreen extends React.Component {
     console.log(filteredDate);
     let filteredID = filteredDate[0].timeline_event_id;
     console.log(filteredID);
-    this.props.navigation.navigate('EventDetails', { date, filteredID });
+    this.props.navigation.navigate('GuestCalendarDetail', {
+      date,
+      filteredID
+    });
   };
 
-  componentDidMount() {
-    this.mounted = true;
+  componentWillMount() {
     this.retrieveEvents();
   }
 
@@ -167,4 +167,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CalendarScreen;
+export default GuestCalendar;

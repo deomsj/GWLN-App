@@ -8,9 +8,9 @@ import {
   Platform,
   Linking
 } from 'react-native';
-import donateImage from './img/Donate.jpg';
+import donateImage from '../../img/Donate.jpg';
 
-class GWLNScreen extends React.Component {
+class Donate extends React.Component {
   render() {
     var buttonColors = ['rgba(255, 255, 255, 1)'];
     if (Platform.OS === 'android') {
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default GWLNScreen;
+export default Donate;

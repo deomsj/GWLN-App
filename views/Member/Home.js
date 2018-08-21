@@ -15,19 +15,19 @@ class MemberHomeScreen extends React.Component {
             style={styles.gallery}
             images={[
               {
-                source: require('../img/Scroll/Scroll4.jpg'),
+                source: require('../../img/Scroll/Scroll4.jpg'),
                 dimensions: { width: undefined, height: undefined }
               },
               {
-                source: require('../img/Scroll/Scroll2.jpg'),
+                source: require('../../img/Scroll/Scroll2.jpg'),
                 dimensions: { width: undefined, height: undefined }
               },
               {
-                source: require('../img/Scroll/Scroll3.jpg'),
+                source: require('../../img/Scroll/Scroll3.jpg'),
                 dimensions: { width: undefined, height: undefined }
               },
               {
-                source: require('../img/Scroll/Scroll1.jpg'),
+                source: require('../../img/Scroll/Scroll1.jpg'),
                 dimensions: { width: undefined, height: undefined }
               }
             ]}
@@ -44,7 +44,7 @@ class MemberHomeScreen extends React.Component {
               <Button
                 color={buttonColors}
                 title="Find an Event"
-                onPress={() => this.props.navigation.navigate('CalendarView')}
+                onPress={() => this.props.navigation.navigate('UserCalendar')}
               />
             </View>
           </View>

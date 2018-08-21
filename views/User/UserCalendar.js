@@ -6,8 +6,6 @@ import {
 } from 'react-navigation';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
-//import EventData from '../www_timeline_events.json';
-//const calendarEvents = require('./mock-database/wwww.timeline_events.json');
 
 const _format = 'YYYY-MM-DD';
 const _today = moment().format(_format);
@@ -17,7 +15,7 @@ const _maxDate = moment()
 
 const tmp = {};
 
-class GuestCalendar extends React.Component {
+class UserCalendar extends React.Component {
   initialState = {
     [_today]: { disabled: true }
   };
@@ -47,7 +45,6 @@ class GuestCalendar extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res) {
-          console.log(res.length);
           this.state.data = res;
           this.sortEvents();
         }
@@ -55,7 +52,6 @@ class GuestCalendar extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    console.log('fetching events');
   };
 
   sortEvents = () => {
@@ -91,10 +87,9 @@ class GuestCalendar extends React.Component {
 
   OnDaySelect = date => {
     const _selectedDay = moment(date.dateString).format(_format);
-    console.log(_selectedDay);
+    // pass the date to the event details page
 
     if (this.state._markedDates[_selectedDay]) {
-      console.log('in if statement');
       this.parseSelectedDate(_selectedDay);
       // navigate to event detail and pass the event id so that the post information can be retrieved
       //this.props.navigation.navigate('EventDetails', {date, _selectedDay})
@@ -109,16 +104,12 @@ class GuestCalendar extends React.Component {
     var _year = date[0];
     var _month = date[1];
     var _day = date[2];
-    console.log(_day[1]);
     if (_day[0] == 0) {
       _day = _day[1];
     }
     if (_month[0] == 0) {
       _month = _month[1];
     }
-    console.log(_year);
-    console.log(_month);
-    console.log(_day);
     let TmpSelected = this.state.data;
     var filteredDate = TmpSelected.filter(event => {
       return (
@@ -127,16 +118,12 @@ class GuestCalendar extends React.Component {
         event.event_year == _year
       );
     });
-    console.log(filteredDate);
     let filteredID = filteredDate[0].timeline_event_id;
-    console.log(filteredID);
-    this.props.navigation.navigate('GuestCalendarDetail', {
-      date,
-      filteredID
-    });
+    this.props.navigation.navigate('EventDetails', { date, filteredID });
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    this.mounted = true;
     this.retrieveEvents();
   }
 
@@ -167,4 +154,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default GuestCalendar;
+export default UserCalendar;

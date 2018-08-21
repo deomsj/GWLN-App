@@ -17,7 +17,7 @@ import moment from 'moment';
 
 // import a from './Components/alert';
 
-import '../Global.js';
+import '../../global';
 
 import t from 'tcomb-form-native';
 

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import t from 'tcomb-form-native';
-import '../Global.js';
+import '../../global';
 
 const Form = t.form.Form;
 

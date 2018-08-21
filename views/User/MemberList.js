@@ -16,7 +16,7 @@ import _ from 'lodash';
 const contains = ({ first_name, last_name }, query) =>
   first_name.includes(query) || last_name.includes(query);
 
-class MemberListScreen extends React.Component {
+class MemberList extends React.Component {
   static navigationOptions = {
     headerTitle: (
       <Text
@@ -64,7 +64,7 @@ class MemberListScreen extends React.Component {
   };
   _onPressItem = item => {
     console.log('item  --- ', item);
-    this.props.navigation.navigate('', { user: item });
+    this.props.navigation.navigate('MemberContactPage', { user: item });
   };
 
   _renderItem = ({ item }) => (
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
     zIndex: 1
   }
 });
-export default MemberListScreen;
+export default MemberList;

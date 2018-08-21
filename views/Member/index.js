@@ -3,13 +3,13 @@ import { StyleSheet, Text, Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import GWLNlogo from '../img/gwln_logo.jpg';
-import GWLNScreen from '../GWLNScreen';
-import Profile from '../Profile';
-import CalendarScreen from '../CalendarScreen';
+import GWLNlogo from '../../img/gwln_logo.jpg';
+import Donate from '../All/Donate';
+import Profile from '../User/Profile';
+import UserCalendar from '../User/UserCalendar';
 import MemberHome from './Home';
-import '../Global.js';
-//import contactData from './mock-database/crm.contacts.json';
+import '../../global';
+//import contactData from './../mock-database/crm.contacts.json';
 
 const Member = createBottomTabNavigator({
   Home: {
@@ -30,8 +30,8 @@ const Member = createBottomTabNavigator({
       )
     }
   },
-  CalendarView: {
-    screen: CalendarScreen,
+  UserCalendar: {
+    screen: UserCalendar,
     navigationOptions: {
       title: 'Calendar',
       tabBarIcon: ({ tintColor }) => (
@@ -40,7 +40,7 @@ const Member = createBottomTabNavigator({
     }
   },
   GWLN: {
-    screen: GWLNScreen,
+    screen: Donate,
     navigationOptions: {
       title: 'Donate',
       tabBarIcon: ({ tintColor }) => (
@@ -76,7 +76,7 @@ Member.navigationOptions = ({ navigation }) => {
       ),
       headerLeft: null
     };
-  } else if (routeName === 'CalendarView') {
+  } else if (routeName === 'UserCalendar') {
     return {
       headerTitle: (
         <Text

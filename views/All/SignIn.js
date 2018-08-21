@@ -13,10 +13,10 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
-import GWLNlogo from './img/gwln_logo.jpg';
-import WorldCouncilLogo from './img/WorldCouncil_logo.png';
-import memberData from './mock-database/gwln.members.json';
 import t from 'tcomb-form-native';
+import GWLNlogo from '../../img/gwln_logo.jpg';
+import WorldCouncilLogo from '../../img/WorldCouncil_logo.png';
+import memberData from '../../mock-database/gwln.members.json';
 
 const Form = t.form.Form;
 

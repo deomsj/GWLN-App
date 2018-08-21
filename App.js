@@ -1,44 +1,43 @@
 import { createStackNavigator } from 'react-navigation';
 
-import SignIn from './SignIn';
-import MemberContactPage from './MemberContactPage';
-import MemberList from './MemberList';
-import MyUpcomingEvents from './MyUpcomingEvents';
-import EventDetails from './EventDetails';
-import NewBlogPost from './NewBlogPost';
-import BlogPostList from './BlogPostList';
-import BlogPost from './BlogPost';
-import Guest from './Guest';
-import GuestRSVP from './Guest/RSVP';
-import GuestCalendar from './Guest/Calendar';
-import GuestBlog from './Guest/Blog';
-import GuestCalendarDetail from './Guest/CalendarDetail';
-import Member from './Member';
-import MemberRSVP from './Member/RSVP';
-import Admin from './Admin';
-import FeedbackForm from './Admin/FeedbackForm';
-import CreateEvent from './Admin/CreateEvent';
-import CheckIn from './Admin/CheckIn';
-import MyEventDetail from './Admin/MyEventDetail';
-import AttendeeList from './Admin/AttendeeList';
-import Profile from './Profile';
-import './Global.js';
-//import contactData from './mock-database/crm.contacts.json';
+import SignIn from './views/All/SignIn';
+import MemberContactPage from './views/User/MemberContactPage';
+import MemberList from './views/User/MemberList';
+import MyUpcomingEvents from './views/User/MyUpcomingEvents';
+import EventDetails from './views/All/EventDetails';
+import NewBlogPost from './views/User/NewBlogPost';
+import BlogPostList from './views/All/BlogPostList';
+import BlogPost from './views/All/BlogPost';
+import Guest from './views/Guest';
+import GuestRSVP from './views/Guest/RSVP';
+import GuestCalendar from './views/Guest/Calendar';
+import GuestBlog from './views/Guest/Blog';
+import GuestCalendarDetail from './views/Guest/CalendarDetail';
+import Member from './views/Member';
+import MemberRSVP from './views/Member/RSVP';
+import Admin from './views/Admin';
+import FeedbackForm from './views/Admin/FeedbackForm';
+import CreateEvent from './views/Admin/CreateEvent';
+import CheckIn from './views/Admin/CheckIn';
+import AdminEventDetails from './views/Admin/EventDetails';
+import AttendeeList from './views/Admin/AttendeeList';
+import Profile from './views/User/Profile';
+import UserCalendar from './views/User/UserCalendar';
 
 const NavigationFlow = createStackNavigator(
   {
-    SignIn,
     //Guest
     Guest,
     GuestRSVP,
-    GuestCalendar, //FIXME
+    GuestCalendar,
     GuestCalendarDetail,
     GuestBlog,
+
     //Member
     Member,
-    MemberContactPage,
     MemberRSVP,
-    EventDetails, //change to MemberEventDetail
+    EventDetails,
+
     //Admin
     Admin,
     AttendeeList,
@@ -46,22 +45,22 @@ const NavigationFlow = createStackNavigator(
     CreateEvent,
     FeedbackForm,
     MyUpcomingEvents,
-    MyEventDetail, //change to AdminEventDetail
-    //Member and Admin
-    MemberList,
-    NewBlogPost,
-    Profile, //Add me
+    AdminEventDetails,
 
-    //All?
+    //User (Member and Admin)
+    MemberList,
+    MemberContactPage,
+    NewBlogPost,
+    Profile,
+    UserCalendar,
+
+    //All
+    SignIn,
     BlogPostList,
     BlogPost
-
-    //Missing?
-    //CalendarView for admin
-    //CalendarView for member
   },
   {
-    initialRouteName: 'BlogPostList'
+    initialRouteName: 'SignIn'
   }
 );
 

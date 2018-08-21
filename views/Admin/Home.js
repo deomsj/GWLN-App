@@ -1,19 +1,30 @@
 import React from 'react';
+import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Platform,
-  Linking
-} from 'react-native';
+  createStackNavigator,
+  createBottomTabNavigator
+} from 'react-navigation';
+import RNPickerSelect from 'react-native-picker-select';
 import Gallery from 'react-native-image-gallery';
 
-class GuestHomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   constructor() {
     super();
     this.inputRefs = {};
+    this.state = {
+      Function: undefined,
+      items: [
+        { label: 'My Events', value: 'MyUpcomingEvents' },
+        { label: 'Provide Feedback', value: 'FeedbackForm' },
+        { label: 'Create an Event', value: 'CreateEvent' }
+      ]
+    };
   }
+
+  pickerNavigate = () => {
+    var nextPage = this.state.PickerValue;
+    this.props.navigation.navigate(nextPage);
+  };
 
   render() {
     var buttonColors = ['rgba(255, 255, 255, 1)'];
@@ -27,19 +38,19 @@ class GuestHomeScreen extends React.Component {
             style={styles.gallery}
             images={[
               {
-                source: require('../img/Scroll/Scroll4.jpg'),
+                source: require('../../img/Scroll/Scroll4.jpg'),
                 dimensions: { width: undefined, height: undefined }
               },
               {
-                source: require('../img/Scroll/Scroll2.jpg'),
+                source: require('../../img/Scroll/Scroll2.jpg'),
                 dimensions: { width: undefined, height: undefined }
               },
               {
-                source: require('../img/Scroll/Scroll3.jpg'),
+                source: require('../../img/Scroll/Scroll3.jpg'),
                 dimensions: { width: undefined, height: undefined }
               },
               {
-                source: require('../img/Scroll/Scroll1.jpg'),
+                source: require('../../img/Scroll/Scroll1.jpg'),
                 dimensions: { width: undefined, height: undefined }
               }
             ]}
@@ -51,25 +62,26 @@ class GuestHomeScreen extends React.Component {
           </Text>
         </View>
         <View style={styles.buttonContainer}>
-          <View style={styles.menuContainer}>
-            <View style={styles.button}>
-              <Button
-                color={buttonColors}
-                title="Join the Network"
-                onPress={() => {
-                  Linking.openURL(
-                    'https://www.cuwomen.org/gwln_connect/gwln_new_member'
-                  );
-                }}
-              />
-            </View>
+          <View style={styles.pickerBorder}>
+            <RNPickerSelect
+              placeholder={{ label: 'Manage Events...', color: 'gray' }}
+              items={this.state.items}
+              hideIcon={true}
+              onValueChange={value => {
+                this.setState({ Function: value });
+                if (value) {
+                  this.props.navigation.navigate(value);
+                }
+              }}
+              style={{ ...pickerStyle }}
+            />
           </View>
           <View style={styles.menuContainer}>
             <View style={styles.button}>
               <Button
                 color={buttonColors}
                 title="Find an Event"
-                onPress={() => this.props.navigation.navigate('GuestCalendar')}
+                onPress={() => this.props.navigation.navigate('UserCalendar')}
               />
             </View>
           </View>
@@ -77,21 +89,19 @@ class GuestHomeScreen extends React.Component {
             <View style={styles.button}>
               <Button
                 color={buttonColors}
-                title="Benefits of Membership"
-                onPress={() => {
-                  Linking.openURL(
-                    'https://www.cuwomen.org/gwln_about/gwln_member'
-                  );
-                }}
+                title="Member List"
+                onPress={() => this.props.navigation.navigate('MemberList')}
               />
             </View>
           </View>
-          <Text
-            style={styles.memberText}
-            onPress={() => this.props.navigation.navigate('GuestBlog')}
-          >
-            Blog
-          </Text>
+          <View style={styles.menuContainer}>
+            <Text
+              style={styles.memberText}
+              onPress={() => this.props.navigation.navigate('BlogPostList')}
+            >
+              Blog
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -113,7 +123,7 @@ const styles = StyleSheet.create({
   },
   menuContainer: {
     backgroundColor: 'white',
-    paddingBottom: 10
+    paddingTop: 10
   },
   button: {
     paddingHorizontal: 30,
@@ -138,7 +148,8 @@ const styles = StyleSheet.create({
   },
   galleryContainer: {
     backgroundColor: 'white',
-    padding: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
     position: 'absolute',
     top: '0%',
     height: '70%'
@@ -159,7 +170,31 @@ const styles = StyleSheet.create({
         fontWeight: '400'
       }
     })
+  },
+  pickerBorder: {
+    ...Platform.select({
+      android: {
+        borderColor: '#002a55',
+        borderWidth: 2,
+        borderRadius: 5,
+        elevation: 0
+      }
+    })
   }
 });
 
-export default GuestHomeScreen;
+const pickerStyle = StyleSheet.create({
+  inputIOS: {
+    fontSize: 18,
+    paddingVertical: 15,
+    paddingHorizontal: 80,
+    borderWidth: 2,
+    borderColor: '#002a55',
+    borderRadius: 5,
+    color: '#002A55'
+  },
+  inputAndroid: {
+    paddingHorizontal: 125
+  }
+});
+export default HomeScreen;

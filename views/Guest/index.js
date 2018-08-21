@@ -3,12 +3,12 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import GWLNlogo from '../img/gwln_logo.jpg';
-import GWLNScreen from '../GWLNScreen';
-import guestCalendarScreen from './Calendar';
+import GWLNlogo from '../../img/gwln_logo.jpg';
+import Donate from '../All/Donate';
+import GuestCalendar from './Calendar';
 import GuestHome from './Home';
-import '../Global';
-//import contactData from './mock-database/crm.contacts.json';
+import '../../global';
+//import contactData from './../mock-database/crm.contacts.json';
 
 const Guest = createBottomTabNavigator({
   Home: {
@@ -20,8 +20,8 @@ const Guest = createBottomTabNavigator({
       )
     }
   },
-  CalendarView: {
-    screen: guestCalendarScreen,
+  GuestCalendar: {
+    screen: GuestCalendar,
     navigationOptions: {
       title: 'Calendar',
       tabBarIcon: ({ tintColor }) => (
@@ -30,7 +30,7 @@ const Guest = createBottomTabNavigator({
     }
   },
   GWLN: {
-    screen: GWLNScreen,
+    screen: Donate,
     navigationOptions: {
       title: 'Donate',
       tabBarIcon: ({ tintColor }) => (
@@ -48,7 +48,7 @@ Guest.navigationOptions = ({ navigation }) => {
       headerTitle: <Image source={GWLNlogo} style={styles.GWLNlogo} />,
       headerRight: <View />
     };
-  } else if (routeName === 'CalendarView') {
+  } else if (routeName === 'GuestCalendar') {
     return {
       headerTitle: (
         <Text
